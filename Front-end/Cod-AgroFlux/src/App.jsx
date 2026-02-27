@@ -1,20 +1,17 @@
 import 'bootstrap/dist/css/bootstrap.min.css'
+import 'bootstrap-icons/font/bootstrap-icons.css'
 import './assets/css/dashboard.css'
 import './App.css'
-import 'bootstrap/dist/js/bootstrap.min.js'
 import 'bootstrap/dist/js/bootstrap.bundle.min.js'
 //import './assets/js/dashboard'
-import Navbar from './components/Template/Navbar'
-import Sidebar from './components/Template/Sidebar'
-
+import Home from './components/paginas/Home/Home';
 
 function App() {
+
   return (
-    <>  
-      <Navbar/>
-      <Sidebar/>
+    <>
+      <Home />
     </>
   )
 }
-
 export default App
