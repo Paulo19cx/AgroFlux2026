@@ -1,17 +1,11 @@
 function Sidebar() {
     return (
         <>
-            <div className="sidebar border border-right col-md-3 col-lg-2 p-0 bg-body-tertiary">
-                <div
-                    className="offcanvas-md offcanvas-end bg-body-tertiary"
-                    tabIndex="-1"
-                    id="sidebarMenu"
-                    aria-labelledby="sidebarMenuLabel"
-                >
+            <div className="sidebar ph-altura-sidebar border border-right col-md-3 col-lg-2 p-0 bg-light ph-bg-sidebar">
+                <div className="offcanvas-md offcanvas-end bg-light ph-bg-sidebar" tabIndex="-1" id="sidebarMenu" aria-labelledby="sidebarMenuLabel">
                     <div className="offcanvas-header">
-                        <h5 className="offcanvas-title" id="sidebarMenuLabel">
-                            Company name
-                        </h5>
+                        <h5 className="offcanvas-title" id="sidebarMenuLabel">Company name</h5>
+                        
                         <button
                             type="button"
                             className="btn-close"
@@ -24,108 +18,34 @@ function Sidebar() {
                     <div className="offcanvas-body d-md-flex flex-column p-0 pt-lg-3 overflow-y-auto">
                         <ul className="nav flex-column">
                             <li className="nav-item">
-                                <a
-                                    className="nav-link d-flex align-items-center gap-2 active"
-                                    aria-current="page"
-                                    href="#"
-                                >
-                                    <i className="bi bi-house-fill" aria-hidden="true"></i>
-                                    Dashboard
-                                </a>
+                                <a className="nav-link d-flex align-items-center gap-2 active text-black" aria-current="page" href="#"><i className="fi fi-rr-home" aria-hidden="true"></i>Dashboard</a>
                             </li>
 
                             <li className="nav-item">
-                                <a className="nav-link d-flex align-items-center gap-2" href="#">
-                                    <i className="bi bi-file-earmark" aria-hidden="true"></i>
-                                    Orders
-                                </a>
+                                <a className="nav-link d-flex align-items-center gap-2 text-black" href="#"><i className="fi fi-rs-users" aria-hidden="true"></i>Clientes</a>
                             </li>
 
                             <li className="nav-item">
-                                <a className="nav-link d-flex align-items-center gap-2" href="#">
-                                    <i className="bi bi-cart" aria-hidden="true"></i>
-                                    Products
-                                </a>
+                                <a className="nav-link d-flex align-items-center gap-2 text-black" href="#"><i className="fi fi-rs-user-gear" aria-hidden="true"></i>Funcionários</a>
                             </li>
 
                             <li className="nav-item">
-                                <a className="nav-link d-flex align-items-center gap-2" href="#">
-                                    <i className="bi bi-people" aria-hidden="true"></i>
-                                    Customers
-                                </a>
+                                <a className="nav-link d-flex align-items-center gap-2 text-black" href="#"><i className="bi bi-people" aria-hidden="true"></i>Produtos</a>
                             </li>
 
                             <li className="nav-item">
-                                <a className="nav-link d-flex align-items-center gap-2" href="#">
-                                    <i className="bi bi-graph-up" aria-hidden="true"></i>
-                                    Reports
-                                </a>
+                                <a className="nav-link d-flex align-items-center gap-2 text-black" href="#"><i className="bi bi-graph-up" aria-hidden="true"></i>Vendas</a>
                             </li>
 
                             <li className="nav-item">
-                                <a className="nav-link d-flex align-items-center gap-2" href="#">
-                                    <i className="bi bi-puzzle" aria-hidden="true"></i>
-                                    Integrations
-                                </a>
+                                <a className="nav-link d-flex align-items-center gap-2 text-black" href="#"><i className="bi bi-puzzle" aria-hidden="true"></i>Fornecedores</a>
                             </li>
-                        </ul>
-
-                        <h6 className="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-body-secondary text-uppercase">
-                            <span>Saved reports</span>
-                            <a
-                                className="link-secondary"
-                                href="#"
-                                aria-label="Add a new report"
-                            >
-                                <i className="bi bi-plus-circle" aria-hidden="true"></i>
-                            </a>
-                        </h6>
-
-                        <ul className="nav flex-column mb-auto">
                             <li className="nav-item">
-                                <a className="nav-link d-flex align-items-center gap-2" href="#">
-                                    <i className="bi bi-file-earmark-text" aria-hidden="true"></i>
-                                    Current month
-                                </a>
+                                <a className="nav-link d-flex align-items-center gap-2 text-black" href="#"><i className="bi bi-file-earmark-text" aria-hidden="true"></i>Estoque</a>
                             </li>
 
                             <li className="nav-item">
-                                <a className="nav-link d-flex align-items-center gap-2" href="#">
-                                    <i className="bi bi-file-earmark-text" aria-hidden="true"></i>
-                                    Last quarter
-                                </a>
-                            </li>
-
-                            <li className="nav-item">
-                                <a className="nav-link d-flex align-items-center gap-2" href="#">
-                                    <i className="bi bi-file-earmark-text" aria-hidden="true"></i>
-                                    Social engagement
-                                </a>
-                            </li>
-
-                            <li className="nav-item">
-                                <a className="nav-link d-flex align-items-center gap-2" href="#">
-                                    <i className="bi bi-file-earmark-text" aria-hidden="true"></i>
-                                    Year-end sale
-                                </a>
-                            </li>
-                        </ul>
-
-                        <hr className="my-3" />
-
-                        <ul className="nav flex-column mb-auto">
-                            <li className="nav-item">
-                                <a className="nav-link d-flex align-items-center gap-2" href="#">
-                                    <i className="bi bi-gear-wide-connected" aria-hidden="true"></i>
-                                    Settings
-                                </a>
-                            </li>
-
-                            <li className="nav-item">
-                                <a className="nav-link d-flex align-items-center gap-2" href="#">
-                                    <i className="bi bi-door-closed" aria-hidden="true"></i>
-                                    Sign out
-                                </a>
+                                <a className="nav-link d-flex align-items-center gap-2 text-black" href="#"><i className="bi bi-file-earmark-text" aria-hidden="true"></i>Relátorios</a>
                             </li>
                         </ul>
                     </div>

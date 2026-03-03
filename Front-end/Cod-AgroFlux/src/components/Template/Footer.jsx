@@ -1,8 +1,8 @@
-function Footer(){
+function Footer() {
 
-    return(
+    return (
         <>
-        
+
         </>
     );
 }

@@ -133,7 +133,23 @@
     display: none;
 }
 
+/* Minhas Classes */
+
 /* Margin card icon*/
 .ph-mb{
     margin-bottom: 2rem;
+}
+
+@media(min-width: 768px){
+    .ph-altura-sidebar{
+        min-height: 100vh;
+    }
+}
+
+.ph-bg-sidebar{
+    background-color: #ffffff !important;
+}
+
+.ph-text-black{
+    color: #000000 !important;
 }
