@@ -1,7 +1,7 @@
 function Sidebar() {
     return (
         <>
-            <div className="sidebar ph-altura-sidebar border border-right col-md-3 col-lg-2 p-0 bg-light ph-bg-sidebar">
+            <div className="sidebar ph-altura-sidebar col-md-3 col-lg-2 p-0 bg-light ph-bg-sidebar">
                 <div className="offcanvas-md offcanvas-end bg-light ph-bg-sidebar" tabIndex="-1" id="sidebarMenu" aria-labelledby="sidebarMenuLabel">
                     <div className="offcanvas-header">
                         <h5 className="offcanvas-title" id="sidebarMenuLabel">Company name</h5>

@@ -23,7 +23,7 @@ CREATE TABLE endereco(
 CREATE TABLE telefone(
     id INT(11) NOT NULL AUTO_INCREMENT,
     numero VARCHAR(15) NOT NULL,
-    tipo VARCHAR(20), -- celular, comercial, residencial...
+    tipo VARCHAR(20), -- celular, comercial, residencial
     cliente_id INT(11) NOT NULL,
     
     PRIMARY KEY(id),
@@ -66,5 +66,5 @@ CREATE TABLE produto(
     id INT(11) NOT NULL AUTO_INCREMENT<
     descricao VARCHAR(100) NOT NULL,
     preco_unitario DECIMAL(10,2) NOT NULL,
-    
+
 )
