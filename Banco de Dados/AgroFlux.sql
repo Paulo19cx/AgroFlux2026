@@ -62,4 +62,9 @@ CREATE TABLE funcionario(
     FOREIGN KEY(empresa_id) REFERENCES empresa(id)
 )
 
-CREATE TABLE
+CREATE TABLE produto(
+    id INT(11) NOT NULL AUTO_INCREMENT<
+    descricao VARCHAR(100) NOT NULL,
+    preco_unitario DECIMAL(10,2) NOT NULL,
+    
+)
