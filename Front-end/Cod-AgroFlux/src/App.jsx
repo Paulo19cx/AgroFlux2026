@@ -7,12 +7,13 @@ import '../node_modules/@flaticon/flaticon-uicons/css/all/all.css'
 //import './assets/js/dashboard'
 import Home from './components/paginas/Home/Home';
 import Produtos from './components/paginas/Produtos/Produtos'
+import Cliente from './components/paginas/Cliente/Cliente'
 
 function App() {
 
   return (
     <>
-      <Produtos />
+      <Cliente />
     </>
   )
 }

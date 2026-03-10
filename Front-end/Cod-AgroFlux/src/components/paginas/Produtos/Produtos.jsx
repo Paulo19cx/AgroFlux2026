@@ -7,6 +7,7 @@ import MainProdutos from "./MainProdutos";
 function Produtos() {
     return (
         <>
+        <title>Produtos</title>
             <AlternadorDeTema />
             <SelecionarTema />
             <Navbar />

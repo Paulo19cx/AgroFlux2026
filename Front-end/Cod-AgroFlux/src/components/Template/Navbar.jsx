@@ -1,16 +1,24 @@
-import LogoAgroFlux from "../../assets/img/Logo-AgroFlux.png"
+import LogoAgroFlux from "../../assets/img/Logo-AgroFlux.png";
 
 function Navbar() {
     return (
         <>
-            <header className="navbar sticky-top bg-light flex-md-nowrap p-0 justify-content-start" data-bs-theme="dark">
-                <a className="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6 bg-light"href="#"><img src={LogoAgroFlux} alt="" /></a>
+            <header className="navbar sticky-top ph-bg-sidebar-navbar flex-md-nowrap justify-content-start" data-bs-theme="dark">
+                <a className="navbar px-4 ph-bg-sidebar-navbar img-lg" href="#">
+                    <img src={LogoAgroFlux} alt="" />
+                </a>
 
                 <div className="ms-auto d-flex align-items-center gap-1 pe-2">
 
                     <div className="dropdown text-end">
                         <a href="#" className="d-flex align-items-center text-decoration-none dropdown-toggle link-light" data-bs-toggle="dropdown" aria-expanded="false">
-                            <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" className="rounded-circle"/>
+                            <img
+                                src="https://github.com/mdo.png"
+                                alt="mdo"
+                                width="32"
+                                height="32"
+                                className="rounded-circle"
+                            />
                         </a>
 
                         <ul className="dropdown-menu dropdown-menu-end text-small">
