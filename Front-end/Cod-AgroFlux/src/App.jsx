@@ -8,12 +8,23 @@ import '../node_modules/@flaticon/flaticon-uicons/css/all/all.css'
 import Home from './components/paginas/Home/Home';
 import Produtos from './components/paginas/Produtos/Produtos'
 import Cliente from './components/paginas/Cliente/Cliente'
+import { Route, Routes } from 'react-router'
+import Funcionario from './components/paginas/Funcionarios/Funcionarios'
 
 function App() {
 
   return (
     <>
-      <Cliente />
+      <Routes>
+        <Route path='/' element={<Home />} />
+        <Route path='/clientes' element={<Cliente />} />
+        <Route path='/funcionarios' element={<Funcionario />} />
+        <Route path='/produtos' element={<Produtos />} />
+        <Route path='/vendas' element={<Cliente />} />
+        <Route path='/fornecedores' element={<Cliente />} />
+        <Route path='/estoque' element={<Cliente />} />
+        <Route path='/relatorios' element={<Cliente />} />
+      </Routes>
     </>
   )
 }
