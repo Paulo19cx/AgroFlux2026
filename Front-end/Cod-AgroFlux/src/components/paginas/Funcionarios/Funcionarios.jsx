@@ -2,23 +2,23 @@ import Sidebar from "../../template/Sidebar";
 import Navbar from "../../template/Navbar";
 import SelecionarTema from "../../SelecionarTema";
 import AlternadorDeTema from "../../AlternadorDeTema";
-import MainCadastrarCliente from "./MainCadastrarCliente";
+import MainFuncionarios from "./MainFuncionarios";
 
-function Home() {
+function Funcionario() {
     return (
         <>
-            <title>Cadastrar Cliente</title>
+            <title>Funcionario</title>
             <AlternadorDeTema />
             <SelecionarTema />
             <Navbar />
             <div className="container-fluid">
                 <div className="row">
                     <Sidebar />
-                    <MainCadastrarCliente />
+                    <MainFuncionarios />
                 </div>
             </div>
         </>
     );
 }
 
-export default Home;
+export default Funcionario;

@@ -146,6 +146,10 @@
     }
 }
 
+.ph-cor-branco{
+    color: #FFFFFF !important;
+}
+
 .ph-bg-sidebar-navbar{
     background-color: #ffffff !important;
 }
