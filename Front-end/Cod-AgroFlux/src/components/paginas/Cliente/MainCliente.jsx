@@ -9,55 +9,48 @@ function MainCliente() {
 
                 <form className="row g-3 text-black">
                     <div className="col-md-6">
-                        <label for="inputEmail4" className="form-label">Nome/Razão Social</label>
-                        <input type="email" className="form-control" id="inputEmail4"/>
+                        <label htmlFor="razao_social" className="form-label">Razão Social</label>
+                        <input type="text" className="form-control" id="razao_social" name="razao_social" required/>
                     </div>
                     <div className="col-md-6">
-                        <label for="inputPassword4" className="form-label">Nome Fantasia</label>
-                        <input type="password" className="form-control" id="inputPassword4"/>
+                        <label htmlFor="nome_fantasia" className="form-label">Nome Fantasia</label>
+                        <input type="text" className="form-control" id="nome_fantasia" name="nome_fantasia"/>
                     </div>
                     <div className="col-4">
-                        <label for="inputAddress" className="form-label">CNPJ</label>
-                        <input type="text" className="form-control" id="inputAddress" placeholder="1234 Main St"/>
+                        <label htmlFor="cnpj" className="form-label">CNPJ</label>
+                        <input type="text" className="form-control" id="cnpj" name="cnpj" required/>
                     </div>
                     <div className="col-4">
-                        <label for="inputAddress2" className="form-label">Telefone</label>
-                        <input type="text" className="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor"/>
+                        <label htmlFor="telefone" className="form-label">Telefone</label>
+                        <input type="text" className="form-control" id="telefone" name="telefone" required/>
                     </div>
                     <div className="col-md-4">
-                        <label for="inputCity" className="form-label">Email</label>
-                        <input type="text" className="form-control" id="inputCity"/>
+                        <label htmlFor="email" className="form-label">Email</label>
+                        <input type="email" className="form-control" id="email" name="email" required/>
                     </div>
                     <div className="col-md-6">
-                        <label for="inputState" className="form-label">Endereço</label>
-                        <input type="text" className="form-control" id=""/>
+                        <label htmlFor="enderco" className="form-label">Endereço</label>
+                        <input type="text" className="form-control" id="enderco" name="enderco"/>
                     </div>
                     <div className="col-md-3">
-                        <label for="inputZip" className="form-label">Bairro</label>
-                        <input type="text" className="form-control" id="inputZip"/>
+                        <label htmlFor="bairro" className="form-label">Bairro</label>
+                        <input type="text" className="form-control" id="bairro" name="bairro"/>
                     </div>
                     <div className="col-md-3">
-                        <label for="inputState" className="form-label">Cidade</label>
-                        <input type="text" className="form-control" id=""/>
+                        <label htmlFor="cidade" className="form-label">Cidade</label>
+                        <input type="text" className="form-control" id="cidade" name="cidade"/>
                     </div>
-                    <div className="col-md-3">
-                        <label for="inputState" className="form-label">Estado</label>
-                        <input type="text" className="form-control" id=""/>
+                    <div className="col-md-8">
+                        <label htmlFor="cidade" className="form-label">Estado</label>
+                        <input type="text" className="form-control" id="cidade" name="cidade"/>
                     </div>
-                    <div className="col-md-3">
-                        <label for="inputState" className="form-label">Estado</label>
-                        <input type="text" className="form-control" id=""/>
+                    <div className="col-md-4">
+                        <label htmlFor="cep" className="form-label">CEP</label>
+                        <input type="text" className="form-control" id="cep" name="cep"/>
                     </div>
+                    
                     <div className="col-12">
-                        <div className="form-check">
-                            <input className="form-check-input" type="checkbox" id="gridCheck"/>
-                                <label className="form-check-label" for="gridCheck">
-                                    Check me out
-                                </label>
-                        </div>
-                    </div>
-                    <div className="col-12">
-                        <button type="submit" className="btn btn-primary">Sign in</button>
+                        <button type="submit" className="btn btn-primary">Cadastrar</button>
                     </div>
                 </form>
             </main>
