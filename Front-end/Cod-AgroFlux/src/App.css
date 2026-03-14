@@ -1,4 +1,4 @@
- .bd-placehlder-img {
+ .bd-placeholder-img {
      font-size: 1.125rem;
      text-anchor: middle;
      -webkit-user-select: none;
@@ -34,7 +34,7 @@
      fill: currentColor;
  }
 
- .nav-screller {
+ .nav-scroller {
      position: relative;
      z-index: 2;
      height: 2.75rem;
@@ -146,6 +146,14 @@
     }
 }
 
+/* Sidebar: largura fixa (sobrescreve col-md-3 / col-lg-2 do Bootstrap) */
+.sidebar.ph-largura-sidebar {
+    flex: 0 0 220px !important;
+    width: 220px !important;
+    min-width: 220px !important;
+    max-width: 220px !important;
+}
+
 .ph-cor-branco{
     color: #FFFFFF !important;
 }
@@ -156,4 +164,8 @@
 
 .ph-bg-color {
     background-color: #E3FFEC !important;
+}
+
+.ph-cor-test{
+    color: green !important;
 }
