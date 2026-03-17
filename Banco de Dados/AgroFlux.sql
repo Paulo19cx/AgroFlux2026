@@ -110,7 +110,7 @@ CREATE TABLE item_venda (
       ON DELETE CASCADE,
     CONSTRAINT fk_item_venda_produto
       FOREIGN KEY (produto_id) REFERENCES produto(id)
- ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+ 
 
 -- 9) Fornecedor
 CREATE TABLE fornecedor (
@@ -128,7 +128,7 @@ CREATE TABLE fornecedor (
       FOREIGN KEY (empresa_id) REFERENCES empresa(id),
     CONSTRAINT fk_fornecedor_endereco
       FOREIGN KEY (endereco_id) REFERENCES endereco(id)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+)
 
 -- 10) Estoque (saldo por produto dentro da empresa)
 CREATE TABLE estoque (
@@ -145,5 +145,5 @@ CREATE TABLE estoque (
       FOREIGN KEY (empresa_id) REFERENCES empresa(id),
     CONSTRAINT fk_estoque_produto
       FOREIGN KEY (produto_id) REFERENCES produto(id)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+)
 
