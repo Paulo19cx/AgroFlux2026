@@ -33,7 +33,7 @@ function Navbar() {
                     </div>
                     <ul className="navbar-nav flex-row d-md-none mb-0">
                         <li className="nav-item text-nowrap">
-                            <button className="nav-link px-2 text-white" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+                            <button className="nav-link px-2 text-black" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
                                 <i className="bi bi-list" aria-hidden="true"></i>
                             </button>
                         </li>

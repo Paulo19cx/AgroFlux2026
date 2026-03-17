@@ -1,15 +1,12 @@
 import Sidebar from "../../template/Sidebar";
 import Navbar from "../../template/Navbar";
-import SelecionarTema from "../../SelecionarTema";
-import AlternadorDeTema from "../../AlternadorDeTema";
 import MainFornecedores from "./MainFornecedores";
 
 function Fornecedores() {
     return (
         <>
             <title>Fornecedores</title>
-            <AlternadorDeTema />
-            <SelecionarTema />
+        
             <Navbar />
             <div className="container-fluid">
                 <div className="row">
