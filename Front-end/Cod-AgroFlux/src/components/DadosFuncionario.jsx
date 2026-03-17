@@ -38,12 +38,13 @@ function DadosFuncionario() {
                                        8.000
                                     </li>
                                 </ul>
-                                <div className="text-center mt-4 ">
+                                <div className="text-center mt-4 d-flex gap-3 justify-content-center">
                                     <a href="#" className="btn btn-outline-primary btn-custom bm-cor-botao"><i class="bi bi-pencil"></i>Editar</a>
+                                     
+                                    <a href="#" className="btn btn-outline-primary btn-custom bm-cor-botao-excluir"><i class="fi fi-rs-trash"></i></a>
+                                
                                 </div>
-                                <div className="text-center mt-4 ">
-                                    <a href="#" className="btn btn-outline-primary btn-custom bm-cor-botao-exluir"><i class="fi fi-rs-trash"></i></a>
-                                </div>
+                               
                             </div>
                         </div>
                     </div>
