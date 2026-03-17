@@ -26,7 +26,7 @@ function DadosFuncionario() {
                                     Gerente agrônomico
                                     </li>
                                     <div className='row justify-content-center'>
-                                    <li className="mb-3 text-center linha bm-cor-fundo rounded-4 bm-cor-texto-ativo">
+                                    <li className="mb-3 text-center bm-linha bm-cor-fundo rounded-4 bm-cor-texto-ativo">
                                         Ativo
                                     </li>
                                     </div>
@@ -38,8 +38,11 @@ function DadosFuncionario() {
                                        8.000
                                     </li>
                                 </ul>
-                                <div className="text-center mt-4">
-                                    <a href="#" className="btn btn-outline-primary btn-custom "><i class="bi bi-pencil"></i>Editar</a>
+                                <div className="text-center mt-4 ">
+                                    <a href="#" className="btn btn-outline-primary btn-custom bm-cor-botao"><i class="bi bi-pencil"></i>Editar</a>
+                                </div>
+                                <div className="text-center mt-4 ">
+                                    <a href="#" className="btn btn-outline-primary btn-custom bm-cor-botao-exluir"><i class="fi fi-rs-trash"></i></a>
                                 </div>
                             </div>
                         </div>
