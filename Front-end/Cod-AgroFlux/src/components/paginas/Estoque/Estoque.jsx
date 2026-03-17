@@ -1,21 +1,22 @@
 import Sidebar from "../../template/Sidebar";
 import Navbar from "../../template/Navbar";
-import MainCliente from "./MainCliente";
 
-function Cliente() {
+import MainEstoque from "./MainEstoque";
+
+function Estoque() {
     return (
         <>
-            <title>Cliente</title>
-
+            <title>Estoque</title>
+            
             <Navbar />
             <div className="container-fluid">
                 <div className="row">
                     <Sidebar />
-                    <MainCliente />
+                    <MainEstoque />
                 </div>
             </div>
         </>
     );
 }
 
-export default Cliente;
+export default Estoque;

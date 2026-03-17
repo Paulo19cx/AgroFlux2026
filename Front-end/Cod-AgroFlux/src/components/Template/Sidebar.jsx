@@ -3,10 +3,10 @@ import { Link } from "react-router";
 function Sidebar() {
     return (
         <>
-            <div className="sidebar ph-altura-sidebar p-0 ph-bg-sidebar-navbar overflow-x-hidden p-0 pt-lg-3 overflow-y-auto ms-3">
-                <div className="offcanvas-md offcanvas-end bg-body-tertiary" tabIndex="-1" id="sidebarMenu" aria-labelledby="sidebarMenuLabel">
+            <div className="sidebar col-lg-1 ph-altura-sidebar p-0 mt-0 ph-bg-sidebar-navbar overflow-x-hidden p-0 pt-lg-3 overflow-y-auto ms-3">
+                <div className="offcanvas-md offcanvas-end bg-body-tertiary" tabIndex="-1" id="sidebarMenu" aria-labelledby="sidebarMenuLabel ">
                     <div className="offcanvas-header">
-                        <h5 className="offcanvas-title" id="sidebarMenuLabel">Company name</h5>
+                        <h5 className="offcanvas-title" id="sidebarMenuLabel">AgroFlux</h5>
                         <button
                             type="button"
                             className="btn-close"
@@ -16,7 +16,7 @@ function Sidebar() {
                         ></button>
                     </div>
 
-                    <div className="sidebar pt-lg-3 ms-">
+                    <div className="sidebar pt-lg-3 ph-bg-sidebar-navbar">
                         <ul className="nav gap-3">
                             <li className="">
                                 <Link to="/" className="nav-link d-flex fw-normal gap-3 text-black" aria-current="page">
