@@ -1,8 +1,4 @@
-CREATE DATABASE IF NOT EXISTS agroflux
-  DEFAULT CHARACTER SET utf8mb4
-  DEFAULT COLLATE utf8mb4_unicode_ci;
-
-USE agroflux;
+CREATE AgroFlux
 
 CREATE TABLE endereco (
     id INT NOT NULL AUTO_INCREMENT,
@@ -13,7 +9,7 @@ CREATE TABLE endereco (
     cep CHAR(9) NOT NULL,
 
     PRIMARY KEY (id)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+)
 
 CREATE TABLE empresa (
     id INT NOT NULL AUTO_INCREMENT,
@@ -26,7 +22,7 @@ CREATE TABLE empresa (
     PRIMARY KEY (id),
     CONSTRAINT fk_empresa_endereco
       FOREIGN KEY (endereco_id) REFERENCES endereco(id)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+)
 
 CREATE TABLE cliente (
     id INT NOT NULL AUTO_INCREMENT,
@@ -42,7 +38,7 @@ CREATE TABLE cliente (
       FOREIGN KEY (empresa_id) REFERENCES empresa(id),
     CONSTRAINT fk_cliente_endereco
       FOREIGN KEY (endereco_id) REFERENCES endereco(id)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+)
 
 CREATE TABLE telefone (
     id INT NOT NULL AUTO_INCREMENT,
@@ -54,7 +50,7 @@ CREATE TABLE telefone (
     CONSTRAINT fk_telefone_cliente
       FOREIGN KEY (cliente_id) REFERENCES cliente(id)
       ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+)
 
 CREATE TABLE funcionario (
     id INT NOT NULL AUTO_INCREMENT,
@@ -73,7 +69,7 @@ CREATE TABLE funcionario (
     PRIMARY KEY (id),
     CONSTRAINT fk_funcionario_empresa
       FOREIGN KEY (empresa_id) REFERENCES empresa(id)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+)
 
 CREATE TABLE produto (
     id INT NOT NULL AUTO_INCREMENT,
@@ -82,7 +78,7 @@ CREATE TABLE produto (
     preco_custo DECIMAL(10,2) NOT NULL,
 
     PRIMARY KEY (id)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+)
 
 CREATE TABLE venda (
     id INT NOT NULL AUTO_INCREMENT,
@@ -94,7 +90,7 @@ CREATE TABLE venda (
     PRIMARY KEY (id),
     CONSTRAINT fk_venda_cliente
       FOREIGN KEY (cliente_id) REFERENCES cliente(id)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+)
 
 CREATE TABLE item_venda (
     id INT NOT NULL AUTO_INCREMENT,
@@ -110,7 +106,7 @@ CREATE TABLE item_venda (
       ON DELETE CASCADE,
     CONSTRAINT fk_item_venda_produto
       FOREIGN KEY (produto_id) REFERENCES produto(id)
- ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+ )
 
 -- 9) Fornecedor
 CREATE TABLE fornecedor (
@@ -128,8 +124,7 @@ CREATE TABLE fornecedor (
       FOREIGN KEY (empresa_id) REFERENCES empresa(id),
     CONSTRAINT fk_fornecedor_endereco
       FOREIGN KEY (endereco_id) REFERENCES endereco(id)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
+)
 -- 10) Estoque (saldo por produto dentro da empresa)
 CREATE TABLE estoque (
     id INT NOT NULL AUTO_INCREMENT,
@@ -145,5 +140,5 @@ CREATE TABLE estoque (
       FOREIGN KEY (empresa_id) REFERENCES empresa(id),
     CONSTRAINT fk_estoque_produto
       FOREIGN KEY (produto_id) REFERENCES produto(id)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+)
 
