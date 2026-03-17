@@ -167,6 +167,10 @@
      color: green;
  }
 
+ .ph-padding-left{
+    padding-left: 38px !important;
+ }
+
  /*blocos*/
 
  body {

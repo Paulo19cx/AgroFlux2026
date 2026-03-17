@@ -3,7 +3,7 @@ function MainCliente() {
         <>
             <main class="col-md-10 flex-grow-1 col-lg-10 px-md-4 ph-bg-color">
                 <div class="col-md-9 justify-content-between align-items-center pt-3 pb-2 mb-3">
-                    <h1 class="h4">Clientes</h1>
+                    <h1 class="h4 mt-4">Clientes</h1>
                 </div>
 
                 <div className="col-md-3 pt-3">
