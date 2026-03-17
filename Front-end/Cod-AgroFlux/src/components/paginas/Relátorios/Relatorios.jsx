@@ -2,23 +2,23 @@ import Sidebar from "../../template/Sidebar";
 import Navbar from "../../template/Navbar";
 import SelecionarTema from "../../SelecionarTema";
 import AlternadorDeTema from "../../AlternadorDeTema";
-import MainFornecedores from "./MainFornecedores";
+import MainHome from "./MainRelatorio";
 
-function Fornecedores() {
+function Relatorio() {
     return (
         <>
-            <title>Fornecedores</title>
+            <title>Relatórios</title>
             <AlternadorDeTema />
             <SelecionarTema />
             <Navbar />
             <div className="container-fluid">
                 <div className="row">
                     <Sidebar />
-                    <MainFornecedores />
+                    <MainHome />
                 </div>
             </div>
         </>
     );
 }
 
-export default Fornecedores;
+export default Relatorio;
