@@ -1,4 +1,5 @@
 import LogoAgroFlux from "../../assets/img/Logo-AgroFlux.png";
+import iconIg from "../../assets/img/iconMcIg.jfif"
 
 function Navbar() {
     return (
@@ -8,12 +9,13 @@ function Navbar() {
                     <img src={LogoAgroFlux} alt="" />
                 </a>
 
-                <div className="ms-auto d-flex align-items-center gap-1 pe-2">
+                <p className="ms-5 mt-3">Bem-vindo(a),Guilherme Sérgio!</p>
 
+                <div className="ms-auto d-flex align-items-center gap-1 pe-2">
                     <div className="dropdown text-end">
                         <a href="#" className="d-flex align-items-center text-decoration-none dropdown-toggle link-light" data-bs-toggle="dropdown" aria-expanded="false">
-                            <img
-                                src="https://github.com/mdo.png"
+                        <img
+                                src={iconIg}
                                 alt="mdo"
                                 width="32"
                                 height="32"
