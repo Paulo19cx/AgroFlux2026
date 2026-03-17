@@ -245,6 +245,24 @@
      color: #00A63E
  }
 
- .linha {
+ .bm-linha {
      width: 75px !important;
+ }
+
+ .bm-cor-botao{
+    color:#00A63E;
+    border: 2px solid #00A63E;
+}
+.bm-cor-botao:hover{
+    background-color:#00A63E;
+    border: 2px solid #00A63E;
+ }
+
+ .bm-cor-botao-excluir{
+    color:#E60000;
+    border: 2px solid #E60000;
+}
+.bm-cor-botao-excluir:hover{
+    background-color:#E60000;
+    border: 2px solid #E60000;
  }
