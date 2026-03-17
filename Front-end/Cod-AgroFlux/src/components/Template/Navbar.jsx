@@ -4,7 +4,7 @@ function Navbar() {
     return (
         <>
             <header className="navbar sticky-top ph-bg-sidebar-navbar flex-md-nowrap justify-content-start" data-bs-theme="dark">
-                <a className="navbar px-4 ph-bg-sidebar-navbar img-lg" href="#">
+                <a className="navbar px-4" href="#">
                     <img src={LogoAgroFlux} alt="" />
                 </a>
 

@@ -78,7 +78,7 @@
  }
 
  .bd-mode-toggle .dropdown-menu .active .bi {
-     display: block !important;
+     display: block ;
  }
 
 
@@ -147,25 +147,22 @@
 }
 
 /* Sidebar: largura fixa (sobrescreve col-md-3 / col-lg-2 do Bootstrap) */
-.sidebar.ph-largura-sidebar {
-    flex: 0 0 220px !important;
-    width: 220px !important;
-    min-width: 220px !important;
-    max-width: 220px !important;
+.sidebar{
+    width: 210px ;
 }
 
 .ph-cor-branco{
-    color: #FFFFFF !important;
+    color: #FFFFFF ;
 }
 
 .ph-bg-sidebar-navbar{
-    background-color: #ffffff !important;
+    background-color: #ffffff ;
 }
 
 .ph-bg-color {
-    background-color: #E3FFEC !important;
+    background-color: #E3FFEC ;
 }
 
 .ph-cor-test{
-    color: green !important;
+    color: green ;
 }
