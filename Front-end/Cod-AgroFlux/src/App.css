@@ -167,8 +167,8 @@
      color: green;
  }
 
- .ph-padding-left{
-    padding-left: 38px !important;
+ .ph-padding-left {
+     padding-left: 38px !important;
  }
 
  /*blocos*/
@@ -220,9 +220,9 @@
  }
 
  .card {
-    display: grid;
-    height: 700px;
-    width: 400px;
+     display: grid;
+     height: fit-content;
+     width: 300px;
  }
 
  .bm-bg-verde {
@@ -253,20 +253,52 @@
      width: 75px !important;
  }
 
- .bm-cor-botao{
-    color:#00A63E;
-    border: 2px solid #00A63E;
-}
-.bm-cor-botao:hover{
-    background-color:#00A63E;
-    border: 2px solid #00A63E;
+ .bm-cor-botao {
+     color: #00A63E;
+     border: 2px solid #00A63E;
  }
 
- .bm-cor-botao-excluir{
-    color:#E60000;
-    border: 2px solid #E60000;
-}
-.bm-cor-botao-excluir:hover{
-    background-color:#E60000;
-    border: 2px solid #E60000;
+ .bm-cor-botao:hover {
+     background-color: #00A63E;
+     border: 2px solid #00A63E;
+ }
+
+ .bm-cor-botao-excluir {
+     color: #E60000;
+     border: 2px solid #E60000;
+ }
+
+ .bm-cor-botao-excluir:hover {
+     background-color: #E60000;
+     border: 2px solid #E60000;
+ }
+
+ .verde-circulo {
+     width: 60px;
+     height: 60px;
+     border-radius: 100%;
+     background-color: #DCFCE7;
+     position: absolute;
+     right: 20px;
+     top: 30px;
+ }
+
+ .vermelho-circulo {
+     width: 60px;
+     height: 60px;
+     border-radius: 100%;
+     background-color: #FFD6D6;
+     position: absolute;
+     right: 20px;
+     top: 30px;
+ }
+
+ .azul-circulo {
+     width: 60px;
+     height: 60px;
+     border-radius: 100%;
+     background-color: #DBEAFE;
+     position: absolute;
+     right: 20px;
+     top: 30px;
  }
