@@ -1,17 +1,15 @@
-import FotoIg from '../assets/img/igiconrecorte.png'
-function DadosFuncionario() {
+import { Link } from "react-router";
+
+function DadosFuncionario(props) {
     return (
         <>
-            <title>Nomefuncionário</title>
-            <div className="container py-5">
-                <div className="row row-cols-1 row-cols-md-3 g-4">
-                    <div className="col">
-                        <div className="card h-100 pricing-card">
+           
+                        <div className="card h-100 pricing-card col-4 mb-3">
                             <div className="pricing-header bm-bg-verde text-white text-center">
                                
                             </div>
-                            <img
-                                    src={FotoIg}
+                            <img    
+                                    src={props.foto}
                                     alt="mdo"
                                     width="201"
                                     height="177"
@@ -20,10 +18,10 @@ function DadosFuncionario() {
                             <div className="card-body pricing-features">
                                 <ul className="list-unstyled ">
                                     <li className="mb-1 text-center h5">
-                                        Guilherme Sérgio
+                                        {props.nome}
                                     </li>
                                     <li className="mb-3 text-center h6 bm-cor-texto">
-                                    Gerente agrônomico
+                                    {props.cargo}
                                     </li>
                                     <div className='row justify-content-center'>
                                     <li className="mb-3 text-center bm-linha bm-cor-fundo rounded-4 bm-cor-texto-ativo">
@@ -32,24 +30,21 @@ function DadosFuncionario() {
                                     </div>
                                     
                                     <li className="mb-3 text-center"><i class="fi fi-rr-clip-mail"></i>
-                                       ig@4mguilherme.com
+                                       {props.email}
                                     </li>
                                     <li className="mb-3 text-center"><i class="fi fi-rs-briefcase"></i>
-                                       8.000
+                                       {props.remuneracao}
                                     </li>
                                 </ul>
                                 <div className="text-center mt-4 d-flex gap-3 justify-content-center">
-                                    <a href="#" className="btn btn-outline-primary btn-custom bm-cor-botao"><i class="bi bi-pencil"></i>Editar</a>
+                                    <Link to={`/editar-funcionario/${props.id}`} className="btn btn-outline-primary btn-custom bm-cor-botao"><i class="bi bi-pencil"></i>Editar</Link>
                                      
-                                    <a href="#" className="btn btn-outline-primary btn-custom bm-cor-botao-excluir"><i class="fi fi-rs-trash"></i></a>
+                                    <Link to="" className="btn btn-outline-primary btn-custom bm-cor-botao-excluir"><i class="fi fi-rs-trash"></i></Link>
                                 
                                 </div>
                                
                             </div>
                         </div>
-                    </div>
-                </div>
-            </div>
 
 
         </>
