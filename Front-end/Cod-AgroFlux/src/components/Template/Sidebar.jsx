@@ -3,7 +3,7 @@ import { Link } from "react-router";
 function Sidebar() {
     return (
         <>
-            <div className="sidebar col-lg-1 ph-altura-sidebar p-0 mt-0 ph-bg-sidebar-navbar overflow-x-hidden p-0 pt-lg-3 overflow-y-auto">
+            <div className="sidebar col-lg-2 ph-altura-sidebar p-0 mt-0 ph-bg-sidebar-navbar overflow-x-hidden p-0 pt-lg-3">
                 <div className="offcanvas-md offcanvas-end bg-body-tertiary" tabIndex="-1" id="sidebarMenu" aria-labelledby="sidebarMenuLabel ">
                     <div className="offcanvas-header">
                         <h5 className="offcanvas-title" id="sidebarMenuLabel">AgroFlux</h5>
