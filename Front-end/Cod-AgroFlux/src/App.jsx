@@ -15,6 +15,7 @@ import Vendas from './components/paginas/Vendas/Vendas'
 import Relatorio from './components/paginas/Relátorios/Relatorios'
 import Fornecedores from './components/paginas/Fornecedores/Fornecedores'
 import CadastrarCliente from './components/paginas/Cliente/CadastrarCliente'
+import EditarFuncionario from './components/paginas/Funcionarios/EditarFuncionario'
 
 function App() {
 
@@ -24,7 +25,7 @@ function App() {
         <Route path='/' element={<Home />} />
         <Route path='/clientes' element={<Cliente />} />
         <Route path='/funcionarios' element={<Funcionario />} />
-        <Route path='/editar-funcionario' element={<Funcionario />} />
+        <Route path='/editar-funcionario/:id' element={<EditarFuncionario />} />
         <Route path='/produtos' element={<Produtos />} />
         <Route path='/vendas' element={<Vendas />} />
         <Route path='/fornecedores' element={<Fornecedores />} />

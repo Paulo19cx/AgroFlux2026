@@ -4,8 +4,8 @@ function DadosFuncionario(props) {
     return (
         <>
            
-                        <div className="card h-100 pricing-card col-4 mb-3">
-                            <div className="pricing-header bm-bg-verde text-white text-center">
+                        <div className="card h-100 pricing-card col-4 mb-3 ms-1">
+                            <div className="pricing-header bm-bg-verde text-white text-center ">
                                
                             </div>
                             <img    

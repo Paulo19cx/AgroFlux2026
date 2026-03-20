@@ -87,7 +87,7 @@ function MainEditarFuncionario() {
 
     return (
         <>
-            <main className="col-md-9 col-lg-10 px-md-4">
+            <main className="col-md-9 col-lg-10 px-md-4 ph-bg-color">
                 <div
                     className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom"
                 >
@@ -127,7 +127,7 @@ function MainEditarFuncionario() {
                     </div>
 
                     <div className="col-12">
-                        <button disabled={pendente} type="submit" className="btn btn-primary">
+                        <button disabled={pendente} type="submit" className="btn bm-cor-botao">
                             {pendente ? 'Atualizando...' : 'Atualizar'}
                         </button>
                     </div>

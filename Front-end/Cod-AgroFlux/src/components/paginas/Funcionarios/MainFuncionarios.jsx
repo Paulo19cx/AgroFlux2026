@@ -1,3 +1,5 @@
+import { Link } from "react-router";
+
 import DadosFuncionario from "../../DadosFuncionario";
 import FotoIg from "../../../assets/img/igiconrecorte.png";
 import FotoMenoK from "../../../assets/img/MKrecorte.png";
@@ -8,7 +10,7 @@ import FotoDrake from "../../../assets/img/drakeRecorte.png";
 import Fotoye from "../../../assets/img/kanye.jfif";
 import FotoBillie from "../../../assets/img/billie.jfif";
 import FotoGP from"../../../assets/img/gpfoto.png";
-import Funcionario from "./Funcionarios";
+
 function MainFuncionarios() {
     let dados = [
         { id: 1, nome: "Guilherme Sérgio", cargo: "Gerente agrônomico", email: "ig@4mguilherme.com", remuneracao: "R$8.000", foto: FotoIg },
@@ -23,12 +25,12 @@ function MainFuncionarios() {
     ]
     return (
         <>
-            <title>Nome funcionário</title>
+            <title>funcionários</title>
 
             <main class="col-md-9 col-lg-10 flex-grow-1 px-md-4 ph-bg-color">
                 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                     <h1 class="h2">Funcionários</h1>
-
+                    <Link to={"/cadastrar-funcionario"} type="button" class="btn ph-cor-branco mt-3 bm-cor-botao"><i class="fi fi-br-plus me-3 bm-botao-novo"></i>Novo Cliente</Link>
                 </div>
                 <div className="d-flex justify-content-around flex-wrap">
                     {
