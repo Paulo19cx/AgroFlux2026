@@ -14,7 +14,6 @@ function MainCadastrarCliente() {
     const [cep, setCep] = useState('');
 
     let urlViaCep = `https://viacep.com.br/ws/${cep}/json/`;
-    let urlViaCnpj = 
 
     async function buscarDadosCep() {
         try {
@@ -35,6 +34,36 @@ function MainCadastrarCliente() {
         async (estadoAnterior, formData) => {
             let dadosCliente = JSON.stringify(Object.fromEntries(formData.entries()));
             
+            await new Promise((resolve) => setTimeout(resolve, 2000));
+            console.log(dadosCliente);
+
+            try {
+                let resposta = await fetch('https://jsonplaceholder.typicode.com/posts', {
+                    method: 'POST',
+                    body: dadosCliente,
+                    headers: {
+                        'Content-type': 'application/json; charset=UTF-8',
+                    },
+                })
+                console.log(resposta);
+                console.log(resposta.status);
+                console.log(resposta.ok);
+
+                if (resposta.status === 201) {
+                    console.log('Resposta do servidor ok!');
+                    if (resposta.ok === true) {
+                        alert('Cadastrado com sucesso');
+                        setRazaoSocial('');
+                        setNomeFantasia('');
+                    } else {
+                        alert('Erro ao cadastrar!');
+                    }
+                } else {
+                    console.log('Resposta do servidor erro!');
+                }
+            } catch (erro) {
+                console.log(erro);
+            }
         }
     )
 
@@ -45,7 +74,7 @@ function MainCadastrarCliente() {
                     <h1 className="h2">Cadastrar Cliente</h1>
                 </div>
 
-                <form className="row g-3 text-black">
+                <form action={acaoCadastro} className="row g-3 text-black">
                     <div className="col-md-6">
                         <label htmlFor="razao_social" className="form-label">Razão Social</label>
                         <input value={razaoSocial} onChange={(e) => setRazaoSocial(e.target.value)} type="text" className="form-control" id="razao_social" name="razao_social" required/>
@@ -88,7 +117,7 @@ function MainCadastrarCliente() {
                     </div>
     
                     <div className="col-12">
-                        <button type="submit" className="btn btn-primary">Cadastrar</button>
+                        <button disabled={pendente} type="submit" className="btn btn-primary">{pendente ? 'Cadastrando...' : 'Cadastrar'}</button>
                     </div>
                 </form>
             </main>
