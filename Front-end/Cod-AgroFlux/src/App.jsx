@@ -14,6 +14,7 @@ import Estoque from './components/paginas/Estoque/Estoque'
 import Vendas from './components/paginas/Vendas/Vendas'
 import Relatorio from './components/paginas/Relátorios/Relatorios'
 import Fornecedores from './components/paginas/Fornecedores/Fornecedores'
+import CadastrarCliente from './components/paginas/Cliente/CadastrarCliente'
 
 function App() {
 
@@ -29,6 +30,7 @@ function App() {
         <Route path='/fornecedores' element={<Fornecedores />} />
         <Route path='/estoque' element={<Estoque />} />
         <Route path='/relatorios' element={<Relatorio />} />
+        <Route path='/cadastrar-cliente' element={<CadastrarCliente />} />
       </Routes>
     </>
   )

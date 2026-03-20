@@ -163,12 +163,12 @@
      background-color: #E3FFEC;
  }
 
- .ph-cor-test {
-     color: green;
+ .ph-cabecalho-table-cor {
+    background-color: #00A63E;
  }
 
- .ph-padding-left{
-    padding-left: 38px !important;
+ .ph-padding-left {
+     padding-left: 38px !important;
  }
 
  /*blocos*/
@@ -220,9 +220,14 @@
  }
 
  .card {
-    display: grid;
-    height: 700px;
-    width: 400px;
+     display: grid;
+<<<<<<< HEAD
+     height: 700px;
+     width: 400px;
+=======
+     height: fit-content;
+     width: 300px;
+>>>>>>> b476f196be44a3d25f7264678eab171a85173f60
  }
 
  .bm-bg-verde {
@@ -253,15 +258,12 @@
      width: 75px !important;
  }
 
- .bm-cor-botao{
-    color:#00A63E;
-    border: 2px solid #00A63E;
-}
-.bm-cor-botao:hover{
-    background-color:#00A63E;
-    border: 2px solid #00A63E;
+ .bm-cor-botao {
+     color: #00A63E;
+     border: 2px solid #00A63E;
  }
 
+<<<<<<< HEAD
  .bm-cor-botao-excluir{
     color:#E60000;
     border: 2px solid #E60000;
@@ -273,3 +275,80 @@
  .cards-container{
     justify-content: center;
  }
+=======
+ .bm-cor-botao:hover {
+     background-color: #00A63E;
+     border: 2px solid #00A63E;
+ }
+
+ .bm-cor-botao-excluir {
+     color: #E60000;
+     border: 2px solid #E60000;
+ }
+
+ .bm-cor-botao-excluir:hover {
+     background-color: #E60000;
+     border: 2px solid #E60000;
+ }
+
+<<<<<<< HEAD
+ /*cor de entrada e saida do estoque*/
+ .bm-cor-entrada {
+     color: #00A63E;
+     border: 2px solid #00A63E;
+ }
+
+ .bm-cor-saida {
+     color: #E60000;
+     border: 2px solid #E60000;
+ }
+
+ /*borda para a tabela de estoque*/
+ .bm-borda-tabela {
+     border-radius: 50rem;
+ }
+
+ .custom-mover:hover {
+     transform: translateY(-5px);
+     /* Move para cima */
+     box-shadow: 0 1rem 3rem rgba(0, 0, 0, .175) !important;
+     /* Aumenta a sombra */
+ }
+
+ .pricing-card {
+     text-align: left;
+     padding: 0 3rem;
+     height: 120px;
+     }
+=======
+ .verde-circulo {
+     width: 60px;
+     height: 60px;
+     border-radius: 100%;
+     background-color: #DCFCE7;
+     position: absolute;
+     right: 20px;
+     top: 30px;
+ }
+
+ .vermelho-circulo {
+     width: 60px;
+     height: 60px;
+     border-radius: 100%;
+     background-color: #FFD6D6;
+     position: absolute;
+     right: 20px;
+     top: 30px;
+ }
+
+ .azul-circulo {
+     width: 60px;
+     height: 60px;
+     border-radius: 100%;
+     background-color: #DBEAFE;
+     position: absolute;
+     right: 20px;
+     top: 30px;
+ }
+>>>>>>> b476f196be44a3d25f7264678eab171a85173f60
+>>>>>>> d75ce2be1afb9ca1f5efb06ed301b12175021f40

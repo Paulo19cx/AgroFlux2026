@@ -1,7 +1,7 @@
 function Card(props) {
     return (
         <>
-            <div className="col-12 col-md-6 col-lg-3">
+            <div className="col-12 col-md-4 col-lg-4">
                 <div className="card stat-card border-0 shadow-sm">
                     <div className="card-body">
                         <div className="d-flex align-items-center mb-3">
