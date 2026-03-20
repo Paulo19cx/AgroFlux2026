@@ -194,7 +194,7 @@
  }
 
 
- 
+
 
  .pricing-card {
      text-align: left;
@@ -202,7 +202,7 @@
      width: 400px;
  }
 
- 
+
 
 
 
@@ -671,305 +671,305 @@
      border: 2px solid #E60000;
  }
 
- 
- 
- 
- 
- 
- 
-
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
 
 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
-
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
-
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
 
 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
  /*Henrique*/
  .hh-verde-circulo {
      width: 60px;
@@ -979,447 +979,26 @@
      position: absolute;
      right: 20px;
      top: 30px;
-    }
-    
-    .hh-vermelho-circulo {
-        width: 60px;
-        height: 60px;
-        border-radius: 100%;
-        background-color: #FFD6D6;
+ }
+
+ .hh-vermelho-circulo {
+     width: 60px;
+     height: 60px;
+     border-radius: 100%;
+     background-color: #FFD6D6;
      position: absolute;
      right: 20px;
      top: 30px;
-    }
-    
-    .hh-azul-circulo {
-        width: 60px;
-        height: 60px;
-        border-radius: 100%;
-        background-color: #DBEAFE;
-        position: absolute;
-        right: 20px;
-        top: 30px;
-    }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+ }
 
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-
-    
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-
-
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-
-    
-    
-    
-    
-    
-    
-    /*João*/
-    /*cor de entrada e saida do estoque*/
-    .jp-cor-entrada {
-        color: #00A63E;
-        border: 2px solid #00A63E;
-    }
-   
-    .jp-cor-saida {
-        color: #E60000;
-        border: 2px solid #E60000;
-    }
-   
-    /*borda para a tabela de estoque*/
-    .jp-borda-tabela {
-        border-radius: 50rem;
-    }
-    .jp-custom-mover:hover {
-     transform: translateY(-5px);
-     /* Move para cima */
-     box-shadow: 0 1rem 3rem rgba(0, 0, 0, .175) !important;
-     /* Aumenta a sombra */
+ .hh-azul-circulo {
+     width: 60px;
+     height: 60px;
+     border-radius: 100%;
+     background-color: #DBEAFE;
+     position: absolute;
+     right: 20px;
+     top: 30px;
  }
 
 
@@ -1820,47 +1399,42 @@
 
 
 
+ /*João*/
+ /*cor de entrada e saida do estoque*/
+ .jp-cor-entrada {
+     color: #00A63E;
+     border: 2px solid #00A63E;
+ }
 
+ .jp-cor-saida {
+     color: #E60000;
+     border: 2px solid #E60000;
+ }
 
+ /*borda para a tabela de estoque*/
+ .jp-borda-tabela {
+     border-radius: 50rem;
+ }
 
+ .jp-custom-mover:hover {
+     transform: translateY(-5px);
+     /* Move para cima */
+     box-shadow: 0 1rem 3rem rgba(0, 0, 0, .175) !important;
+     /* Aumenta a sombra */
+ }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+ .jp-linha {
+     width: 75px !important;
+ }
+ .tamanho-caixa{
+    width: 1210px;
+ }
+ .cor-numero-1{
+    color: #00A63E;
+ }
+ .cor-numero-2{
+    color: #b60909;
+ }
+ .cor-numero-3{
+    color: #0626df;
+ }
