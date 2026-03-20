@@ -133,43 +133,7 @@
      display: none;
  }
 
- /* Minhas Classes */
 
- /* Margin card icon*/
- .ph-mb {
-     margin-bottom: 2rem;
- }
-
- @media(min-width: 768px) {
-     .ph-altura-sidebar {
-         min-height: 100vh;
-     }
- }
-
- /* Sidebar: largura fixa (sobrescreve col-md-3 / col-lg-2 do Bootstrap) */
- .sidebar {
-     width: 210px;
- }
-
- .ph-cor-branco {
-     color: #FFFFFF;
- }
-
- .ph-bg-sidebar-navbar {
-     background-color: #ffffff;
- }
-
- .ph-bg-color {
-     background-color: #E3FFEC;
- }
-
- .ph-cabecalho-table-cor {
-    background-color: #00A63E;
- }
-
- .ph-padding-left {
-     padding-left: 38px !important;
- }
 
  /*blocos*/
 
@@ -225,6 +189,429 @@
      width: 300px;
  }
 
+ .cards-container {
+     justify-content: center;
+ }
+
+
+ 
+
+ .pricing-card {
+     text-align: left;
+     height: 120px;
+     width: 400px;
+ }
+
+ 
+
+
+
+
+
+
+
+
+ /*Paulo*/
+
+ .ph-mb {
+     margin-bottom: 2rem;
+ }
+
+ @media(min-width: 768px) {
+     .ph-altura-sidebar {
+         min-height: 100vh;
+     }
+ }
+
+ .ph-sidebar {
+     width: 210px;
+ }
+
+ .ph-cor-branco {
+     color: #FFFFFF;
+ }
+
+ .ph-bg-sidebar-navbar {
+     background-color: #ffffff;
+ }
+
+ .ph-bg-color {
+     background-color: #E3FFEC;
+ }
+
+ .ph-cabecalho-table-cor {
+     background-color: #00A63E;
+ }
+
+ .ph-padding-left {
+     padding-left: 38px !important;
+ }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ /*Bia*/
  .bm-bg-verde {
      background-color: #00A63E;
  }
@@ -258,17 +645,16 @@
      border: 2px solid #00A63E;
  }
 
- .bm-cor-botao-excluir{
-    color:#E60000;
-    border: 2px solid #E60000;
-}
-.bm-cor-botao-excluir:hover{
-    background-color:#E60000;
-    border: 2px solid #E60000;
+ .bm-cor-botao-excluir {
+     color: #E60000;
+     border: 2px solid #E60000;
  }
- .cards-container{
-    justify-content: center;
+
+ .bm-cor-botao-excluir:hover {
+     background-color: #E60000;
+     border: 2px solid #E60000;
  }
+
 
  .bm-cor-botao:hover {
      background-color: #00A63E;
@@ -285,35 +671,307 @@
      border: 2px solid #E60000;
  }
 
- /*cor de entrada e saida do estoque*/
- .bm-cor-entrada {
-     color: #00A63E;
-     border: 2px solid #00A63E;
- }
+ 
+ 
+ 
+ 
+ 
+ 
 
- .bm-cor-saida {
-     color: #E60000;
-     border: 2px solid #E60000;
- }
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
 
- /*borda para a tabela de estoque*/
- .bm-borda-tabela {
-     border-radius: 50rem;
- }
 
- .custom-mover:hover {
-     transform: translateY(-5px);
-     /* Move para cima */
-     box-shadow: 0 1rem 3rem rgba(0, 0, 0, .175) !important;
-     /* Aumenta a sombra */
- }
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
 
- .pricing-card {
-     text-align: left;
-     height: 120px;
-     width: 400px;
-     }
- .verde-circulo {
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ /*Henrique*/
+ .hh-verde-circulo {
      width: 60px;
      height: 60px;
      border-radius: 100%;
@@ -321,25 +979,888 @@
      position: absolute;
      right: 20px;
      top: 30px;
- }
-
- .vermelho-circulo {
-     width: 60px;
-     height: 60px;
-     border-radius: 100%;
-     background-color: #FFD6D6;
+    }
+    
+    .hh-vermelho-circulo {
+        width: 60px;
+        height: 60px;
+        border-radius: 100%;
+        background-color: #FFD6D6;
      position: absolute;
      right: 20px;
      top: 30px;
+    }
+    
+    .hh-azul-circulo {
+        width: 60px;
+        height: 60px;
+        border-radius: 100%;
+        background-color: #DBEAFE;
+        position: absolute;
+        right: 20px;
+        top: 30px;
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    /*João*/
+    /*cor de entrada e saida do estoque*/
+    .jp-cor-entrada {
+        color: #00A63E;
+        border: 2px solid #00A63E;
+    }
+   
+    .jp-cor-saida {
+        color: #E60000;
+        border: 2px solid #E60000;
+    }
+   
+    /*borda para a tabela de estoque*/
+    .jp-borda-tabela {
+        border-radius: 50rem;
+    }
+    .jp-custom-mover:hover {
+     transform: translateY(-5px);
+     /* Move para cima */
+     box-shadow: 0 1rem 3rem rgba(0, 0, 0, .175) !important;
+     /* Aumenta a sombra */
  }
 
- .azul-circulo {
-     width: 60px;
-     height: 60px;
-     border-radius: 100%;
-     background-color: #DBEAFE;
-     position: absolute;
-     right: 20px;
-     top: 30px;
- }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
