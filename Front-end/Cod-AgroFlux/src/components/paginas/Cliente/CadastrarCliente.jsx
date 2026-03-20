@@ -1,15 +1,11 @@
 import Sidebar from "../../template/Sidebar";
 import Navbar from "../../template/Navbar";
-import SelecionarTema from "../../SelecionarTema";
-import AlternadorDeTema from "../../AlternadorDeTema";
 import MainCadastrarCliente from "./MainCadastrarCliente";
 
-function Home() {
+function CadastrarCliente() {
     return (
         <>
             <title>Cadastrar Cliente</title>
-            <AlternadorDeTema />
-            <SelecionarTema />
             <Navbar />
             <div className="container-fluid">
                 <div className="row">
@@ -21,4 +17,4 @@ function Home() {
     );
 }
 
-export default Home;
+export default CadastrarCliente;

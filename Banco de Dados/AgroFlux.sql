@@ -106,11 +106,8 @@ CREATE TABLE item_venda (
       ON DELETE CASCADE,
     CONSTRAINT fk_item_venda_produto
       FOREIGN KEY (produto_id) REFERENCES produto(id)
-<<<<<<< HEAD
- )
-=======
+)
  
->>>>>>> 99f4ceaa123bb67667ebceb4a4f861c5d1a535d5
 
 -- 9) Fornecedor
 CREATE TABLE fornecedor (
@@ -129,10 +126,6 @@ CREATE TABLE fornecedor (
     CONSTRAINT fk_fornecedor_endereco
       FOREIGN KEY (endereco_id) REFERENCES endereco(id)
 )
-<<<<<<< HEAD
-=======
-
->>>>>>> 99f4ceaa123bb67667ebceb4a4f861c5d1a535d5
 -- 10) Estoque (saldo por produto dentro da empresa)
 CREATE TABLE estoque (
     id INT NOT NULL AUTO_INCREMENT,

@@ -1,8 +1,46 @@
+import { useActionState, useState } from "react";
+
 function MainCadastrarCliente() {
+
+    const [razaoSocial, setRazaoSocial] = useState('');
+    const [nomeFantasia, setNomeFantasia] = useState('');
+    const [cnpj, setCnpj] = useState('');
+    const [numero, setNumero] = useState('');
+    const [email, setEmail] = useState('');
+    const [endereco, setEndereco] = useState('');
+    const [bairro, setBairro] = useState('');
+    const [cidade, setCidade] = useState('');
+    const [estado, setEstado] = useState('');
+    const [cep, setCep] = useState('');
+
+    let urlViaCep = `https://viacep.com.br/ws/${cep}/json/`;
+    let urlViaCnpj = 
+
+    async function buscarDadosCep() {
+        try {
+            let resposta = await fetch(urlViaCep);
+            let dadosCep = await resposta.json();
+            setEndereco(dadosCep.logradouro);
+            setBairro(dadosCep.bairro);
+            setCidade(dadosCep.localidade);
+            setEstado(dadosCep.estado);
+        }
+        catch (erro) {
+            console.log(erro)
+        }
+    }
+
+    const [estadoCadastro, acaoCadastro, pendente] = useActionState(
+
+        async (estadoAnterior, formData) => {
+            let dadosCliente = JSON.stringify(Object.fromEntries(formData.entries()));
+            
+        }
+    )
 
     return (
         <>
-            <main className="col-md-9 ms-sm-auto col-lg-10 px-md-4 ph-bg-color">
+            <main className="col-md-9 flex-grow-1 col-lg-10 px-md-4 ph-bg-color">
                 <div className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 text-black">
                     <h1 className="h2">Cadastrar Cliente</h1>
                 </div>
@@ -10,43 +48,43 @@ function MainCadastrarCliente() {
                 <form className="row g-3 text-black">
                     <div className="col-md-6">
                         <label htmlFor="razao_social" className="form-label">Razão Social</label>
-                        <input type="text" className="form-control" id="razao_social" name="razao_social" required/>
+                        <input value={razaoSocial} onChange={(e) => setRazaoSocial(e.target.value)} type="text" className="form-control" id="razao_social" name="razao_social" required/>
                     </div>
                     <div className="col-md-6">
                         <label htmlFor="nome_fantasia" className="form-label">Nome Fantasia</label>
-                        <input type="password" className="form-control" id="nome_fantasia" name="nome_fantasia"/>
+                        <input value={nomeFantasia} onChange={(e) => setNomeFantasia(e.target.value)} type="password" className="form-control" id="nome_fantasia" name="nome_fantasia"/>
                     </div>
                     <div className="col-4">
                         <label htmlFor="cnpj" className="form-label">CNPJ</label>
-                        <input type="text" className="form-control" id="cnpj" name="cnpj" required/>
+                        <input value={cnpj} onChange={(e) => setCnpj(e.target.value)} type="text" className="form-control" id="cnpj" name="cnpj" required/>
                     </div>
                     <div className="col-4">
                         <label htmlFor="telefone" className="form-label">Telefone</label>
-                        <input type="text" className="form-control" id="telefone" name="telefone" required/>
+                        <input value={numero} onChange={(e) => setNumero(e.target.value)} type="text" className="form-control" id="telefone" name="telefone" required/>
                     </div>
                     <div className="col-md-4">
                         <label htmlFor="email" className="form-label">Email</label>
-                        <input type="email" className="form-control" id="email" name="email"/>
+                        <input value={email} onChange={(e) => setEmail(e.target.value)} type="email" className="form-control" id="email" name="email"/>
                     </div>
                     <div className="col-md-6">
                         <label htmlFor="endereco" className="form-label">Endereço</label>
-                        <input type="text" className="form-control" id="endereco" name="endereco"/>
+                        <input value={endereco} onChange={(e) => setEndereco(e.target.value)} type="text" className="form-control" id="endereco" name="endereco"/>
                     </div>
                     <div className="col-md-3">
                         <label htmlFor="bairro" className="form-label">Bairro</label>
-                        <input type="text" className="form-control" id="bairro" name="bairro"/>
+                        <input value={bairro} onChange={(e) => setBairro(e.target.value)} type="text" className="form-control" id="bairro" name="bairro"/>
                     </div>
                     <div className="col-md-3">
                         <label htmlFor="cidade" className="form-label">Cidade</label>
-                        <input type="text" className="form-control" id="cidade" name="cidade"/>
+                        <input value={cidade} onChange={(e) => setCidade(e.target.value)} type="text" className="form-control" id="cidade" name="cidade"/>
                     </div>
                     <div className="col-md-8">
                         <label htmlFor="estado" className="form-label">Estado</label>
-                        <input type="text" className="form-control" id="estado" name="estado"/>
+                        <input value={estado} onChange={(e) => setEstado(e.target.value)} type="text" className="form-control" id="estado" name="estado"/>
                     </div>
                     <div className="col-md-4">
                         <label htmlFor="cep" className="form-label">CEP</label>
-                        <input type="text" className="form-control" id="cep" name="cep"/>
+                        <input value={cep} onBlur={(e) => buscarDadosCep(e.target.value)} onChange={(e) => setCep(e.target.value)} type="text" className="form-control" id="cep" name="cep"/>
                     </div>
     
                     <div className="col-12">
