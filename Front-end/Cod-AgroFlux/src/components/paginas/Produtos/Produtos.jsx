@@ -1,5 +1,5 @@
 import Sidebar from "../../template/Sidebar";
-import Navbar from "../../template/Navbar";
+import Navbar from "../../Template/Navbar";
 import MainProdutos from "./MainProdutos";
 
 function Produtos() {

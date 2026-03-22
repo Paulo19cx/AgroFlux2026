@@ -1,4 +1,4 @@
-import { useActionState, useState } from "react";
+import { useState, useActionState } from "react";
 
 function MainCadastrarCliente() {
 
@@ -17,41 +17,46 @@ function MainCadastrarCliente() {
 
     async function buscarDadosCep() {
         try {
-            let resposta = await fetch(urlViaCep);
-            let dadosCep = await resposta.json();
+            const resposta = await fetch(urlViaCep);
+            const dadosCep = await resposta.json();
+
+            if (dadosCep.erro) {
+                return;
+            }
+
             setEndereco(dadosCep.logradouro);
             setBairro(dadosCep.bairro);
             setCidade(dadosCep.localidade);
             setEstado(dadosCep.estado);
         }
         catch (erro) {
-            console.log(erro)
+            console.log(erro);
         }
     }
 
     const [estadoCadastro, acaoCadastro, pendente] = useActionState(
 
         async (estadoAnterior, formData) => {
-            let dadosCliente = JSON.stringify(Object.fromEntries(formData.entries()));
+            const dadosCliente = JSON.stringify(Object.fromEntries(formData.entries()));
             
             await new Promise((resolve) => setTimeout(resolve, 2000));
             console.log(dadosCliente);
 
             try {
-                let resposta = await fetch('https://jsonplaceholder.typicode.com/posts', {
+                const resposta = await fetch('https://jsonplaceholder.typicode.com/posts', {
                     method: 'POST',
                     body: dadosCliente,
                     headers: {
                         'Content-type': 'application/json; charset=UTF-8',
                     },
-                })
+                });
                 console.log(resposta);
                 console.log(resposta.status);
                 console.log(resposta.ok);
 
                 if (resposta.status === 201) {
                     console.log('Resposta do servidor ok!');
-                    if (resposta.ok === true) {
+                    if (resposta.ok) {
                         alert('Cadastrado com sucesso');
                         setRazaoSocial('');
                         setNomeFantasia('');
@@ -69,7 +74,7 @@ function MainCadastrarCliente() {
 
     return (
         <>
-            <main className="col-md-9 flex-grow-1 col-lg-10 px-md-4 ph-bg-color">
+            <main className="ph-main-shell px-md-4 ph-bg-color">
                 <div className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 text-black">
                     <h1 className="h2">Cadastrar Cliente</h1>
                 </div>
@@ -81,7 +86,7 @@ function MainCadastrarCliente() {
                     </div>
                     <div className="col-md-6">
                         <label htmlFor="nome_fantasia" className="form-label">Nome Fantasia</label>
-                        <input value={nomeFantasia} onChange={(e) => setNomeFantasia(e.target.value)} type="password" className="form-control" id="nome_fantasia" name="nome_fantasia"/>
+                        <input value={nomeFantasia} onChange={(e) => setNomeFantasia(e.target.value)} type="text" className="form-control" id="nome_fantasia" name="nome_fantasia"/>
                     </div>
                     <div className="col-4">
                         <label htmlFor="cnpj" className="form-label">CNPJ</label>

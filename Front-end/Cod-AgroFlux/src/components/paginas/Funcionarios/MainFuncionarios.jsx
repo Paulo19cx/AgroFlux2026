@@ -27,7 +27,7 @@ function MainFuncionarios() {
         <>
             <title>funcionários</title>
 
-            <main class="col-md-9 col-lg-10 flex-grow-1 px-md-4 ph-bg-color">
+            <main class="ph-main-shell px-md-4 ph-bg-color">
                 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                     <h1 class="h2">Funcionários</h1>
                     <Link to={"/cadastrar-funcionario"} type="button" class="btn ph-cor-branco mt-3 bm-cor-botao"><i class="fi fi-br-plus me-3 bm-botao-novo"></i>Novo Cliente</Link>

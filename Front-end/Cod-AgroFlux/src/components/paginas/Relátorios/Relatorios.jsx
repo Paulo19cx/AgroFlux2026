@@ -1,5 +1,5 @@
 import Sidebar from "../../template/Sidebar";
-import Navbar from "../../template/Navbar";
+import Navbar from "../../Template/Navbar";
 import MainHome from "./MainRelatorio";
 
 function Relatorio() {
