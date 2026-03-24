@@ -2,10 +2,10 @@
 
 ## Tecnologias Utilizadas
 
-- [! [API RESTFUL]]
-- [! [React]]
-- [! [JavaScript]]
-- [! [NodeJS]]
+- API RESTFUL
+- React
+- JavaScript
+- NodeJS
 
 ## Descrição
 
