@@ -21,28 +21,22 @@ function MainFuncionarios() {
         { id: 6, nome: "Aubrey Drake Graham", cargo: "Vendedor técnico", email: "drake@aubrey.com", remuneracao: "R$ 5.500", foto: FotoDrake },
         { id: 7, nome: "Billie Eillish Pirate Baird O’ Connell", cargo: "Analista de produtos", email: "billie.e@pirate.com", remuneracao: "R$ 6.000", foto: FotoBillie },
         { id: 8, nome: "Kanye Omari West", cargo: "Gerente agrônomico", email: "k@yewest.com", remuneracao: "R$8.000", foto: Fotoye },
-        {id: 9, nome: "Gabriel Porto", cargo: "Analista de produtos", email: "gab@porto.com", remuneracao: "R$6.000", foto: FotoGP},
+        { id: 9, nome: "Gabriel Porto", cargo: "Analista de produtos", email: "gab@porto.com", remuneracao: "R$6.000", foto: FotoGP},
     ]
     return (
         <>
-            <title>funcionários</title>
-
-            <main class="ph-main-shell px-md-4 ph-bg-color">
-                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                    <h1 class="h2">Funcionários</h1>
-                    <Link to={"/cadastrar-funcionario"} type="button" class="btn ph-cor-branco mt-3 bm-cor-botao"><i class="fi fi-br-plus me-3 bm-botao-novo"></i>Novo Cliente</Link>
+            <main className="ph-main-corpo px-md-4 ph-bg-color">
+                <div className="d-flex col-md-9 col-lg-12 justify-content-between align-items-center pt-3 pb-2 mb-3">
+                    <h1 className="h5 mt-3">Funcionários</h1>
+                    <Link to={"/cadastrar-funcionario"} type="button" className="ph-btn fw-semibold bm-cor-botao ph-cor-branco mt-0 rounded-3"><i className="fi fi-br-plus me-3"></i>Novo Funcionário</Link>
                 </div>
                 <div className="d-flex justify-content-around flex-wrap">
                     {
                         dados.map((Funcionario) =>
-                            <DadosFuncionario id={Funcionario.id} nome={Funcionario.nome} cargo={Funcionario.cargo} email={Funcionario.email} remuneracao={Funcionario.remuneracao} foto={Funcionario.foto} />
-
+                            <DadosFuncionario key={Funcionario.id} id={Funcionario.id} nome={Funcionario.nome} cargo={Funcionario.cargo} email={Funcionario.email} remuneracao={Funcionario.remuneracao} foto={Funcionario.foto} />
                         )
                     }
-
-
                 </div>
-
             </main>
         </>
     );

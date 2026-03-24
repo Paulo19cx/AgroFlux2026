@@ -1,9 +1,6 @@
-import { useParams } from "react-router";
-import { useState, useEffect, useActionState } from "react";
+import { useState, useActionState } from "react";
 
-function MainEditarProduto() {
-
-    const { id } = useParams();
+function MainCadastrarProduto() {
 
     const [descricao, setDescricao] = useState('');
     const [categoria, setCategoria] = useState('');
@@ -12,68 +9,56 @@ function MainEditarProduto() {
     const [estoqueAtual, setEstoqueAtual] = useState('');
     const [estoqueMinino, setEstoqueMinino] = useState('');
 
-    const [estadoAtualizar, acaoAtualizar, pendente] = useActionState(
-        
-            async (estadoAnterior, formData) => {
-                const dadosProdutos = JSON.stringify(Object.fromEntries(formData.entries()));
-                // Simula uma espera em segundos
-                await new Promise((resolve) => setTimeout(
-                    resolve, 2000
-                ));
-                console.log(dadosProdutos);
-                try {
-                    let resposta = await fetch(`https://jsonplaceholder.typicode.com/users/${id}`, {
-                        method: 'PUT',
-                        body: dadosProdutos,
-                        headers: {
-                            'Content-type': 'application/json; charset=UTF-8',
-                        },
-                    })
-                    console.log(resposta);
-                    console.log(resposta.status);
-                    console.log(resposta.ok);
+    const [estadoCadastro, acaoCadastro, pendente] = useActionState(
 
-                    if (resposta.status === 200) {
-                        console.log('Resposta do servidor ok!');
-                        if (resposta.ok === true) {
-                            alert('Alterado com sucesso');
-                        } else {
-                            alert('Erro ao alterar!');
-                        }
+        async (estadoAnterior, formData) => {
+            const dadosCliente = JSON.stringify(Object.fromEntries(formData.entries()));
+
+            await new Promise((resolve) => setTimeout(resolve, 2000));
+            console.log(dadosCliente);
+
+            try {
+                const resposta = await fetch('https://jsonplaceholder.typicode.com/posts', {
+                    method: 'POST',
+                    body: dadosCliente,
+                    headers: {
+                        'Content-type': 'application/json; charset=UTF-8',
+                    },
+                });
+                console.log(resposta);
+                console.log(resposta.status);
+                console.log(resposta.ok);
+
+                if (resposta.status === 201) {
+                    console.log('Resposta do servidor ok!');
+                    if (resposta.ok) {
+                        alert('Cadastrado com sucesso');
+                        setDescricao('');
+                        setCategoria('');
+                        setCustoUnitario('');
+                        setPrecoVenda('');
+                        setEstoqueAtual('');
+                        setEstoqueMinino('');
                     } else {
-                        console.log('Resposta do servidor erro!');
+                        alert('Erro ao cadastrar!');
                     }
-                } catch (erro) {
-                    console.log(erro);
+                } else {
+                    console.log('Resposta do servidor erro!');
                 }
-
-
+            } catch (erro) {
+                console.log(erro);
             }
-        );
-
-     useEffect( () => {
-     async function getDadosProduto(){
-        let resposta = await 
-        fetch(`https://jsonplaceholder.typicode.com/users/${id}`);
-        let dadosProduto = await resposta.json();
-        console.log(dadosProduto);
-        
-    
-     }
-     getDadosProduto();
-
-     }, [id] );
+        }
+    )
 
     return (
         <>
             <main className="ph-main-corpo px-md-4 ph-bg-color">
-                <div
-                    className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom"
-                >
-                    <h1 className="h2">Editar Produto: {id}</h1>
+                <div className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 text-black">
+                    <h1 className="h2">Cadastrar Produto</h1>
                 </div>
 
-                <form action={acaoAtualizar} className="row g-3 text-black">
+                <form action={acaoCadastro} className="row g-3 text-black">
                     <div className="col-md-6">
                         <label
                             htmlFor="descricao"
@@ -178,10 +163,9 @@ function MainEditarProduto() {
                         </button>
                     </div>
                 </form>
-
-
             </main>
         </>
     );
 }
-export default MainEditarProduto;
+
+export default MainCadastrarProduto;

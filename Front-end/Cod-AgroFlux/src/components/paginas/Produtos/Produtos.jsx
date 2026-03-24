@@ -1,4 +1,4 @@
-import Sidebar from "../../template/Sidebar";
+import Sidebar from "../../Template/Sidebar";
 import Navbar from "../../Template/Navbar";
 import MainProdutos from "./MainProdutos";
 

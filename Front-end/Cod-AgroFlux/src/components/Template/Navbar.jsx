@@ -1,7 +1,16 @@
+import { Link, useNavigate } from "react-router";
 import LogoAgroFlux from "../../assets/img/Logo-AgroFlux.png";
 import iconIg from "../../assets/img/iconMcIg.jfif"
 
 function Navbar() {
+
+    const navigate = useNavigate();
+
+    function sair() {
+        localStorage.removeItem("token");
+        navigate("/");
+    }
+
     return (
         <>
             <header className="navbar sticky-top ph-bg-sidebar-navbar flex-md-nowrap justify-content-start" data-bs-theme="dark">
@@ -24,20 +33,18 @@ function Navbar() {
                         </a>
 
                         <ul
-                            className="dropdown-menu dropdown-menu-end menu-conta-do-usuario"
+                            className="dropdown-menu dropdown-menu-end ph-dropdown-menu"
                             data-bs-theme="light"
                         >
-                            <li className="menu-conta-do-usuario-topo">
-                                <div className="menu-conta-do-usuario-dados">
-                                    <h4 className="menu-suspenso-nome">Guilherme Sérgio</h4>
-                                </div>
+                            <li className="ph-dropdown-header">
+                                <h4 className="ph-user-name">Guilherme Sérgio</h4>
                             </li>
-                            <li><hr className="dropdown-divider menu-conta-do-usuario-divisor m-0" /></li>
-                            <li className="menu-conta-do-usuario-area-sair">
-                                <a className="dropdown-item menu-conta-do-usuario-link-sair d-flex" href="#">
+                            <li><hr className="ph-dropdown-divider" /></li>
+                            <li className="ph-logout-area">
+                                <Link onClick={sair} to="/" className="ph-logout-link">
                                     <span>Logout</span>
-                                    <i className="fi fi-rr-sign-out-alt" aria-hidden="true"></i>
-                                </a>
+                                    <i className="fi fi-rr-sign-out-alt ph-logout-icon" aria-hidden="true"></i>
+                                </Link>
                             </li>
                         </ul>
                     </div>

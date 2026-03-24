@@ -26,7 +26,7 @@ function BarraColorida(props) {
 }
 
 
-function Grafico() {
+function Grafico(props) {
     const dadosNotas = [
         { nome: "Jan", nota: 80000, cor: '#16a34a' },
         { nome: "Fev", nota: 75000, cor: '#ef4444'},
@@ -41,7 +41,7 @@ function Grafico() {
     return (
         <>
             <div className="row">
-                <h3 className="mt-3 mb-3">Vendas x Custos (Últimos 6 Meses)</h3>
+                <h3 className="mt-3 mb-3">{props.titulo} {props.periodo}</h3>
                 <BarChart responsive width={`100%`} height={300} data={dadosNotas}>
                     <CartesianGrid strokeDasharray="5 5" />
                     <XAxis dataKey="nome" />

@@ -22,7 +22,10 @@ function MainEditarCliente() {
             let resposta = await fetch(urlViaCep);
             let dadosCep = await resposta.json();
             setEndereco(dadosCep.logradouro);
-            setCidade
+            setBairro();
+            setCidade(dadosCep.city);
+            setEstado(dadosCep.suite);
+            setCep(dadosCep.zipcode);
             console.log(dadosCep);
         }
         catch (erro) {
@@ -78,11 +81,11 @@ function MainEditarCliente() {
         console.log(dadosCliente);
         setRazaoSocial(dadosCliente.name);
         setNomeFantasia(dadosCliente.username);
-        setCnpj(dadosCliente.cnpj);
-        setNumero(dadosCliente.numero);
+        setCnpj('');
+        setNumero('');
         setEmail(dadosCliente.email);
         setEndereco(dadosCliente.address.street);
-        setBairro(dadosCliente.bairro);
+        setBairro('');
         setCidade(dadosCliente.address.city);
         setEstado(dadosCliente.address.suite);
     
@@ -93,7 +96,7 @@ function MainEditarCliente() {
 
     return (
         <>
-            <main className="ph-main-shell px-md-4 ph-bg-color">
+            <main className="ph-main-corpo px-md-4 ph-bg-color">
                 <div
                     className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom"
                 >
@@ -102,8 +105,8 @@ function MainEditarCliente() {
 
                 <form action={acaoAtualizar} className="row g-3">
                     <div className="col-md-6">
-                        <label htmlFor="razao_soacial" className="form-label">Razão Social:</label>
-                        <input value={razaoSocial} onChange={(e) => setRazaoSocial(e.target.value)} type="text" className="form-control" id="razao_soacial" name="razao_soacial" required />
+                        <label htmlFor="razao_social" className="form-label">Razão Social:</label>
+                        <input value={razaoSocial} onChange={(e) => setRazaoSocial(e.target.value)} type="text" className="form-control" id="razao_social" name="razao_social" required />
                     </div>
                     <div className="col-md-6">
                         <label htmlFor="nome_fantasia" className="form-label">Nome Fantasia:</label>

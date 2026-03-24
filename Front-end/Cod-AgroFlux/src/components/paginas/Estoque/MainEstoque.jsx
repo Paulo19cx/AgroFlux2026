@@ -4,27 +4,27 @@ function MainEstoque() {
 
     return (
         <>
-            <main class="ph-main-shell px-md-4 ph-bg-color">
-                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                    <h1 className="h2">Controle de Estoque</h1>
+            <main className="ph-main-corpo px-md-4 ph-bg-color">
+                <div className="d-flex col-md-9 col-lg-12 justify-content-between align-items-center pt-3 pb-2 mb-3">
+                    <h1 className="h5 mt-3">Controle de Estoque</h1>
                 </div>
                 {/*Começo da caixas*/}
-                <div class="container text-center">
-                    <div class="row align-items-start ">
-                        <div class="col-4">
-                            <div class="shadow ps-3 mb-8 bg-white rounded pricing-card">
+                <div className="container text-center">
+                    <div className="row align-items-start ">
+                        <div className="col-4">
+                            <div className="shadow ps-3 mb-8 bg-white rounded pricing-card">
                                 Total de Entregas
                                 <h2 className="cor-numero-1">360</h2>
                             </div>
                         </div>
-                        <div class="col-4">
-                            <div class="shadow ps-3 mb-5 bg-white rounded pricing-card">
+                        <div className="col-4">
+                            <div className="shadow ps-3 mb-5 bg-white rounded pricing-card">
                                 Total de Saidas
                                 <h2 className="cor-numero-2">260</h2>
                             </div>
                         </div>
-                        <div class="col-4">
-                            <div class="shadow ps-3 mb-5 bg-white rounded pricing-card">
+                        <div className="col-4">
+                            <div className="shadow ps-3 mb-5 bg-white rounded pricing-card">
                                 Saldo em Estoque
                                 <h2 className="cor-numero-3 ">661</h2>
 
@@ -33,10 +33,10 @@ function MainEstoque() {
                     </div>
                 </div>
                 {/*começo da saldo do produto*/}
-                <div class="container text-center">
-                    <div class="row align-items-start ">
-                        <div class="col ">
-                            <div class="shadow tamanho-caixa mb-5 bg-white rounded pricing-card">
+                <div className="container text-center">
+                    <div className="row align-items-start ">
+                        <div className="col ">
+                            <div className="shadow tamanho-caixa mb-5 bg-white rounded pricing-card">
                                 Total de Entregas
                                 
                             </div>
@@ -58,66 +58,78 @@ function MainEstoque() {
                             <tbody className="">
                                 <tr className="table-secondary ">
                                     <td>Descrição do Produto</td>
-                                    <div className='row justify-content-center'>
-                                        <li className="mb-3 text-center jp-linha jp-cor-entrada rounded-4 jp-cor-texto-ativo">
-                                            Entrada
-                                        </li>
-                                    </div>
+                                    <td>
+                                        <div className='row justify-content-center'>
+                                            <li className="mb-3 text-center jp-linha jp-cor-entrada rounded-4 jp-cor-texto-ativo">
+                                                Entrada
+                                            </li>
+                                        </div>
+                                    </td>
                                     <th scope="row">92</th>
                                     <td>anônimo</td>
                                     <td>Sem Observações</td>
                                 </tr>
                                 <tr >
                                     <td>Descrição do Produto</td>
-                                    <div className='row justify-content-center'>
-                                        <li className="mb-3 text-center jp-linha jp-cor-saida rounded-4 jp-cor-texto-ativo">
-                                            Saida
-                                        </li>
-                                    </div>
+                                    <td>
+                                        <div className='row justify-content-center'>
+                                            <li className="mb-3 text-center jp-linha jp-cor-saida rounded-4 jp-cor-texto-ativo">
+                                                Saida
+                                            </li>
+                                        </div>
+                                    </td>
                                     <th scope="row">20</th>
                                     <td>anônimo</td>
                                     <td>Sem Observações</td>
                                 </tr>
                                 <tr className="table-secondary ">
                                     <td>Descrição do Produto</td>
-                                    <div className='row justify-content-center'>
-                                        <li className="mb-3 text-center jp-linha jp-cor-entrada rounded-4 jp-cor-texto-ativo">
-                                            Entrada
-                                        </li>
-                                    </div>
+                                    <td>
+                                        <div className='row justify-content-center'>
+                                            <li className="mb-3 text-center jp-linha jp-cor-entrada rounded-4 jp-cor-texto-ativo">
+                                                Entrada
+                                            </li>
+                                        </div>
+                                    </td>
                                     <th scope="row">92</th>
                                     <td>anônimo</td>
                                     <td>Sem Observações</td>
                                 </tr>
                                 <tr>
                                     <td>Descrição do Produto</td>
-                                    <div className='row justify-content-center'>
-                                        <li className="mb-3 text-center jp-linha jp-cor-saida rounded-4 jp-cor-texto-ativo">
-                                            Saida
-                                        </li>
-                                    </div>
+                                    <td>
+                                        <div className='row justify-content-center'>
+                                            <li className="mb-3 text-center jp-linha jp-cor-saida rounded-4 jp-cor-texto-ativo">
+                                                Saida
+                                            </li>
+                                        </div>
+                                    </td>
                                     <th scope="row">55</th>
                                     <td>anônimo</td>
                                     <td>Sem Observações</td>
                                 </tr>
                                 <tr className="table-secondary ">
                                     <td>Descrição do Produto</td>
-                                    <div className='row justify-content-center'>
-                                        <li className="mb-3 text-center jp-linha jp-cor-entrada rounded-4 jp-cor-texto-ativo">
-                                            Entrada
-                                        </li>
-                                    </div>
+                                    <td>
+                                        <div className='row justify-content-center'>
+                                            <li className="mb-3 text-center jp-linha jp-cor-entrada rounded-4 jp-cor-texto-ativo">
+                                                Entrada
+                                            </li>
+                                        </div>
+                                    </td>
                                     <th scope="row">92</th>
                                     <td>anônimo</td>
                                     <td>Sem Observações</td>
                                 </tr>
                                 <tr>
                                     <td>Descrição do Produto</td>
-                                    <div className='row justify-content-center'>
-                                        <li className="mb-3 text-center jp-linha jp-cor-saida rounded-4 jp-cor-texto-ativo">
-                                            Saida
-                                        </li>
-                                    </div>
+                                    <td>
+                                        <div className='row justify-content-center'>
+                                            <li className="mb-3 text-center jp-linha jp-cor-saida rounded-4 jp-cor-texto-ativo">
+                                                Saida
+                                            </li>
+                                        </div>
+                                    </td>
                                     <th scope="row">40</th>
                                     <td>anônimo</td>
                                     <td>Sem Observações</td>
