@@ -778,7 +778,6 @@
      border: 2px solid #E60000;
  }
 
-<<<<<<< HEAD
  .bm-cor-botao-novo{
     background-color: #00A63E;
     border: 2px solid #00A63E;
@@ -787,7 +786,6 @@
 .bm-cor-texto-atualizar{
     color:#DBEAFE
 }
-=======
  .bm-cor-botao-novo {
      background-color: #00A63E;
      border: 2px solid #00A63E;
@@ -1185,7 +1183,6 @@
 
 
 
->>>>>>> 47f4b20ed5507fb2598349f9e92a39e5e7e5730b
 
 
 
@@ -1202,7 +1199,6 @@
 
 
 
-<<<<<<< HEAD
  
  
  
@@ -1217,8 +1213,6 @@
  
  
  
-=======
->>>>>>> 47f4b20ed5507fb2598349f9e92a39e5e7e5730b
 
 
 
@@ -2014,18 +2008,40 @@
      width: 75px !important;
  }
 
- .tamanho-caixa {
-     width: 1210px;
+ .jp-tamanho-caixa {
+     width: 1247px;
+     height: 250px; 
  }
 
- .cor-numero-1 {
+ .jp-cor-numero-1 {
      color: #00A63E;
+     display: ;
  }
 
- .cor-numero-2 {
+ .jp-cor-numero-2 {
      color: #b60909;
  }
 
- .cor-numero-3 {
+ .jp-cor-numero-3 {
      color: #0626df;
  }
+ .jp-container-tabelas {
+    display: flex; 
+    justify-content: space-between; 
+    gap: 10px;
+    width: 100%;
+  }
+  
+  .jp-minha-tabela {
+    border: 1px solid rgb(0, 0, 0);
+    width: 30%; 
+    width: 300px; 
+    height: 200px; 
+  }
+  .jp-borda-entrada{
+    border:1px solid rgb(0, 0, 0);
+    display: flex;
+    height: 58px;
+
+  }
+  
