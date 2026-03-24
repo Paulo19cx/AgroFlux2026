@@ -14,20 +14,23 @@ function MainEstoque() {
                         <div className="col-4">
                             <div className="shadow ps-3 mb-8 bg-white rounded pricing-card">
                                 Total de Entregas
-                                <h2 className="cor-numero-1">360</h2>
+                                <h2 className="jp-cor-numero-1 mt-5">360</h2>
+                                <div className="hh-verde-circulo float-end"><i className="fi fi-br-cart-shopping-fast hh-icon text-success"></i></div>
                             </div>
                         </div>
                         <div className="col-4">
                             <div className="shadow ps-3 mb-5 bg-white rounded pricing-card">
                                 Total de Saidas
-                                <h2 className="cor-numero-2">260</h2>
+                                <h2 className="jp-cor-numero-2 mt-5">260</h2>
+                                <div className="hh-vermelho-circulo float-end"><i className="fi fi-br-arrow-trend-down hh-icon text-danger"></i></div>
                             </div>
                         </div>
                         <div className="col-4">
                             <div className="shadow ps-3 mb-5 bg-white rounded pricing-card">
                                 Saldo em Estoque
-                                <h2 className="cor-numero-3 ">661</h2>
+                                <h2 className="jp-cor-numero-3 mt-5">661</h2>
 
+                                <div className="hh-azul-circulo float-end"><i className="fi fi-br-arrow-trend-up hh-icon text-primary"></i></div>
                             </div>
                         </div>
                     </div>
@@ -36,9 +39,38 @@ function MainEstoque() {
                 <div className="container text-center">
                     <div className="row align-items-start ">
                         <div className="col ">
-                            <div className="shadow tamanho-caixa mb-5 bg-white rounded pricing-card">
+                            <div className=" ps-2 shadow jp-tamanho-caixa mb-5 bg-white rounded pricing-card">
                                 Total de Entregas
-                                
+
+                                <div class="jp-container-tabelas">
+                                    <table class="jp-minha-tabela">
+                                        Fertilizante NPK 10-10-10
+                                        <td className="jp-borda-entrada ps-3">entrada:</td>
+                                        <td className="jp-borda-entrada ps-3">saida:</td>
+                                        <td className="jp-borda-entrada ps-3">total:</td>
+                                    </table>
+                                    <table class="jp-minha-tabela">
+                                        Semente de Soja BRS 1010
+                                        <td className="jp-borda-entrada ps-3">entrada:</td>
+                                        <td className="jp-borda-entrada ps-3">saida:</td>
+                                        <td className="jp-borda-entrada  ps-3">total:</td>
+
+                                    </table>
+                                    <table class="jp-minha-tabela">
+                                        Defensivo Agrícola Roundup
+                                        <td className="jp-borda-entrada  ps-3">entrada:</td>
+                                        <td className="jp-borda-entrada  ps-3">saida:</td>
+                                        <td className="jp-borda-entrada  ps-3">total:</td>
+                                    </table>
+                                    <table class="jp-minha-tabela">
+                                        Adubo Orgânico Composto
+                                        <td className="jp-borda-entrada  ps-3">entrada:</td>
+                                        <td className="jp-borda-entrada  ps-3">saida:</td>
+                                        <td className="jp-borda-entrada  ps-3">total:</td>
+                                    </table>
+
+
+                                </div>
                             </div>
 
                         </div>
