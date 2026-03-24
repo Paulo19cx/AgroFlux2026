@@ -1,16 +1,29 @@
-# React + Vite
+# AgroFluxo
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Tecnologias Utilizadas
 
-Currently, two official plugins are available:
+- API RESTFUL
+- React
+- JavaScript
+- NodeJS
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Descrição
 
-## React Compiler
+Dashboard voltado ao setor de agronomia, funcionando como um painel centralizado capaz de transformar dados operacionais em indicadores visuais claros e intuitivos.
+A ferramenta permite acompanhar, de maneira organizada e eficiente, informações relacionadas a clientes, funcionrios, produtos, vendas, fornecedores, estoque e relatorios. Podendo cadastrar ou excluir funcionarios, produtos, cliente e fornecedores. Essa visualização estruturada facilitará uma gestão mais estratégica, baseada em análises precisas em vez de suposições. Além disso, o dashboard ajudará a identificar padrões de consumo, sazonalidades, desempenho de vendas por período e produtividade da equipe, oferecendo uma compreensão mais completa do cenário comercial.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Como executar
 
-## Expanding the ESLint configuration
+git clone https://github.com/Paulo19cx/AgroFlux2026.git
+cd Cod-AgroFluxo
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+npm i 
+
+npm rum dev
+
+## Autores
+
+- BEATRIZ MOREIRA DOS ANJOS 
+- HENRIQUE DA SILVA GUIMARÃES
+- JOÃO PEDRO RODRIGUES MARQUES
+- PAULO HENRIQUE CODONHO FLORIANO
