@@ -1,21 +1,20 @@
 import Sidebar from "../../Template/Sidebar";
 import Navbar from "../../Template/Navbar";
-import MainEditarFuncionario from "./MainEditarFuncionario";
+import MainCadastrarProduto from "./MainCadastrarProduto";
 
-function EditarFuncionario() {
+function CadastrarProduto() {
     return (
         <>
-            <title>Editar</title>
-
+            <title>Cadastrar Cliente</title>
             <Navbar />
             <div className="container-fluid">
                 <div className="row">
                     <Sidebar />
-                    <MainEditarFuncionario />
+                    <MainCadastrarProduto />
                 </div>
             </div>
         </>
     );
 }
 
-export default EditarFuncionario;
+export default CadastrarProduto;

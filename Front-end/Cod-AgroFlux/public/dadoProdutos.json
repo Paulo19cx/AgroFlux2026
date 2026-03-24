@@ -1,0 +1,54 @@
+{
+    "dadosProdutos": [
+        {
+            "id": 1,
+            "descricao": "Semente Soja",
+            "categoria": "Plantacao",
+            "custoUnitario": 140,
+            "precoVenda": 159.99,
+            "estoqueAtual": 1354,
+            "estoqueMinimo": 500,
+            "unidade": "Saco 5Kg"
+        },
+        {
+            "id": 2,
+            "descricao": "Adubo NPK",
+            "categoria": "Plantacao",
+            "custoUnitario": 95,
+            "precoVenda": 129.90,
+            "estoqueAtual": 620,
+            "estoqueMinimo": 200,
+            "unidade": "Saco 25Kg"
+        },
+        {
+            "id": 3,
+            "descricao": "Herbicida Glifosato",
+            "categoria": "Defensivos",
+            "custoUnitario": 180,
+            "precoVenda": 239.90,
+            "estoqueAtual": 340,
+            "estoqueMinimo": 100,
+            "unidade": "Galão 5L"
+        },
+        {
+            "id": 4,
+            "descricao": "Inseticida Lambda",
+            "categoria": "Defensivos",
+            "custoUnitario": 75,
+            "precoVenda": 109.90,
+            "estoqueAtual": 210,
+            "estoqueMinimo": 80,
+            "unidade": "Frasco 1L"
+        },
+        {
+            "id": 5,
+            "descricao": "Semente Milho Híbrido",
+            "categoria": "Plantacao",
+            "custoUnitario": 210,
+            "precoVenda": 269.99,
+            "estoqueAtual": 480,
+            "estoqueMinimo": 150,
+            "unidade": "Saco 20Kg"
+        }
+    ]
+}

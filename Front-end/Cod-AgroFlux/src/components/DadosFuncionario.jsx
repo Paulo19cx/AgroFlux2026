@@ -29,17 +29,17 @@ function DadosFuncionario(props) {
                                     </li>
                                     </div>
                                     
-                                    <li className="mb-3 text-center"><i class="fi fi-rr-clip-mail"></i>
+                                    <li className="mb-3 text-center"><i className="fi fi-rr-clip-mail"></i>
                                        {props.email}
                                     </li>
-                                    <li className="mb-3 text-center"><i class="fi fi-rs-briefcase"></i>
+                                    <li className="mb-3 text-center"><i className="fi fi-rs-briefcase"></i>
                                        {props.remuneracao}
                                     </li>
                                 </ul>
                                 <div className="text-center mt-4 d-flex gap-3 justify-content-center">
-                                    <Link to={`/editar-funcionario/${props.id}`} className="btn btn-outline-primary btn-custom bm-cor-botao"><i class="bi bi-pencil"></i>Editar</Link>
+                                    <Link to={`/editar-funcionario/${props.id}`} className="btn btn-outline-primary btn-custom bm-cor-botao"><i className="bi bi-pencil"></i>Editar</Link>
                                      
-                                    <Link to="" className="btn btn-outline-primary btn-custom bm-cor-botao-excluir"><i class="fi fi-rs-trash"></i></Link>
+                                    <Link to="" className="btn btn-outline-primary btn-custom bm-cor-botao-excluir"><i className="fi fi-rs-trash"></i></Link>
                                 
                                 </div>
                                

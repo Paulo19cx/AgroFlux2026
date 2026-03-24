@@ -1,5 +1,5 @@
 import { useParams } from "react-router";
-import { useState, useActionState, useEffect } from "react";
+import { useState, useEffect, useActionState } from "react";
 
 function MainEditarCliente() {
 
@@ -15,13 +15,17 @@ function MainEditarCliente() {
     const [estado, setEstado] = useState('');
     const [cep, setCep] = useState('');
 
-    let urlViaCep = `https://viacep.com.br/ws/${cep}/json/ `;
+    let urlViaCep = `https://viacep.com.br/ws/${cep}/json/`;
 
     async function buscarDadosCep() {
         try {
             let resposta = await fetch(urlViaCep);
             let dadosCep = await resposta.json();
             setEndereco(dadosCep.logradouro);
+            setBairro();
+            setCidade(dadosCep.city);
+            setEstado(dadosCep.suite);
+            setCep(dadosCep.zipcode);
             console.log(dadosCep);
         }
         catch (erro) {
@@ -41,7 +45,7 @@ function MainEditarCliente() {
                 console.log(dadosCliente);
                 try {
                     let resposta = await fetch(`https://jsonplaceholder.typicode.com/users/${id}`, {
-                        method: 'POST',
+                        method: 'PUT',
                         body: dadosCliente,
                         headers: {
                             'Content-type': 'application/json; charset=UTF-8',
@@ -51,12 +55,12 @@ function MainEditarCliente() {
                     console.log(resposta.status);
                     console.log(resposta.ok);
 
-                    if (resposta.status === 201) {
+                    if (resposta.status === 200) {
                         console.log('Resposta do servidor ok!');
                         if (resposta.ok === true) {
-                            alert('Cadastrado com sucesso');
+                            alert('Alterado com sucesso');
                         } else {
-                            alert('Erro ao cadastrar!');
+                            alert('Erro ao alterar!');
                         }
                     } else {
                         console.log('Resposta do servidor erro!');
@@ -77,11 +81,11 @@ function MainEditarCliente() {
         console.log(dadosCliente);
         setRazaoSocial(dadosCliente.name);
         setNomeFantasia(dadosCliente.username);
-        setCnpj(dadosCliente.cnpj);
-        setNumero(dadosCliente.numero);
+        setCnpj('');
+        setNumero('');
         setEmail(dadosCliente.email);
         setEndereco(dadosCliente.address.street);
-        setBairro(dadosCliente.bairro);
+        setBairro('');
         setCidade(dadosCliente.address.city);
         setEstado(dadosCliente.address.suite);
     
@@ -92,7 +96,7 @@ function MainEditarCliente() {
 
     return (
         <>
-            <main className="col-md-9 ms-sm-auto col-lg-10 px-md-4 ph-bg-color">
+            <main className="ph-main-corpo px-md-4 ph-bg-color">
                 <div
                     className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom"
                 >
@@ -101,12 +105,12 @@ function MainEditarCliente() {
 
                 <form action={acaoAtualizar} className="row g-3">
                     <div className="col-md-6">
-                        <label htmlFor="nome" className="form-label">Razão Social:</label>
-                        <input value={razaoSocial} onChange={(e) => setRazaoSocial(e.target.value)} type="text" className="form-control" id="nome" name="nome" required />
+                        <label htmlFor="razao_social" className="form-label">Razão Social:</label>
+                        <input value={razaoSocial} onChange={(e) => setRazaoSocial(e.target.value)} type="text" className="form-control" id="razao_social" name="razao_social" required />
                     </div>
                     <div className="col-md-6">
-                        <label htmlFor="sobrenome" className="form-label">Nome Fantasia:</label>
-                        <input value={nomeFantasia} onChange={(e) => setNomeFantasia(e.target.value)} type="text" className="form-control" id="sobrenome" name="sobrenome" required />
+                        <label htmlFor="nome_fantasia" className="form-label">Nome Fantasia:</label>
+                        <input value={nomeFantasia} onChange={(e) => setNomeFantasia(e.target.value)} type="text" className="form-control" id="nome_fantasia" name="nome_fantasia" required />
                     </div>
                     <div className="col-4">
                         <label htmlFor="cnpj" className="form-label">CNPJ</label>
@@ -116,7 +120,7 @@ function MainEditarCliente() {
                         <label htmlFor="telefone" className="form-label">Telefone</label>
                         <input value={numero} onChange={(e) => setNumero(e.target.value)} type="text" className="form-control" id="telefone" name="telefone" required/>
                     </div>
-                    <div className="col-12">
+                    <div className="col-4">
                         <label htmlFor="email" className="form-label">Email:</label>
                         <input value={email} onChange={(e) => setEmail(e.target.value)} type="email" className="form-control" id="email" name="email" placeholder="Digite seu melhor email" required />
                     </div>
@@ -124,21 +128,21 @@ function MainEditarCliente() {
                         <label htmlFor="endereco" className="form-label">Endereço:</label>
                         <input value={endereco} onChange={(e) => setEndereco(e.target.value)} type="text" className="form-control" id="endereco" name="endereco" placeholder="Rua, Avenida..." required />
                     </div>
-                    <div className="col-md-3">
+                    <div className="col-md-5">
                         <label htmlFor="bairro" className="form-label">Bairro</label>
                         <input value={bairro} onChange={(e) => setBairro(e.target.value)} type="text" className="form-control" id="bairro" name="bairro"/>
                     </div>
-                    <div className="col-md-6">
+                    <div className="col-md-7">
                         <label htmlFor="cidade" className="form-label">Cidade:</label>
                         <input value={cidade} onChange={(e) => setCidade(e.target.value)} type="text" className="form-control" id="cidade" name="cidade" required />
                     </div>
-                    <div className="col-md-4">
+                    <div className="col-md-8">
                         <label htmlFor="estado" className="form-label">Estado</label>
                         <input value={estado} onChange={(e) => setEstado(e.target.value)} type="text" className="form-control" id="estado" name="estado" required />
                     </div>
-                    <div className="col-md-2">
+                    <div className="col-md-4">
                         <label htmlFor="cep" className="form-label">Cep:</label>
-                        <input value={cep} onBlur={(e) => buscarDadosCep(e.target.value)} onChange={(e) => setCep(e.target.value)} type="text" className="form-control" id="cep" name="cep" required />
+                        <input value={cep} onBlur={buscarDadosCep} onChange={(e) => setCep(e.target.value)} type="text" className="form-control" id="cep" name="cep" required />
                     </div>
 
 

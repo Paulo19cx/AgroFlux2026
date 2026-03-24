@@ -1,6 +1,6 @@
-import Sidebar from "../../template/Sidebar";
-import Navbar from "../../template/Navbar";
-import MainHome from "./MainRelatorio";
+import Sidebar from "../../Template/Sidebar";
+import Navbar from "../../Template/Navbar";
+import MainRelatorio from "./MainRelatorio";
 
 function Relatorio() {
     return (
@@ -11,7 +11,7 @@ function Relatorio() {
             <div className="container-fluid">
                 <div className="row">
                     <Sidebar />
-                    <MainHome />
+                    <MainRelatorio />
                 </div>
             </div>
         </>

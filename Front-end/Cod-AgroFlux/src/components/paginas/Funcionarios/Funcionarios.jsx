@@ -1,5 +1,5 @@
-import Sidebar from "../../template/Sidebar";
-import Navbar from "../../template/Navbar";
+import Sidebar from "../../Template/Sidebar";
+import Navbar from "../../Template/Navbar";
 import MainFuncionarios from "./MainFuncionarios";
 
 
