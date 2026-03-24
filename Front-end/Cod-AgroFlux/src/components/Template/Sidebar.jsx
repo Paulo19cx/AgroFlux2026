@@ -1,6 +1,11 @@
-import { Link } from "react-router";
+import { use } from "react";
+import { Link, useLocation } from "react-router";
 
 function Sidebar() {
+
+    let pagina = useLocation();
+    const paginaAtiva = pagina.pathname === '/home'
+
     return (
         <>
             <aside id="sidebarMenu" className="d-md-block sidebar collapse ph-bg-sidebar-navbar ph-sidebar-estrutura">
