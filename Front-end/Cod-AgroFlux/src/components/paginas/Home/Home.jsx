@@ -1,6 +1,7 @@
 import Sidebar from "../../Template/Sidebar";
 import Navbar from "../../Template/Navbar";
 import MainHome from "./MainHome";
+import GraficoLinha from "../../Template/GraficoLinha";
 
 function Home() {
     return (
