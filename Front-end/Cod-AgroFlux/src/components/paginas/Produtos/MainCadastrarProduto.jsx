@@ -58,111 +58,110 @@ function MainCadastrarProduto() {
                     <h1 className="h2">Cadastrar Produto</h1>
                 </div>
 
-                <form action={acaoCadastro} className="row g-3 text-black">
-                    <div className="col-md-6">
-                        <label
-                            htmlFor="descricao"
-                            className="form-label">
-                            Descrição
-                        </label>
-                        <input
-                            value={descricao}
-                            onChange={(e) => setDescricao(e.target.value)}
-                            type="text" className="form-control"
-                            id="descricao"
-                            name="descricao"
-                            required
-                        />
-                    </div>
+                <div className="col-md-12 col-lg-12 ph-cor-fundo-branco p-4 rounded-3 shadow-lg">
+                    <form action={acaoCadastro} className="row g-3 text-black">
+                        <div className="col-md-6">
+                            <label htmlFor="descricao" className="form-label">Descrição</label>
+                            <input
+                                value={descricao}
+                                onChange={(e) => setDescricao(e.target.value)}
+                                type="text"
+                                className="form-control ph-input"
+                                id="descricao"
+                                name="descricao"
+                                required
+                            />
+                        </div>
 
-                    <div className="col-md-6">
-                        <label
-                            htmlFor="nome_fantasia"
-                            className="form-label">
-                            Categoria
-                        </label>
-                        <input
-                            value={categoria}
-                            onChange={(e) => setCategoria(e.target.value)}
-                            type="text"
-                            className="form-control"
-                            id="nome_fantasia"
-                            name="nome_fantasia"
-                        />
-                    </div>
+                        <div className="col-md-6">
+                            <label
+                                htmlFor="nome_fantasia"
+                                className="form-label">
+                                Categoria
+                            </label>
+                            <input
+                                value={categoria}
+                                onChange={(e) => setCategoria(e.target.value)}
+                                type="text"
+                                className="form-control ph-input"
+                                id="nome_fantasia"
+                                name="nome_fantasia"
+                            />
+                        </div>
 
-                    <div className="col-4">
-                        <label
-                            htmlFor="cnpj"
-                            className="form-label">
-                            Custo Unitário
-                        </label>
-                        <input value={custoUnitario}
-                            onChange={(e) => setCustoUnitario(e.target.value)}
-                            type="text"
-                            className="form-control"
-                            id="cnpj" name="cnpj"
-                            required
-                        />
-                    </div>
+                        <div className="col-4">
+                            <label
+                                htmlFor="cnpj"
+                                className="form-label">
+                                Custo Unitário
+                            </label>
+                            <input value={custoUnitario}
+                                onChange={(e) => setCustoUnitario(e.target.value)}
+                                type="text"
+                                className="form-control ph-input"
+                                id="cnpj" name="cnpj"
+                                required
+                            />
+                        </div>
 
-                    <div className="col-4">
-                        <label
-                            htmlFor="telefone"
-                            className="form-label">
-                            Preço Venda
-                        </label>
-                        <input
-                            value={precoVenda}
-                            onChange={(e) => setPrecoVenda(e.target.value)}
-                            type="text"
-                            className="form-control"
-                            id="telefone"
-                            name="telefone"
-                            required
-                        />
-                    </div>
+                        <div className="col-4">
+                            <label
+                                htmlFor="telefone"
+                                className="form-label">
+                                Preço Venda
+                            </label>
+                            <input
+                                value={precoVenda}
+                                onChange={(e) => setPrecoVenda(e.target.value)}
+                                type="text"
+                                className="form-control ph-input"
+                                id="telefone"
+                                name="telefone"
+                                required
+                            />
+                        </div>
 
-                    <div className="col-md-4">
-                        <label
-                            htmlFor="email"
-                            className="form-label">
-                            Estoque Atual
-                        </label>
-                        <input
-                            value={estoqueAtual}
-                            onChange={(e) => setEstoqueAtual(e.target.value)}
-                            type="email"
-                            className="form-control"
-                            id="email"
-                            name="email"
-                        />
-                    </div>
+                        <div className="col-md-4">
+                            <label
+                                htmlFor="email"
+                                className="form-label">
+                                Estoque Atual
+                            </label>
+                            <input
+                                value={estoqueAtual}
+                                onChange={(e) => setEstoqueAtual(e.target.value)}
+                                type="email"
+                                className="form-control ph-input"
+                                id="email"
+                                name="email"
+                            />
+                        </div>
 
-                    <div className="col-md-6">
-                        <label
-                            htmlFor="endereco"
-                            className="form-label">
-                            Estoque Mínimo
-                        </label>
-                        <input
-                            value={estoqueMinino}
-                            onChange={(e) => setEstoqueMinino(e.target.value)}
-                            type="text"
-                            className="form-control"
-                            id="endereco"
-                            name="endereco"
-                        />
-                    </div>
+                        <div className="col-md-6">
+                            <label
+                                htmlFor="endereco"
+                                className="form-label">
+                                Estoque Mínimo
+                            </label>
+                            <input
+                                value={estoqueMinino}
+                                onChange={(e) => setEstoqueMinino(e.target.value)}
+                                type="text"
+                                className="form-control ph-input"
+                                id="endereco"
+                                name="endereco"
+                            />
+                        </div>
 
-                    <div className="col-12">
-                        <button
-                            disabled={pendente}
-                            type="submit"
-                            className="btn btn-primary">{pendente ? 'Cadastrando...' : 'Cadastrar'}
-                        </button>
-                    </div>
-                </form>
+                        <div className="col-12">
+                            <button
+                                disabled={pendente}
+                                type="submit"
+                                className="ph-btn-forms ph-btn-forms-cor-cadastrar mt-3">{pendente ? 'Cadastrando...' : 'Cadastrar'}
+                            </button>
+                        </div>
+                    </form>
+                </div>
             </main>
         </>
     );
