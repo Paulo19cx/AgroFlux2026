@@ -1,4 +1,3 @@
-import Card from "../../Card";
 import Grafico from "../../Template/Grafico";
 
 function MainRelatorio() {
@@ -15,7 +14,7 @@ function MainRelatorio() {
                     <div className="col-sm-3 hh-mb">
                         <div className="card">
                             <div className="card-body">
-                                <h6 className="card-title text-secondary">Total de Vendas</h6>
+                                <h6 className="card-title text-secondary">Total em Vendas</h6>
                                 <p className="h3 card-text text-success">R$ 336.000</p>
                                 <p className="h6 card-text text-secondary">508 Transações</p>
                                 <div className="hh-verde-circulo float-end"><i className="fi fi-br-cart-shopping-fast hh-icon text-success"></i></div>
