@@ -5,7 +5,7 @@ const conexao = mysql.createPool({
     port: 3306,
     user: "root",
     password: "admin",
-    database: "senai"
+    database: "agroflux"
 });
 
 export default conexao;

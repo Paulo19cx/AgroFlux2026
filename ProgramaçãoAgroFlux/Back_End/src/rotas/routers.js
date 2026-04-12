@@ -1,4 +1,11 @@
 import express from 'express';
+import controllerFuncionario from '../controller/controllerFuncionario.js';
+import controllerRaiz from '../controller/controllerRoot.js';
+
 const router = express.Router();
+
+router.get('/', controllerRaiz.raiz);
+router.post('/cadastrar-funcionario', controllerFuncionario.cadastrar);
+router.delete('/deletar-funcionario/:id', controllerFuncionario.deletar);
 
 export default router;
