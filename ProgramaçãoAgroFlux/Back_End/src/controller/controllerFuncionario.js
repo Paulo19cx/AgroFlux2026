@@ -27,11 +27,11 @@ const controllerFuncionario = {
         }
     },
 
-    validarLogin: async (req, res) => {
+    login: async (req, res) => {
         const { email, senha } = req.body;
 
         try {
-            const [validar] = await modelFuncionario.validarLogin(email, senha);
+            const [validar] = await modelFuncionario.login(email, senha);
 
             if (!validar) {
                 return res.status(401).json({ msg: "Falha ao realizar o login" });
@@ -41,7 +41,7 @@ const controllerFuncionario = {
             }
         }
         catch (erro) {
-
+            return res.status(500).json({ msg: "Erro no servidor" });
         }
     },
 

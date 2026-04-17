@@ -1,11 +1,11 @@
 import mysql from 'mysql2/promise.js';
 
 const conexao = mysql.createPool({
-    host: "localhost",
-    port: 3306,
-    user: "root",
-    password: "admin",
-    database: "agroflux"
+    host: process.env.HOST,
+    port: process.env.PORT,
+    user: process.env.USER,
+    password: process.env.PASSWORD,
+    database: process.env.DATABASE
 });
 
 export default conexao;

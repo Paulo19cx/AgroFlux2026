@@ -1,53 +1,60 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router";
+import axios from 'axios';
 
 function Login() {
     const [email, setEmail] = useState('');
     const [senha, setSenha] = useState('');
     const navigate = useNavigate();
 
-    useEffect(() => {
-        let logado = localStorage.getItem('token');
-        if (logado) {
-            navigate('/home');
-        }
-    }, []);
+    // useEffect(() => {
+    //     let logado = localStorage.getItem('token');
+    //     if (logado) {
+    //         navigate('/home');
+    //     }
+    // }, []);
 
-    async function fazerLogin(e) {
+    const handleLogin = async (e) => {
         e.preventDefault();
 
-        if (!email || !senha) {
-            alert("Por favor, preencha todos os campos.");
-            return;
-        }
-
         try {
-            let resposta = await fetch('https://jsonplaceholder.typicode.com/posts', {
-                method: 'POST',
-                body: JSON.stringify({ email: email, senha: senha }),
-                headers: {
-                    'Content-type': 'application/json; charset=UTF-8',
-                },
-            })
-            console.log(resposta);
-            if (resposta.status === 201) {
-                console.log('Resposta do servidor ok!');
-                if (resposta.ok === true) {
-                    // gera um token aleatório 
-                    let tokenBackend = Math.random();
-                    // salva no armazenamento local do navegado (Mozilla, Chrome etc)
-                    localStorage.setItem('token', tokenBackend);
+            const response = await axios.post('http://localhost:3001/login', { email, senha });
 
-                    navigate('/home');
-
-                } else {
-                    alert('Erro ao realizar login!');
-                }
-            } else {
-                console.log('Resposta do servidor erro!');
+            if (response.status === 201) {
+                navigate('/home');
             }
-        } catch (erro) {
-            console.log(erro);
+            else {
+                alert('Email ou senha incorretos!');
+            }
+
+            // let resposta = await fetch('https://jsonplaceholder.typicode.com/posts', {
+            //     method: 'POST',
+            //     body: JSON.stringify({ email: email, senha: senha }),
+            //     headers: {
+            //         'Content-type': 'application/json; charset=UTF-8',
+            //     },
+            // })
+            // console.log(resposta);
+            // if (resposta.status === 201) {
+            //     console.log('Resposta do servidor ok!');
+            //     if (resposta.ok === true) {
+            //         // gera um token aleatório 
+            //         let tokenBackend = Math.random();
+            //         // salva no armazenamento local do navegado (Mozilla, Chrome etc)
+            //         localStorage.setItem('token', tokenBackend);
+
+            //         navigate('/home');
+
+            //     } else {
+            //         alert('Erro ao realizar login!');
+            //     }
+            // } else {
+            //     console.log('Resposta do servidor erro!');
+            // }
+        }
+        catch (erro) {
+            console.error('Erro no login', erro)
+            alert('Email ou senha incorretos!');
         }
     }
 
@@ -59,7 +66,7 @@ function Login() {
                         <div className="d-flex justify-content-center mt-auto mb-auto">
                         </div>
 
-                        <form onSubmit={fazerLogin} className="row d-flex ph-fundo-form-login rounded-5 ms-auto me-auto just align-content-center">
+                        <form onSubmit={handleLogin} className="row d-flex ph-fundo-form-login rounded-5 ms-auto me-auto just align-content-center">
                             <div className="m-auto">
                                 <h1>Login</h1>
                             </div>
