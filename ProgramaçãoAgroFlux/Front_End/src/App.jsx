@@ -29,20 +29,20 @@ function App() {
     <>
       <Routes>
         <Route path='/' element={<Login />} />
-        <Route path='/home' element={<ValidaLogin pagina={<Home />} />} />
-        <Route path='/clientes' element={<ValidaLogin pagina={<Cliente />} />} />
-        <Route path='/cadastrar-cliente' element={<ValidaLogin pagina={<CadastrarCliente />} />} />
-        <Route path='/cadastrar-funcionario' element={<ValidaLogin pagina={<CadastrarFuncionario />} />} />
-        <Route path='/editar-cliente/:id' element={<ValidaLogin pagina={<EditarCliente />} />} />
-        <Route path='/funcionarios' element={<ValidaLogin pagina={<Funcionario />} />} />
-        <Route path='/editar-funcionario/:id' element={<ValidaLogin pagina={<EditarFuncionario />} />} />
-        <Route path='/produtos' element={<ValidaLogin pagina={<Produtos />} />} />
-        <Route path='/cadastrar-produto' element={<ValidaLogin pagina={<CadastrarProduto/>} />} />
-        <Route path='/editar-produto/:id' element={<ValidaLogin pagina={<EditarProduto />} />} />
-        <Route path='/vendas' element={<ValidaLogin pagina={<Vendas />} />} />
-        <Route path='/fornecedores' element={<ValidaLogin pagina={<Fornecedores />} />} />
-        <Route path='/estoque' element={<ValidaLogin pagina={<Estoque />} />} />
-        <Route path='/relatorios' element={<ValidaLogin pagina={<Relatorio />} />} />
+        <Route path='/home' element={<Home />} />
+        <Route path='/clientes' element={<Cliente />} />
+        <Route path='/cadastrar-cliente' element={<CadastrarCliente />} />
+        <Route path='/cadastrar-funcionario' element={<CadastrarFuncionario />} />
+        <Route path='/editar-cliente/:id' element={<EditarCliente />} />
+        <Route path='/funcionarios' element={<Funcionario />} />
+        <Route path='/editar-funcionario/:id' element={<EditarFuncionario />} />
+        <Route path='/produtos' element={<Produtos />} />
+        <Route path='/cadastrar-produto' element={<CadastrarProduto/>} />
+        <Route path='/editar-produto/:id' element={<EditarProduto />} />
+        <Route path='/vendas' element={<Vendas />} />
+        <Route path='/fornecedores' element={<Fornecedores />} />
+        <Route path='/estoque' element={<Estoque />} />
+        <Route path='/relatorios' element={<Relatorio />} />
       </Routes>
     </>
   )
