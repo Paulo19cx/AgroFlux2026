@@ -16,15 +16,18 @@ const modelFuncionario = {
         }
     },
 
-    login: async (email, senha) => {
+    validarLogin: async (email, senha) => {
         try {
             const [consulta] = await modelFuncionario.buscarEmail(email);
 
+            console.log(consulta)
+        
             if (consulta.length > 0) {
                 const combinacao = await bcrypt.compare(senha, consulta[0].senha);
-
+                
                 if (combinacao) {
-                    return consulta;
+                    console.log(combinacao)
+                    return { id_usuario: consulta[0].id, nome: consulta[0].nome };
                 } 
                 else {
                     return null;
@@ -41,7 +44,7 @@ const modelFuncionario = {
 
     buscarEmail: async (email) => {
         try {
-            const resultado = await conexao.query("SELECT empresa_id, nome, cpf, cargo, email, senha, data_nascimento, data_contratacao, salario_inicial, salario_atual, situacao FROM funcionario WHERE email = ?", [email]);
+            const resultado = await conexao.query("SELECT empresa_id, id, nome, cpf, cargo, email, senha, data_nascimento, data_contratacao, salario_inicial, salario_atual, situacao FROM funcionario WHERE email = ?", [email]);
             return resultado;
         }
         catch (erro) {

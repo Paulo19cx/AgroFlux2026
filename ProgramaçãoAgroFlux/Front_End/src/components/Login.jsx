@@ -7,52 +7,24 @@ function Login() {
     const [senha, setSenha] = useState('');
     const navigate = useNavigate();
 
-    // useEffect(() => {
-    //     let logado = localStorage.getItem('token');
-    //     if (logado) {
-    //         navigate('/home');
-    //     }
-    // }, []);
-
     const handleLogin = async (e) => {
         e.preventDefault();
 
         try {
             const response = await axios.post('http://localhost:3001/login', { email, senha });
 
-            if (response.status === 201) {
+            if (response.status === 200) {
+                const idUsuario = response.data.id;
+                localStorage.setItem('id', idUsuario)
+
                 navigate('/home');
             }
             else {
                 alert('Email ou senha incorretos!');
             }
-
-            // let resposta = await fetch('https://jsonplaceholder.typicode.com/posts', {
-            //     method: 'POST',
-            //     body: JSON.stringify({ email: email, senha: senha }),
-            //     headers: {
-            //         'Content-type': 'application/json; charset=UTF-8',
-            //     },
-            // })
-            // console.log(resposta);
-            // if (resposta.status === 201) {
-            //     console.log('Resposta do servidor ok!');
-            //     if (resposta.ok === true) {
-            //         // gera um token aleatório 
-            //         let tokenBackend = Math.random();
-            //         // salva no armazenamento local do navegado (Mozilla, Chrome etc)
-            //         localStorage.setItem('token', tokenBackend);
-
-            //         navigate('/home');
-
-            //     } else {
-            //         alert('Erro ao realizar login!');
-            //     }
-            // } else {
-            //     console.log('Resposta do servidor erro!');
-            // }
         }
         catch (erro) {
+            console.log(erro)
             console.error('Erro no login', erro)
             alert('Email ou senha incorretos!');
         }
