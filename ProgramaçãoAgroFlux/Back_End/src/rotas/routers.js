@@ -8,6 +8,7 @@ router.get('/', controllerRaiz.raiz);
 
 router.post('/login', controllerFuncionario.login);
 router.post('/cadastrar-funcionario', controllerFuncionario.cadastrar);
+router.get('/listar-funcionarios', controllerFuncionario.listar);
 router.delete('/deletar-funcionario/:id', controllerFuncionario.deletar);
 
 export default router;

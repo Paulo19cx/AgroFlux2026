@@ -48,6 +48,17 @@ const controllerFuncionario = {
         }
     },
 
+    listar: async (req, res) => {
+        try {
+            const [consulta] = await modelFuncionario.listar();
+
+            return res.status(200).json(consulta);
+        } 
+        catch (erro) {
+            return res.status(500).json({ msg: "Erro no servidor" });
+        }
+    },
+
     deletar: async (req, res) => {
         try {
             const { id } = req.params;

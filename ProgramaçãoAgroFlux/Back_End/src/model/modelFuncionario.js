@@ -50,8 +50,18 @@ const modelFuncionario = {
         catch (erro) {
             throw erro;
         }
-    }
-    ,
+    },
+
+    listar: async () => {
+        try {
+            const resultado = await conexao.query("SELECT empresa_id, id, nome, cpf, cargo, email, senha, data_nascimento, data_contratacao, salario_inicial, salario_atual, situacao FROM funcionario");
+            return resultado;
+        } 
+        catch (erro) {
+            throw erro;
+        }
+    },
+
     deletar: async (id) => {
         try {
             const resultado = await conexao.query("DELETE FROM funcionario WHERE id = ?", [id]);
