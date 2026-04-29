@@ -11,6 +11,7 @@ import Fotoye from "../../../assets/img/kanye.jfif";
 import FotoBillie from "../../../assets/img/billie.jfif";
 import FotoGP from "../../../assets/img/gpfoto.png";
 import { useEffect, useState } from "react";
+import axios from  'axios';
 
 const MainFuncionarios = () => {
     const [funcionarios, setFuncionarios] = useState([]);
