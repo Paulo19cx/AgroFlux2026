@@ -11,11 +11,12 @@ import Fotoye from "../../../assets/img/kanye.jfif";
 import FotoBillie from "../../../assets/img/billie.jfif";
 import FotoGP from "../../../assets/img/gpfoto.png";
 import { useEffect, useState } from "react";
-import axios from 'axios';
+import axios from  'axios';''
 
 const MainFuncionarios = () => {
     const [funcionarios, setFuncionarios] = useState([]);
-    const navegar = useNavigate();
+    const [carregando, setCarregando] = useState(true);
+    //const navegar = useNavigate();
 
     useEffect(() => {
         const carregarFuncionarios = async () => {
@@ -47,6 +48,7 @@ const MainFuncionarios = () => {
     //     { id: 7, nome: "Billie Eillish Pirate Baird O’ Connell", cargo: "Analista de produtos", email: "billie.e@pirate.com", remuneracao: "R$ 6.000", foto: FotoBillie },
     //     { id: 8, nome: "Kanye Omari West", cargo: "Gerente agrônomico", email: "k@yewest.com", remuneracao: "R$8.000", foto: Fotoye },
     //     { id: 9, nome: "Gabriel Porto", cargo: "Analista de produtos", email: "gab@porto.com", remuneracao: "R$6.000", foto: FotoGP },
+    //    { id: 9, nome: "Gabriel Porto", cargo: "Analista de produtos", email: "gab@porto.com", remuneracao: "R$6.000", foto: FotoGP },
     // ]
     return (
         <>

@@ -29,11 +29,8 @@ const controllerFuncionario = {
 
     login: async (req, res) => {
         const { email, senha } = req.body;
-        console.log(req.body)
         try {
             const validar = await modelFuncionario.validarLogin(email, senha);
-
-            console.log(validar)
 
             if (!validar) {
                 return res.status(401).json({ msg: "Falha ao realizar o login" });

@@ -1,18 +1,21 @@
 import { useEffect, useState } from "react";
+import axios from 'axios';
 import { Link } from "react-router";
 
-function MainCliente() {
-
-    const urlDadosCliente = 'https://jsonplaceholder.typicode.com/users';
-    const [cliente, setCliente] = useState([]);
+const MainCliente = () => {
+    const [clientes, setClientes] = useState([]);
 
     useEffect(() => {
-        async function buscarDadosCliente() {
+        const buscarDadosCliente = async () => {
             try {
-                let resposta = await fetch(urlDadosCliente);
-                let dadosCliente = await resposta.json();
-                setCliente(dadosCliente);
-                console.log(dadosCliente)
+                const response = await axios.get("http://localhost:3001/lis");
+
+                const clientesOrdenados = response.data.sort((a, b) =>
+                    a.nome.localeCompare(b.nome)
+                );
+
+                setClientes(clientesOrdenados);
+
             } catch (erro) {
                 console.log(erro);
             }
@@ -32,7 +35,7 @@ function MainCliente() {
             });
 
             if (resposta.ok) {
-                setCliente(cliente.filter(c => c.id !== id));
+                setClientes(clientes.filter(c => c.id !== id));
                 alert("Cliente excluído com sucesso!");
             } else {
                 alert("Erro ao excluir o cliente.");
@@ -63,7 +66,7 @@ function MainCliente() {
                         </thead>
                         <tbody>
                             {
-                                cliente.map((cliente) => (
+                                clientes.map((cliente) => (
                                     <tr key={cliente.id} className="ph-corpo-cor-table">
                                         <td>{cliente.id}</td>
                                         <td>{cliente.name}</td>
