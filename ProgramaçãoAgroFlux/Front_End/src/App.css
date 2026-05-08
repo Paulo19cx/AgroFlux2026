@@ -236,7 +236,7 @@
      }
 
      .ph-background-img {
-         background-image: url(./assets/img/img-fundo.png);
+         background-image: url(./assets/img/imagem\ login\ novo.png);
          background-repeat: no-repeat;
          background-size: cover;
          width: 100vw;
@@ -1584,6 +1584,9 @@
      color: #fd7e14;
  }
 
+ .cor-pesquisa{
+    background-color: #E3FFEC;
+ }
 
 
 
