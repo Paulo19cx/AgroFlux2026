@@ -12,7 +12,21 @@ function MainFornecedores() {
                     <div className="card-body">
                         <h5 className="card-title">GAG fértil Ltda</h5>
                         <h6 className="card-title">12.345.678/0001-90 </h6>
-                        <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
+                        <div className="d-flex p-2">
+                            <i class="fi fi-rr-clip-mail"></i><p className="card-text" >contato@agrofertil.com.br</p>
+                        </div>
+                        <div className="d-flex p-2">
+                            <i class="fi fi-rr-phone-call"></i><p className="card-text">14 3456-7890</p>
+                        </div>
+                        <div className="d-flex p-2">
+                            <i class="fi fi-bs-marker"></i><p className="card-text"> São Paulo</p>
+                        </div>
+                        <div className="d-flex p-2">
+                            <i class="fi fi-rs-box-alt"></i><p className="card-text"> Categorias:</p>
+                        </div>
+                         <li className="mb-3 text-center bm-linha bm-cor-fundo rounded-4 bm-cor-texto-ativo">
+                                        Fertilizante
+                                    </li>
                         <a href="#" className="btn btn-primary">Go somewhere</a>
                     </div>
                 </div>

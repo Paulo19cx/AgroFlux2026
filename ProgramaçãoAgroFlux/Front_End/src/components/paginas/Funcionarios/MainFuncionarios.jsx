@@ -45,7 +45,7 @@ const MainFuncionarios = () => {
     //     { id: 6, nome: "Aubrey Drake Graham", cargo: "Vendedor técnico", email: "drake@aubrey.com", remuneracao: "R$ 5.500", foto: FotoDrake },
     //     { id: 7, nome: "Billie Eillish Pirate Baird O’ Connell", cargo: "Analista de produtos", email: "billie.e@pirate.com", remuneracao: "R$ 6.000", foto: FotoBillie },
     //     { id: 8, nome: "Kanye Omari West", cargo: "Gerente agrônomico", email: "k@yewest.com", remuneracao: "R$8.000", foto: Fotoye },
-    //     { id: 9, nome: "Gabriel Porto", cargo: "Analista de produtos", email: "gab@porto.com", remuneracao: "R$6.000", foto: FotoGP },
+    //    { id: 9, nome: "Gabriel Porto", cargo: "Analista de produtos", email: "gab@porto.com", remuneracao: "R$6.000", foto: FotoGP },
     // ]
     return (
         <>
