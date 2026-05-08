@@ -236,7 +236,7 @@
      }
 
      .ph-background-img {
-         background-image: url(./assets/img/img-fundo.png);
+         background-image: url(./assets/img/imagem\ login\ novo.png);
          background-repeat: no-repeat;
          background-size: cover;
          width: 100vw;
@@ -1584,6 +1584,9 @@
      color: #fd7e14;
  }
 
+ .cor-pesquisa{
+    background-color: #E3FFEC;
+ }
 
 
 
@@ -1986,6 +1989,35 @@
      color: #00A63E;
      border: 2px solid #00A63E;
  }
+ .jp-verde-circulo {
+    width: 60px;
+    height: 60px;
+    border-radius: 100%;
+    background-color: #DCFCE7;
+    position: absolute;
+    right: 20px;
+    top: 30px;
+}
+
+.jp-vermelho-circulo {
+    width: 60px;
+    height: 60px;
+    border-radius: 100%;
+    background-color: #FFD6D6;
+    position: absolute;
+    right: 20px;
+    top: 30px;
+}
+
+.jp-azul-circulo {
+    width: 60px;
+    height: 60px;
+    border-radius: 100%;
+    background-color: #DBEAFE;
+    position: absolute;
+    right: 20px;
+    top: 30px;
+}
 
  .jp-cor-saida {
      color: #E60000;
@@ -2003,7 +2035,12 @@
      box-shadow: 0 1rem 3rem rgba(0, 0, 0, .175) !important;
      /* Aumenta a sombra */
  }
-
+ .jp-icon {
+    font-size: 2rem;
+    position: absolute;
+    left: 14px;
+    top: 9px;
+}
  .jp-linha {
      width: 75px !important;
  }
@@ -2015,14 +2052,18 @@
 
  .jp-cor-numero-1 {
      color: #00A63E;
+     font-size: 50px;
+     
  }
 
  .jp-cor-numero-2 {
      color: #b60909;
+     font-size: 50px;
  }
 
  .jp-cor-numero-3 {
      color: #0626df;
+     font-size: 50px;
  }
  .jp-container-tabelas {
     display: flex; 
