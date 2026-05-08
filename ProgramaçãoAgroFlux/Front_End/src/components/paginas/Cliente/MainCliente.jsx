@@ -2,16 +2,14 @@ import { useEffect, useState } from "react";
 import axios from 'axios';
 import { Link } from "react-router";
 
-const ListarClientes = () => {
+const MainCliente = () => {
     const [clientes, setClientes] = useState([]);
 
     useEffect(() => {
         const buscarDadosCliente = async () => {
             try {
                 const response = await axios.get("http://localhost:3001/lis");
-                let dadosCliente = await resposta.json();
-                setCliente(dadosCliente);
-                console.log(dadosCliente)
+                
             } catch (erro) {
                 console.log(erro);
             }
