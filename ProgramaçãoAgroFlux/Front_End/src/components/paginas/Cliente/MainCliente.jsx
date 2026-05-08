@@ -1,15 +1,14 @@
 import { useEffect, useState } from "react";
+import axios from 'axios';
 import { Link } from "react-router";
 
-function MainCliente() {
-
-    const urlDadosCliente = 'https://jsonplaceholder.typicode.com/users';
-    const [cliente, setCliente] = useState([]);
+const ListarClientes = () => {
+    const [clientes, setClientes] = useState([]);
 
     useEffect(() => {
-        async function buscarDadosCliente() {
+        const buscarDadosCliente = async () => {
             try {
-                let resposta = await fetch(urlDadosCliente);
+                const response = await axios.get("http://localhost:3001/lis");
                 let dadosCliente = await resposta.json();
                 setCliente(dadosCliente);
                 console.log(dadosCliente)

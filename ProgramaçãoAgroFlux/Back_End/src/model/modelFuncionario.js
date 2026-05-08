@@ -1,4 +1,5 @@
 import conexao from '../../config/db.js';
+import jwt from 'jsonwebtoken';
 import bcrypt from 'bcrypt';
 
 const modelFuncionario = {
@@ -19,22 +20,22 @@ const modelFuncionario = {
     validarLogin: async (email, senha) => {
         try {
             const [consulta] = await modelFuncionario.buscarEmail(email);
-
-            console.log(consulta)
         
             if (consulta.length > 0) {
                 const combinacao = await bcrypt.compare(senha, consulta[0].senha);
                 
                 if (combinacao) {
-                    console.log(combinacao)
-                    return { id_usuario: consulta[0].id, nome: consulta[0].nome };
+                    const accessToken = jwt.sign(
+                         { id_usuario: consulta[0].id, nome: consulta[0].nome, email: consulta[0].email },
+                         process.env.JWT_SECRET,
+                         { expiresIn: '25m' }
+                    );
+
+                    return {accessToken, id: consulta[0].id};
                 } 
                 else {
                     return null;
                 }
-            }
-            else{
-                return null;
             }
         }
         catch (erro) {

@@ -138,3 +138,33 @@ CREATE TABLE estoque (
     CONSTRAINT fk_estoque_empresa FOREIGN KEY (empresa_id) REFERENCES empresa(id),
     CONSTRAINT fk_estoque_produto FOREIGN KEY (produto_id) REFERENCES produto(id)
 );
+
+
+-- Alterações
+
+CREATE TABLE funcionario_endereco(
+    id INT(11) NOT NULL AUTO_INCREMENT,
+    endereco_id INT(11) NOT NULL,
+    funcionario_id INT(11) NOT NULL,
+    PRIMARY KEY(id)
+);
+
+CREATE TABLE cliente_endereco(
+    id INT(11) NOT NULL AUTO_INCREMENT,
+    endereco_id INT(11) NOT NULL,
+    cliente_id INT(11) NOT NULL,
+    PRIMARY KEY(id)
+);
+
+CREATE TABLE fornecedor_endereco(
+    id INT(11) NOT NULL AUTO_INCREMENT,
+    endereco_id INT(11) NOT NULL,
+    fornecedor_id INT(11) NOT NULL,
+    PRIMARY KEY(id)
+);
+
+ALTER TABLE cliente DROP FOREIGN KEY fk_cliente_endereco;
+ALTER TABLE cliente DROP COLUMN cliente_endereco;
+
+ALTER TABLE fornecedor DROP FOREIGN KEY fk_fornecedor_endereco;
+ALTER TABLE fornecedor DROP COLUMN endereco_id;
