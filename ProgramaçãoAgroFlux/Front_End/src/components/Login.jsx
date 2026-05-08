@@ -14,7 +14,7 @@ function Login() {
             const response = await axios.post('http://localhost:3001/login', { email, senha });
 
             if (response.status === 200) {
-                const idUsuario = response.data.id;
+                const idUsuario = response.data.id_usuario;
                 localStorage.setItem('id', idUsuario)
 
                 navigate('/home');

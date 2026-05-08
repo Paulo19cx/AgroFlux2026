@@ -1,4 +1,4 @@
-import { useParams } from "react-router";
+import { Link, useParams } from "react-router";
 import { useState, useActionState, useEffect } from "react";
 function MainEditarFuncionario() {
 
@@ -9,6 +9,7 @@ function MainEditarFuncionario() {
     const [cep, setCep] = useState('');
     const [cidade, setCidade] = useState('');
     const [estado, setEstado] = useState('');
+    const [situacao, setSituacao] = useState('ATIVO');
     const [endereco, setEndereco] = useState('');
 
     let urlViaCep = `https://viacep.com.br/ws/${cep}/json/ `;
@@ -53,6 +54,7 @@ function MainEditarFuncionario() {
                             alert('Cadastrado com sucesso');
                             setNome('');
                             setSobrenome('');
+                            setSituacao('ATIVO');
                         } else {
                             alert('Erro ao cadastrar!');
                         }
@@ -79,6 +81,7 @@ function MainEditarFuncionario() {
         setEndereco(dadosFuncionario.address.street);
         setCidade(dadosFuncionario.address.city);
         setEstado(dadosFuncionario.address.suite);
+        setSituacao(dadosFuncionario.situacao || 'ATIVO');
     
      }
      getDadosFuncionario();
@@ -86,56 +89,63 @@ function MainEditarFuncionario() {
      }, [id] );
 
     return (
-        <>
-            <main className="ph-main-corpo px-md-4 ph-bg-color">
-                <div
-                    className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom"
-                >
-                    <h1 className="h2">Editar Funcionário: {id}</h1>
-                </div>
+        <main className="ph-main-corpo px-md-4 ph-bg-color">
+            <div className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 text-black">
+                <h1 className="h5 mt-3">Editar Funcionário: {id}</h1>
+            </div>
 
-                <form action={acaoAtualizar} className="row g-3">
+            <div className="col-md-12 col-lg-12 ph-cor-fundo-branco p-4 rounded-3 shadow-lg mb-5">
+                <form action={acaoAtualizar} className="row g-3 text-black">
+                    <h6 className="fw-bold mb-0">Principal</h6>
                     <div className="col-md-6">
-                        <label htmlFor="nome" className="form-label">Nome:</label>
-                        <input value={nome} onChange={(e) => setNome(e.target.value)} type="text" className="form-control" id="nome" name="nome" required />
-                    </div>
-                    <div className="col-md-6">
-                        <label htmlFor="sobrenome" className="form-label">Sobrenome:</label>
-                        <input value={sobrenome} onChange={(e) => setSobrenome(e.target.value)} type="text" className="form-control" id="sobrenome" name="sobrenome" required />
-                    </div>
-                    <div className="col-12">
-                        <label htmlFor="email" className="form-label">Email:</label>
-                        <input value={email} onChange={(e) => setEmail(e.target.value)} type="email" className="form-control" id="email" name="email" placeholder="Digite seu melhor email" required />
-                    </div>
-                    <div className="col-md-2">
-                        <label htmlFor="cep" className="form-label">Cep:</label>
-                        <input value={cep} onBlur={(e) => buscarDadosCep(e.target.value)} onChange={(e) => setCep(e.target.value)} type="text" className="form-control" id="cep" name="cep" required />
+                        <label htmlFor="nome" className="form-label small mb-1">Nome</label>
+                        <input value={nome} onChange={(e) => setNome(e.target.value)} type="text" className="form-control ph-input" id="nome" name="nome" required />
                     </div>
                     <div className="col-md-6">
-                        <label htmlFor="cidade" className="form-label">Cidade:</label>
-                        <input value={cidade} onChange={(e) => setCidade(e.target.value)} type="text" className="form-control" id="cidade" name="cidade" required />
+                        <label htmlFor="sobrenome" className="form-label small mb-1">Sobrenome</label>
+                        <input value={sobrenome} onChange={(e) => setSobrenome(e.target.value)} type="text" className="form-control ph-input" id="sobrenome" name="sobrenome" required />
                     </div>
                     <div className="col-md-4">
-                        <label htmlFor="estado" className="form-label">Estado</label>
-                        <input value={estado} onChange={(e) => setEstado(e.target.value)} type="text" className="form-control" id="estado" name="estado" required />
-
+                        <label htmlFor="email" className="form-label small mb-1">Email</label>
+                        <input value={email} onChange={(e) => setEmail(e.target.value)} type="email" className="form-control ph-input" id="email" name="email" required />
+                    </div>
+                    <div className="col-md-4">
+                        <label htmlFor="cidade" className="form-label small mb-1">Cidade</label>
+                        <input value={cidade} onChange={(e) => setCidade(e.target.value)} type="text" className="form-control ph-input" id="cidade" name="cidade" required />
+                    </div>
+                    <div className="col-md-4">
+                        <label htmlFor="estado" className="form-label small mb-1">Estado</label>
+                        <input value={estado} onChange={(e) => setEstado(e.target.value)} type="text" className="form-control ph-input" id="estado" name="estado" required />
+                    </div>
+                    <div className="col-md-3">
+                        <label htmlFor="cep" className="form-label small mb-1">CEP</label>
+                        <input value={cep} onBlur={(e) => buscarDadosCep(e.target.value)} onChange={(e) => setCep(e.target.value)} type="text" className="form-control ph-input" id="cep" name="cep" required />
+                    </div>
+                    <div className="col-md-3">
+                        <label htmlFor="situacao" className="form-label small mb-1">Situação</label>
+                        <select value={situacao} onChange={(e) => setSituacao(e.target.value)} className="form-select ph-input" id="situacao" name="situacao">
+                            <option value="ATIVO">ATIVO</option>
+                            <option value="INATIVO">INATIVO</option>
+                        </select>
                     </div>
 
+                    <h6 className="fw-bold mb-0 mt-4">Endereço</h6>
                     <div className="col-12">
-                        <label htmlFor="endereco" className="form-label">Endereço:</label>
-                        <input value={endereco} onChange={(e) => setEndereco(e.target.value)} type="text" className="form-control" id="endereco" name="endereco" placeholder="Rua, Avenida..." required />
+                        <label htmlFor="endereco" className="form-label small mb-1">Endereço</label>
+                        <input value={endereco} onChange={(e) => setEndereco(e.target.value)} type="text" className="form-control ph-input" id="endereco" name="endereco" required />
                     </div>
 
-                    <div className="col-12">
-                        <button disabled={pendente} type="submit" className="btn bm-cor-botao">
+                    <div className="col-12 mt-4">
+                        <button disabled={pendente} type="submit" className="ph-btn-forms ph-btn-forms-cor-cadastrar me-2">
                             {pendente ? 'Atualizando...' : 'Atualizar'}
                         </button>
+                        <Link to="/funcionarios" className="ph-btn-forms ph-btn-forms-cor-cancelar text-decoration-none">
+                            Voltar
+                        </Link>
                     </div>
                 </form>
-
-
-            </main>
-        </>
+            </div>
+        </main>
     );
 }
 export default MainEditarFuncionario;

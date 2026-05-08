@@ -1,20 +1,26 @@
 import { useState, useActionState } from "react";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
+import axios from 'axios';
 
 function MainCadastrarFuncionario() {
-
     const [nome, setNome] = useState('');
+    const [cpf, setCpf] = useState('');
+    const [dataNascimento, setDataNascimento] = useState('');
     const [email, setEmail] = useState('');
     const [telefone, setTelefone] = useState('');
     const [cargo, setCargo] = useState('');
     const [dataAdmissao, setDataAdmissao] = useState('');
     const [salario, setSalario] = useState('');
+    const [situacao, setSituacao] = useState('ATIVO');
+    const [senha, setSenha] = useState('');
     const [endereco, setEndereco] = useState('');
     const [numero, setNumero] = useState('');
     const [cep, setCep] = useState('');
     const [bairro, setBairro] = useState('');
     const [cidade, setCidade] = useState('');
     const [estado, setEstado] = useState('');
+
+    const navigate = useNavigate();
 
     async function buscarDadosCep() {
         if (cep.length < 8) return;
@@ -36,26 +42,50 @@ function MainCadastrarFuncionario() {
 
     const [estadoCadastro, acaoCadastro, pendente] = useActionState(
         async (estadoAnterior, formData) => {
-            const dadosFuncionario = JSON.stringify(Object.fromEntries(formData.entries()));
-            await new Promise((resolve) => setTimeout(resolve, 2000));
+            // const dadosFuncionario = JSON.stringify(Object.fromEntries(formData.entries()));
+            // await new Promise((resolve) => setTimeout(resolve, 2000));
+
+            if (!nome || !cpf || !dataNascimento || !email || !telefone || !cargo || !dataAdmissao || !salario || !situacao || !senha || !endereco || !numero || !cep || !bairro || !cidade || !estado) {
+                alert('Todos os campos devem ser preenchidos');
+                return;
+            }
+
+            const funcionario = {
+                nome,
+                cpf,
+                dataNascimento,
+                email,
+                telefone,
+                cargo,
+                dataAdmissao,
+                salario,
+                situacao,
+                senha,
+                endereco,
+                numero,
+                cep,
+                bairro,
+                cidade,
+                estado
+            };
             
             try {
-                const resposta = await fetch('https://jsonplaceholder.typicode.com/posts', {
-                    method: 'POST',
-                    body: dadosFuncionario,
-                    headers: {
-                        'Content-type': 'application/json; charset=UTF-8',
-                    },
-                });
+                const response = await axios('https://localhost:3001/cadastrar-funcionario', funcionario)
+                    
 
-                if (resposta.ok) {
+                if (response.status === 201) {
                     alert('Funcionário cadastrado com sucesso!');
+                    
                     setNome('');
+                    setCpf('');
+                    setDataNascimento('');
                     setEmail('');
                     setTelefone('');
                     setCargo('');
                     setDataAdmissao('');
                     setSalario('');
+                    setSituacao('ATIVO');
+                    setSenha('');
                     setEndereco('');
                     setNumero('');
                     setCep('');
@@ -84,11 +114,19 @@ function MainCadastrarFuncionario() {
                         <label htmlFor="nome" className="form-label small mb-1">Nome Completo</label>
                         <input value={nome} onChange={(e) => setNome(e.target.value)} type="text" className="form-control ph-input" id="nome" name="nome" required />
                     </div>
+                    <div className="col-md-3">
+                        <label htmlFor="cpf" className="form-label small mb-1">CPF</label>
+                        <input value={cpf} onChange={(e) => setCpf(e.target.value)} type="text" className="form-control ph-input" id="cpf" name="cpf" required />
+                    </div>
+                    <div className="col-md-4">
+                        <label htmlFor="dataNascimento" className="form-label small mb-1">Data de Nascimento</label>
+                        <input value={dataNascimento} onChange={(e) => setDataNascimento(e.target.value)} type="date" className="form-control ph-input" id="dataNascimento" name="dataNascimento" />
+                    </div>
                     <div className="col-md-4">
                         <label htmlFor="email" className="form-label small mb-1">Email</label>
                         <input value={email} onChange={(e) => setEmail(e.target.value)} type="email" className="form-control ph-input" id="email" name="email" required />
                     </div>
-                    <div className="col-md-3">
+                    <div className="col-md-4">
                         <label htmlFor="telefone" className="form-label small mb-1">Telefone</label>
                         <input value={telefone} onChange={(e) => setTelefone(e.target.value)} type="text" className="form-control ph-input" id="telefone" name="telefone" />
                     </div>
@@ -97,13 +135,24 @@ function MainCadastrarFuncionario() {
                         <label htmlFor="cargo" className="form-label small mb-1">Cargo</label>
                         <input value={cargo} onChange={(e) => setCargo(e.target.value)} type="text" className="form-control ph-input" id="cargo" name="cargo" />
                     </div>
-                    <div className="col-md-4">
-                        <label htmlFor="data_admissao" className="form-label small mb-1">Data de Admissão</label>
-                        <input value={dataAdmissao} onChange={(e) => setDataAdmissao(e.target.value)} type="date" className="form-control ph-input" id="data_admissao" name="data_admissao" />
+                    <div className="col-md-3">
+                        <label htmlFor="dataAdmissao" className="form-label small mb-1">Data de Admissão</label>
+                        <input value={dataAdmissao} onChange={(e) => setDataAdmissao(e.target.value)} type="date" className="form-control ph-input" id="dataAdmissao" name="dataAdmissao" />
                     </div>
-                    <div className="col-md-4">
+                    <div className="col-md-3">
                         <label htmlFor="salario" className="form-label small mb-1">Salário</label>
                         <input value={salario} onChange={(e) => setSalario(e.target.value)} type="text" className="form-control ph-input" id="salario" name="salario" />
+                    </div>
+                    <div className="col-md-3">
+                        <label htmlFor="situacao" className="form-label small mb-1">Situação</label>
+                        <select value={situacao} onChange={(e) => setSituacao(e.target.value)} className="form-select ph-input" id="situacao" name="situacao">
+                            <option value="ATIVO">ATIVO</option>
+                            <option value="INATIVO">INATIVO</option>
+                        </select>
+                    </div>
+                    <div className="col-md-3">
+                        <label htmlFor="senha" className="form-label small mb-1">Senha de login</label>
+                        <input value={senha} onChange={(e) => setSenha(e.target.value)} type="text" className="form-control ph-input" id="senha" name="senha" />
                     </div>
 
                     <h6 className="fw-bold mb-0 mt-4">Endereço</h6>
@@ -137,11 +186,8 @@ function MainCadastrarFuncionario() {
                         <button disabled={pendente} type="submit" className="ph-btn-forms ph-btn-forms-cor-cadastrar me-2">
                             {pendente ? 'Cadastrando...' : 'Cadastrar'}
                         </button>
-                        <button disabled={pendente} type="submit" className="ph-btn-forms ph-btn-forms-cor-cadastrar me-2">
-                            {pendente ? 'Cadastrando...' : 'Cadastrar e Permanecer'}
-                        </button>
                         <Link to="/funcionarios" className="ph-btn-forms ph-btn-forms-cor-cancelar text-decoration-none">
-                            Cancelar
+                            Voltar
                         </Link>
                     </div>
                 </form>

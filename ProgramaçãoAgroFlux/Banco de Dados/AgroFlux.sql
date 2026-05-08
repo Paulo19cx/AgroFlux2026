@@ -40,6 +40,7 @@ CREATE TABLE cliente (
 CREATE TABLE funcionario (
     id INT(11) NOT NULL AUTO_INCREMENT,
     empresa_id INT(11) NOT NULL,
+    endereco_id INT(11) NOT NULL,
     nome VARCHAR(150) NOT NULL,
     cpf CHAR(11) NOT NULL UNIQUE,
     cargo VARCHAR(50) NOT NULL,
@@ -137,4 +138,18 @@ CREATE TABLE estoque (
     UNIQUE KEY uk_estoque_empresa_produto (empresa_id, produto_id),
     CONSTRAINT fk_estoque_empresa FOREIGN KEY (empresa_id) REFERENCES empresa(id),
     CONSTRAINT fk_estoque_produto FOREIGN KEY (produto_id) REFERENCES produto(id)
+);
+
+
+
+-- MODIFICAÇÕES FEITAS
+
+CREATE TABLE funcionario_endereco(
+    id INT(11) NOT NULL AUTO_INCREMENT,
+    id_funcionario INT(11) NOT NULL,
+    id_endereco INT(11) NOT NULL,
+    UNIQUE (id_funcionario, id_endereco),
+    FOREIGN KEY (id_funcionario) REFERENCES funcionario(id),
+    FOREIGN KEY (id_endereco) REFERENCES endereco(id),
+    PRIMARY KEY(id)
 );
