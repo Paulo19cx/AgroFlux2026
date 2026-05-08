@@ -9,7 +9,13 @@ const MainCliente = () => {
         const buscarDadosCliente = async () => {
             try {
                 const response = await axios.get("http://localhost:3001/lis");
-                
+
+                const clientesOrdenados = response.data.sort((a, b) =>
+                    a.nome.localeCompare(b.nome)
+                );
+
+                setClientes(clientesOrdenados);
+
             } catch (erro) {
                 console.log(erro);
             }
@@ -29,7 +35,7 @@ const MainCliente = () => {
             });
 
             if (resposta.ok) {
-                setCliente(cliente.filter(c => c.id !== id));
+                setClientes(clientes.filter(c => c.id !== id));
                 alert("Cliente excluído com sucesso!");
             } else {
                 alert("Erro ao excluir o cliente.");
@@ -60,7 +66,7 @@ const MainCliente = () => {
                         </thead>
                         <tbody>
                             {
-                                cliente.map((cliente) => (
+                                clientes.map((cliente) => (
                                     <tr key={cliente.id} className="ph-corpo-cor-table">
                                         <td>{cliente.id}</td>
                                         <td>{cliente.name}</td>

@@ -21,3 +21,5 @@ const modelCliente = {
         }
     }
 }
+
+export default modelCliente;
