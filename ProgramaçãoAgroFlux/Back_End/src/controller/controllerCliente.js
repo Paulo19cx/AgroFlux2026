@@ -2,14 +2,14 @@ import modelCliente from '../model/modelCliente.js'
 
 const controllerCliente = {
     cadastrar: async (req, res) => {
-        const {empresa_id, nome_razao_social, nome_fantasia, cnpj, email, logradouro, numero, bairro, cidade, estado, cep, endereco_id, cliente_id} = req.body;
+        const {nome_razao_social, nome_fantasia, cnpj, email, telefone, tipo, principal, logradouro, numero, bairro, cidade, estado, cep, endereco_id, cliente_id} = req.body;
+
+        console.log(req.body)
 
         try {
-            const [cadastroC] = await modelCliente.cadastrar(empresa_id, nome_razao_social, nome_fantasia, cnpj, email);
-            const [cadastroE] = await modelCliente.cadastrar(logradouro, numero, bairro, cidade, estado, cep);
-            const [cadastroClienteEndereco] = await modelCliente.cadastrar(endereco_id, cliente_id);
+            const [cadastro] = await modelCliente.cadastrar(nome_razao_social, nome_fantasia, cnpj, email, telefone, tipo, principal, logradouro, numero, bairro, cidade, estado, cep);
 
-            if (cadastroC.affectedRows && cadastroE.affectedRows && cadastroClienteEndereco.affectedRows > 0) {
+            if (cadastro.affectedRows > 0) {
                     return res.status(201).json({ msg: "Cadastro com sucesso" });
                 }
                 else {

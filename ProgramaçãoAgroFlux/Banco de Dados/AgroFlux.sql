@@ -74,7 +74,7 @@ CREATE TABLE telefone (
     cliente_id INT(11) NULL,
     funcionario_id INT(11) NULL,
     fornecedor_id INT(11) NULL,
-    numero VARCHAR(15) NOT NULL,
+    telefone VARCHAR(15) NOT NULL,
     tipo VARCHAR(20),
     principal BOOLEAN NOT NULL, -- SIM ou NAO
     PRIMARY KEY (id),
