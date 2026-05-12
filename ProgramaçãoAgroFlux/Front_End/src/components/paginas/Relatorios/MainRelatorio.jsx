@@ -1,4 +1,6 @@
 import Grafico from "../../Template/Grafico";
+import GraficoLinha from "../../template/GraficoLinha";
+import GraicoPizza from "../../template/GraficoPizza";
 
 function MainRelatorio() {
 
@@ -87,8 +89,20 @@ function MainRelatorio() {
                     </div>
                 </div>
 
-                {/* Grafico de Barra */}
-                <Grafico titulo="Venda x Custos" periodo="(Último 6 Meses)" />
+                <div className="d-flex justify-content-between flex-wrap flex-md-nowrap align-itens-center pt-3 pb-2">
+                    {/* Grafico de Barra */}
+                    <div className="d-flex mb-3 mt-3 w-50 p-3 shadow p-3 mb-5 bg-body-tertiary rounded">
+                        <div className="hh-fundo-grafico"><Grafico titulo="Venda x Custos" periodo="(Último 6 Meses)" /></div>
+                    </div>
+
+                    {/* Grafico de Barra */}
+                    <div className="hh-fundo-grafico d-flex mb-3 mt-3 w-50 p-3 shadow p-3 mb-5 bg-body-tertiary rounded ms-3">
+                        <GraficoLinha titulo="Evolução do Lucro" />
+                    </div>
+
+                    {/* Grafico de Pizza */}
+                    
+                </div>
 
             </main>
         </>
