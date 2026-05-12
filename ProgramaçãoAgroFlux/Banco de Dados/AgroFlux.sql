@@ -147,25 +147,33 @@ CREATE TABLE funcionario_endereco(
     id INT(11) NOT NULL AUTO_INCREMENT,
     endereco_id INT(11) NOT NULL,
     funcionario_id INT(11) NOT NULL,
-    PRIMARY KEY(id)
+    PRIMARY KEY(id),
+    CONSTRAINT fk_funcionario_endereco_endereco FOREIGN KEY (endereco_id) REFERENCES endereco(id) ON DELETE CASCADE,
+    CONSTRAINT fk_funcionario_endereco_funcionario FOREIGN KEY (funcionario_id) REFERENCES funcionario(id) ON DELETE CASCADE
 );
 
 CREATE TABLE cliente_endereco(
     id INT(11) NOT NULL AUTO_INCREMENT,
     endereco_id INT(11) NOT NULL,
     cliente_id INT(11) NOT NULL,
-    PRIMARY KEY(id)
+    PRIMARY KEY(id),
+    CONSTRAINT fk_cliente_endereco_endereco FOREIGN KEY (endereco_id) REFERENCES endereco(id) ON DELETE CASCADE,
+    CONSTRAINT fk_cliente_endereco_cliente FOREIGN KEY (cliente_id) REFERENCES cliente(id) ON DELETE CASCADE
 );
 
 CREATE TABLE fornecedor_endereco(
     id INT(11) NOT NULL AUTO_INCREMENT,
     endereco_id INT(11) NOT NULL,
     fornecedor_id INT(11) NOT NULL,
-    PRIMARY KEY(id)
+    PRIMARY KEY(id),
+    CONSTRAINT fk_fornecedor_endereco_endereco FOREIGN KEY (endereco_id) REFERENCES endereco(id) ON DELETE CASCADE,
+    CONSTRAINT fk_fornecedor_endereco_fornecedor FOREIGN KEY (fornecedor_id) REFERENCES fornecedor(id) ON DELETE CASCADE
 );
 
 ALTER TABLE cliente DROP FOREIGN KEY fk_cliente_endereco;
-ALTER TABLE cliente DROP COLUMN cliente_endereco;
+ALTER TABLE cliente DROP COLUMN endereco_id;
+
+ALTER TABLE funcionario DROP COLUMN endereco_id;
 
 ALTER TABLE fornecedor DROP FOREIGN KEY fk_fornecedor_endereco;
 ALTER TABLE fornecedor DROP COLUMN endereco_id;
