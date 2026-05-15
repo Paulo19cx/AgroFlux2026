@@ -157,7 +157,7 @@ function MainCadastrarFuncionario() {
 
                     <h6 className="fw-bold mb-0 mt-4">Endereço</h6>
                     <div className="col-md-6">
-                        <label htmlFor="endereco" className="form-label small mb-1">Endereço</label>
+                        <label htmlFor="endereco" className="form-label small mb-1">Rua</label>
                         <input value={endereco} onChange={(e) => setEndereco(e.target.value)} type="text" className="form-control ph-input" id="endereco" name="endereco" />
                     </div>
                     <div className="col-md-2">

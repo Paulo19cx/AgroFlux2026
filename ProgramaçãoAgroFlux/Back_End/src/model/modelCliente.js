@@ -34,7 +34,7 @@ const modelCliente = {
 
     listar: async () => {
         try {
-            const resultado = await conexao.query("SELECT empresa_id, nome_razaoSocial, nome_fantasia, cnpj, email, situacao, telefone FROM cliente");
+            const [resultado] = await conexao.query("SELECT c.id, c.empresa_id, c.nome_razao_social, c.nome_fantasia, c.cnpj, c.email, DATE_FORMAT(data_cadastro, '%d/%m/%Y %H:%i:%s') AS data_cadastro, t.telefone, t.tipo, t.principal, e.logradouro, e.numero, e.bairro, e.cidade, e.estado, e.cep FROM cliente c JOIN telefone t ON c.id = t.cliente_id JOIN cliente_endereco ce ON c.id = ce.cliente_id JOIN endereco e ON e.id = ce.endereco_id");
             return resultado;
         }
         catch (erro) {

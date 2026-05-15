@@ -8,7 +8,9 @@ const MainCliente = () => {
     useEffect(() => {
         const buscarDadosCliente = async () => {
             try {
-                const response = await axios.get("http://localhost:3001/lis");
+                const response = await axios.get("http://localhost:3001/listar-clientes");
+
+                console.log(response)
 
                 const clientesOrdenados = response.data.sort((a, b) =>
                     a.nome.localeCompare(b.nome)
@@ -69,9 +71,9 @@ const MainCliente = () => {
                                 clientes.map((cliente) => (
                                     <tr key={cliente.id} className="ph-corpo-cor-table">
                                         <td>{cliente.id}</td>
-                                        <td>{cliente.name}</td>
+                                        <td>{cliente.nome_fantasia}</td>
                                         <td>{cliente.email}</td>
-                                        <td>{cliente.username}</td>
+                                        <td>{cliente.data_cadastro}</td>
                                         <td>
                                             <Link to={`/editar-cliente/${cliente.id}`} className="text-decoration-none"><i className="fi fi-rr-pencil ph-cor-lapis"></i></Link>
                                             <button onClick={() => deletarCliente(cliente.id)} className="border border-0 bg-transparent"><i className="fi fi-rr-trash ph-cor-lixo"></i></button>

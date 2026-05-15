@@ -3,13 +3,13 @@ import jwt from 'jsonwebtoken';
 import bcrypt from 'bcrypt';
 
 const modelFuncionario = {
-    cadastrar: async (empresa_id, nome, cpf, cargo, email, senha, dataNascimento, dataContratacao, salarioInicial, salarioAtual, situacao) => {
+    cadastrar: async (nome, cpf, cargo, email, senha, dataNascimento, dataContratacao, salarioInicial, salarioAtual, situacao) => {
 
         const senhaHash = await bcrypt.hash(senha, 10);
 
         try {
-            const resultado = await conexao.query("INSERT INTO funcionario (empresa_id, nome, cpf, cargo, email, senha, data_nascimento, data_contratacao, salario_inicial, salario_atual, situacao) VALUES (?,?,?,?,?,?,?,?,?,?,?)",
-                [empresa_id, nome, cpf, cargo, email, senhaHash, dataNascimento, dataContratacao, salarioInicial, salarioAtual, situacao]);
+            const resultado = await conexao.query("INSERT INTO funcionario (nome, cpf, cargo, email, senha, data_nascimento, data_contratacao, salario_inicial, salario_atual, situacao) VALUES (?,?,?,?,?,?,?,?,?,?,?)",
+                [nome, cpf, cargo, email, senhaHash, dataNascimento, dataContratacao, salarioInicial, salarioAtual, situacao]);
             return resultado;
         }
         catch (erro) {

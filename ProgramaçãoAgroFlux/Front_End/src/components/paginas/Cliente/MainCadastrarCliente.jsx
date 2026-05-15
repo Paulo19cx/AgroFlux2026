@@ -6,8 +6,10 @@ function MainCadastrarCliente() {
     const [razaoSocial, setRazaoSocial] = useState('');
     const [nomeFantasia, setNomeFantasia] = useState('');
     const [cnpj, setCnpj] = useState('');
-    const [numero, setNumero] = useState('');
+    const [cpf, setCpf] = useState('');
+    const [telefone, setTelefone] = useState('');
     const [email, setEmail] = useState('');
+    const [tipo, setTipo] = useState('juridica')
     const [endereco, setEndereco] = useState('');
     const [bairro, setBairro] = useState('');
     const [cidade, setCidade] = useState('');
@@ -82,44 +84,58 @@ function MainCadastrarCliente() {
 
                 <div className="col-md-12 col-lg-12 ph-cor-fundo-branco p-4 rounded-3 shadow-lg">
                     <form action={acaoCadastro} className="row g-3 text-black">
+                        <h6 className="fw-bold mb-0">Principal</h6>
                         <div className="col-md-6">
-                            <label htmlFor="razao_social" className="form-label">Razão Social</label>
+                            <label htmlFor="razao_social" className="form-label small mb-1">Razão Social</label>
                             <input value={razaoSocial} onChange={(e) => setRazaoSocial(e.target.value)} type="text" className="form-control ph-input" id="razao_social" name="razao_social" required />
                         </div>
                         <div className="col-md-6">
-                            <label htmlFor="nome_fantasia" className="form-label ">Nome Fantasia</label>
+                            <label htmlFor="nome_fantasia" className="form-label small mb-1">Nome Fantasia</label>
                             <input value={nomeFantasia} onChange={(e) => setNomeFantasia(e.target.value)} type="text" className="form-control ph-input" id="nome_fantasia" name="nome_fantasia" />
                         </div>
-                        <div className="col-4">
-                            <label htmlFor="cnpj" className="form-label">CNPJ</label>
+                        <div className="col-md-2">
+                            <label htmlFor="tipo" className="form-label small mb-1">Tipo</label>
+                            <select value={tipo} onChange={(e) => setTipo(e.target.value)} type="text" className="form-select ph-input" id="tipo" name="tipo">
+                                <option value="fisica">Fisíca</option>
+                                <option value="juridica">Jurídica</option>
+                            </select>
+                        </div>
+                        <div className="col-3">
+                            <label htmlFor="cnpj" className="form-label small mb-1">CNPJ</label>
                             <input value={cnpj} onChange={(e) => setCnpj(e.target.value)} type="text" className="form-control ph-input" id="cnpj" name="cnpj" required />
                         </div>
-                        <div className="col-4">
-                            <label htmlFor="telefone" className="form-label">Telefone</label>
-                            <input value={numero} onChange={(e) => setNumero(e.target.value)} type="text" className="form-control ph-input" id="telefone" name="telefone" required />
+                        <div className="col-3">
+                            <label htmlFor="cpf" className="form-label small mb-1">CPF</label>
+                            <input value={cpf} onChange={(e) => setCpf(e.target.value)} type="text" className="form-control ph-input" id="cpf" name="cpf" required />
                         </div>
-                        <div className="col-md-4">
-                            <label htmlFor="email" className="form-label">Email</label>
+                        <div className="col-4">
+                            <label htmlFor="telefone" className="form-label small mb-1">Telefone</label>
+                            <input value={telefone} onChange={(e) => setTelefone(e.target.value)} type="text" className="form-control ph-input" id="telefone" name="telefone" required />
+                        </div>
+                        <div className="col-md-3">
+                            <label htmlFor="email" className="form-label small mb-1">Email</label>
                             <input value={email} onChange={(e) => setEmail(e.target.value)} type="email" className="form-control ph-input" id="email" name="email" />
                         </div>
+
+                        <h6 className="fw-bold mb-0">Endereço</h6>
                         <div className="col-md-6">
-                            <label htmlFor="endereco" className="form-label">Endereço</label>
+                            <label htmlFor="endereco" className="form-label small mb-1">Rua</label>
                             <input value={endereco} onChange={(e) => setEndereco(e.target.value)} type="text" className="form-control ph-input" id="endereco" name="endereco" />
                         </div>
                         <div className="col-md-3">
-                            <label htmlFor="bairro" className="form-label">Bairro</label>
+                            <label htmlFor="bairro" className="form-label small mb-1">Bairro</label>
                             <input value={bairro} onChange={(e) => setBairro(e.target.value)} type="text" className="form-control ph-input" id="bairro" name="bairro" />
                         </div>
                         <div className="col-md-3">
-                            <label htmlFor="cidade" className="form-label">Cidade</label>
+                            <label htmlFor="cidade" className="form-label small mb-1">Cidade</label>
                             <input value={cidade} onChange={(e) => setCidade(e.target.value)} type="text" className="form-control ph-input" id="cidade" name="cidade" />
                         </div>
                         <div className="col-md-8">
-                            <label htmlFor="estado" className="form-label">Estado</label>
+                            <label htmlFor="estado" className="form-label small mb-1">Estado</label>
                             <input value={estado} onChange={(e) => setEstado(e.target.value)} type="text" className="form-control ph-input" id="estado" name="estado" />
                         </div>
                         <div className="col-md-4">
-                            <label htmlFor="cep" className="form-label">CEP</label>
+                            <label htmlFor="cep" className="form-label small mb-1">CEP</label>
                             <input value={cep} onBlur={(e) => buscarDadosCep(e.target.value)} onChange={(e) => setCep(e.target.value)} type="text" className="form-control ph-input" id="cep" name="cep" />
                         </div>
 
