@@ -743,7 +743,7 @@
  }
 
  .bm-linha {
-     width: 75px !important;
+     width: 85px !important;
  }
 
  .bm-cor-botao {
@@ -892,7 +892,9 @@
      overflow: hidden;
      margin-top: 20px;
  }
-
+ li{
+    list-style: none;
+ }
 
 
 
