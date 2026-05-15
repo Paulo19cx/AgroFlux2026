@@ -1,5 +1,5 @@
 import Grafico from "../../Template/Grafico";
-import GraficoLinha from "../../template/GraficoLinha";
+import GraficoLinha from "../../template/GraficoLinha.jsx";
 
 
 function MainRelatorio() {
