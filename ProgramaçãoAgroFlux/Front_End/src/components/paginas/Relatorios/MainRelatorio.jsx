@@ -1,6 +1,6 @@
 import Grafico from "../../Template/Grafico";
 import GraficoLinha from "../../template/GraficoLinha";
-import GraicoPizza from "../../template/GraficoPizza";
+
 
 function MainRelatorio() {
 
