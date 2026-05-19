@@ -10,10 +10,8 @@ const MainCliente = () => {
             try {
                 const response = await axios.get("http://localhost:3001/listar-clientes");
 
-                console.log(response)
-
                 const clientesOrdenados = response.data.sort((a, b) =>
-                    a.nome.localeCompare(b.nome)
+                    a.nome_fantasia.localeCompare(b.nome_fantasia)
                 );
 
                 setClientes(clientesOrdenados);
