@@ -1,5 +1,7 @@
 import Grafico from "../../Template/Grafico";
+import GraficoBarraDupla from "../../template/GraficoBarraDupla.jsx";
 import GraficoLinha from "../../template/GraficoLinha.jsx";
+import GraficoPizza from "../../template/GraficoPizza.jsx";
 
 
 function MainRelatorio() {
@@ -14,7 +16,7 @@ function MainRelatorio() {
                 {/* Código das Estastísticas */}
                 <div className="row">
                     <div className="col-sm-3 hh-mb">
-                        <div className="card">
+                        <div className="card shadow bg-body-tertiary rounded ms-3">
                             <div className="card-body">
                                 <h6 className="card-title text-secondary">Total em Vendas</h6>
                                 <p className="h3 card-text text-success">R$ 336.000</p>
@@ -24,7 +26,7 @@ function MainRelatorio() {
                         </div>
                     </div>
                     <div className="col-sm-3">
-                        <div className="card ">
+                        <div className="card shadow bg-body-tertiary rounded ms-3">
                             <div className="card-body">
                                 <h6 className="card-title text-secondary">Lucro Total</h6>
                                 <p className="h3 card-text text-success">R$ 130.000</p>
@@ -34,7 +36,7 @@ function MainRelatorio() {
                         </div>
                     </div>
                     <div className="col-sm-3">
-                        <div className="card">
+                        <div className="card shadow bg-body-tertiary rounded ms-3">
                             <div className="card-body">
                                 <h6 className="card-title text-secondary">Custos Totais</h6>
                                 <p className="h3 card-text text-danger">R$ 206.000</p>
@@ -44,7 +46,7 @@ function MainRelatorio() {
                         </div>
                     </div>
                     <div className="col-sm-3">
-                        <div className="card">
+                        <div className="card shadow bg-body-tertiary rounded ms-3">
                             <div className="card-body">
                                 <h6 className="card-title text-secondary">Ticket Médio</h6>
                                 <p className="h3 card-text text-primary">R$ 661.42</p>
@@ -58,7 +60,7 @@ function MainRelatorio() {
                 {/* Código Estastísticas do Estoque */}
                 <div className="row">
                     <div className="col-sm-4 d-flex justify-content-center">
-                        <div className="card">
+                        <div className="card shadow bg-body-tertiary rounded ms-3">
                             <div className="card-body">
                                 <h6 className="card-title text-secondary">Valor em Estoque</h6>
                                 <p className="h3 card-text text-roxo">R$ 50.600</p>
@@ -68,7 +70,7 @@ function MainRelatorio() {
                         </div>
                     </div>
                     <div className="col-sm-4">
-                        <div className="card ">
+                        <div className="card shadow bg-body-tertiary rounded ms-3">
                             <div className="card-body">
                                 <h6 className="card-title text-secondary">Estoque Total</h6>
                                 <p className="h3 card-text text-primary">750</p>
@@ -78,7 +80,7 @@ function MainRelatorio() {
                         </div>
                     </div>
                     <div className="col-sm-4">
-                        <div className="card">
+                        <div className="card shadow bg-body-tertiary rounded ms-3">
                             <div className="card-body">
                                 <h6 className="card-title text-secondary">Estoque Total</h6>
                                 <p className="h3 card-text text-laranja">2</p>
@@ -90,19 +92,30 @@ function MainRelatorio() {
                 </div>
 
                 <div className="d-flex justify-content-between flex-wrap flex-md-nowrap align-itens-center pt-3 pb-2">
-                    {/* Grafico de Barra */}
+                    {/* Grafico de Barra Dupla */}
                     <div className="d-flex mb-3 mt-3 w-50 p-3 shadow p-3 mb-5 bg-body-tertiary rounded">
-                        <div className="hh-fundo-grafico"><Grafico titulo="Venda x Custos" periodo="(Último 6 Meses)" /></div>
+                        <GraficoBarraDupla/>
+                    </div>
+
+                    {/* Grafico de Linha */}
+                    <div className="hh-fundo-grafico d-flex mb-3 mt-3 w-50 p-3 shadow p-3 mb-5 bg-body-tertiary rounded ms-3">
+                        <GraficoLinha/>
+                    </div>
+                </div>
+
+                <div className="d-flex justify-content-between float-start flex-wrap flex-md-nowrap align-itens-center pt-3 pb-2">
+                    {/* Grafico de Pizza */}
+                    <div className="hh-fundo-grafico d-flex mb-3 mt-3 w-50 p-3 shadow p-3 mb-5 bg-body-tertiary rounded ms-3">
+                        <GraficoPizza/>
                     </div>
 
                     {/* Grafico de Barra */}
                     <div className="hh-fundo-grafico d-flex mb-3 mt-3 w-50 p-3 shadow p-3 mb-5 bg-body-tertiary rounded ms-3">
-                        <GraficoLinha titulo="Evolução do Lucro" />
+                        <Grafico/>
                     </div>
-
-                    {/* Grafico de Pizza */}
-                    
                 </div>
+
+                   
 
             </main>
         </>
