@@ -1,17 +1,17 @@
 import { useEffect, useState } from "react";
 import axios from 'axios';
-import { Link } from "react-router-dom"; 
+import { Link } from 'react-router'
 
 
 function MainEstoque() {
-    
+
     const [estoque, setEstoque] = useState([]);
 
     useEffect(() => {
         const buscarDadosEstoque = async () => {
             try {
                 const response = await axios.get("http://localhost:3001/lis");
-                
+
                 const dadosOrdenados = response.data.sort((a, b) =>
                     (a.nome || "").localeCompare(b.nome || "")
                 );
@@ -28,7 +28,7 @@ function MainEstoque() {
         if (!confirmar) return;
 
         try {
-           
+
             const resposta = await fetch(`https://typicode.com{id}`, {
                 method: 'DELETE'
             });
@@ -89,18 +89,18 @@ function MainEstoque() {
                             <th scope="col">Quantidade</th>
                             <th scope="col">minimo</th>
                             <th scope="col">atualizado</th>
-                            
+
                         </tr>
                     </thead>
                     <tbody>
                         {estoque.length > 0 ? (
                             estoque.map((estoque) => (
                                 <tr key={estoque.id} className="ph-corpo-cor-table">
-                                      <td>{estoque.empresa}</td>
-                                        <td>{estoque.produto}</td>
-                                        <td>{estoque.quantidade}</td>
-                                        <td>{estoque.minimo}</td>
-                                        <td>{estoque.atualizado}</td>
+                                    <td>{estoque.empresa}</td>
+                                    <td>{estoque.produto}</td>
+                                    <td>{estoque.quantidade}</td>
+                                    <td>{estoque.minimo}</td>
+                                    <td>{estoque.atualizado}</td>
                                     <td>
                                         <Link to={`/editar-Estoque/${estoque.id}`} className="me-3">
                                             <i className="fi fi-rr-pencil ph-cor-lapis text-primary"></i>
