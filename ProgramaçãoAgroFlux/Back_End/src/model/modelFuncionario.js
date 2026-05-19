@@ -45,7 +45,7 @@ const modelFuncionario = {
 
     buscarEmail: async (email) => {
         try {
-            const resultado = await conexao.query("SELECT empresa_id, id, nome, cpf, cargo, email, senha, data_nascimento, data_contratacao, salario_inicial, salario_atual, situacao FROM funcionario WHERE email = ?", [email]);
+            const resultado = await conexao.query("SELECT empresa_id, id, nome, cpf, cargo, email, senha, DATE_FORMAT(data_nascimento, '%d/%m/%Y') AS data_nascimento, DATE_FORMAT(data_contratacao, '%d/%m/%Y') AS data_contratacao, salario_inicial, salario_atual, situacao FROM funcionario WHERE email = ?", [email]);
             return resultado;
         }
         catch (erro) {

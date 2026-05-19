@@ -28,13 +28,9 @@ function BarraColorida(props) {
 
 function Grafico(props) {
     const dadosNotas = [
-        { nome: "Jan", nota: 80000, cor: '#16a34a' },
-        { nome: "Fev", nota: 75000, cor: '#ef4444'},
-        { nome: "Mar", nota: 60000, cor: '#16a34a' },
-        { nome: "Abr", nota: 55000, cor: '#ef4444' },
-        { nome: "Mai", nota: 65000, cor: '#16a34a' },
-        { nome: "Jun", nota: 45000, cor: '#ef4444' }
-        
+        { nome: "Fertilizantes", Quantidade: 400, cor: '#16a34a' },
+        { nome: "Sementes", Quantidade: 100, cor: '#16a34a'},
+        { nome: "Defensivos", Quantidade: 250, cor: '#16a34a' }
     ];
 
 
@@ -48,7 +44,7 @@ function Grafico(props) {
                     <YAxis />
                     <Tooltip />
                     <Legend />
-                    <Bar dataKey="nota" shape={<BarraColorida />} />
+                    <Bar dataKey="Quantidade" fill="#16a34a" shape={<BarraColorida />} />
                 </BarChart>
             </div>
 

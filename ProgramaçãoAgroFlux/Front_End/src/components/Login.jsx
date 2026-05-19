@@ -12,12 +12,12 @@ function Login() {
 
         try {
             const response = await axios.post('http://localhost:3001/login', { email, senha });
+
+            console.log(response)
             
             if (response.status === 200) {
-                const idUsuario = response.data.id;
-                const token = response.data.accessToken;
-                localStorage.setItem('id', idUsuario);
-                localStorage.setItem('token', token);
+                sessionStorage.setItem('id', response.data.id);
+                sessionStorage.setItem('token', response.data.accessToken);
 
                 navigate('/home');
             }

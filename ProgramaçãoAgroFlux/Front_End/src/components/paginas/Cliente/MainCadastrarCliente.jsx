@@ -1,3 +1,4 @@
+import axios from "axios";
 import { useState, useActionState } from "react";
 import { Link } from "react-router";
 
@@ -5,20 +6,24 @@ function MainCadastrarCliente() {
 
     const [razaoSocial, setRazaoSocial] = useState('');
     const [nomeFantasia, setNomeFantasia] = useState('');
+    const [tipoPessoa, setTipoPessoa] = useState('juridica');
     const [cnpj, setCnpj] = useState('');
     const [cpf, setCpf] = useState('');
-    const [telefone, setTelefone] = useState('');
     const [email, setEmail] = useState('');
-    const [tipo, setTipo] = useState('juridica')
-    const [endereco, setEndereco] = useState('');
+    const [situacao, setSituacao] = useState('ativo');
+    const [telefone, setTelefone] = useState('');
+    const [tipoTelefone, setTipoTelefone] = useState('');
+    const [principal, setPrincipal] = useState('');
+    const [logradouro, setLogradouro] = useState('');
+    const [numero, setNumero] = useState('');
     const [bairro, setBairro] = useState('');
     const [cidade, setCidade] = useState('');
     const [estado, setEstado] = useState('');
     const [cep, setCep] = useState('');
 
-    let urlViaCep = `https://viacep.com.br/ws/${cep}/json/`;
+    const urlViaCep = `https://viacep.com.br/ws/${cep}/json/`;
 
-    async function buscarDadosCep() {
+    const buscarDadosCep = async() => {
         try {
             const resposta = await fetch(urlViaCep);
             const dadosCep = await resposta.json();
@@ -27,7 +32,7 @@ function MainCadastrarCliente() {
                 return;
             }
 
-            setEndereco(dadosCep.logradouro);
+            setLogradouro(dadosCep.logradouro);
             setBairro(dadosCep.bairro);
             setCidade(dadosCep.localidade);
             setEstado(dadosCep.estado);
@@ -40,34 +45,57 @@ function MainCadastrarCliente() {
     const [estadoCadastro, acaoCadastro, pendente] = useActionState(
 
         async (estadoAnterior, formData) => {
-            const dadosCliente = JSON.stringify(Object.fromEntries(formData.entries()));
+            // const dadosCliente = JSON.stringify(Object.fromEntries(formData.entries()));
+            // await new Promise((resolve) => setTimeout(resolve, 2000));
 
-            await new Promise((resolve) => setTimeout(resolve, 2000));
-            console.log(dadosCliente);
+            if (!razaoSocial || !nomeFantasia || !email || !telefone || !tipoTelefone || !principal || !logradouro || !numero || !bairro || !cidade || !estado || !cep){
+                alert('Todos os campos devem ser preenchidos');
+                return;
+            }
+
+            const cliente = {
+                razaoSocial,
+                nomeFantasia,
+                tipoPessoa,
+                cnpj,
+                cpf,
+                email,
+                situacao,
+                telefone,
+                tipoTelefone,
+                principal,
+                logradouro,
+                numero,
+                bairro,
+                cidade,
+                estado,
+                cep
+            }
 
             try {
-                const resposta = await fetch('https://jsonplaceholder.typicode.com/posts', {
-                    method: 'POST',
-                    body: dadosCliente,
-                    headers: {
-                        'Content-type': 'application/json; charset=UTF-8',
-                    },
-                });
-                console.log(resposta);
-                console.log(resposta.status);
-                console.log(resposta.ok);
+                const response = await axios.post('http://localhost:3001/cadastrar-cliente', cliente);
 
-                if (resposta.status === 201) {
-                    console.log('Resposta do servidor ok!');
-                    if (resposta.ok) {
-                        alert('Cadastrado com sucesso');
-                        setRazaoSocial('');
-                        setNomeFantasia('');
-                    } else {
-                        alert('Erro ao cadastrar!');
-                    }
+                if (response.status === 201) {
+                    alert('Cliente cadastrado com sucesso!');
+
+                    setRazaoSocial('');
+                    setNomeFantasia('');
+                    setTipoPessoa('');
+                    setCnpj('');
+                    setCpf('');
+                    setEmail('');
+                    setSituacao('Ativo')
+                    setTelefone('');
+                    setTipoTelefone('');
+                    setPrincipal('');
+                    setLogradouro('');
+                    setNumero('');
+                    setBairro('');
+                    setCidade('');
+                    setEstado('');
+                    setCep('');
                 } else {
-                    console.log('Resposta do servidor erro!');
+                    console.log('Erro no servidor!');
                 }
             } catch (erro) {
                 console.log(erro);
@@ -84,9 +112,10 @@ function MainCadastrarCliente() {
 
                 <div className="col-md-12 col-lg-12 ph-cor-fundo-branco p-4 rounded-3 shadow-lg">
                     <form action={acaoCadastro} className="row g-3 text-black">
+
                         <h6 className="fw-bold mb-0">Principal</h6>
                         <div className="col-md-6">
-                            <label htmlFor="razao_social" className="form-label small mb-1">Razão Social</label>
+                            <label htmlFor="razao_social" className="form-label small mb-1">Nome/Razão Social</label>
                             <input value={razaoSocial} onChange={(e) => setRazaoSocial(e.target.value)} type="text" className="form-control ph-input" id="razao_social" name="razao_social" required />
                         </div>
                         <div className="col-md-6">
@@ -95,7 +124,7 @@ function MainCadastrarCliente() {
                         </div>
                         <div className="col-md-2">
                             <label htmlFor="tipo" className="form-label small mb-1">Tipo</label>
-                            <select value={tipo} onChange={(e) => setTipo(e.target.value)} type="text" className="form-select ph-input" id="tipo" name="tipo">
+                            <select value={tipoPessoa} onChange={(e) => setTipoPessoa(e.target.value)} type="text" className="form-select ph-input" id="tipo" name="tipo">
                                 <option value="fisica">Fisíca</option>
                                 <option value="juridica">Jurídica</option>
                             </select>
@@ -106,43 +135,66 @@ function MainCadastrarCliente() {
                         </div>
                         <div className="col-3">
                             <label htmlFor="cpf" className="form-label small mb-1">CPF</label>
-                            <input value={cpf} onChange={(e) => setCpf(e.target.value)} type="text" className="form-control ph-input" id="cpf" name="cpf" required />
+                            <input value={cpf} onChange={(e) => setCpf(e.target.value)} type="text" className="form-control ph-input" id="cpf" name="cpf" required disabled/>
                         </div>
+                        <div className="col-md-4">
+                            <label htmlFor="email" className="form-label small mb-1">Email</label>
+                            <input value={email} onChange={(e) => setEmail(e.target.value)} type="email" className="form-control ph-input" id="email" name="email" required/>
+                        </div>
+                        <div className="col-md-4">
+                            <label htmlFor="email" className="form-label small mb-1">Situação</label>
+                            <select value={situacao} onChange={(e) => setSituacao(e.target.value)} type="email" className="form-select ph-input" id="email" name="email"> 
+                                <option value="ativo">Ativo</option>
+                                <option value="inativo">Inativo</option>
+                            </select>
+                        </div>
+
+                        <h6 className="fw-bold mb-0">Telefone</h6>
                         <div className="col-4">
-                            <label htmlFor="telefone" className="form-label small mb-1">Telefone</label>
+                            <label htmlFor="telefone" className="form-label small mb-1">Número de telefone</label>
                             <input value={telefone} onChange={(e) => setTelefone(e.target.value)} type="text" className="form-control ph-input" id="telefone" name="telefone" required />
                         </div>
-                        <div className="col-md-3">
-                            <label htmlFor="email" className="form-label small mb-1">Email</label>
-                            <input value={email} onChange={(e) => setEmail(e.target.value)} type="email" className="form-control ph-input" id="email" name="email" />
+                        <div className="col-md-4">
+                            <label htmlFor="cep" className="form-label small mb-1">Tipo</label>
+                            <input value={tipoTelefone} onChange={(e) => setTipoTelefone(e.target.value)} type="text" className="form-control ph-input" id="cep" name="cep" required />
+                        </div>
+                        <div className="col-md-4">
+                            <label htmlFor="cep" className="form-label small mb-1">Princípal</label>
+                            <select value={principal} onChange={(e) => setPrincipal(e.target.value)} type="text" className="form-select ph-input" id="cep" name="cep" required >
+                                <option value="sim">Sim</option>
+                                <option value="nao">Não</option>
+                            </select>
                         </div>
 
                         <h6 className="fw-bold mb-0">Endereço</h6>
                         <div className="col-md-6">
                             <label htmlFor="endereco" className="form-label small mb-1">Rua</label>
-                            <input value={endereco} onChange={(e) => setEndereco(e.target.value)} type="text" className="form-control ph-input" id="endereco" name="endereco" />
+                            <input value={logradouro} onChange={(e) => setLogradouro(e.target.value)} type="text" className="form-control ph-input" id="endereco" name="endereco" required/>
                         </div>
-                        <div className="col-md-3">
+                        <div className="col-md-2">
+                            <label htmlFor="endereco" className="form-label small mb-1">Número</label>
+                            <input value={numero} onChange={(e) => setNumero(e.target.value)} type="text" className="form-control ph-input" id="endereco" name="endereco" required/>
+                        </div>
+                        <div className="col-md-4">
                             <label htmlFor="bairro" className="form-label small mb-1">Bairro</label>
-                            <input value={bairro} onChange={(e) => setBairro(e.target.value)} type="text" className="form-control ph-input" id="bairro" name="bairro" />
+                            <input value={bairro} onChange={(e) => setBairro(e.target.value)} type="text" className="form-control ph-input" id="bairro" name="bairro" required/>
                         </div>
                         <div className="col-md-3">
                             <label htmlFor="cidade" className="form-label small mb-1">Cidade</label>
-                            <input value={cidade} onChange={(e) => setCidade(e.target.value)} type="text" className="form-control ph-input" id="cidade" name="cidade" />
+                            <input value={cidade} onChange={(e) => setCidade(e.target.value)} type="text" className="form-control ph-input" id="cidade" name="cidade" required/>
                         </div>
-                        <div className="col-md-8">
+                        <div className="col-md-5">
                             <label htmlFor="estado" className="form-label small mb-1">Estado</label>
-                            <input value={estado} onChange={(e) => setEstado(e.target.value)} type="text" className="form-control ph-input" id="estado" name="estado" />
+                            <input value={estado} onChange={(e) => setEstado(e.target.value)} type="text" className="form-control ph-input" id="estado" name="estado" required/>
                         </div>
                         <div className="col-md-4">
                             <label htmlFor="cep" className="form-label small mb-1">CEP</label>
-                            <input value={cep} onBlur={(e) => buscarDadosCep(e.target.value)} onChange={(e) => setCep(e.target.value)} type="text" className="form-control ph-input" id="cep" name="cep" />
+                            <input value={cep} onBlur={(e) => buscarDadosCep(e.target.value)} onChange={(e) => setCep(e.target.value)} type="text" className="form-control ph-input" id="cep" name="cep" required/>
                         </div>
 
                         <div className="col-12">
                             <button disabled={pendente} type="submit" className="ph-btn-forms ph-btn-forms-cor-cadastrar mt-3">{pendente ? 'Cadastrando...' : 'Cadastrar'}</button>
-                            <button disabled={pendente} type="submit" className="ph-btn-forms ph-btn-forms-cor-cadastrar mt-3 ms-2">{pendente ? 'Cadastrando...' : 'Cadastrar e permanecer'}</button>
-                            <Link to="/clientes" type="submit" className="ph-btn-forms ph-btn-forms-cor-cancelar mt-3 ms-2">Cancelar</Link>
+                            <Link to="/clientes" type="submit" className="ph-btn-forms ph-btn-forms-cor-cancelar mt-3 ms-2">Voltar</Link>
                         </div>
                     </form>
                 </div>
