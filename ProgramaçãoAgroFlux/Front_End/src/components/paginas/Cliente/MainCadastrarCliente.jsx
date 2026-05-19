@@ -76,7 +76,7 @@ function MainCadastrarCliente() {
                 const response = await axios.post('http://localhost:3001/cadastrar-cliente', cliente);
 
                 if (response.status === 201) {
-                    alert('Funcionário cadastrado com sucesso!');
+                    alert('Cliente cadastrado com sucesso!');
 
                     setRazaoSocial('');
                     setNomeFantasia('');
@@ -156,11 +156,14 @@ function MainCadastrarCliente() {
                         </div>
                         <div className="col-md-4">
                             <label htmlFor="cep" className="form-label small mb-1">Tipo</label>
-                            <input value={tipoTelefone} onChange={(e) => setTipoTelefone(e.target.value)} type="text" className="form-control ph-input" id="cep" name="cep" required/>
+                            <input value={tipoTelefone} onChange={(e) => setTipoTelefone(e.target.value)} type="text" className="form-control ph-input" id="cep" name="cep" required />
                         </div>
                         <div className="col-md-4">
                             <label htmlFor="cep" className="form-label small mb-1">Princípal</label>
-                            <input value={principal} onChange={(e) => setPrincipal(e.target.value)} type="text" className="form-control ph-input" id="cep" name="cep" required/>
+                            <select value={principal} onChange={(e) => setPrincipal(e.target.value)} type="text" className="form-select ph-input" id="cep" name="cep" required >
+                                <option value="sim">Sim</option>
+                                <option value="nao">Não</option>
+                            </select>
                         </div>
 
                         <h6 className="fw-bold mb-0">Endereço</h6>
