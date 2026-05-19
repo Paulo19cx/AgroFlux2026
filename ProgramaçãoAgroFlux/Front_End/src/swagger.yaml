@@ -328,200 +328,6 @@ paths:
         '500':
           description: Erro interno do servidor
 
-  /api/Vendas:
-    post:
-      tags:
-        - Vendas
-
-      summary: Cadastrar nova venda
-
-
-      requestBody:
-        required: true
-
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/Vendas'
-
-      responses:
-        '201':
-          description: Venda cadastrada com sucesso
-
-        '500':
-          description: Erro interno do servidor
-
-      get:
-      tags:
-        - Vendas
-
-      summary: Listar todos as vendas
-
-
-      responses:
-        '200':
-          description: Lista de vendas
-
-        '500':
-          description: Erro interno do servidor
-
-  /vendas/{id}:
-    get:
-      tags:
-        - Vendas
-
-      summary: Buscar venda por ID
-
-      security:
-        - BearerAuth: []
-
-      parameters:
-        - in: path
-          name: id
-          required: true
-
-          schema:
-            type: integer
-
-      responses:
-        '200':
-          description: Venda encontrada
-
-        '404':
-          description: Venda não encontrada
-
-        '500':
-          description: Erro interno do servidor
-
-
-  /api/Vendas:
-    post:
-      tags:
-        - Vendas
-
-      summary: Cadastrar nova venda
-
-
-      requestBody:
-        required: true
-
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/Vendas'
-
-      responses:
-        '201':
-          description: Venda cadastrada com sucesso
-
-        '500':
-          description: Erro interno do servidor
-
-      get:
-      tags:
-        - Vendas
-
-      summary: Listar todos as vendas
-
-
-      responses:
-        '200':
-          description: Lista de vendas
-
-        '500':
-          description: Erro interno do servidor
-
-  /vendas/{id}:
-    get:
-      tags:
-        - Vendas
-
-      summary: Buscar venda por ID
-
-      security:
-        - BearerAuth: []
-
-      parameters:
-        - in: path
-          name: id
-          required: true
-
-          schema:
-            type: integer
-
-      responses:
-        '200':
-          description: Venda encontrada
-
-        '404':
-          description: Venda não encontrada
-
-        '500':
-          description: Erro interno do servidor
-
-
-    put:
-      tags:
-        - Vendas
-
-      summary: Atualizar vendas
-
-      security:
-        - BearerAuth: []
-
-      parameters:
-        - in: path
-          name: id
-          required: true
-
-          schema:
-            type: integer
-
-      requestBody:
-        required: true
-
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/AtualizarVendas'
-
-      responses:
-        '200':
-          description: Vendas atualizada
-
-        '404':
-          description: Venda não encontrada
-
-        '500':
-          description: Erro interno do servidor
-
-    delete:
-      tags:
-        - Venda
-
-      summary: Excluir Venda
-
-      security:
-        - BearerAuth: []
-
-      parameters:
-        - in: path
-          name: id
-          required: true
-
-          schema:
-            type: integer
-
-      responses:
-        '200':
-          description:  Venda removida
-
-        '404':
-          description:  Venda não encontrada
-
-        '500':
-          description: Erro interno do servidor    
-
        /api/Vendas:
     post:
       tags:
@@ -659,72 +465,6 @@ paths:
         '500':
           description: Erro interno do servidor       
 
-      /api/Vendas:
-    post:
-      tags:
-        - Vendas
-
-      summary: Cadastrar nova venda
-
-
-      requestBody:
-        required: true
-
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/Vendas'
-
-      responses:
-        '201':
-          description: Venda cadastrada com sucesso
-
-        '500':
-          description: Erro interno do servidor
-
-      get:
-      tags:
-        - Vendas
-
-      summary: Listar todos as vendas
-
-
-      responses:
-        '200':
-          description: Lista de vendas
-
-        '500':
-          description: Erro interno do servidor
-
-  /vendas/{id}:
-    get:
-      tags:
-        - Vendas
-
-      summary: Buscar venda por ID
-
-      security:
-        - BearerAuth: []
-
-      parameters:
-        - in: path
-          name: id
-          required: true
-
-          schema:
-            type: integer
-
-      responses:
-        '200':
-          description: Venda encontrada
-
-        '404':
-          description: Venda não encontrada
-
-        '500':
-          description: Erro interno do servidor
-
-
   /api/Estoque:
       get:
       tags:
@@ -748,7 +488,7 @@ paths:
       tags:
         - Estoque
 
-      summary: Buscar estoque único
+      summary: Buscar estoque por id
 
 
       parameters:
@@ -857,82 +597,6 @@ paths:
         '500':
           description: Erro interno do servidor
 
-      get:
-      tags:
-        - Estoque
-
-      summary: Listar todo o estoque
-
-      responses:
-        '200':
-          description: Lista de estoque
-
-        '401':
-          description: Token inválido ou não informado
-
-        '500':
-          description: Erro interno do servidor
-
-  
-    put:
-      tags:
-        - Estoque
-
-      summary: Atualizar estoque
-
-      security:
-        - BearerAuth: []
-
-      parameters:
-        - in: path
-          name: id
-          required: true
-
-          schema:
-            type: integer
-
-      requestBody:
-        required: true
-
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/AtualizarEstoque'
-
-      responses:
-        '200':
-          description: Estoque atualizado
-
-        '500':
-          description: Erro interno do servidor
-
-    delete:
-      tags:
-        - Estoque
-
-      summary: Excluir estoque
-
-      security:
-        - BearerAuth: []
-
-      parameters:
-        - in: path
-          name: id
-          required: true
-
-          schema:
-            type: integer
-
-      responses:
-        '200':
-          description:  Estoque removido
-
-        '404':
-          description: Estoque não encontrado
-
-        '500':
-          description: Erro interno do servidor          
-
   /api/Cliente:
     post:
       tags:
@@ -1002,71 +666,6 @@ paths:
           description: Erro interno do servidor
 
 
-  /api/Cliente:
-    post:
-      tags:
-        - Cliente
-
-      summary: Cadastrar novo cliente
-
-      requestBody:
-        required: true
-
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/Cliente'
-
-      responses:
-        '201':
-          description: Cliente cadastrado com sucesso
-
-        '500':
-          description: Erro interno do servidor
-
-      get:
-      tags:
-        - Cliente
-
-      summary: Listar todos os clientes
-
-
-      responses:
-        '200':
-          description: Lista de clientes
-
-        '500':
-          description: Erro interno do servidor
-
-  /cliente/{id}:
-    get:
-      tags:
-        - Cliente
-
-      summary: Buscar cidade por ID
-
-      security:
-        - BearerAuth: []
-
-      parameters:
-        - in: path
-          name: id
-          required: true
-
-          schema:
-            type: integer
-
-      responses:
-        '200':
-          description: Cliente encontrado
-
-        '404':
-          description: Cliente não encontrada
-
-        '500':
-          description: Erro interno do servidor
-
-
     put:
       tags:
         - Cliente
@@ -1129,15 +728,13 @@ paths:
         '500':
           description: Erro interno do servidor    
 
-       /api/Cliente:
+
+    Api/Fornecedor:
     post:
       tags:
-        - Cliente
+        - Fornecedor
 
-      summary: Cadastrar novo cliente
-
-      security:
-        - BearerAuth: []
+      summary: Cadastrar fornecedor
 
       requestBody:
         required: true
@@ -1145,43 +742,35 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Cliente'
+              $ref: '#/components/schemas/Fornecedor'
 
       responses:
         '201':
-          description: Cliente cadastrado com sucesso
-
-        '401':
-          description: Token inválido ou não informado
+          description: Fornecedor cadastrado com sucesso
 
         '500':
           description: Erro interno do servidor
 
-      get:
+    get:
       tags:
-        - Cliente
+        - Fornecedor
 
-      summary: Listar todos os clientes
-
-      security:
-        - BearerAuth: []
+      summary: Listar todos os fornecedores
 
       responses:
         '200':
-          description: Lista de clientes
+          description: Lista de fornecedores
 
-        '401':
-          description: Token inválido ou não informado
 
         '500':
           description: Erro interno do servidor
 
-  /cliente/{id}:
+  /produto/{id}:
     get:
       tags:
-        - Cliente
+        - Fornecedor
 
-      summary: Buscar cliente por ID
+      summary: Buscar fornecedor por ID
 
       security:
         - BearerAuth: []
@@ -1196,19 +785,19 @@ paths:
 
       responses:
         '200':
-          description: Cliente encontrado
+          description: Fornecedor encontrado
 
         '404':
-          description: Cliente não encontrado
+          description: Fornecedor não encontrado
 
         '500':
           description: Erro interno do servidor
 
     put:
       tags:
-        - Cliente
+        - Fornecedor
 
-      summary: Atualizar cliente
+      summary: Atualizar fornecedor
 
       security:
         - BearerAuth: []
@@ -1227,26 +816,23 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/AtualizarCliente'
+              $ref: '#/components/schemas/AtualizarFornecedor'
 
       responses:
         '200':
-          description: Cliente atualizado
+          description: Fornecedor atualizado
 
         '404':
-          description: Cliente não encontrado
+          description: Fornecedor não encontrado
 
         '500':
           description: Erro interno do servidor
 
     delete:
       tags:
-        - Cliente
+        - Fornecedor
 
-      summary: Excluir cliente
-
-      security:
-        - BearerAuth: []
+      summary: Excluir fornecedor
 
       parameters:
         - in: path
@@ -1258,20 +844,19 @@ paths:
 
       responses:
         '200':
-          description:  Cliente removido
-
-        '404':
-          description: Cliente não encontrado
+          description: Fornecedor removido
 
         '500':
-          description: Erro interno do servidor       
+          description: Erro interno do servidor
 
-      /api/Cliente:
+
+    /api/Relatorio:
+
     post:
       tags:
-        - Vendas
+        - Relatorio
 
-      summary: Cadastrar novo cliente
+      summary: Cadastrar novo relatório
 
 
       requestBody:
@@ -1280,35 +865,38 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Cliente'
+              $ref: '#/components/schemas/Relatorio'
 
       responses:
         '201':
-          description: Cliente cadastrado com sucesso
+          description: Relatorio cadastrado com sucesso
 
         '500':
           description: Erro interno do servidor
 
       get:
       tags:
-        - Cliente
+        - Relatorio
 
-      summary: Listar todos os clientes
+      summary: Listar todos os relatórios
 
 
       responses:
         '200':
-          description: Lista de clientes
+          description: Lista de relatórios
+
+          '404':
+          description: Relatório não encontrado
 
         '500':
           description: Erro interno do servidor
 
-  /cliente/{id}:
+  /relatório/{id}:
     get:
       tags:
-        - Cliente
+        - Relatório
 
-      summary: Buscar cliente por ID
+      summary: Buscar relatório por ID
 
       security:
         - BearerAuth: []
@@ -1323,13 +911,76 @@ paths:
 
       responses:
         '200':
-          description: Cliente encontrado
+          description: Relatório encontrado
 
         '404':
-          description: Cliente não encontrado
+          description: Relatório não encontrado
 
         '500':
           description: Erro interno do servidor
+
+
+    put:
+      tags:
+        - Relatório
+
+      summary: Atualizar relatório
+
+      security:
+        - BearerAuth: []
+
+      parameters:
+        - in: path
+          name: id
+          required: true
+
+          schema:
+            type: integer
+
+      requestBody:
+        required: true
+
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AtualizarRelatorio'
+
+      responses:
+        '200':
+          description: Relatorio atualizado
+
+        '404':
+          description: Relatorio não encontrado
+
+        '500':
+          description: Erro interno do servidor
+
+    delete:
+      tags:
+        - Relatorio
+
+      summary: Excluir Relatorio
+
+      security:
+        - BearerAuth: []
+
+      parameters:
+        - in: path
+          name: id
+          required: true
+
+          schema:
+            type: integer
+
+      responses:
+        '200':
+          description:  Relatório removido
+
+        '404':
+          description:  Relatório não encontrado
+
+        '500':
+          description: Erro interno do servidor    
   
 # trocar o "todos" em vendas⚠️⚠️⚠️
 
