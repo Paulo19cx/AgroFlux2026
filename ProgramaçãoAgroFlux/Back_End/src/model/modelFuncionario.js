@@ -3,14 +3,30 @@ import jwt from 'jsonwebtoken';
 import bcrypt from 'bcrypt';
 
 const modelFuncionario = {
-    cadastrar: async (nome, cpf, cargo, email, senha, dataNascimento, dataContratacao, salarioInicial, salarioAtual, situacao) => {
+    cadastrar: async (nome, cpf, cargo, email, senha, dataNascimento, dataContratacao, salarioInicial, salarioAtual, foto, situacao, numeroTelefone, tipoTelefone, principal, logradouro, numero, bairro, cidade, estado, cep) => {
 
         const senhaHash = await bcrypt.hash(senha, 10);
 
         try {
-            const resultado = await conexao.query("INSERT INTO funcionario (nome, cpf, cargo, email, senha, data_nascimento, data_contratacao, salario_inicial, salario_atual, situacao) VALUES (?,?,?,?,?,?,?,?,?,?,?)",
-                [nome, cpf, cargo, email, senhaHash, dataNascimento, dataContratacao, salarioInicial, salarioAtual, situacao]);
-            return resultado;
+            const [resultadoF] = await conexao.query("INSERT INTO funcionario (nome, cpf, cargo, email, senha, data_nascimento, data_contratacao, salario_inicial, salario_atual, foto, situacao) VALUES (?,?,?,?,?,?,?,?,?,?,?)", [nome, cpf, cargo, email, senhaHash, dataNascimento, dataContratacao, salarioInicial, salarioAtual, foto, situacao]);
+            
+            if (resultadoF) {
+                const idFuncionario = resultadoF.insertId;
+
+                const resultadoT = await conexao.query("INSERT INTO telefone (funcionario_id, numero_telefone, tipo, principal) VALUES (?,?,?,?)", [idFuncionario, numeroTelefone, tipoTelefone, principal]);
+
+                if (resultadoT) {
+                    const [resultadoE] = await conexao.query("INSERT INTO endereco (logradouro, numero, bairro, cidade, estado, cep) VALUES (?,?,?,?,?,?)", [logradouro, numero, bairro, cidade, estado, cep]);
+
+                    if (resultadoE) {
+                        const idEndereco = resultadoE.insertId;
+
+                        const resultFuncionarioEndereco = await conexao.query("INSERT INTO funcionario_endereco (endereco_id, funcionario_id) VALUES (?,?)", [idEndereco, idFuncionario]);
+
+                        return resultFuncionarioEndereco;
+                    }
+                }
+            }
         }
         catch (erro) {
             throw erro;
@@ -55,7 +71,7 @@ const modelFuncionario = {
 
     listar: async () => {
         try {
-            const resultado = await conexao.query("SELECT empresa_id, id, nome, cpf, cargo, email, senha, data_nascimento, data_contratacao, salario_inicial, salario_atual, situacao FROM funcionario");
+            const [resultado] = await conexao.query("SELECT f.id, f.empresa_id, f.nome, f.cpf, f.cargo, f.email, f.foto, DATE_FORMAT(f.data_nascimento, '%d/%m/%Y') AS data_nascimento, DATE_FORMAT(f.data_contratacao, '%d/%m/%Y %H:%i:%s') AS data_contratacao, f.salario_inicial, f.salario_atual, f.situacao, t.numero_telefone, t.tipo, t.principal, e.logradouro, e.numero, e.bairro, e.cidade, e.estado, e.cep FROM funcionario f JOIN telefone t ON f.id = t.funcionario_id JOIN funcionario_endereco fe ON f.id = fe.funcionario_id JOIN endereco e ON e.id = fe.endereco_id");
             return resultado;
         } 
         catch (erro) {
@@ -63,15 +79,38 @@ const modelFuncionario = {
         }
     },
 
-    deletar: async (id) => {
+    listarPorId: async (id) => {
         try {
-            const resultado = await conexao.query("DELETE FROM funcionario WHERE id = ?", [id]);
+            const [resultado] = await conexao.query("SELECT f.id, f.empresa_id, f.nome, f.cpf, f.cargo, f.email, f.foto, DATE_FORMAT(f.data_nascimento, '%d/%m/%Y') AS data_nascimento, DATE_FORMAT(f.data_contratacao, '%d/%m/%Y %H:%i:%s') AS data_contratacao, f.salario_inicial, f.salario_atual, f.situacao, t.numero_telefone, t.tipo, t.principal, e.logradouro, e.numero, e.bairro, e.cidade, e.estado, e.cep FROM funcionario f JOIN telefone t ON f.id = t.funcionario_id JOIN funcionario_endereco fe ON f.id = fe.funcionario_id JOIN endereco e ON e.id = fe.endereco_id WHERE f.id = ?", [id]);
             return resultado;
-        }
-        catch (erro) {
+        } catch (erro) {
             throw erro;
         }
-    }
+    },
+
+    atualizar: async (nome, cpf, cargo, email, senha, dataNascimento, dataContratacao, salarioInicial, salarioAtual, situacao, foto, numeroTelefone, tipoTelefone, principal, logradouro, numero, bairro, cidade, estado, cep, id) => {
+        
+        const senhaHash = await bcrypt.hash(senha, 10);
+
+        try {
+            const [resultadoF] = await conexao.query("UPDATE funcionario SET nome = ?, cpf = ?, cargo = ?, email = ?, senha = ?, data_nascimento = ?, data_contratacao = ?, salario_inicial = ?, salario_atual = ?, situacao = ?, foto = ? WHERE id = ?", [nome, cpf, cargo, email, senhaHash, dataNascimento, dataContratacao, salarioInicial, salarioAtual, situacao, foto, id]);
+            console.log(resultadoF)
+            if (resultadoF.affectedRows > 0) {
+                const [resultadoT] = await conexao.query("UPDATE telefone SET numero_telefone = ?, tipo = ?, principal = ? WHERE funcionario_id = ?", [numeroTelefone, tipoTelefone, principal, id]);
+                console.log('resultadoT:', resultadoT);
+
+                if (resultadoT.affectedRows > 0) {
+                    const [resultadoE] = await conexao.query("UPDATE endereco e JOIN funcionario_endereco fe ON e.id = fe.endereco_id SET e.logradouro = ?, e.numero = ?, e.bairro = ?, e.cidade = ?, e.estado = ?, e.cep = ? WHERE fe.funcionario_id = ?", [logradouro, numero, bairro, cidade, estado, cep, id]);
+                    console.log('resultadoE:', resultadoE);
+                    return resultadoE;
+                }
+            }
+
+        } catch (erro) {
+            console.error('Erro no model.atualizar:', erro);
+            throw erro;
+        }
+    },
 }
 
 export default modelFuncionario;

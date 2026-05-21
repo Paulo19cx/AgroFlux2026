@@ -5,20 +5,23 @@ import axios from 'axios';
 function MainCadastrarFuncionario() {
     const [nome, setNome] = useState('');
     const [cpf, setCpf] = useState('');
-    const [dataNascimento, setDataNascimento] = useState('');
-    const [email, setEmail] = useState('');
-    const [telefone, setTelefone] = useState('');
     const [cargo, setCargo] = useState('');
-    const [dataAdmissao, setDataAdmissao] = useState('');
-    const [salario, setSalario] = useState('');
-    const [situacao, setSituacao] = useState('ATIVO');
+    const [email, setEmail] = useState('');
     const [senha, setSenha] = useState('');
-    const [endereco, setEndereco] = useState('');
+    const [dataNascimento, setDataNascimento] = useState('');
+    const [dataAdmissao, setDataAdmissao] = useState('');
+    const [salarioInicial, setSalarioInicial] = useState('');
+    const [salarioAtual, setSalarioAtual] = useState('');
+    const [situacao, setSituacao] = useState('ATIVO');
+    const [telefone, setTelefone] = useState('');
+    const [tipoTelefone, setTipoTelefone] = useState('');
+    const [principal, setPrincipal] = useState('');
+    const [logradouro, setLogradouro] = useState('');
     const [numero, setNumero] = useState('');
-    const [cep, setCep] = useState('');
     const [bairro, setBairro] = useState('');
     const [cidade, setCidade] = useState('');
     const [estado, setEstado] = useState('');
+    const [cep, setCep] = useState('');
 
     const navigate = useNavigate();
 
@@ -30,7 +33,7 @@ function MainCadastrarFuncionario() {
 
             if (dadosCep.erro) return;
 
-            setEndereco(dadosCep.logradouro);
+            setLogradouro(dadosCep.logradouro);
             setBairro(dadosCep.bairro);
             setCidade(dadosCep.localidade);
             setEstado(dadosCep.uf);
@@ -52,21 +55,24 @@ function MainCadastrarFuncionario() {
 
             const funcionario = {
                 nome,
-                cpf,
-                dataNascimento,
-                email,
-                telefone,
+                cpf, 
                 cargo,
-                dataAdmissao,
-                salario,
-                situacao,
+                email,
                 senha,
-                endereco,
+                dataNascimento,
+                dataAdmissao,
+                salarioInicial,
+                salarioAtual,
+                situacao,
+                telefone,
+                tipoTelefone,
+                principal,
+                logradouro,
                 numero,
-                cep,
                 bairro,
                 cidade,
-                estado
+                estado,
+                cep
             };
             
             try {
@@ -78,20 +84,23 @@ function MainCadastrarFuncionario() {
                     
                     setNome('');
                     setCpf('');
-                    setDataNascimento('');
-                    setEmail('');
-                    setTelefone('');
                     setCargo('');
-                    setDataAdmissao('');
-                    setSalario('');
-                    setSituacao('ATIVO');
+                    setEmail('');
                     setSenha('');
-                    setEndereco('');
+                    setDataNascimento('');
+                    setDataAdmissao('');
+                    setSalarioInicial('');
+                    setSalarioAtual('');
+                    setSituacao('')
+                    setTelefone('');
+                    setTipoTelefone('');
+                    setPrincipal('');
+                    setLogradouro('');
                     setNumero('');
-                    setCep('');
                     setBairro('');
                     setCidade('');
                     setEstado('');
+                    setCep('');
                 } else {
                     alert('Erro ao cadastrar funcionário!');
                 }
@@ -119,46 +128,62 @@ function MainCadastrarFuncionario() {
                         <input value={cpf} onChange={(e) => setCpf(e.target.value)} type="text" className="form-control ph-input" id="cpf" name="cpf" required />
                     </div>
                     <div className="col-md-4">
-                        <label htmlFor="dataNascimento" className="form-label small mb-1">Data de Nascimento</label>
-                        <input value={dataNascimento} onChange={(e) => setDataNascimento(e.target.value)} type="date" className="form-control ph-input" id="dataNascimento" name="dataNascimento" />
+                        <label htmlFor="cargo" className="form-label small mb-1">Cargo</label>
+                        <input value={cargo} onChange={(e) => setCargo(e.target.value)} type="text" className="form-control ph-input" id="cargo" name="cargo" />
                     </div>
-                    <div className="col-md-4">
+                    <div className="col-md-5">
                         <label htmlFor="email" className="form-label small mb-1">Email</label>
                         <input value={email} onChange={(e) => setEmail(e.target.value)} type="email" className="form-control ph-input" id="email" name="email" required />
                     </div>
                     <div className="col-md-4">
-                        <label htmlFor="telefone" className="form-label small mb-1">Telefone</label>
-                        <input value={telefone} onChange={(e) => setTelefone(e.target.value)} type="text" className="form-control ph-input" id="telefone" name="telefone" />
+                        <label htmlFor="senha" className="form-label small mb-1">Senha de login</label>
+                        <input value={senha} onChange={(e) => setSenha(e.target.value)} type="text" className="form-control ph-input" id="senha" name="senha" />
                     </div>
-
-                    <div className="col-md-4">
-                        <label htmlFor="cargo" className="form-label small mb-1">Cargo</label>
-                        <input value={cargo} onChange={(e) => setCargo(e.target.value)} type="text" className="form-control ph-input" id="cargo" name="cargo" />
+                    <div className="col-md-3">
+                        <label htmlFor="dataNascimento" className="form-label small mb-1">Data de Nascimento</label>
+                        <input value={dataNascimento} onChange={(e) => setDataNascimento(e.target.value)} type="date" className="form-control ph-input" id="dataNascimento" name="dataNascimento" />
                     </div>
                     <div className="col-md-3">
                         <label htmlFor="dataAdmissao" className="form-label small mb-1">Data de Admissão</label>
                         <input value={dataAdmissao} onChange={(e) => setDataAdmissao(e.target.value)} type="date" className="form-control ph-input" id="dataAdmissao" name="dataAdmissao" />
                     </div>
                     <div className="col-md-3">
-                        <label htmlFor="salario" className="form-label small mb-1">Salário</label>
-                        <input value={salario} onChange={(e) => setSalario(e.target.value)} type="text" className="form-control ph-input" id="salario" name="salario" />
+                        <label htmlFor="salario" className="form-label small mb-1">Salário Inicial</label>
+                        <input value={salarioInicial} onChange={(e) => setSalarioInicial(e.target.value)} type="text" className="form-control ph-input" id="salario" name="salario" />
+                    </div>
+                    <div className="col-md-3">
+                        <label htmlFor="salario" className="form-label small mb-1">Salário Atual</label>
+                        <input value={salarioAtual} onChange={(e) => setSalarioAtual(e.target.value)} type="text" className="form-control ph-input" id="salario" name="salario" />
                     </div>
                     <div className="col-md-3">
                         <label htmlFor="situacao" className="form-label small mb-1">Situação</label>
                         <select value={situacao} onChange={(e) => setSituacao(e.target.value)} className="form-select ph-input" id="situacao" name="situacao">
-                            <option value="ATIVO">ATIVO</option>
-                            <option value="INATIVO">INATIVO</option>
+                            <option value="ATIVO">Ativo</option>
+                            <option value="INATIVO">Inativo</option>
                         </select>
                     </div>
-                    <div className="col-md-3">
-                        <label htmlFor="senha" className="form-label small mb-1">Senha de login</label>
-                        <input value={senha} onChange={(e) => setSenha(e.target.value)} type="text" className="form-control ph-input" id="senha" name="senha" />
-                    </div>
+                    
+                    <h6 className="fw-bold mb-0">Telefone</h6>
+                        <div className="col-4">
+                            <label htmlFor="telefone" className="form-label small mb-1">Número de telefone</label>
+                            <input value={telefone} onChange={(e) => setTelefone(e.target.value)} type="text" className="form-control ph-input" id="telefone" name="telefone" required />
+                        </div>
+                        <div className="col-md-4">
+                            <label htmlFor="cep" className="form-label small mb-1">Tipo</label>
+                            <input value={tipoTelefone} onChange={(e) => setTipoTelefone(e.target.value)} type="text" className="form-control ph-input" id="cep" name="cep" required />
+                        </div>
+                        <div className="col-md-4">
+                            <label htmlFor="cep" className="form-label small mb-1">Princípal</label>
+                            <select value={principal} onChange={(e) => setPrincipal(e.target.value)} type="text" className="form-select ph-input" id="cep" name="cep" required >
+                                <option value="SIM">Sim</option>
+                                <option value="NAO">Não</option>
+                            </select>
+                        </div>
 
                     <h6 className="fw-bold mb-0 mt-4">Endereço</h6>
                     <div className="col-md-6">
                         <label htmlFor="endereco" className="form-label small mb-1">Rua</label>
-                        <input value={endereco} onChange={(e) => setEndereco(e.target.value)} type="text" className="form-control ph-input" id="endereco" name="endereco" />
+                        <input value={logradouro} onChange={(e) => setLogradouro(e.target.value)} type="text" className="form-control ph-input" id="endereco" name="endereco" />
                     </div>
                     <div className="col-md-2">
                         <label htmlFor="numero" className="form-label small mb-1">Número</label>
@@ -180,6 +205,12 @@ function MainCadastrarFuncionario() {
                     <div className="col-md-4">
                         <label htmlFor="estado" className="form-label small mb-1">Estado</label>
                         <input value={estado} onChange={(e) => setEstado(e.target.value)} type="text" className="form-control ph-input" id="estado" name="estado" />
+                    </div>
+
+                    <h6 className="fw-bold mb-0 mt-4">Outros</h6>
+                    <div className="col-md-6">
+                        <label htmlFor="endereco" className="form-label small mb-1">Rua</label>
+                        <input value={logradouro} onChange={(e) => setLogradouro(e.target.value)} type="file" className="form-control ph-input" id="endereco" name="endereco" />
                     </div>
 
                     <div className="col-12 mt-4">

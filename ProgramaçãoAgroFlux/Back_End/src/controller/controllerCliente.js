@@ -2,10 +2,10 @@ import modelCliente from '../model/modelCliente.js'
 
 const controllerCliente = {
     cadastrar: async (req, res) => {
-        const { razaoSocial, nomeFantasia, tipoPessoa, cnpj, email, situacao, telefone, tipo, principal, logradouro, numero, bairro, cidade, estado, cep, endereco_id, cliente_id } = req.body;
-        
+        const { nomeRazaoSocial, nomeFantasia, tipoPessoa, cnpj, email, situacao, numeroTelefone, tipo, principal, logradouro, numero, bairro, cidade, estado, cep, endereco_id, cliente_id } = req.body;
+
         try {
-            const [cadastro] = await modelCliente.cadastrar(razaoSocial, nomeFantasia, tipoPessoa, cnpj, email, situacao, telefone, tipo, principal, logradouro, numero, bairro, cidade, estado, cep);
+            const [cadastro] = await modelCliente.cadastrar(nomeRazaoSocial, nomeFantasia, tipoPessoa, cnpj, email, situacao, numeroTelefone, tipo, principal, logradouro, numero, bairro, cidade, estado, cep);
 
             if (cadastro.affectedRows > 0) {
                 return res.status(201).json({ msg: "Cadastro com sucesso" });
@@ -42,10 +42,10 @@ const controllerCliente = {
 
     atualizar: async (req, res) => {
         const { id } = req.params;
-        const { razaoSocial, nomeFantasia, tipoPessoa, cnpj, email, situacao, telefone, tipoTelefone, principal, logradouro, numero, bairro, cidade, estado, cep } = req.body;
+        const { nomeRazaoSocial, nomeFantasia, tipoPessoa, cnpj, email, situacao, numeroTelefone, tipoTelefone, principal, logradouro, numero, bairro, cidade, estado, cep } = req.body;
 
         try {
-            const [atualizar] = await modelCliente.atualizar(razaoSocial, nomeFantasia, tipoPessoa, cnpj, email, situacao, telefone, tipoTelefone, principal, logradouro, numero, bairro, cidade, estado, cep, id);
+            const [atualizar] = await modelCliente.atualizar(nomeRazaoSocial, nomeFantasia, tipoPessoa, cnpj, email, situacao, numeroTelefone, tipoTelefone, principal, logradouro, numero, bairro, cidade, estado, cep, id);
             console.log(atualizar)
 
             if (atualizar.affectedRows > 0) {
@@ -55,6 +55,24 @@ const controllerCliente = {
                 return res.status(404).json({ msg: "Falha ao atualizar" });
             }
         } catch (erro) {
+            return res.status(500).json({ msg: "Erro no servidor" });
+        }
+    },
+
+    deletar: async (req, res) => {
+        const { id } = req.params;
+
+        try {
+            const [deletar] = await modelCliente.deletar(id);
+
+            if (deletar.affectedRows > 0) {
+                return res.status(200).json({ msg: "Deletado com sucesso" });
+            }
+            else {
+                return res.status(404).json({ msg: "Falha ao deletar" });
+            }
+        } catch (erro) {
+            console.log(erro)
             return res.status(500).json({ msg: "Erro no servidor" });
         }
     }

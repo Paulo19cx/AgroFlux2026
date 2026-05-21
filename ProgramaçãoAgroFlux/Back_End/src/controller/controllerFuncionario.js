@@ -2,7 +2,7 @@ import modelFuncionario from '../model/modelFuncionario.js'
 
 const controllerFuncionario = {
     cadastrar: async (req, res) => {
-        const { empresa_id, nome, cpf, cargo, email, senha, dataNascimento, dataContratacao, salarioInicial, salarioAtual, situacao } = req.body;
+        const { nome, cpf, cargo, email, senha, dataNascimento, dataContratacao, salarioInicial, salarioAtual, foto, situacao, numeroTelefone, tipoTelefone, principal, logradouro, numero, bairro, cidade, estado, cep } = req.body;
 
         try {
             const [validarEmail] = await modelFuncionario.buscarEmail(email);
@@ -11,7 +11,7 @@ const controllerFuncionario = {
                 return res.status(409).json({ msg: "Email já cadastrado" });
             }
             else {
-                const [cadastro] = await modelFuncionario.cadastrar(empresa_id, nome, cpf, cargo, email, senha, dataNascimento, dataContratacao, salarioInicial, salarioAtual, situacao);
+                const [cadastro] = await modelFuncionario.cadastrar(nome, cpf, cargo, email, senha, dataNascimento, dataContratacao, salarioInicial, salarioAtual, foto, situacao, numeroTelefone, tipoTelefone, principal, logradouro, numero, bairro, cidade, estado, cep);
 
                 if (cadastro.affectedRows > 0) {
                     return res.status(201).json({ msg: "Cadastro com sucesso" });
@@ -48,7 +48,7 @@ const controllerFuncionario = {
 
     listar: async (req, res) => {
         try {
-            const [consulta] = await modelFuncionario.listar();
+            const consulta = await modelFuncionario.listar();
 
             return res.status(200).json(consulta);
         } 
@@ -57,23 +57,38 @@ const controllerFuncionario = {
         }
     },
 
-    deletar: async (req, res) => {
+    listarPorId: async (req, res) => {
+        const { id } = req.params;
+
         try {
-            const { id } = req.params;
+            const [consulta] = await modelFuncionario.listarPorId(id);
 
-            const [excluir] = await modelFuncionario.deletar(id);
-
-            if (excluir.affectedRows > 0) {
-                return res.status(200).json({ msg: "Deletado com sucesso" });
-            }
-            else {
-                return res.status(404).json({ msg: "Falha ao deletar" });
-            }
-        }
-        catch (erro) {
+            return res.status(200).json(consulta);
+        } catch (erro) {
             return res.status(500).json({ msg: "Erro no servidor" });
         }
-    }
+    },
+
+    atualizar: async (req, res) => {
+        const { id } = req.params;
+        const { nome, cpf, cargo, email, senha, dataNascimento, dataContratacao, salarioInicial, salarioAtual, situacao, numeroTelefone, tipoTelefone, principal, logradouro, numero, bairro, cidade, estado, cep } = req.body;
+        const novaFoto = req.file ? req.file.filename : null;
+        
+        console.log('req.body:', req.body);
+        
+        try {
+            const [funcionarioAtual] = await modelFuncionario.listarPorId(id);
+            const foto = novaFoto || (funcionarioAtual && funcionarioAtual.foto);
+            
+            const atualizar = await modelFuncionario.atualizar(nome, cpf, cargo, email, senha, dataNascimento, dataContratacao, salarioInicial, salarioAtual, foto, situacao, numeroTelefone, tipoTelefone, principal, logradouro, numero, bairro, cidade, estado, cep, id);
+            
+            console.log('atualizar:', atualizar);
+            
+            return res.status(200).json({ msg: "Atualizado com sucesso" });
+        } catch (erro) {
+            return res.status(500).json({ msg: "Erro no servidor" });
+        }
+    },
 }
 
 export default controllerFuncionario;

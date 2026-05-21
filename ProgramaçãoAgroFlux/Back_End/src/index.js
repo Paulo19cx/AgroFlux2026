@@ -8,8 +8,8 @@ import cors from 'cors';
 const app = express();
 
 app.use(express.json());
-app.use('/api', verificarToken);
 app.use(cors());
+app.use("/files", express.static("uploads"));
 app.use(routersCliente);
 app.use(routerFuncionario);
 

@@ -125,8 +125,8 @@ function MainCadastrarCliente() {
                         <div className="col-md-2">
                             <label htmlFor="tipo" className="form-label small mb-1">Tipo</label>
                             <select value={tipoPessoa} onChange={(e) => setTipoPessoa(e.target.value)} type="text" className="form-select ph-input" id="tipo" name="tipo">
-                                <option value="fisica">Fisíca</option>
-                                <option value="juridica">Jurídica</option>
+                                <option value="FISICA">Fisíca</option>
+                                <option value="JURIDICA">Jurídica</option>
                             </select>
                         </div>
                         <div className="col-3">
@@ -144,8 +144,8 @@ function MainCadastrarCliente() {
                         <div className="col-md-4">
                             <label htmlFor="email" className="form-label small mb-1">Situação</label>
                             <select value={situacao} onChange={(e) => setSituacao(e.target.value)} type="email" className="form-select ph-input" id="email" name="email"> 
-                                <option value="ativo">Ativo</option>
-                                <option value="inativo">Inativo</option>
+                                <option value="ATIVO">Ativo</option>
+                                <option value="INATIVO">Inativo</option>
                             </select>
                         </div>
 
@@ -161,8 +161,8 @@ function MainCadastrarCliente() {
                         <div className="col-md-4">
                             <label htmlFor="cep" className="form-label small mb-1">Princípal</label>
                             <select value={principal} onChange={(e) => setPrincipal(e.target.value)} type="text" className="form-select ph-input" id="cep" name="cep" required >
-                                <option value="sim">Sim</option>
-                                <option value="nao">Não</option>
+                                <option value="SIM">Sim</option>
+                                <option value="NAO">Não</option>
                             </select>
                         </div>
 

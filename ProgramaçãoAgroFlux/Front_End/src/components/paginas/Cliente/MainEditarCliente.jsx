@@ -107,7 +107,7 @@ function MainEditarCliente() {
                 setCpf(response.data.cpf);
                 setEmail(response.data.email);
                 setSituacao(response.data.situacao);
-                setTelefone(response.data.telefone);
+                setTelefone(response.data.numero_telefone);
                 setTipoTelefone(response.data.tipo);
                 setPrincipal(response.data.principal);
                 setLogradouro(response.data.logradouro);
