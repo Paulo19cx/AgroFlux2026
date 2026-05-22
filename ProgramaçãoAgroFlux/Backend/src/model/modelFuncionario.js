@@ -3,12 +3,12 @@ import jwt from 'jsonwebtoken';
 import bcrypt from 'bcrypt';
 
 const modelFuncionario = {
-    cadastrar: async (nome, cpf, cargo, email, senha, dataNascimento, dataContratacao, salarioInicial, salarioAtual, foto, situacao, numeroTelefone, tipoTelefone, principal, logradouro, numero, bairro, cidade, estado, cep) => {
+    cadastrar: async (nome, cpf, cargo, email, senha, dataNascimento, dataContratacao, salarioInicial, salarioAtual, situacao, numeroTelefone, tipoTelefone, principal, logradouro, numero, bairro, cidade, estado, cep) => {
 
         const senhaHash = await bcrypt.hash(senha, 10);
 
         try {
-            const [resultadoF] = await conexao.query("INSERT INTO funcionario (nome, cpf, cargo, email, senha, data_nascimento, data_contratacao, salario_inicial, salario_atual, foto, situacao) VALUES (?,?,?,?,?,?,?,?,?,?,?)", [nome, cpf, cargo, email, senhaHash, dataNascimento, dataContratacao, salarioInicial, salarioAtual, foto, situacao]);
+            const [resultadoF] = await conexao.query("INSERT INTO funcionario (nome, cpf, cargo, email, senha, data_nascimento, data_contratacao, salario_inicial, salario_atual, situacao) VALUES (?,?,?,?,?,?,?,?,?,?)", [nome, cpf, cargo, email, senhaHash, dataNascimento, dataContratacao, salarioInicial, salarioAtual, situacao]);
             
             if (resultadoF) {
                 const idFuncionario = resultadoF.insertId;
@@ -29,6 +29,15 @@ const modelFuncionario = {
             }
         }
         catch (erro) {
+            throw erro;
+        }
+    },
+
+    testeFoto: async (foto) => {
+        try {
+            const [resultado] = await conexao.query("INSERT INTO funcionario (foto) VALUES (?)", [foto]);
+            return resultado;
+        } catch (erro) {
             throw erro;
         }
     },
@@ -107,10 +116,18 @@ const modelFuncionario = {
             }
 
         } catch (erro) {
-            console.error('Erro no model.atualizar:', erro);
             throw erro;
         }
     },
+
+    deletar: async (id) => {
+        try {
+            const resultado = await conexao.query("DELETE FROM funcionario WHERE id = ?", [id]);
+            return resultado;        
+        } catch (erro) {
+            throw erro;
+        }
+    }
 }
 
 export default modelFuncionario;

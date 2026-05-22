@@ -1,4 +1,4 @@
-CREATE DATABASE AgroFlux;
+CREATE DATABASE agroflux;
 
 CREATE TABLE endereco (
     id INT(11) NOT NULL AUTO_INCREMENT,
@@ -82,8 +82,8 @@ CREATE TABLE telefone (
     principal CHAR(3) NOT NULL, -- SIM ou NAO
     PRIMARY KEY (id),
     CONSTRAINT fk_telefone_cliente FOREIGN KEY (cliente_id) REFERENCES cliente(id),
-    CONSTRAINT fk_telefone_funcionario FOREIGN KEY (funcionario_id) REFERENCES funcionario(id),
-    CONSTRAINT fk_telefone_fornecedor FOREIGN KEY (fornecedor_id) REFERENCES fornecedor(id),
+    CONSTRAINT fk_telefone_funcionario FOREIGN KEY (funcionario_id) REFERENCES funcionario(id) ON DELETE CASCADE,
+    CONSTRAINT fk_telefone_fornecedor FOREIGN KEY (fornecedor_id) REFERENCES fornecedor(id) ON DELETE CASCADE,
     CONSTRAINT chk_telefone_cliente_funcionario_fornecedor_cpf CHECK ((cliente_id IS NOT NULL) + (funcionario_id IS NOT NULL) + (fornecedor_id IS NOT NULL) = 1)
 );
 
@@ -149,8 +149,8 @@ CREATE TABLE funcionario_endereco(
     endereco_id INT(11) NOT NULL,
     funcionario_id INT(11) NOT NULL,
     PRIMARY KEY(id),
-    CONSTRAINT fk_funcionario_endereco_endereco FOREIGN KEY (endereco_id) REFERENCES endereco(id),
-    CONSTRAINT fk_funcionario_endereco_funcionario FOREIGN KEY (funcionario_id) REFERENCES funcionario(id)
+    CONSTRAINT fk_funcionario_endereco_endereco FOREIGN KEY (endereco_id) REFERENCES endereco(id) ON DELETE CASCADE,
+    CONSTRAINT fk_funcionario_endereco_funcionario FOREIGN KEY (funcionario_id) REFERENCES funcionario(id) ON DELETE CASCADE
 );
 
 CREATE TABLE cliente_endereco(

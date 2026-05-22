@@ -12,6 +12,7 @@ function MainCadastrarFuncionario() {
     const [dataAdmissao, setDataAdmissao] = useState('');
     const [salarioInicial, setSalarioInicial] = useState('');
     const [salarioAtual, setSalarioAtual] = useState('');
+    const [foto, setFoto] = useState('');
     const [situacao, setSituacao] = useState('ATIVO');
     const [telefone, setTelefone] = useState('');
     const [tipoTelefone, setTipoTelefone] = useState('');
@@ -48,10 +49,10 @@ function MainCadastrarFuncionario() {
             // const dadosFuncionario = JSON.stringify(Object.fromEntries(formData.entries()));
             // await new Promise((resolve) => setTimeout(resolve, 2000));
 
-            if (!nome || !cpf || !dataNascimento || !email || !telefone || !cargo || !dataAdmissao || !salario || !situacao || !senha || !endereco || !numero || !cep || !bairro || !cidade || !estado) {
-                alert('Todos os campos devem ser preenchidos');
-                return;
-            }
+            // if (!nome || !cpf || !dataNascimento || !email || !telefone || !cargo || !dataAdmissao || !salarioInicial || !salarioAtual || !situacao || !senha || !logradouro || !numero || !cep || !bairro || !cidade || !estado) {
+            //     alert('Todos os campos devem ser preenchidos');
+            //     return;
+            // }
 
             const funcionario = {
                 nome,
@@ -63,6 +64,7 @@ function MainCadastrarFuncionario() {
                 dataAdmissao,
                 salarioInicial,
                 salarioAtual,
+                foto,
                 situacao,
                 telefone,
                 tipoTelefone,
@@ -76,31 +78,32 @@ function MainCadastrarFuncionario() {
             };
             
             try {
-                const response = await axios('https://localhost:3001/cadastrar-funcionario', funcionario)
+                const response = await axios.post('https://localhost:3001/cadastro-foto', funcionario)
                     
 
                 if (response.status === 201) {
                     alert('Funcionário cadastrado com sucesso!');
                     
-                    setNome('');
-                    setCpf('');
-                    setCargo('');
-                    setEmail('');
-                    setSenha('');
-                    setDataNascimento('');
-                    setDataAdmissao('');
-                    setSalarioInicial('');
-                    setSalarioAtual('');
-                    setSituacao('')
-                    setTelefone('');
-                    setTipoTelefone('');
-                    setPrincipal('');
-                    setLogradouro('');
-                    setNumero('');
-                    setBairro('');
-                    setCidade('');
-                    setEstado('');
-                    setCep('');
+                    // setNome('');
+                    // setCpf('');
+                    // setCargo('');
+                    // setEmail('');
+                    // setSenha('');
+                    // setDataNascimento('');
+                    // setDataAdmissao('');
+                    // setSalarioInicial('');
+                    // setSalarioAtual('');
+                    // setFoto('');
+                    // setSituacao('')
+                    // setTelefone('');
+                    // setTipoTelefone('');
+                    // setPrincipal('');
+                    // setLogradouro('');
+                    // setNumero('');
+                    // setBairro('');
+                    // setCidade('');
+                    // setEstado('');
+                    // setCep('');
                 } else {
                     alert('Erro ao cadastrar funcionário!');
                 }
@@ -121,11 +124,11 @@ function MainCadastrarFuncionario() {
                     <h6 className="fw-bold mb-0">Principal</h6>
                     <div className="col-md-5">
                         <label htmlFor="nome" className="form-label small mb-1">Nome Completo</label>
-                        <input value={nome} onChange={(e) => setNome(e.target.value)} type="text" className="form-control ph-input" id="nome" name="nome" required />
+                        <input value={nome} onChange={(e) => setNome(e.target.value)} type="text" className="form-control ph-input" id="nome" name="nome"  />
                     </div>
                     <div className="col-md-3">
                         <label htmlFor="cpf" className="form-label small mb-1">CPF</label>
-                        <input value={cpf} onChange={(e) => setCpf(e.target.value)} type="text" className="form-control ph-input" id="cpf" name="cpf" required />
+                        <input value={cpf} onChange={(e) => setCpf(e.target.value)} type="text" className="form-control ph-input" id="cpf" name="cpf"  />
                     </div>
                     <div className="col-md-4">
                         <label htmlFor="cargo" className="form-label small mb-1">Cargo</label>
@@ -133,7 +136,7 @@ function MainCadastrarFuncionario() {
                     </div>
                     <div className="col-md-5">
                         <label htmlFor="email" className="form-label small mb-1">Email</label>
-                        <input value={email} onChange={(e) => setEmail(e.target.value)} type="email" className="form-control ph-input" id="email" name="email" required />
+                        <input value={email} onChange={(e) => setEmail(e.target.value)} type="email" className="form-control ph-input" id="email" name="email"  />
                     </div>
                     <div className="col-md-4">
                         <label htmlFor="senha" className="form-label small mb-1">Senha de login</label>
@@ -166,15 +169,15 @@ function MainCadastrarFuncionario() {
                     <h6 className="fw-bold mb-0">Telefone</h6>
                         <div className="col-4">
                             <label htmlFor="telefone" className="form-label small mb-1">Número de telefone</label>
-                            <input value={telefone} onChange={(e) => setTelefone(e.target.value)} type="text" className="form-control ph-input" id="telefone" name="telefone" required />
+                            <input value={telefone} onChange={(e) => setTelefone(e.target.value)} type="text" className="form-control ph-input" id="telefone" name="telefone"  />
                         </div>
                         <div className="col-md-4">
                             <label htmlFor="cep" className="form-label small mb-1">Tipo</label>
-                            <input value={tipoTelefone} onChange={(e) => setTipoTelefone(e.target.value)} type="text" className="form-control ph-input" id="cep" name="cep" required />
+                            <input value={tipoTelefone} onChange={(e) => setTipoTelefone(e.target.value)} type="text" className="form-control ph-input" id="cep" name="cep"  />
                         </div>
                         <div className="col-md-4">
                             <label htmlFor="cep" className="form-label small mb-1">Princípal</label>
-                            <select value={principal} onChange={(e) => setPrincipal(e.target.value)} type="text" className="form-select ph-input" id="cep" name="cep" required >
+                            <select value={principal} onChange={(e) => setPrincipal(e.target.value)} type="text" className="form-select ph-input" id="cep" name="cep"  >
                                 <option value="SIM">Sim</option>
                                 <option value="NAO">Não</option>
                             </select>
@@ -209,8 +212,8 @@ function MainCadastrarFuncionario() {
 
                     <h6 className="fw-bold mb-0 mt-4">Outros</h6>
                     <div className="col-md-6">
-                        <label htmlFor="endereco" className="form-label small mb-1">Rua</label>
-                        <input value={logradouro} onChange={(e) => setLogradouro(e.target.value)} type="file" className="form-control ph-input" id="endereco" name="endereco" />
+                        <label htmlFor="endereco" className="form-label small mb-1">Foto para perfil</label>
+                        <input value={foto} onChange={(e) => setFoto(e.target.value)} type="file" className="form-control ph-input" id="endereco" name="endereco" />
                     </div>
 
                     <div className="col-12 mt-4">
