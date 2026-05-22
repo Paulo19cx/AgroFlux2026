@@ -49,6 +49,7 @@ const controllerFuncionario = {
         
         try {
             const validar = await modelFuncionario.validarLogin(email, senha);
+            
 
             if (!validar) {
                 return res.status(401).json({ msg: "Falha ao realizar o login" });
