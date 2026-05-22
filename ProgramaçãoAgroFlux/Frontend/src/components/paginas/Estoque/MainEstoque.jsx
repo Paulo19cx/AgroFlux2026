@@ -82,13 +82,10 @@ function MainEstoque() {
                     </div>
                 </div>
             </div>
-            {/*botão cadastrar*/}
+            {/*botão cadastro de nota*/}
             <div className="m-2 jp-container-pai">
 
-                <Link to={"./CadastrarEstoque"} className="ph-btn fw-semibold bm-cor-botao ph-cor-branco mt-0 rounded-3 text-decoration-none">
-                    <i className="fi fi-br-plus me-3  ">
-                    </i>Cadastro de nota 
-                </Link>
+                <Link to={"/cadastrar-estoque"} type="button" className="ph-btn fw-semibold bm-cor-botao ph-cor-branco mt-0 rounded-3 text-decoration-none"><i className="fi fi-br-plus me-3"></i>Cadastro de nota</Link>
             </div>
             {/*começo da tabela*/}
             <div className="col-md-12 col-lg-12 border rounded-3 overflow-hidden bg-white">
