@@ -49,36 +49,48 @@ function MainEstoque() {
             {/* Títulos e Botão Novo */}
             <div className="d-flex col-md-9 col-lg-12 justify-content-between align-items-center pt-3 pb-2 mb-3">
                 <h1 className="h5 mt-3">Controle de Estoque</h1>
-                <Link to="/cadastrar-Estoque" className="ph-btn fw-semibold bm-cor-botao ph-cor-branco mt-0 rounded-3 text-decoration-none">
-                    <i className="fi fi-br-plus me-3"></i>Novo Estoque
-                </Link>
+
             </div>
 
             {/* Cards de Resumo */}
-            <div className="container text-center mb-4">
-                <div className="row align-items-start">
-                    <div className="col-4">
-                        <div className="ps-3 py-3 bg-white pricing-card border rounded shadow-sm">
-                            Total de Entregas
-                            <h2 className="jp-cor-numero-1 mt-4">360</h2>
+            <div className="row pt-4    ">
+                <div className="col-sm-4 hh-mb ">
+                    <div className="card shadow bg-body-tertiary rounded ms-3">
+                        <div className="card-body">
+                            <h6 className="card-title text-secondary">Total de Entradas</h6>
+                            <p className="h3 card-text text-success"> 336.000</p>
+                            <div className="hh-verde-circulo float-end"><i className="fi fi-br-cart-shopping-fast hh-icon text-success"></i></div>
                         </div>
                     </div>
-                    <div className="col-4">
-                        <div className="ps-3 py-3 bg-white pricing-card border rounded shadow-sm">
-                            Total de Saídas
-                            <h2 className="jp-cor-numero-2 mt-4">260</h2>
+                </div>
+                <div className="col-sm-4">
+                    <div className="card shadow bg-body-tertiary rounded ms-3">
+                        <div className="card-body">
+                            <h6 className="card-title text-secondary">Total de Saída</h6>
+                            <p className="h3 card-text text-success"> 130.000</p>
+                            <div className="hh-verde-circulo float-end"><i className="fi fi-br-arrow-trend-up hh-icon text-success"></i></div>
                         </div>
                     </div>
-                    <div className="col-4">
-                        <div className="ps-3 py-3 bg-white pricing-card border rounded shadow-sm">
-                            Saldo em Estoque
-                            <h2 className="jp-cor-numero-3 mt-4">661</h2>
+                </div>
+                <div className="col-sm-3">
+                    <div className="card shadow bg-body-tertiary rounded ms-3">
+                        <div className="card-body">
+                            <h6 className="card-title text-secondary">Saldo em Estoque</h6>
+                            <p className="h3 card-text text-danger"> 206.000</p>
+                            <div className="hh-vermelho-circulo float-end"><i className="fi fi-br-arrow-trend-down hh-icon text-danger"></i></div>
                         </div>
                     </div>
                 </div>
             </div>
+            {/*botão cadastrar*/}
+            <div className="m-2 jp-container-pai">
 
-            {/* Tabela de Dados (Aqui usamos o .map corrigido) */}
+                <Link to={"./CadastrarEstoque"} className="ph-btn fw-semibold bm-cor-botao ph-cor-branco mt-0 rounded-3 text-decoration-none">
+                    <i className="fi fi-br-plus me-3  ">
+                    </i>Cadastro de nota 
+                </Link>
+            </div>
+            {/*começo da tabela*/}
             <div className="col-md-12 col-lg-12 border rounded-3 overflow-hidden bg-white">
                 <table className="table table-striped mb-0">
                     <thead>
@@ -87,8 +99,8 @@ function MainEstoque() {
                             <th scope="col">Empresa</th>
                             <th scope="col">Produto</th>
                             <th scope="col">Quantidade</th>
-                            <th scope="col">minimo</th>
-                            <th scope="col">atualizado</th>
+                            <th scope="col">Minimo</th>
+                            <th scope="col">Atualizado</th>
 
                         </tr>
                     </thead>
@@ -113,7 +125,7 @@ function MainEstoque() {
                             ))
                         ) : (
                             <tr>
-                                <td colSpan="4" className="text-center py-3">Carregando estoque...</td>
+                                <td colSpan="7" className="text-center py-3">Carregando estoque...</td>
                             </tr>
                         )}
                     </tbody>
