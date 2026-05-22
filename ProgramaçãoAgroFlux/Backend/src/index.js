@@ -5,6 +5,7 @@ import swaggerUi from 'swagger-ui-express';
 import YAML from 'yamljs';
 import routerFuncionario from './rotas/routersFuncionario.js';
 import routerProduto from './rotas/routersProduto.js';
+import routerFornecedor from './rotas/routersFornecedor.js';
 import verificarToken from './middleware/token.js';
 import cors from 'cors';
 
@@ -24,6 +25,7 @@ app.use("/files", express.static("uploads"));
 app.use(routersCliente);
 app.use(routerFuncionario);
 app.use(routerProduto);
+app.use(routerFornecedor);
 
 
 

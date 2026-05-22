@@ -11,6 +11,10 @@ import Home from './components/paginas/Home/Home';
 import Produtos from './components/paginas/Produtos/Produtos'
 import CadastrarProduto from './components/paginas/Produtos/CadastrarProduto'
 import EditarProduto from './components/paginas/Produtos/EditarProduto'
+<<<<<<< HEAD
+import CadastrarFornecedor from './components/paginas/Fornecedores/CadastrarFornecedor'
+import EditarFornecedor from './components/paginas/Fornecedores/EditarFornecedor'
+=======
 
 import Cliente from './components/paginas/Cliente/Cliente'
 import CadastrarCliente from './components/paginas/Cliente/CadastrarCliente'
@@ -29,6 +33,7 @@ import Relatorio from './components/paginas/Relatorios/Relatorios'
 
 import Fornecedores from './components/paginas/Fornecedores/Fornecedores'
 
+>>>>>>> 8a5e024020d46690df781f4fc219c382d4bc8117
 import Login from './components/Login'
 import ValidaLogin from './components/ValidaLogin'
 
@@ -50,6 +55,8 @@ function App() {
         <Route path='/editar-produto/:id' element={<EditarProduto />} />
         <Route path='/vendas' element={<Vendas />} />
         <Route path='/fornecedores' element={<Fornecedores />} />
+        <Route path='/cadastrar-fornecedor' element={<CadastrarFornecedor />} />
+        <Route path='/editar-fornecedor/:id' element={<EditarFornecedor />} />
         <Route path='/estoque' element={<Estoque />} />
         <Route path='/relatorios' element={<Relatorio />} />
         <Route path='/cadastrar-estoque' element={<CadastrarEstoque/>}/>
