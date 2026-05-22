@@ -99,11 +99,12 @@ paths:
         '500':
           description: Erro interno do servidor
 
-      get:
+      /api/get:
       tags:
         - Funcionario
 
       summary: Listar todos os funcionarios
+
 
       security:
         - BearerAuth: []
@@ -118,7 +119,7 @@ paths:
         '500':
           description: Erro interno do servidor
 
-  /funcionario/{id}:
+  /api/funcionario/{id}:
     get:
       tags:
         - Funcionario
@@ -146,7 +147,7 @@ paths:
         '500':
           description: Erro interno do servidor
 
-    put:
+    /api/put:
       tags:
         - Funcionario
 
@@ -181,7 +182,7 @@ paths:
         '500':
           description: Erro interno do servidor
 
-    delete:
+    /api/delete:
       tags:
         - Funcionario
 
@@ -208,12 +209,15 @@ paths:
         '500':
           description: Erro interno do servidor    
 
-  /produto:
+  /api/produto:
     post:
       tags:
         - Produto
 
       summary: Cadastrar produto
+
+      security:
+        - BearerAuth: []
 
       requestBody:
         required: true
@@ -251,9 +255,6 @@ paths:
 
       summary: Buscar produto por ID
 
-      security:
-        - BearerAuth: []
-
       parameters:
         - in: path
           name: id
@@ -272,7 +273,7 @@ paths:
         '500':
           description: Erro interno do servidor
 
-    put:
+    /api/put:
       tags:
         - Produto
 
@@ -307,11 +308,14 @@ paths:
         '500':
           description: Erro interno do servidor
 
-    delete:
+    /api/delete:
       tags:
         - Produto
 
       summary: Excluir produto
+
+      security:
+        - BearerAuth: []
 
       parameters:
         - in: path
@@ -438,7 +442,7 @@ paths:
         '500':
           description: Erro interno do servidor
 
-    delete:
+    /api/delete:
       tags:
         - Venda
 
@@ -471,6 +475,8 @@ paths:
         - Estoque
 
       summary: Listar todo o estoque
+      security:
+        - BearerAuth: []
 
 
       responses:
@@ -510,7 +516,7 @@ paths:
           description: Erro interno do servidor
 
 
-    put:
+    /api/put:
       tags:
         - Estoque
 
@@ -545,7 +551,7 @@ paths:
         '500':
           description: Erro interno do servidor
 
-    delete:
+    /api/delete:
       tags:
         - Estoque
 
@@ -666,7 +672,7 @@ paths:
           description: Erro interno do servidor
 
 
-    put:
+    /api/put:
       tags:
         - Cliente
 
@@ -701,7 +707,7 @@ paths:
         '500':
           description: Erro interno do servidor
 
-    delete:
+    /api/delete:
       tags:
         - Cliente
 
@@ -793,7 +799,7 @@ paths:
         '500':
           description: Erro interno do servidor
 
-    put:
+    /api/put:
       tags:
         - Fornecedor
 
@@ -828,7 +834,7 @@ paths:
         '500':
           description: Erro interno do servidor
 
-    delete:
+    /api/delete:
       tags:
         - Fornecedor
 
@@ -857,6 +863,8 @@ paths:
         - Relatorio
 
       summary: Cadastrar novo relatório
+      security:
+        - BearerAuth: []
 
 
       requestBody:
@@ -920,7 +928,7 @@ paths:
           description: Erro interno do servidor
 
 
-    put:
+    /api/put:
       tags:
         - Relatório
 
@@ -955,7 +963,7 @@ paths:
         '500':
           description: Erro interno do servidor
 
-    delete:
+    /api/delete:
       tags:
         - Relatorio
 
@@ -1007,15 +1015,15 @@ components:
 
         nome:
           type: string
-          example: João Silva
+          example: Guilherme sérgio
 
         email:
           type: string
-          example: joao@email.com
+          example: ig@gmail.com
 
         senha:
           type: string
-          example: 123456
+          example: 1234
 
     Login:
       type: object
@@ -1028,11 +1036,11 @@ components:
 
         email:
           type: string
-          example: joao@email.com
+          example:  ig@gmail.com
 
         senha:
           type: string
-          example: 123456
+          example: 1234
 
     Produto:
       type: object
@@ -1047,7 +1055,7 @@ components:
 
         nome:
           type: string
-          example: Notebook Gamer
+          example: Ração
 
         quantidade:
           type: integer
@@ -1055,11 +1063,11 @@ components:
 
         valor:
           type: number
-          example: 5500
+          example: 150
 
         codigo:
           type: string
-          example: "102030"
+          example: "101010"
 
     AtualizarProduto:
       type: object
@@ -1068,11 +1076,11 @@ components:
 
         nome:
           type: string
-          example: Notebook Atualizado
+          example: Ração atualizada
 
         preco:
           type: number
-          example: 7000
+          example: 200
 
     Colaborador:
       type: object
@@ -1094,7 +1102,7 @@ components:
 
         nome:
           type: string
-          example: Maria
+          example: Alessandro
 
         idade:
           type: integer
