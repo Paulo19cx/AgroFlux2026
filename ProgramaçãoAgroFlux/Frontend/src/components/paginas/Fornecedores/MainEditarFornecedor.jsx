@@ -1,14 +1,17 @@
-import { useState, useActionState } from "react";
-import { Link, useNavigate } from "react-router";
+import { useState, useActionState, useEffect } from "react";
+import { Link, useParams, useNavigate } from "react-router";
 import axios from 'axios';
 
-function MainCadastrarFornecedor() {
+function MainEditarFornecedor() {
+    const { id } = useParams();
+    const navigate = useNavigate();
+    
     const [razaoSocial, setRazaoSocial] = useState('');
     const [nomeFantasia, setNomeFantasia] = useState('');
     const [cnpj, setCnpj] = useState('');
     const [email, setEmail] = useState('');
     const [situacao, setSituacao] = useState('ATIVO');
-    const [telefone, setTelefone] = useState('');
+    const [numeroTelefone, setNumeroTelefone] = useState('');
     const [tipoTelefone, setTipoTelefone] = useState('');
     const [principal, setPrincipal] = useState('');
     const [logradouro, setLogradouro] = useState('');
@@ -17,8 +20,6 @@ function MainCadastrarFornecedor() {
     const [cidade, setCidade] = useState('');
     const [estado, setEstado] = useState('');
     const [cep, setCep] = useState('');
-
-    const navigate = useNavigate();
 
     async function buscarDadosCep() {
         if (cep.length < 8) return;
@@ -38,15 +39,47 @@ function MainCadastrarFornecedor() {
         }
     }
 
-    const [estadoCadastro, acaoCadastro, pendente] = useActionState(
+    useEffect(() => {
+        async function getDadosFornecedor() {
+            try {
+                const response = await axios.get(`http://localhost:3001/listar-fornecedor/${id}`);
+                const dados = response.data;
+
+                setRazaoSocial(dados.razao_social);
+                setNomeFantasia(dados.nome_fantasia);
+                setCnpj(dados.cnpj);
+                setEmail(dados.email);
+                setSituacao(dados.situacao);
+                setNumeroTelefone(dados.numero_telefone);
+                setTipoTelefone(dados.tipo);
+                setPrincipal(dados.principal);
+                setLogradouro(dados.logradouro);
+                setNumero(dados.numero);
+                setBairro(dados.bairro);
+                setCidade(dados.cidade);
+                setEstado(dados.estado);
+                setCep(dados.cep);
+            } catch (erro) {
+                console.log(erro);
+            }
+        }
+        getDadosFornecedor();
+    }, [id]);
+
+    const [estadoAtualizar, acaoAtualizar, pendente] = useActionState(
         async (estadoAnterior, formData) => {
+            if (!razaoSocial || !cnpj || !email || !numeroTelefone || !situacao || !logradouro || !numero || !cep || !bairro || !cidade || !estado) {
+                alert('Todos os campos devem ser preenchidos');
+                return;
+            }
+
             const fornecedor = {
                 razaoSocial,
                 nomeFantasia,
                 cnpj, 
                 email,
                 situacao,
-                telefone,
+                numeroTelefone,
                 tipoTelefone,
                 principal,
                 logradouro,
@@ -58,14 +91,13 @@ function MainCadastrarFornecedor() {
             };
             
             try {
-                const response = await axios.post('http://localhost:3001/cadastro-fornecedor', fornecedor)
-                    
+                const response = await axios.put(`http://localhost:3001/editar-fornecedor/${id}`, fornecedor);
 
-                if (response.status === 201) {
-                    alert('Fornecedor cadastrado com sucesso!');
+                if (response.status === 200) {
+                    alert('Fornecedor atualizado com sucesso!');
                     navigate('/fornecedores');
                 } else {
-                    alert('Erro ao cadastrar fornecedor!');
+                    alert('Erro ao atualizar fornecedor!');
                 }
             } catch (erro) {
                 console.log(erro);
@@ -76,15 +108,15 @@ function MainCadastrarFornecedor() {
     return (
         <main className="ph-main-corpo px-md-4 ph-bg-color">
             <div className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 text-black">
-                <h1 className="h5 mt-3">Cadastrar Fornecedor</h1>
+                <h1 className="h5 mt-3">Editar Fornecedor</h1>
             </div>
 
             <div className="col-md-12 col-lg-12 ph-cor-fundo-branco p-4 rounded-3 shadow-lg mb-5">
-                <form action={acaoCadastro} className="row g-3 text-black">
+                <form action={acaoAtualizar} className="row g-3 text-black">
                     <h6 className="fw-bold mb-0">Principal</h6>
                     <div className="col-md-5">
                         <label htmlFor="razaoSocial" className="form-label small mb-1">Razão Social</label>
-                        <input value={razaoSocial} onChange={(e) => setRazaoSocial(e.target.value)} type="text" className="form-control ph-input" id="razaoSocial" name="razaoSocial"  />
+                        <input value={razaoSocial} onChange={(e) => setRazaoSocial(e.target.value)} type="text" className="form-control ph-input" id="razaoSocial" name="razaoSocial" required />
                     </div>
                     <div className="col-md-4">
                         <label htmlFor="nomeFantasia" className="form-label small mb-1">Nome Fantasia</label>
@@ -92,11 +124,11 @@ function MainCadastrarFornecedor() {
                     </div>
                     <div className="col-md-3">
                         <label htmlFor="cnpj" className="form-label small mb-1">CNPJ</label>
-                        <input value={cnpj} onChange={(e) => setCnpj(e.target.value)} type="text" className="form-control ph-input" id="cnpj" name="cnpj"  />
+                        <input value={cnpj} onChange={(e) => setCnpj(e.target.value)} type="text" className="form-control ph-input" id="cnpj" name="cnpj" required />
                     </div>
                     <div className="col-md-6">
                         <label htmlFor="email" className="form-label small mb-1">Email</label>
-                        <input value={email} onChange={(e) => setEmail(e.target.value)} type="email" className="form-control ph-input" id="email" name="email"  />
+                        <input value={email} onChange={(e) => setEmail(e.target.value)} type="email" className="form-control ph-input" id="email" name="email" required />
                     </div>
                     <div className="col-md-3">
                         <label htmlFor="situacao" className="form-label small mb-1">Situação</label>
@@ -108,16 +140,16 @@ function MainCadastrarFornecedor() {
                     
                     <h6 className="fw-bold mb-0">Telefone</h6>
                         <div className="col-4">
-                            <label htmlFor="telefone" className="form-label small mb-1">Número de telefone</label>
-                            <input value={telefone} onChange={(e) => setTelefone(e.target.value)} type="text" className="form-control ph-input" id="telefone" name="telefone"  />
+                            <label htmlFor="numeroTelefone" className="form-label small mb-1">Número de telefone</label>
+                            <input value={numeroTelefone} onChange={(e) => setNumeroTelefone(e.target.value)} type="text" className="form-control ph-input" id="numeroTelefone" name="numeroTelefone" required />
                         </div>
                         <div className="col-md-4">
                             <label htmlFor="tipoTelefone" className="form-label small mb-1">Tipo</label>
-                            <input value={tipoTelefone} onChange={(e) => setTipoTelefone(e.target.value)} type="text" className="form-control ph-input" id="tipoTelefone" name="tipoTelefone"  />
+                            <input value={tipoTelefone} onChange={(e) => setTipoTelefone(e.target.value)} type="text" className="form-control ph-input" id="tipoTelefone" name="tipoTelefone" required />
                         </div>
                         <div className="col-md-4">
                             <label htmlFor="principal" className="form-label small mb-1">Principal</label>
-                            <select value={principal} onChange={(e) => setPrincipal(e.target.value)} type="text" className="form-select ph-input" id="principal" name="principal"  >
+                            <select value={principal} onChange={(e) => setPrincipal(e.target.value)} type="text" className="form-select ph-input" id="principal" name="principal" required >
                                 <option value="">Selecione</option>
                                 <option value="SIM">Sim</option>
                                 <option value="NAO">Não</option>
@@ -153,7 +185,7 @@ function MainCadastrarFornecedor() {
 
                     <div className="col-12 mt-4">
                         <button disabled={pendente} type="submit" className="ph-btn-forms ph-btn-forms-cor-cadastrar me-2">
-                            {pendente ? 'Cadastrando...' : 'Cadastrar'}
+                            {pendente ? 'Atualizando...' : 'Atualizar'}
                         </button>
                         <Link to="/fornecedores" className="ph-btn-forms ph-btn-forms-cor-cancelar text-decoration-none">
                             Voltar
@@ -165,4 +197,4 @@ function MainCadastrarFornecedor() {
     );
 }
 
-export default MainCadastrarFornecedor;
+export default MainEditarFornecedor;

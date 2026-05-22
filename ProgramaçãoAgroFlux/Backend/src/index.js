@@ -3,6 +3,7 @@ import conexao from '../config/db.js';
 import routersCliente from './rotas/routersCliente.js';
 import routerFuncionario from './rotas/routersFuncionario.js';
 import routerProduto from './rotas/routersProduto.js';
+import routerFornecedor from './rotas/routersFornecedor.js';
 import verificarToken from './middleware/token.js';
 import cors from 'cors';
 
@@ -14,6 +15,7 @@ app.use("/files", express.static("uploads"));
 app.use(routersCliente);
 app.use(routerFuncionario);
 app.use(routerProduto);
+app.use(routerFornecedor);
 
 conexao.query("select 1").then(() => {
     console.log("sucesso");

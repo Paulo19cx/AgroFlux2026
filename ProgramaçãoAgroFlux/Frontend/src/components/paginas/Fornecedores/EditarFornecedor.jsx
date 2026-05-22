@@ -1,6 +1,6 @@
 import Sidebar from "../../Template/Sidebar";
 import Navbar from "../../Template/Navbar";
-import MainEditarFuncionario from "./MainEditarFuncionario";
+import MainEditarFornecedor from "./MainEditarFornecedor";
 
 function EditarFornecedor() {
     return (

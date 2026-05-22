@@ -20,6 +20,8 @@ import EditarCliente from './components/paginas/Cliente/EditarCliente'
 import EditarFuncionario from './components/paginas/Funcionarios/EditarFuncionario'
 import CadastrarProduto from './components/paginas/Produtos/CadastrarProduto'
 import EditarProduto from './components/paginas/Produtos/EditarProduto'
+import CadastrarFornecedor from './components/paginas/Fornecedores/CadastrarFornecedor'
+import EditarFornecedor from './components/paginas/Fornecedores/EditarFornecedor'
 import Login from './components/Login'
 import ValidaLogin from './components/ValidaLogin'
 
@@ -41,6 +43,8 @@ function App() {
         <Route path='/editar-produto/:id' element={<EditarProduto />} />
         <Route path='/vendas' element={<Vendas />} />
         <Route path='/fornecedores' element={<Fornecedores />} />
+        <Route path='/cadastrar-fornecedor' element={<CadastrarFornecedor />} />
+        <Route path='/editar-fornecedor/:id' element={<EditarFornecedor />} />
         <Route path='/estoque' element={<Estoque />} />
         <Route path='/relatorios' element={<Relatorio />} />
       </Routes>
