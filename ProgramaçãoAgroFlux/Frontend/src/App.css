@@ -35,8 +35,10 @@
      transition: background-color 0.2s ease, color 0.2s ease;
  }
 
+ 
+
  .ph-sidebar-estrutura .nav-link:hover {
-     background-color: #f2f6f4;
+     background-color: #96ecb6;
  }
 
  @media (min-width: 768px) {

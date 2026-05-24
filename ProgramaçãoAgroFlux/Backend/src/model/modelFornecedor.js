@@ -1,9 +1,9 @@
 import conexao from '../../config/db.js';
 
 const modelFornecedor = {
-    cadastrar: async (nomeRazaoSocial, nomeFantasia, cnpj, email, situacao, numeroTelefone, tipoTelefone, principal, logradouro, numero, bairro, cidade, estado, cep) => {
+    cadastrar: async (funcionarioId, nomeRazaoSocial, nomeFantasia, cnpj, email, situacao, numeroTelefone, tipoTelefone, principal, logradouro, numero, bairro, cidade, estado, cep) => {
         try {
-            const [resultadoF] = await conexao.query("INSERT INTO fornecedor (nome_razao_social, nome_fantasia, cnpj, email, situacao) VALUES (?,?,?,?,?)", [nomeRazaoSocial, nomeFantasia, cnpj, email, situacao]);
+            const [resultadoF] = await conexao.query("INSERT INTO fornecedor (funcionario_id, nome_razao_social, nome_fantasia, cnpj, email, situacao) VALUES (?,?,?,?,?,?)", [funcionarioId, nomeRazaoSocial, nomeFantasia, cnpj, email, situacao]);
 
             if (resultadoF) {
                 const idFornecedor = resultadoF.insertId;

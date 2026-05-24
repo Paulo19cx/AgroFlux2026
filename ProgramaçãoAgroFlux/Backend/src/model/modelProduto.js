@@ -1,11 +1,11 @@
 import conexao from "../../config/db.js";
 
 const modelProduto = {
-    cadastrar: async (fornecedor_id, nome, descricao, unidade_medida, preco_unitario, preco_custo, situacao) => {
+    cadastrar: async (fornecedorId, nome, descricao, unidadeMedida, precoUnitario, precoCusto, situacao) => {
         try {
             const [resultado] = await conexao.query(
                 "INSERT INTO produto (fornecedor_id, nome, descricao, unidade_medida, preco_unitario, preco_custo, situacao) VALUES (?,?,?,?,?,?,?)",
-                [fornecedor_id, nome, descricao, unidade_medida, preco_unitario, preco_custo, situacao]
+                [fornecedorId, nome, descricao, unidadeMedida, precoUnitario, precoCusto, situacao]
             );
             return resultado;
         } catch (erro) {
@@ -16,7 +16,7 @@ const modelProduto = {
     listar: async () => {
         try {
             const [resultado] = await conexao.query(
-                "SELECT id, fornecedor_id, nome, descricao, unidade_medida, preco_unitario, preco_custo, situacao, DATE_FORMAT(data_cadastro, '%d/%m/%Y %H:%i:%s') AS data_cadastro FROM produto"
+                "SELECT id, fornecedor_id, nome, descricao, unidade_medida, preco_unitario, preco_custo, situacao FROM produto"
             );
             return resultado;
         } catch (erro) {
@@ -27,7 +27,7 @@ const modelProduto = {
     listarPorId: async (id) => {
         try {
             const [resultado] = await conexao.query(
-                "SELECT id, fornecedor_id, nome, descricao, unidade_medida, preco_unitario, preco_custo, situacao, DATE_FORMAT(data_cadastro, '%d/%m/%Y %H:%i:%s') AS data_cadastro FROM produto WHERE id = ?",
+                "SELECT id, fornecedor_id, nome, descricao, unidade_medida, preco_unitario, preco_custo, situacao FROM produto WHERE id = ?",
                 [id]
             );
             return resultado;
@@ -36,11 +36,11 @@ const modelProduto = {
         }
     },
 
-    atualizar: async (fornecedor_id, nome, descricao, unidade_medida, preco_unitario, preco_custo, situacao, id) => {
+    atualizar: async (fornecedorId, nome, descricao, unidadeMedida, precoUnitario, precoCusto, situacao, id) => {
         try {
             const [resultado] = await conexao.query(
                 "UPDATE produto SET fornecedor_id = ?, nome = ?, descricao = ?, unidade_medida = ?, preco_unitario = ?, preco_custo = ?, situacao = ? WHERE id = ?",
-                [fornecedor_id, nome, descricao, unidade_medida, preco_unitario, preco_custo, situacao, id]
+                [fornecedorId, nome, descricao, unidadeMedida, precoUnitario, precoCusto, situacao, id]
             );
             return resultado;
         } catch (erro) {

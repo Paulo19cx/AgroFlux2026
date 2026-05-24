@@ -14,12 +14,12 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-const swaggerDocument = YAML.load('./src/swagger.yaml');
-app.use(
-  '/docs',
-  swaggerUi.serve,
-  swaggerUi.setup(swaggerDocument)
-);
+// const swaggerDocument = YAML.load('./src/swagger.yaml');
+// app.use(
+//   '/docs',
+//   swaggerUi.serve,
+//   swaggerUi.setup(swaggerDocument)
+// );
 
 app.use("/files", express.static("uploads"));
 app.use(routersCliente);
@@ -33,8 +33,8 @@ conexao.query("select 1").then(() => {
     console.log("sucesso");
 
     app.listen(3001, () => {
-        console.log('swagger disponivel em');
-        console.log('http://localhost:3301/docs')
+        //console.log('swagger disponivel em');
+        //console.log('http://localhost:3301/docs')
         console.log("servidor rodando na url:http://localhost:3001");
     });
     

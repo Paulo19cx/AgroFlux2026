@@ -1,24 +1,47 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router";
+import axios from 'axios';
 
-function MainProdutos() {
+const MainProdutos = () => {
 
-    const jsonDadosProdutos = 'https://jsonplaceholder.typicode.com/users';
     const [produto, setProduto] = useState([]);
 
     useEffect(() => {
-        async function buscarDadosProdutos() {
+        const buscarDadosProdutos = async () => {
             try {
-                let resposta = await fetch(jsonDadosProdutos);
-                let dadosProduto = await resposta.json();
-                setProduto(dadosProduto);
-                console.log(dadosProduto)
+                const response = await axios.get('http://localhost:3001/listar-produtos');
+                
+                const produtosOrdenados = response.data.sort((a, b) =>
+                    a.nome.localeCompare(b.nome)
+                );
+
+                setProduto(produtosOrdenados);
             } catch (erro) {
                 console.log(erro);
             }
         }
         buscarDadosProdutos();
     }, []);
+
+    const deletarProduto = async (id) => {
+
+        const confirmar = confirm("Deseja realmente excluir?");
+
+        if (!confirmar) return;
+
+        try {
+            const resposta = await axios.delete(`http://localhost:3001/deletar-produto/${id}`);
+
+            if (resposta.status === 200) {
+                setProduto(produto.filter(p => p.id !== id));
+                alert("Produto excluído com sucesso!");
+            } else {
+                alert("Erro ao excluir o produto.");
+            }
+        } catch (erro) {
+            console.error(erro);
+        }
+    }
 
     return (
         <>
@@ -53,7 +76,7 @@ function MainProdutos() {
                                         <td>{produto.estoqueAtual}</td>
                                         <td>
                                             <Link to={`/editar-produto/${produto.id}`} className="text-decoration-none"><i className="fi fi-rr-pencil ph-cor-lapis"></i></Link>
-                                            <button onClick className="border border-0 bg-transparent"><i className="fi fi-rr-trash ph-cor-lixo"></i></button>
+                                            <button onClick={() => deletarProduto(produto.id)} className="border border-0 bg-transparent"><i className="fi fi-rr-trash ph-cor-lixo"></i></button>
                                         </td>
                                     </tr>
                                 ))

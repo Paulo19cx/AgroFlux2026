@@ -29,6 +29,7 @@ CREATE TABLE empresa (
 CREATE TABLE cliente (
     id INT(11) NOT NULL AUTO_INCREMENT,
     empresa_id INT(11) NOT NULL DEFAULT 1,
+    funcionario_id INT(11) NOT NULL,
     nome_razao_social VARCHAR(200) NOT NULL,
     nome_fantasia VARCHAR(100) NULL,
     tipo_pessoa ENUM('FISICA', 'JURIDICA') NOT NULL,
@@ -63,13 +64,16 @@ CREATE TABLE funcionario (
 CREATE TABLE fornecedor (
     id INT(11) NOT NULL AUTO_INCREMENT,
     empresa_id INT(11) NOT NULL DEFAULT 1,
+    funcionario_id INT(11) NOT NULL,
     nome_razao_social VARCHAR(150) NOT NULL,
-    nome_fantasia VARCHAR(50),
+    nome_fantasia VARCHAR(50) NOT NULL,
     cnpj CHAR(14) NOT NULL UNIQUE,
-    email VARCHAR(150),
+    email VARCHAR(150) NOT NULL,
     situacao ENUM('ATIVO', 'INATIVO') NOT NULL,
+    data_cadastro DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY (id),
-    CONSTRAINT fk_fornecedor_empresa FOREIGN KEY (empresa_id) REFERENCES empresa(id)
+    CONSTRAINT fk_fornecedor_empresa FOREIGN KEY (empresa_id) REFERENCES empresa(id),
+    CONSTRAINT fk_fornecedor_funcionario FOREIGN KEY (funcionario_id) REFERENCES funcionario(id)
 );
 
 CREATE TABLE telefone (
@@ -78,10 +82,10 @@ CREATE TABLE telefone (
     funcionario_id INT(11) NULL,
     fornecedor_id INT(11) NULL,
     numero_telefone VARCHAR(15) NOT NULL,
-    tipo VARCHAR(20),
+    tipo VARCHAR(20) NOT NULL,
     principal CHAR(3) NOT NULL, -- SIM ou NAO
     PRIMARY KEY (id),
-    CONSTRAINT fk_telefone_cliente FOREIGN KEY (cliente_id) REFERENCES cliente(id),
+    CONSTRAINT fk_telefone_cliente FOREIGN KEY (cliente_id) REFERENCES cliente(id) ON DELETE CASCADE,
     CONSTRAINT fk_telefone_funcionario FOREIGN KEY (funcionario_id) REFERENCES funcionario(id) ON DELETE CASCADE,
     CONSTRAINT fk_telefone_fornecedor FOREIGN KEY (fornecedor_id) REFERENCES fornecedor(id) ON DELETE CASCADE,
     CONSTRAINT chk_telefone_cliente_funcionario_fornecedor_cpf CHECK ((cliente_id IS NOT NULL) + (funcionario_id IS NOT NULL) + (fornecedor_id IS NOT NULL) = 1)
@@ -91,12 +95,15 @@ CREATE TABLE produto (
     id INT(11) NOT NULL AUTO_INCREMENT,
     empresa_id INT(11) NOT NULL DEFAULT 1,
     fornecedor_id INT(11) NOT NULL,
+    funcionario_id INT(11) NOT NULL,
     nome VARCHAR(100) NOT NULL,
     descricao TEXT,
     unidade_medida VARCHAR(15) NOT NULL,
-    preco_unitario DECIMAL(10,2) NOT NULL,
-    preco_custo DECIMAL(10,2) NOT NULL,
-    situacao ENUM('ATIVO', 'INATIVO') NOT NULL,
+    preco_venda DECIMAL(10,2) NOT NULL,
+    custo_unitario DECIMAL(10,2) NOT NULL,
+    categoria VARCHAR(50) NOT NULL,
+    data_cadastro DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    situacao ENUM('ATIVO', 'INATIVO') NOT NULL DEFAULT 'ATIVO',
     PRIMARY KEY (id),
     CONSTRAINT fk_produto_empresa FOREIGN KEY (empresa_id) REFERENCES empresa(id),
     CONSTRAINT fk_produto_fornecedor FOREIGN KEY (fornecedor_id) REFERENCES fornecedor(id)
@@ -109,7 +116,7 @@ CREATE TABLE venda (
     funcionario_id INT(11) NOT NULL,
     data_venda DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     valor_total DECIMAL(10,2) NOT NULL,
-    situacao ENUM('PENDENTE', 'FINALIZADA', 'CANCELADA') NOT NULL NOT NULL,
+    situacao ENUM('PENDENTE', 'FINALIZADA', 'CANCELADA') NOT NULL,
     PRIMARY KEY (id),
     CONSTRAINT fk_venda_cliente FOREIGN KEY (cliente_id) REFERENCES cliente(id),
     CONSTRAINT fk_venda_empresa FOREIGN KEY (empresa_id) REFERENCES empresa(id),
@@ -158,8 +165,8 @@ CREATE TABLE cliente_endereco(
     endereco_id INT(11) NOT NULL,
     cliente_id INT(11) NOT NULL,
     PRIMARY KEY(id),
-    CONSTRAINT fk_cliente_endereco_endereco FOREIGN KEY (endereco_id) REFERENCES endereco(id),
-    CONSTRAINT fk_cliente_endereco_cliente FOREIGN KEY (cliente_id) REFERENCES cliente(id)
+    CONSTRAINT fk_cliente_endereco_endereco FOREIGN KEY (endereco_id) REFERENCES endereco(id) ON DELETE CASCADE,
+    CONSTRAINT fk_cliente_endereco_cliente FOREIGN KEY (cliente_id) REFERENCES cliente(id) ON DELETE CASCADE                                                                                    
 );
 
 CREATE TABLE fornecedor_endereco(
@@ -167,6 +174,6 @@ CREATE TABLE fornecedor_endereco(
     endereco_id INT(11) NOT NULL,
     fornecedor_id INT(11) NOT NULL,
     PRIMARY KEY(id),
-    CONSTRAINT fk_fornecedor_endereco_endereco FOREIGN KEY (endereco_id) REFERENCES endereco(id),
-    CONSTRAINT fk_fornecedor_endereco_fornecedor FOREIGN KEY (fornecedor_id) REFERENCES fornecedor(id)
+    CONSTRAINT fk_fornecedor_endereco_endereco FOREIGN KEY (endereco_id) REFERENCES endereco(id) ON DELETE CASCADE,
+    CONSTRAINT fk_fornecedor_endereco_fornecedor FOREIGN KEY (fornecedor_id) REFERENCES fornecedor(id) ON DELETE CASCADE
 );

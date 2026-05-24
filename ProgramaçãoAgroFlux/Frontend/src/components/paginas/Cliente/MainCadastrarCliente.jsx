@@ -4,16 +4,16 @@ import { Link } from "react-router";
 
 function MainCadastrarCliente() {
 
-    const [razaoSocial, setRazaoSocial] = useState('');
+    const [nomeRazaoSocial, setnomeRazaoSocial] = useState('');
     const [nomeFantasia, setNomeFantasia] = useState('');
-    const [tipoPessoa, setTipoPessoa] = useState('juridica');
+    const [tipoPessoa, setTipoPessoa] = useState('JURIDICA');
     const [cnpj, setCnpj] = useState('');
     const [cpf, setCpf] = useState('');
     const [email, setEmail] = useState('');
-    const [situacao, setSituacao] = useState('ativo');
-    const [telefone, setTelefone] = useState('');
+    const [situacao, setSituacao] = useState('ATIVO');
+    const [numeroTelefone, setNumeroTelefone] = useState('');
     const [tipoTelefone, setTipoTelefone] = useState('');
-    const [principal, setPrincipal] = useState('');
+    const [principal, setPrincipal] = useState('SIM');
     const [logradouro, setLogradouro] = useState('');
     const [numero, setNumero] = useState('');
     const [bairro, setBairro] = useState('');
@@ -45,23 +45,15 @@ function MainCadastrarCliente() {
     const [estadoCadastro, acaoCadastro, pendente] = useActionState(
 
         async (estadoAnterior, formData) => {
-            // const dadosCliente = JSON.stringify(Object.fromEntries(formData.entries()));
-            // await new Promise((resolve) => setTimeout(resolve, 2000));
-
-            if (!razaoSocial || !nomeFantasia || !email || !telefone || !tipoTelefone || !principal || !logradouro || !numero || !bairro || !cidade || !estado || !cep){
-                alert('Todos os campos devem ser preenchidos');
-                return;
-            }
-
             const cliente = {
-                razaoSocial,
+                nomeRazaoSocial,
                 nomeFantasia,
                 tipoPessoa,
                 cnpj,
                 cpf,
                 email,
                 situacao,
-                telefone,
+                numeroTelefone,
                 tipoTelefone,
                 principal,
                 logradouro,
@@ -78,16 +70,16 @@ function MainCadastrarCliente() {
                 if (response.status === 201) {
                     alert('Cliente cadastrado com sucesso!');
 
-                    setRazaoSocial('');
+                    setnomeRazaoSocial('');
                     setNomeFantasia('');
-                    setTipoPessoa('');
+                    setTipoPessoa('JURIDICA');
                     setCnpj('');
                     setCpf('');
                     setEmail('');
-                    setSituacao('Ativo')
-                    setTelefone('');
+                    setSituacao('ATIVO');
+                    setNumeroTelefone('');
                     setTipoTelefone('');
-                    setPrincipal('');
+                    setPrincipal('SIM');
                     setLogradouro('');
                     setNumero('');
                     setBairro('');
@@ -116,7 +108,7 @@ function MainCadastrarCliente() {
                         <h6 className="fw-bold mb-0">Principal</h6>
                         <div className="col-md-6">
                             <label htmlFor="razao_social" className="form-label small mb-1">Nome/Razão Social</label>
-                            <input value={razaoSocial} onChange={(e) => setRazaoSocial(e.target.value)} type="text" className="form-control ph-input" id="razao_social" name="razao_social" required />
+                            <input value={nomeRazaoSocial} onChange={(e) => setnomeRazaoSocial(e.target.value)} type="text" className="form-control ph-input" id="razao_social" name="razao_social" required />
                         </div>
                         <div className="col-md-6">
                             <label htmlFor="nome_fantasia" className="form-label small mb-1">Nome Fantasia</label>
@@ -124,18 +116,18 @@ function MainCadastrarCliente() {
                         </div>
                         <div className="col-md-2">
                             <label htmlFor="tipo" className="form-label small mb-1">Tipo</label>
-                            <select value={tipoPessoa} onChange={(e) => setTipoPessoa(e.target.value)} type="text" className="form-select ph-input" id="tipo" name="tipo">
+                            <select value={tipoPessoa} onChange={(e) => {setTipoPessoa(e.target.value); setCnpj(''); setCpf(''); }} type="text" className="form-select ph-input" id="tipo" name="tipo">
                                 <option value="FISICA">Fisíca</option>
                                 <option value="JURIDICA">Jurídica</option>
                             </select>
                         </div>
                         <div className="col-3">
                             <label htmlFor="cnpj" className="form-label small mb-1">CNPJ</label>
-                            <input value={cnpj} onChange={(e) => setCnpj(e.target.value)} type="text" className="form-control ph-input" id="cnpj" name="cnpj" required />
+                            <input value={cnpj} onChange={(e) => setCnpj(e.target.value)} type="text" className="form-control ph-input" id="cnpj" name="cnpj" disabled={tipoPessoa === 'FISICA'} />
                         </div>
                         <div className="col-3">
                             <label htmlFor="cpf" className="form-label small mb-1">CPF</label>
-                            <input value={cpf} onChange={(e) => setCpf(e.target.value)} type="text" className="form-control ph-input" id="cpf" name="cpf" required disabled/>
+                            <input value={cpf} onChange={(e) => setCpf(e.target.value)} type="text" className="form-control ph-input" id="cpf" name="cpf" disabled={tipoPessoa === 'JURIDICA'}/>
                         </div>
                         <div className="col-md-4">
                             <label htmlFor="email" className="form-label small mb-1">Email</label>
@@ -151,16 +143,16 @@ function MainCadastrarCliente() {
 
                         <h6 className="fw-bold mb-0">Telefone</h6>
                         <div className="col-4">
-                            <label htmlFor="telefone" className="form-label small mb-1">Número de telefone</label>
-                            <input value={telefone} onChange={(e) => setTelefone(e.target.value)} type="text" className="form-control ph-input" id="telefone" name="telefone" required />
+                            <label htmlFor="numero_telefone" className="form-label small mb-1">Número de telefone</label>
+                            <input value={numeroTelefone} onChange={(e) => setNumeroTelefone(e.target.value)} type="text" className="form-control ph-input" id="numero_telefone" name="numero_telefone" required />
                         </div>
                         <div className="col-md-4">
-                            <label htmlFor="cep" className="form-label small mb-1">Tipo</label>
-                            <input value={tipoTelefone} onChange={(e) => setTipoTelefone(e.target.value)} type="text" className="form-control ph-input" id="cep" name="cep" required />
+                            <label htmlFor="tipo_telefone" className="form-label small mb-1">Tipo</label>
+                            <input value={tipoTelefone} onChange={(e) => setTipoTelefone(e.target.value)} type="text" className="form-control ph-input" id="tipo_telefone" name="tipo_telefone" required />
                         </div>
                         <div className="col-md-4">
-                            <label htmlFor="cep" className="form-label small mb-1">Princípal</label>
-                            <select value={principal} onChange={(e) => setPrincipal(e.target.value)} type="text" className="form-select ph-input" id="cep" name="cep" required >
+                            <label htmlFor="principal" className="form-label small mb-1">Princípal</label>
+                            <select value={principal} onChange={(e) => setPrincipal(e.target.value)} type="text" className="form-select ph-input" id="principal" name="principal" required >
                                 <option value="SIM">Sim</option>
                                 <option value="NAO">Não</option>
                             </select>

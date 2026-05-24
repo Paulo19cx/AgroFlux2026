@@ -2,6 +2,7 @@ import conexao from '../../config/db.js';
 
 const modelCliente = {
     cadastrar: async (nomeRazaoSocial, nomeFantasia, tipoPessoa, cnpj, email, situacao, numeroTelefone, tipoTelefone, principal, logradouro, numero, bairro, cidade, estado, cep) => {
+        
         try {
             const [resultadoC] = await conexao.query("INSERT INTO cliente (nome_razao_social, nome_fantasia, tipo_pessoa, cnpj, email, situacao) VALUES (?,?,?,?,?,?)", [nomeRazaoSocial, nomeFantasia, tipoPessoa, cnpj, email, situacao]);
 
@@ -67,20 +68,11 @@ const modelCliente = {
 
     deletar: async (id) => {
         try {
-            const [resultadoCE] = await conexao.query("DELETE ce FROM cliente_endereco ce JOIN cliente c ON ce.cliente_id = c.id WHERE c.id = ?", [id]);
+            const [resultadoE] = await conexao.query("DELETE e FROM endereco e JOIN cliente_endereco ce ON ce.endereco_id = e.id WHERE ce.cliente_id = ?", [id]);
 
-            if (resultadoCE.affectedRows > 0) {
-                const [resultadoT] = await conexao.query("DELETE t FROM telefone t JOIN cliente c ON t.cliente_id = c.id WHERE c.id = ?", [id]);
-
-                if (resultadoT.affectedRows > 0) {
-                    const [resultadoE] = await conexao.query("DELETE e FROM endereco e JOIN cliente_endereco ce ON ce.endereco_id = e.id JOIN cliente c ON ce.cliente_id = c.id WHERE c.id = ?", [id]);
-
-                    if (resultadoE.affectedRows > 0) {
-                        const resultadoC = await conexao.query("DELETE FROM cliente WHERE id = ?", [id]);
-
-                        return resultadoC;
-                    }
-                }
+            if (resultadoE.affectedRows > 0) {
+                const [resultadoC] = await conexao.query("DELETE FROM cliente WHERE id = ?", [id]);
+                return resultadoC;
             }
         } catch (erro) {
             throw erro;

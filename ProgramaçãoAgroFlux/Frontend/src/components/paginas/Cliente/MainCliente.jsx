@@ -4,6 +4,7 @@ import { Link } from "react-router";
 
 const MainCliente = () => {
     const [clientes, setClientes] = useState([]);
+    const [clienteSelecionado, setClienteSelecionado] = useState(null);
 
     useEffect(() => {
         const buscarDadosCliente = async () => {
@@ -15,7 +16,6 @@ const MainCliente = () => {
                 );
 
                 setClientes(clientesOrdenados);
-
             } catch (erro) {
                 console.log(erro);
             }
@@ -23,18 +23,16 @@ const MainCliente = () => {
         buscarDadosCliente();
     }, []);
 
-    async function deletarCliente(id) {
+    const deletarCliente = async (id) => {
 
         const confirmar = confirm("Deseja realmente excluir?");
 
         if (!confirmar) return;
 
         try {
-            const resposta = await fetch(`https://jsonplaceholder.typicode.com/users/${id}`, {
-                method: 'DELETE'
-            });
+            const resposta = await axios.delete(`http://localhost:3001/deletar-cliente/${id}`);
 
-            if (resposta.ok) {
+            if (resposta.status === 200) {
                 setClientes(clientes.filter(c => c.id !== id));
                 alert("Cliente excluído com sucesso!");
             } else {
@@ -73,6 +71,7 @@ const MainCliente = () => {
                                         <td>{cliente.email}</td>
                                         <td>{cliente.data_cadastro}</td>
                                         <td>
+                                            <button onClick={() => setClienteSelecionado(cliente)} className="border border-0 bg-transparent me-2" title="Visualizar"><i className="fi fi-rr-eye" style={{color: '#0d6efd'}}></i></button>
                                             <Link to={`/editar-cliente/${cliente.id}`} className="text-decoration-none"><i className="fi fi-rr-pencil ph-cor-lapis"></i></Link>
                                             <button onClick={() => deletarCliente(cliente.id)} className="border border-0 bg-transparent"><i className="fi fi-rr-trash ph-cor-lixo"></i></button>
                                         </td>
@@ -82,6 +81,22 @@ const MainCliente = () => {
                         </tbody>
                     </table>
                 </div>
+
+                {/* Modal Card com Detalhes do Cliente */}
+                {clienteSelecionado && (
+                    <div className="position-fixed top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center" style={{backgroundColor: 'rgba(0,0,0,0.5)', zIndex: 1050}}>
+                        <div className="card shadow" style={{width: '90%', maxWidth: '600px', maxHeight: '90vh', overflowY: 'auto'}}>
+                            <div className="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+                                <h5 className="mb-0">Detalhes do Cliente</h5>
+                                <button onClick={() => setClienteSelecionado(null)} className="btn-close btn-close-white" style={{cursor: 'pointer'}}></button>
+                            </div>
+                            
+                            <div className="card-footer d-flex justify-content-end">
+                                <button onClick={() => setClienteSelecionado(null)} className="btn btn-secondary">Fechar</button>
+                            </div>
+                        </div>
+                    </div>
+                )}
             </main>
         </>
     );

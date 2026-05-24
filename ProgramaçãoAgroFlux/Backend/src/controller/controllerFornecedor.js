@@ -2,10 +2,10 @@ import modelFornecedor from '../model/modelFornecedor.js'
 
 const controllerFornecedor = {
     cadastrar: async (req, res) => {
-        const { nomeRazaoSocial, nomeFantasia, cnpj, email, situacao, numeroTelefone, tipoTelefone, principal, logradouro, numero, bairro, cidade, estado, cep } = req.body;
+        const { funcionarioId, nomeRazaoSocial, nomeFantasia, cnpj, email, situacao, numeroTelefone, tipoTelefone, principal, logradouro, numero, bairro, cidade, estado, cep } = req.body;
 
         try {
-            const [cadastro] = await modelFornecedor.cadastrar(nomeRazaoSocial, nomeFantasia, cnpj, email, situacao, numeroTelefone, tipoTelefone, principal, logradouro, numero, bairro, cidade, estado, cep);
+            const [cadastro] = await modelFornecedor.cadastrar(funcionarioId, nomeRazaoSocial, nomeFantasia, cnpj, email, situacao, numeroTelefone, tipoTelefone, principal, logradouro, numero, bairro, cidade, estado, cep);
 
             if (cadastro.affectedRows > 0) {
                 return res.status(201).json({ msg: "Cadastro com sucesso" });
