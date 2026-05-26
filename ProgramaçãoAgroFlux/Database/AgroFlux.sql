@@ -56,6 +56,7 @@ CREATE TABLE funcionario (
     salario_inicial DECIMAL(10,2) NOT NULL,
     salario_atual DECIMAL(10,2) NOT NULL,
     foto VARCHAR(255),
+    regra VARCHAR(50) NOT NULL,
     situacao ENUM('ATIVO', 'INATIVO') NOT NULL,
     PRIMARY KEY (id),
     CONSTRAINT fk_funcionario_empresa FOREIGN KEY (empresa_id) REFERENCES empresa(id)
