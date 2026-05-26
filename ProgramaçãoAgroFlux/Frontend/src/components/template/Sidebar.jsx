@@ -44,17 +44,17 @@ function Sidebar() {
             <aside id="sidebarMenu" className="d-md-block sidebar collapse ph-bg-sidebar-navbar ph-sidebar-estrutura">
                 <div className="position-sticky pt-3">
                     <ul className="nav flex-column gap-3">
-                        <li className="nav-item">
-                            {regra === 'Administrador' && (
+                        {regra === 'ADMINISTRADOR' && (
+                            <li className="nav-item">
                                 <Link to="/home" className="nav-link d-flex align-items-center fw-normal ph-padding-links-sidebar gap-3 text-black" aria-current="page">
                                     <i className="fi fi-rr-home" aria-hidden="true"></i>
                                     <span>Dashboard</span>
                                 </Link>
-                            )}
-                        </li>
+                            </li>
+                        )}
 
                         <li className="nav-item">
-                            {regra === 'Administrador' && (
+                            {regra === 'ADMINISTRADOR' && (
                                 <Link to="/clientes" className="nav-link d-flex align-items-center fw-normal ph-padding-links-sidebar gap-3 text-black">
                                     <i className="fi fi-rs-users" aria-hidden="true"></i>
                                     <span>Clientes</span>
@@ -63,7 +63,7 @@ function Sidebar() {
                         </li>
 
                         <li className="nav-item">
-                            {regra === 'Administrador' && (
+                            {regra === 'ADMINISTRADOR' && (
                                 <Link to="/funcionarios" className="nav-link d-flex align-items-center fw-normal ph-padding-links-sidebar gap-3 text-black">
                                     <i className="fi fi-rs-user-gear" aria-hidden="true"></i>
                                     <span>Funcionários</span>
@@ -72,7 +72,7 @@ function Sidebar() {
                         </li>
 
                         <li className="nav-item">
-                            {regra === 'Administrador' && (
+                            {regra === 'ADMINISTRADOR' && (
                                 <Link to="/produtos" className="nav-link d-flex align-items-center fw-normal ph-padding-links-sidebar gap-3 text-black">
                                     <i className="fi fi-rr-box-open-full" aria-hidden="true"></i>
                                     <span>Produtos</span>
@@ -81,7 +81,7 @@ function Sidebar() {
                         </li>
 
                         <li className="nav-item">
-                            {regra === 'Administrador' && (
+                            {regra === 'ADMINISTRADOR' && (
                                 <Link to="/vendas" className="nav-link d-flex align-items-center fw-normal ph-padding-links-sidebar gap-3 text-black">
                                     <i className="fi fi-rr-shopping-cart" aria-hidden="true"></i>
                                     <span>Vendas</span>
@@ -90,7 +90,7 @@ function Sidebar() {
                         </li>
 
                         <li className="nav-item">
-                            {regra === 'Administrador' && (
+                            {regra === 'ADMINISTRADOR' && (
                                 <Link to="/fornecedores" className="nav-link d-flex align-items-center fw-normal ph-padding-links-sidebar gap-3 text-black">
                                     <i className="fi fi-rr-truck-side" aria-hidden="true"></i>
                                     <span>Fornecedores</span>
@@ -99,7 +99,7 @@ function Sidebar() {
                         </li>
 
                         <li className="nav-item">
-                            {regra === 'Administrador' && (
+                            {regra === 'ADMINISTRADOR' && (
                                 <Link to="/estoque" className="nav-link d-flex align-items-center fw-normal ph-padding-links-sidebar gap-3 text-black">
                                     <i className="fi fi-rr-warehouse-alt" aria-hidden="true"></i>
                                     <span>Estoque</span>
@@ -108,7 +108,7 @@ function Sidebar() {
                         </li>
 
                         <li className="nav-item">
-                            {regra === 'Administrador' && (
+                            {regra === 'ADMINISTRADOR' && (
                                 <Link to="/relatorios" className="nav-link d-flex align-items-center fw-normal ph-padding-links-sidebar gap-3 text-black">
                                     <i className="fi fi-rr-ballot" aria-hidden="true"></i>
                                     <span>Relatórios</span>

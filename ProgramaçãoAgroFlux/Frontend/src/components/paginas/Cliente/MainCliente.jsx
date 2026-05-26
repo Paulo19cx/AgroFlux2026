@@ -105,10 +105,10 @@ const MainCliente = () => {
                                         <td>{cliente.data_cadastro}</td>
                                         <td>
                                             <button onClick={() => setClienteSelecionado(cliente)} className="border border-0 bg-transparent me-2" title="Visualizar"><i className="fi fi-rr-eye" style={{color: '#0d6efd'}}></i></button>
-                                            {regra === 'Administrador' && (
+                                            {regra === 'ADMINISTRADOR' &&(
                                                 <Link to={`/editar-cliente/${cliente.id}`} className="text-decoration-none"><i className="fi fi-rr-pencil ph-cor-lapis"></i></Link>
                                             )}
-                                            {regra === 'Administrador' && (
+                                            {regra === 'ADMINISTRADOR' &&(
                                                 <button onClick={() => deletarCliente(cliente.id)} className="border border-0 bg-transparent"><i className="fi fi-rr-trash ph-cor-lixo"></i></button>
                                             )}
                                         </td>
