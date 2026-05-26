@@ -4,16 +4,16 @@ import { useState, useEffect, useActionState } from "react";
 
 function MainEditarCliente() {
     const { id } = useParams();
-    const [razaoSocial, setRazaoSocial] = useState('');
+    const [nomeRazaoSocial, setNomeRazaoSocial] = useState('');
     const [nomeFantasia, setNomeFantasia] = useState('');
     const [tipoPessoa, setTipoPessoa] = useState('juridica');
     const [cnpj, setCnpj] = useState('');
     const [cpf, setCpf] = useState('');
     const [email, setEmail] = useState('');
     const [situacao, setSituacao] = useState('ativo');
-    const [telefone, setTelefone] = useState('');
+    const [numeroTelefone, setNumeroTelefone] = useState('');
     const [tipoTelefone, setTipoTelefone] = useState('');
-    const [principal, setPrincipal] = useState('');
+    const [principal, setPrincipal] = useState('SIM');
     const [logradouro, setLogradouro] = useState('');
     const [numero, setNumero] = useState('');
     const [bairro, setBairro] = useState('');
@@ -50,20 +50,20 @@ function MainEditarCliente() {
             // Simula uma espera em segundos
             //await new Promise((resolve) => setTimeout(resolve, 2000));
 
-            if (!razaoSocial || !nomeFantasia || !email || !telefone || !tipoTelefone || !principal || !logradouro || !numero || !bairro || !cidade || !estado || !cep){
+            if (!nomeRazaoSocial || !nomeFantasia || !email || !numeroTelefone || !tipoTelefone || !principal || !logradouro || !numero || !bairro || !cidade || !estado || !cep){
                 alert('Todos os campos devem ser preenchidos');
                 return;
             }
 
             const cliente = {
-                razaoSocial,
+                nomeRazaoSocial,
                 nomeFantasia,
                 tipoPessoa,
                 cnpj,
                 cpf,
                 email,
                 situacao,
-                telefone,
+                numeroTelefone,
                 tipoTelefone,
                 principal,
                 logradouro,
@@ -100,14 +100,14 @@ function MainEditarCliente() {
 
                 console.log(response)
 
-                setRazaoSocial(response.data.nome_razao_social);
+                setNomeRazaoSocial(response.data.nome_razao_social);
                 setNomeFantasia(response.data.nome_fantasia);
                 setTipoPessoa(response.data.tipo_pessoa);
                 setCnpj(response.data.cnpj);
                 setCpf(response.data.cpf);
                 setEmail(response.data.email);
                 setSituacao(response.data.situacao);
-                setTelefone(response.data.numero_telefone);
+                setNumeroTelefone(response.data.numero_telefone);
                 setTipoTelefone(response.data.tipo);
                 setPrincipal(response.data.principal);
                 setLogradouro(response.data.logradouro);
@@ -137,7 +137,7 @@ function MainEditarCliente() {
                         <h6 className="fw-bold mb-0">Principal</h6>
                         <div className="col-md-6">
                             <label htmlFor="razao_social" className="form-label small mb-1">Nome/Razão Social</label>
-                            <input value={razaoSocial} onChange={(e) => setRazaoSocial(e.target.value)} type="text" className="form-control ph-input" id="razao_social" name="razao_social" required />
+                            <input value={nomeRazaoSocial} onChange={(e) => setNomeRazaoSocial(e.target.value)} type="text" className="form-control ph-input" id="razao_social" name="razao_social" required />
                         </div>
                         <div className="col-md-6">
                             <label htmlFor="nome_fantasia" className="form-label small mb-1">Nome Fantasia</label>
@@ -172,8 +172,8 @@ function MainEditarCliente() {
 
                         <h6 className="fw-bold mb-0">Telefone</h6>
                         <div className="col-4">
-                            <label htmlFor="telefone" className="form-label small mb-1">Número de telefone</label>
-                            <input value={telefone} onChange={(e) => setTelefone(e.target.value)} type="text" className="form-control ph-input" id="telefone" name="telefone" required />
+                            <label htmlFor="numero_telefone" className="form-label small mb-1">Número de telefone</label>
+                            <input value={numeroTelefone} onChange={(e) => setNumeroTelefone(e.target.value)} type="text" className="form-control ph-input" id="numero_telefone" name="numero_telefone" required />
                         </div>
                         <div className="col-md-4">
                             <label htmlFor="tipo_telefone" className="form-label small mb-1">Tipo</label>
@@ -181,7 +181,10 @@ function MainEditarCliente() {
                         </div>
                         <div className="col-md-4">
                             <label htmlFor="principal" className="form-label small mb-1">Princípal</label>
-                            <input value={principal} onChange={(e) => setPrincipal(e.target.value)} type="text" className="form-control ph-input" id="principal" name="principal" />
+                            <select value={principal} onChange={(e) => setPrincipal(e.target.value)} type="text" className="form-select ph-input" id="principal" name="principal" required >
+                                <option value="SIM">Sim</option>
+                                <option value="NAO">Não</option>
+                            </select>
                         </div>
 
                         <h6 className="fw-bold mb-0">Endereço</h6>

@@ -92,7 +92,7 @@ const modelFuncionario = {
     atualizar: async (nome, cpf, cargo, email, senha, dataNascimento, dataContratacao, salarioInicial, salarioAtual, regra, situacao, numeroTelefone, tipoTelefone, principal, logradouro, numero, bairro, cidade, estado, cep, id) => {
         
         const senhaHash = await bcrypt.hash(senha, 10);
-
+        
         try {
             const [resultadoF] = await conexao.query("UPDATE funcionario SET nome = ?, cpf = ?, cargo = ?, email = ?, senha = ?, data_nascimento = ?, data_contratacao = ?, salario_inicial = ?, salario_atual = ?, regra = ?, situacao = ? WHERE id = ?", [nome, cpf, cargo, email, senhaHash, dataNascimento, dataContratacao, salarioInicial, salarioAtual, regra, situacao, id]);
             if (resultadoF.affectedRows > 0) {

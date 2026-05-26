@@ -4,7 +4,7 @@ import { Link } from "react-router";
 
 function MainCadastrarCliente() {
 
-    const [nomeRazaoSocial, setnomeRazaoSocial] = useState('');
+    const [nomeRazaoSocial, setNomeRazaoSocial] = useState('');
     const [nomeFantasia, setNomeFantasia] = useState('');
     const [tipoPessoa, setTipoPessoa] = useState('JURIDICA');
     const [cnpj, setCnpj] = useState('');
@@ -73,7 +73,7 @@ function MainCadastrarCliente() {
                 if (response.status === 201) {
                     alert('Cliente cadastrado com sucesso!');
 
-                    setnomeRazaoSocial('');
+                    setNomeRazaoSocial('');
                     setNomeFantasia('');
                     setTipoPessoa('JURIDICA');
                     setCnpj('');
@@ -111,7 +111,7 @@ function MainCadastrarCliente() {
                         <h6 className="fw-bold mb-0">Principal</h6>
                         <div className="col-md-6">
                             <label htmlFor="razao_social" className="form-label small mb-1">Nome/Razão Social</label>
-                            <input value={nomeRazaoSocial} onChange={(e) => setnomeRazaoSocial(e.target.value)} type="text" className="form-control ph-input" id="razao_social" name="razao_social" required />
+                            <input value={nomeRazaoSocial} onChange={(e) => setNomeRazaoSocial(e.target.value)} type="text" className="form-control ph-input" id="razao_social" name="razao_social" required />
                         </div>
                         <div className="col-md-6">
                             <label htmlFor="nome_fantasia" className="form-label small mb-1">Nome Fantasia</label>

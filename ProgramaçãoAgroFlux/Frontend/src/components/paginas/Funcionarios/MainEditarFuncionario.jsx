@@ -18,7 +18,7 @@ function MainEditarFuncionario() {
     const [situacao, setSituacao] = useState('ATIVO');
     const [numeroTelefone, setNumeroTelefone] = useState('');
     const [tipoTelefone, setTipoTelefone] = useState('');
-    const [principal, setPrincipal] = useState('');
+    const [principal, setPrincipal] = useState('SIM');
     const [logradouro, setLogradouro] = useState('');
     const [numero, setNumero] = useState('');
     const [bairro, setBairro] = useState('');

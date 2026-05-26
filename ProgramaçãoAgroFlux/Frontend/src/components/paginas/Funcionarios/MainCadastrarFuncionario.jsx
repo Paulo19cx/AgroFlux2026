@@ -84,26 +84,25 @@ function MainCadastrarFuncionario() {
                 if (response.status === 201) {
                     alert('Funcionário cadastrado com sucesso!');
                     
-                    // setNome('');
-                    // setCpf('');
-                    // setCargo('');
-                    // setEmail('');
-                    // setSenha('');
-                    // setDataNascimento('');
-                    // setDataAdmissao('');
-                    // setSalarioInicial('');
-                    // setSalarioAtual('');
-                    // setFoto('');
-                    // setSituacao('')
-                    // setTelefone('');
-                    // setTipoTelefone('');
-                    // setPrincipal('');
-                    // setLogradouro('');
-                    // setNumero('');
-                    // setBairro('');
-                    // setCidade('');
-                    // setEstado('');
-                    // setCep('');
+                    setNome('');
+                    setCpf('');
+                    setCargo('');
+                    setEmail('');
+                    setSenha('');
+                    setDataNascimento('');
+                    setDataContratacao('');
+                    setSalarioInicial('');
+                    setSalarioAtual('');
+                    setSituacao('')
+                    setNumeroTelefone('');
+                    setTipoTelefone('');
+                    setPrincipal('');
+                    setLogradouro('');
+                    setNumero('');
+                    setBairro('');
+                    setCidade('');
+                    setEstado('');
+                    setCep('');
                 } else {
                     alert('Erro ao cadastrar funcionário!');
                 }

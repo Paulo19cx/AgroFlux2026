@@ -48,7 +48,7 @@ const modelCliente = {
     },
 
     atualizar: async (nomeRazaoSocial, nomeFantasia, tipoPessoa, cnpj, email, situacao, numeroTelefone, tipoTelefone, principal, logradouro, numero, bairro, cidade, estado, cep, id) => {
-
+        console.log(nomeRazaoSocial, nomeFantasia, tipoPessoa, cnpj, email, situacao, numeroTelefone, tipoTelefone, principal, logradouro, numero, bairro, cidade, estado, cep, id);
         try {
             const [resultadoC] = await conexao.query("UPDATE cliente SET nome_razao_social = ?, nome_fantasia = ?, tipo_pessoa = ?, cnpj = ?, email = ?, situacao = ? WHERE id = ?", [nomeRazaoSocial, nomeFantasia, tipoPessoa, cnpj, email, situacao, id]);
 

@@ -43,7 +43,7 @@ const controllerCliente = {
     atualizar: async (req, res) => {
         const { id } = req.params;
         const { nomeRazaoSocial, nomeFantasia, tipoPessoa, cnpj, email, situacao, numeroTelefone, tipoTelefone, principal, logradouro, numero, bairro, cidade, estado, cep } = req.body;
-
+        console.log(req.body);
         try {
             const [atualizar] = await modelCliente.atualizar(nomeRazaoSocial, nomeFantasia, tipoPessoa, cnpj, email, situacao, numeroTelefone, tipoTelefone, principal, logradouro, numero, bairro, cidade, estado, cep, id);
 
