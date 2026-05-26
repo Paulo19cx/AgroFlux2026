@@ -13,6 +13,7 @@ const controllerProduto = {
                 return res.status(400).json({ msg: "Falha ao cadastrar produto" });
             }
         } catch (erro) {
+            console.log(erro);
             return res.status(500).json({ msg: "Erro no servidor" });
         }
     },

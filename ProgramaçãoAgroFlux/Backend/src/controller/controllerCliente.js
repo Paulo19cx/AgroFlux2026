@@ -42,10 +42,10 @@ const controllerCliente = {
 
     atualizar: async (req, res) => {
         const { id } = req.params;
-        const { nomeRazaoSocial, nomeFantasia, tipoPessoa, cnpj, email, situacao, numeroTelefone, tipoTelefone, principal, logradouro, numero, bairro, cidade, estado, cep } = req.body;
-        console.log(req.body);
+        const { nomeRazaoSocial, nomeFantasia, tipoPessoa, cnpj, cpf, email, situacao, numeroTelefone, tipoTelefone, principal, logradouro, numero, bairro, cidade, estado, cep } = req.body;
+        
         try {
-            const [atualizar] = await modelCliente.atualizar(nomeRazaoSocial, nomeFantasia, tipoPessoa, cnpj, email, situacao, numeroTelefone, tipoTelefone, principal, logradouro, numero, bairro, cidade, estado, cep, id);
+            const [atualizar] = await modelCliente.atualizar(nomeRazaoSocial, nomeFantasia, tipoPessoa, cnpj, cpf, email, situacao, numeroTelefone, tipoTelefone, principal, logradouro, numero, bairro, cidade, estado, cep, id);
 
             if (atualizar.affectedRows > 0) {
                 return res.status(200).json({ msg: "Atualizado com sucesso" });
@@ -54,6 +54,7 @@ const controllerCliente = {
                 return res.status(404).json({ msg: "Falha ao atualizar" });
             }
         } catch (erro) {
+            console.log(erro);
             return res.status(500).json({ msg: "Erro no servidor" });
         }
     },

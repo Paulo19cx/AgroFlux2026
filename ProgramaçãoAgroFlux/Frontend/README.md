@@ -1,12 +1,12 @@
 # AgroFlux - Frontend
 
-## 📋 Descrição
+## Descrição
 
 Frontend da aplicação **AgroFlux**, um sistema de dashboard completo e intuitivo que facilita a leitura e análise dos dados gerais de uma empresa. A interface foi desenvolvida com as melhores práticas de UX/UI, oferecendo uma experiência visual moderna e responsiva.
 
 Dashboard voltado ao setor de agronomia, funcionando como um painel centralizado capaz de transformar dados operacionais em indicadores visuais claros e intuitivos. A ferramenta permite acompanhar, de maneira organizada e eficiente, informações relacionadas a clientes, funcionários, produtos, vendas, fornecedores, estoque e relatórios. Podendo cadastrar ou excluir funcionários, produtos, clientes e fornecedores. Essa visualização estruturada facilita uma gestão mais estratégica, baseada em análises precisas.
 
-## 🎯 Objetivo
+## Objetivo
 
 Fornecer uma interface web moderna e intuitiva que permita:
 - Visualizar dashboards com dados empresariais em tempo real
@@ -16,7 +16,7 @@ Fornecer uma interface web moderna e intuitiva que permita:
 - Gerar e visualizar relatórios
 - Autenticação segura de usuários
 
-## 🛠️ Tecnologias Utilizadas
+## Tecnologias Utilizadas
 
 - **React 19** - Biblioteca JavaScript para UI
 - **Vite** - Build tool e dev server
@@ -28,7 +28,7 @@ Fornecer uma interface web moderna e intuitiva que permita:
 - **React Toastify** - Notificações e alertas
 - **Flaticon** - Ícones adicionais
 
-## 🚀 Como Executar
+## Como Executar
 
 ### Pré-requisitos
 - Node.js (v18 ou superior)
@@ -54,14 +54,14 @@ Fornecer uma interface web moderna e intuitiva que permita:
 
 A aplicação estará disponível em: **http://localhost:5173**
 
-## 📦 Comandos Disponíveis
+## Comandos Disponíveis
 
 ```bash
 # Modo desenvolvimento
 npm run dev
 ```
 
-## 🎨 Componentes Principais
+## Componentes Principais
 
 ### Dashboard (Home)
 - Visualização geral de dados da empresa
@@ -102,7 +102,7 @@ npm run dev
 - Acompanhar transações
 - Histórico de vendas
 
-## 🔐 Autenticação
+## Autenticação
 
 A aplicação utiliza autenticação JWT integrada com o backend. O login é obrigatório para acessar o dashboard.
 
@@ -116,7 +116,7 @@ A aplicação utiliza autenticação JWT integrada com o backend. O login é obr
 - Reinicie o servidor dev (`npm run dev`)
 - Limpe o cache do navegador
 
-## 👥 Autores
+## Autores
 
 - BEATRIZ MOREIRA DOS ANJOS 
 - HENRIQUE DA SILVA GUIMARÃES

@@ -1,10 +1,10 @@
 # AgroFlux - API
 
-## 📋 Descrição
+## Descrição
 
 Backend da aplicação **AgroFlux**, um sistema de dashboard completo e integrado que facilita a leitura e análise dos dados gerais de uma empresa. O backend é responsável por gerenciar toda a lógica de negócios, autenticação, manipulação de dados e comunicação com o banco de dados.
 
-## 🎯 Objetivo
+## Objetivo
 
 Fornecer uma API robusta e segura que suporte o dashboard AgroFlux, permitindo:
 - Gerenciamento de clientes
@@ -14,7 +14,7 @@ Fornecer uma API robusta e segura que suporte o dashboard AgroFlux, permitindo:
 - Autenticação segura com JWT
 - Upload de arquivos
 
-## 🛠️ Tecnologias Utilizadas
+## Tecnologias Utilizadas
 
 - **Node.js** - Runtime JavaScript
 - **Express.js** - Framework web
@@ -26,7 +26,7 @@ Fornecer uma API robusta e segura que suporte o dashboard AgroFlux, permitindo:
 - **Dotenv** - Variáveis de ambiente
 - **Nodemon** - Desenvolvimento com hot reload
 
-## 🚀 Como Executar
+## Como Executar
 
 ### Pré-requisitos
 - Node.js (v18 ou superior)
@@ -70,7 +70,7 @@ Fornecer uma API robusta e segura que suporte o dashboard AgroFlux, permitindo:
 
 O servidor estará rodando em: **http://localhost:3001**
 
-## 📚 Endpoints Principais
+## Endpoints Principais
 
 ### Clientes
 - `GET /clientes` - Listar todos os clientes
@@ -96,7 +96,7 @@ O servidor estará rodando em: **http://localhost:3001**
 - `POST /estoque` - Adicionar ao estoque
 - `PUT /estoque/:id` - Atualizar estoque
 
-## 🔐 Autenticação
+## Autenticação
 
 A API utiliza **JWT (JSON Web Tokens)** para autenticação. Todos os endpoints protegidos requerem um token válido no header:
 
@@ -104,7 +104,7 @@ A API utiliza **JWT (JSON Web Tokens)** para autenticação. Todos os endpoints 
 Authorization: Bearer seu_token_aqui
 ```
 
-## 🐛 Troubleshooting
+## Troubleshooting
 
 ### Erro de conexão com banco de dados
 - Verifique se o MySQL está rodando
@@ -115,7 +115,7 @@ Authorization: Bearer seu_token_aqui
 - Altere a porta no arquivo `src/index.js`
 - Ou finalize o processo usando a porta
 
-## 👥 Autores
+## Autores
 
 - BEATRIZ MOREIRA DOS ANJOS 
 - HENRIQUE DA SILVA GUIMARÃES

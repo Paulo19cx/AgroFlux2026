@@ -31,7 +31,7 @@ const modelCliente = {
 
     listar: async () => {
         try {
-            const [resultado] = await conexao.query("SELECT c.id, c.empresa_id, c.nome_razao_social, c.nome_fantasia, tipo_pessoa, c.cnpj, c.email, DATE_FORMAT(data_cadastro, '%d/%m/%Y %H:%i:%s') AS data_cadastro, c.situacao, t.numero_telefone, t.tipo, t.principal, e.logradouro, e.numero, e.bairro, e.cidade, e.estado, e.cep FROM cliente c JOIN telefone t ON c.id = t.cliente_id JOIN cliente_endereco ce ON c.id = ce.cliente_id JOIN endereco e ON e.id = ce.endereco_id");
+            const [resultado] = await conexao.query("SELECT c.id, c.empresa_id, c.funcionario_id, c.nome_razao_social, c.nome_fantasia, tipo_pessoa, c.cnpj, c.cpf, c.email, DATE_FORMAT(data_cadastro, '%d/%m/%Y %H:%i:%s') AS data_cadastro, c.situacao, t.numero_telefone, t.tipo, t.principal, e.logradouro, e.numero, e.bairro, e.cidade, e.estado, e.cep FROM cliente c JOIN telefone t ON c.id = t.cliente_id JOIN cliente_endereco ce ON c.id = ce.cliente_id JOIN endereco e ON e.id = ce.endereco_id");
             return resultado;
         } catch (erro) {
             throw erro;
@@ -40,17 +40,17 @@ const modelCliente = {
 
     listarPorId: async (id) => {
         try {
-            const [resultado] = await conexao.query("SELECT c.id, c.empresa_id, c.nome_razao_social, c.nome_fantasia, c.tipo_pessoa, c.cnpj, c.email, DATE_FORMAT(data_cadastro, '%d/%m/%Y %H:%i:%s') AS data_cadastro, c.situacao, t.numero_telefone, t.tipo, t.principal, e.logradouro, e.numero, e.bairro, e.cidade, e.estado, e.cep FROM cliente c JOIN telefone t ON c.id = t.cliente_id JOIN cliente_endereco ce ON c.id = ce.cliente_id JOIN endereco e ON e.id = ce.endereco_id WHERE c.id = ?", [id]);
+            const [resultado] = await conexao.query("SELECT c.id, c.empresa_id, c.funcionario_id, c.nome_razao_social, c.nome_fantasia, c.tipo_pessoa, c.cnpj, c.cpf, c.email, DATE_FORMAT(data_cadastro, '%d/%m/%Y %H:%i:%s') AS data_cadastro, c.situacao, t.numero_telefone, t.tipo, t.principal, e.logradouro, e.numero, e.bairro, e.cidade, e.estado, e.cep FROM cliente c JOIN telefone t ON c.id = t.cliente_id JOIN cliente_endereco ce ON c.id = ce.cliente_id JOIN endereco e ON e.id = ce.endereco_id WHERE c.id = ?", [id]);
             return resultado;
         } catch (erro) {
             throw erro;
         }
     },
 
-    atualizar: async (nomeRazaoSocial, nomeFantasia, tipoPessoa, cnpj, email, situacao, numeroTelefone, tipoTelefone, principal, logradouro, numero, bairro, cidade, estado, cep, id) => {
-        console.log(nomeRazaoSocial, nomeFantasia, tipoPessoa, cnpj, email, situacao, numeroTelefone, tipoTelefone, principal, logradouro, numero, bairro, cidade, estado, cep, id);
+    atualizar: async (nomeRazaoSocial, nomeFantasia, tipoPessoa, cnpj, cpf, email, situacao, numeroTelefone, tipoTelefone, principal, logradouro, numero, bairro, cidade, estado, cep, id) => {
+        console.log(nomeRazaoSocial, nomeFantasia, tipoPessoa, cnpj, cpf, email, situacao, numeroTelefone, tipoTelefone, principal, logradouro, numero, bairro, cidade, estado, cep, id);
         try {
-            const [resultadoC] = await conexao.query("UPDATE cliente SET nome_razao_social = ?, nome_fantasia = ?, tipo_pessoa = ?, cnpj = ?, email = ?, situacao = ? WHERE id = ?", [nomeRazaoSocial, nomeFantasia, tipoPessoa, cnpj, email, situacao, id]);
+            const [resultadoC] = await conexao.query("UPDATE cliente SET nome_razao_social = ?, nome_fantasia = ?, tipo_pessoa = ?, cnpj = ?, cpf = ?, email = ?, situacao = ? WHERE id = ?", [nomeRazaoSocial, nomeFantasia, tipoPessoa, cnpj, cpf, email, situacao, id]);
 
             if (resultadoC.affectedRows > 0) {
                 const [resultadoT] = await conexao.query("UPDATE telefone SET numero_telefone = ?, tipo = ?, principal = ? WHERE cliente_id = ?", [numeroTelefone, tipoTelefone, principal, id]);

@@ -14,10 +14,10 @@ servers:
 
 tags:
   - name: Root
-  - name: Cliente
-  - name: Produto
-  - name: Fornecedor
   - name: Funcionário
+  - name: Cliente
+  - name: Fornecedor
+  - name: Produto
   - name: Estoque
 
 paths:
@@ -32,6 +32,180 @@ paths:
       responses:
         '200':
           description: API online
+
+  # ==================== FUNCIONÁRIO ====================
+
+  /cadastrar-funcionario:
+    post:
+      tags:
+        - Funcionário
+
+      summary: Cadastrar novo funcionário
+
+      security:
+        - BearerAuth: []
+
+      requestBody:
+        required: true
+
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Funcionario'
+
+      responses:
+        '201':
+          description: Funcionário cadastrado com sucesso
+
+        '401':
+          description: Token inválido ou não informado
+
+        '500':
+          description: Erro interno do servidor
+
+  /listar-funcionarios:
+    get:
+      tags:
+        - Funcionário
+
+      summary: Listar todos os funcionários
+
+      security:
+        - BearerAuth: []
+
+      responses:
+        '200':
+          description: Lista de funcionários
+
+        '401':
+          description: Token inválido ou não informado
+
+        '500':
+          description: Erro interno do servidor
+
+  /listar-funcionario/{id}:
+    get:
+      tags:
+        - Funcionário
+
+      summary: Buscar funcionário por ID
+
+      security:
+        - BearerAuth: []
+
+      parameters:
+        - in: path
+          name: id
+          required: true
+
+          schema:
+            type: integer
+
+      responses:
+        '200':
+          description: Funcionário encontrado
+
+        '404':
+          description: Funcionário não encontrado
+
+        '500':
+          description: Erro interno do servidor
+
+  /pesquisar-funcionario:
+    get:
+      tags:
+        - Funcionário
+
+      summary: Pesquisar funcionários
+
+      security:
+        - BearerAuth: []
+
+      parameters:
+        - in: query
+          name: nome
+          schema:
+            type: string
+
+      responses:
+        '200':
+          description: Resultados da pesquisa
+
+        '401':
+          description: Token inválido ou não informado
+
+        '500':
+          description: Erro interno do servidor
+
+  /editar-funcionario/{id}:
+    put:
+      tags:
+        - Funcionário
+
+      summary: Atualizar funcionário
+
+      security:
+        - BearerAuth: []
+
+      parameters:
+        - in: path
+          name: id
+          required: true
+
+          schema:
+            type: integer
+
+      requestBody:
+        required: true
+
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AtualizarFuncionario'
+
+      responses:
+        '200':
+          description: Funcionário atualizado
+
+        '404':
+          description: Funcionário não encontrado
+
+        '401':
+          description: Token inválido ou não informado
+
+        '500':
+          description: Erro interno do servidor
+
+  /deletar-funcionario/{id}:
+    delete:
+      tags:
+        - Funcionário
+
+      summary: Excluir funcionário
+
+      security:
+        - BearerAuth: []
+
+      parameters:
+        - in: path
+          name: id
+          required: true
+
+          schema:
+            type: integer
+
+      responses:
+        '200':
+          description: Funcionário removido
+
+        '404':
+          description: Funcionário não encontrado
+
+        '401':
+          description: Token inválido ou não informado
+
+        '500':
+          description: Erro interno do servidor
 
   # ==================== CLIENTE ====================
 
@@ -51,7 +225,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Cliente'
+             $ref: '#/components/schemas/Cliente'
 
       responses:
         '201':
@@ -200,180 +374,6 @@ paths:
 
         '404':
           description: Cliente não encontrado
-
-        '401':
-          description: Token inválido ou não informado
-
-        '500':
-          description: Erro interno do servidor
-
-  # ==================== PRODUTO ====================
-
-  /cadastrar-produto:
-    post:
-      tags:
-        - Produto
-
-      summary: Cadastrar novo produto
-
-      security:
-        - BearerAuth: []
-
-      requestBody:
-        required: true
-
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/Produto'
-
-      responses:
-        '201':
-          description: Produto cadastrado com sucesso
-
-        '401':
-          description: Token inválido ou não informado
-
-        '500':
-          description: Erro interno do servidor
-
-  /listar-produtos:
-    get:
-      tags:
-        - Produto
-
-      summary: Listar todos os produtos
-
-      security:
-        - BearerAuth: []
-
-      responses:
-        '200':
-          description: Lista de produtos
-
-        '401':
-          description: Token inválido ou não informado
-
-        '500':
-          description: Erro interno do servidor
-
-  /listar-produto/{id}:
-    get:
-      tags:
-        - Produto
-
-      summary: Buscar produto por ID
-
-      security:
-        - BearerAuth: []
-
-      parameters:
-        - in: path
-          name: id
-          required: true
-
-          schema:
-            type: integer
-
-      responses:
-        '200':
-          description: Produto encontrado
-
-        '404':
-          description: Produto não encontrado
-
-        '500':
-          description: Erro interno do servidor
-
-  /pesquisar-produto:
-    get:
-      tags:
-        - Produto
-
-      summary: Pesquisar produtos
-
-      security:
-        - BearerAuth: []
-
-      parameters:
-        - in: query
-          name: nome
-          schema:
-            type: string
-
-      responses:
-        '200':
-          description: Resultados da pesquisa
-
-        '401':
-          description: Token inválido ou não informado
-
-        '500':
-          description: Erro interno do servidor
-
-  /editar-produto/{id}:
-    put:
-      tags:
-        - Produto
-
-      summary: Atualizar produto
-
-      security:
-        - BearerAuth: []
-
-      parameters:
-        - in: path
-          name: id
-          required: true
-
-          schema:
-            type: integer
-
-      requestBody:
-        required: true
-
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/AtualizarProduto'
-
-      responses:
-        '200':
-          description: Produto atualizado
-
-        '404':
-          description: Produto não encontrado
-
-        '401':
-          description: Token inválido ou não informado
-
-        '500':
-          description: Erro interno do servidor
-
-  /deletar-produto/{id}:
-    delete:
-      tags:
-        - Produto
-
-      summary: Excluir produto
-
-      security:
-        - BearerAuth: []
-
-      parameters:
-        - in: path
-          name: id
-          required: true
-
-          schema:
-            type: integer
-
-      responses:
-        '200':
-          description: Produto removido
-
-        '404':
-          description: Produto não encontrado
 
         '401':
           description: Token inválido ou não informado
@@ -555,14 +555,14 @@ paths:
         '500':
           description: Erro interno do servidor
 
-  # ==================== FUNCIONÁRIO ====================
+  # ==================== PRODUTO ====================
 
-  /cadastrar-funcionario:
+  /cadastrar-produto:
     post:
       tags:
-        - Funcionário
+        - Produto
 
-      summary: Cadastrar novo funcionário
+      summary: Cadastrar novo produto
 
       security:
         - BearerAuth: []
@@ -573,11 +573,11 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Funcionario'
+              $ref: '#/components/schemas/Produto'
 
       responses:
         '201':
-          description: Funcionário cadastrado com sucesso
+          description: Produto cadastrado com sucesso
 
         '401':
           description: Token inválido ou não informado
@@ -585,19 +585,19 @@ paths:
         '500':
           description: Erro interno do servidor
 
-  /listar-funcionarios:
+  /listar-produtos:
     get:
       tags:
-        - Funcionário
+        - Produto
 
-      summary: Listar todos os funcionários
+      summary: Listar todos os produtos
 
       security:
         - BearerAuth: []
 
       responses:
         '200':
-          description: Lista de funcionários
+          description: Lista de produtos
 
         '401':
           description: Token inválido ou não informado
@@ -605,12 +605,12 @@ paths:
         '500':
           description: Erro interno do servidor
 
-  /listar-funcionario/{id}:
+  /listar-produto/{id}:
     get:
       tags:
-        - Funcionário
+        - Produto
 
-      summary: Buscar funcionário por ID
+      summary: Buscar produto por ID
 
       security:
         - BearerAuth: []
@@ -625,20 +625,20 @@ paths:
 
       responses:
         '200':
-          description: Funcionário encontrado
+          description: Produto encontrado
 
         '404':
-          description: Funcionário não encontrado
+          description: Produto não encontrado
 
         '500':
           description: Erro interno do servidor
 
-  /pesquisar-funcionario:
+  /pesquisar-produto:
     get:
       tags:
-        - Funcionário
+        - Produto
 
-      summary: Pesquisar funcionários
+      summary: Pesquisar produtos
 
       security:
         - BearerAuth: []
@@ -659,12 +659,12 @@ paths:
         '500':
           description: Erro interno do servidor
 
-  /editar-funcionario/{id}:
+  /editar-produto/{id}:
     put:
       tags:
-        - Funcionário
+        - Produto
 
-      summary: Atualizar funcionário
+      summary: Atualizar produto
 
       security:
         - BearerAuth: []
@@ -683,14 +683,14 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/AtualizarFuncionario'
+              $ref: '#/components/schemas/AtualizarProduto'
 
       responses:
         '200':
-          description: Funcionário atualizado
+          description: Produto atualizado
 
         '404':
-          description: Funcionário não encontrado
+          description: Produto não encontrado
 
         '401':
           description: Token inválido ou não informado
@@ -698,12 +698,12 @@ paths:
         '500':
           description: Erro interno do servidor
 
-  /deletar-funcionario/{id}:
+  /deletar-produto/{id}:
     delete:
       tags:
-        - Funcionário
+        - Produto
 
-      summary: Excluir funcionário
+      summary: Excluir produto
 
       security:
         - BearerAuth: []
@@ -718,10 +718,10 @@ paths:
 
       responses:
         '200':
-          description: Funcionário removido
+          description: Produto removido
 
         '404':
-          description: Funcionário não encontrado
+          description: Produto não encontrado
 
         '401':
           description: Token inválido ou não informado
@@ -729,3 +729,599 @@ paths:
         '500':
           description: Erro interno do servidor
 
+components:
+
+  securitySchemes:
+    
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+  schemas:
+
+    Funcionario:
+      type: object
+
+      required:
+        - nome
+        - cpf
+        - cargo
+        - email
+        - senha
+        - dataNascimento
+        - dataContratacao
+        - salarioInicial
+        - salarioAtual
+        - regra
+        - situacao
+        - numeroTelefone
+        - tipoTelefone
+        - principal
+        - logradouro
+        - numero
+        - bairro
+        - cidade
+        - estado
+        - cep
+
+      properties:
+
+        nome:
+          type: string
+          example: João Silva
+
+        cpf:
+          type: string
+          example: 12345678900
+
+        cargo:
+          type: string
+          example: Gerente de Vendas
+
+        email:
+          type: string
+          example: joao.silva@example.com
+
+        senha:
+          type: string
+          example: senha123
+
+        dataNascimento:
+          type: string
+          format: date
+          example: 1990-05-15
+
+        dataContratacao:
+          type: string
+          format: date
+          example: 2020-01-10
+
+        salarioInicial:
+          type: number
+          format: float
+          example: 3000.00
+
+        salarioAtual:
+          type: number
+          format: float
+          example: 3500.00
+
+        regra:
+          type: string
+          example: ADMINISTRADOR
+
+        situacao:
+          type: string  
+          example: ATIVO
+
+        numeroTelefone:
+          type: string
+          example: 11987654321
+
+        tipoTelefone:
+          type: string
+          example: Celular
+
+        principal:
+          type: string
+          example: SIM
+
+        logradouro:
+          type: string
+          example: Rua das Flores
+
+        numero:
+          type: string  
+          example: 123
+
+        bairro:
+          type: string
+          example: Jardim Primavera
+        
+        cidade:
+          type: string
+          example: São Paulo
+
+        estado:
+          type: string
+          example: SP
+
+        cep:
+          type: string
+          example: 12345678
+
+    AtualizarFuncionario:
+      type: object
+
+      required:
+        - nome
+        - cpf
+        - cargo
+        - email
+        - senha
+        - dataNascimento
+        - dataContratacao
+        - salarioInicial
+        - salarioAtual
+        - regra
+        - situacao
+        - numeroTelefone
+        - tipoTelefone
+        - principal
+        - logradouro
+        - numero
+        - bairro
+        - cidade
+        - estado
+        - cep
+
+
+      properties:
+
+        nome:
+          type: string
+          example: João Silva
+
+        cpf:
+          type: string
+          example: 12345678900
+
+        cargo:
+          type: string
+          example: Gerente de Vendas
+
+        email:
+          type: string
+          example: joao.silva@example.com
+
+        senha:
+          type: string
+          example: novaSenha123
+
+        dataNascimento:
+          type: string
+          format: date
+          example: 1990-05-15
+
+        dataContratacao:
+          type: string
+          format: date
+          example: 2020-01-10
+
+        salarioInicial:
+          type: number
+          format: float
+          example: 3000.00
+
+        salarioAtual:
+          type: number
+          format: float
+          example: 3500.00
+
+        regra:
+          type: string
+          example: ADMINISTRADOR
+
+        situacao:
+          type: string
+          example: ATIVO
+
+        numeroTelefone:
+          type: string
+          example: 11987654321
+
+        tipoTelefone:
+          type: string
+          example: Celular
+        
+        principal:
+          type: string  
+          example: SIM
+
+        logradouro:
+          type: string
+          example: Rua das Flores
+
+        numero:
+          type: string
+          example: 123
+
+        bairro:
+          type: string
+          example: Jardim Primavera
+
+        cidade:
+          type: string
+          example: São Paulo
+
+        estado:
+          type: string
+          example: SP
+
+        cep:
+          type: string
+          example: 12345678
+
+    Cliente:
+      type: object
+
+      required:
+        - nomeRazaoSocial
+        - nomeFantasia
+        - cnpj
+        - cpf
+        - email
+        - numeroTelefone
+        - tipoTelefone
+        - logradouro
+        - numero
+        - bairro
+        - cidade
+        - estado
+        - cep
+
+      properties:
+
+        nomeRazaoSocial:
+          type: string
+          example: Empresa ABC Ltda
+
+        nomeFantasia:
+          type: string
+          example: Empresa ABC
+
+        cnpj:
+          type: string
+          example: 12345678000190
+
+        cpf:
+          type: string
+          example: 12345678900 
+
+        email:
+          type: string
+          example: contato@empresaabc.com
+
+        numeroTelefone:
+          type: string
+          example: 1133334444
+
+        tipoTelefone:
+          type: string
+          example: Comercial
+
+        logradouro:
+          type: string
+          example: Avenida Paulista
+
+        numero:
+          type: string
+          example: 1000
+
+        bairro:
+          type: string
+          example: Bela Vista
+
+        cidade:
+          type: string
+          example: São Paulo
+
+        estado:
+          type: string
+          example: SP
+
+        cep:
+          type: string
+          example: 01311100
+
+    AtualizarCliente:
+      type: object
+
+      required:
+        - nome
+        - cnpj
+        - email
+        - numeroTelefone
+        - tipoTelefone
+        - logradouro
+        - numero
+        - bairro
+        - cidade
+        - estado
+        - cep
+
+      properties:
+
+        nome:
+          type: string
+          example: Empresa ABC Ltda - Matriz
+
+        cnpj:
+          type: string
+          example: 12345678000190
+
+        email:
+          type: string
+          example: suporte@empresaabc.com
+
+        numeroTelefone:
+          type: string
+          example: 1133335555
+
+        tipoTelefone:
+          type: string
+          example: Comercial
+
+        logradouro:
+          type: string
+          example: Avenida Paulista
+
+        numero:
+          type: string
+          example: 1500
+
+        bairro:
+          type: string
+          example: Bela Vista
+
+        cidade:
+          type: string
+          example: São Paulo
+
+        estado:
+          type: string
+          example: SP
+
+        cep:
+          type: string
+          example: 01311100
+
+    Fornecedor:
+      type: object
+
+      required:
+        - nome
+        - cnpj
+        - email
+        - numeroTelefone
+        - tipoTelefone
+        - logradouro
+        - numero
+        - bairro
+        - cidade
+        - estado
+        - cep
+
+      properties:
+
+        nome:
+          type: string
+          example: Fornecedora XYZ S/A
+
+        cnpj:
+          type: string
+          example: 98765432000180
+
+        email:
+          type: string
+          example: vendas@fornecedoraxyz.com
+
+        numeroTelefone:
+          type: string
+          example: 1144445555
+
+        tipoTelefone:
+          type: string
+          example: Comercial
+
+        logradouro:
+          type: string
+          example: Rua das Indústrias
+
+        numero:
+          type: string
+          example: 500
+
+        bairro:
+          type: string
+          example: Zona Industrial
+
+        cidade:
+          type: string
+          example: Santo André
+
+        estado:
+          type: string
+          example: SP
+
+        cep:
+          type: string
+          example: 09080000
+
+    AtualizarFornecedor:
+      type: object
+
+      required:
+        - nome
+        - cnpj
+        - email
+        - numeroTelefone
+        - tipoTelefone
+        - logradouro
+        - numero
+        - bairro
+        - cidade
+        - estado
+        - cep
+
+      properties:
+
+        nome:
+          type: string
+          example: Fornecedora XYZ S/A - Filial
+
+        cnpj:
+          type: string
+          example: 98765432000180
+
+        email:
+          type: string
+          example: contato@fornecedoraxyz.com
+
+        numeroTelefone:
+          type: string
+          example: 1144446666
+
+        tipoTelefone:
+          type: string
+          example: Comercial
+
+        logradouro:
+          type: string
+          example: Rua das Indústrias
+
+        numero:
+          type: string
+          example: 550
+
+        bairro:
+          type: string
+          example: Zona Industrial
+
+        cidade:
+          type: string
+          example: Santo André
+
+        estado:
+          type: string
+          example: SP
+
+        cep:
+          type: string
+          example: 09080000
+
+    Produto:
+      type: object
+
+      required:
+        - nome
+        - descricao
+        - preco
+        - quantidade
+        - unidade
+        - categoria
+
+      properties:
+
+        nome:
+          type: string
+          example: Fertilizante NPK 10-10-10
+
+        descricao:
+          type: string
+          example: Fertilizante completo para cultivos em geral
+
+        preco:
+          type: number
+          format: float
+          example: 125.50
+
+        quantidade:
+          type: integer
+          example: 500
+
+        unidade:
+          type: string
+          example: kg
+
+        categoria:
+          type: string
+          example: Fertilizantes
+
+    AtualizarProduto:
+      type: object
+
+      required:
+        - nome
+        - descricao
+        - preco
+        - quantidade
+        - unidade
+        - categoria
+
+      properties:
+
+        nome:
+          type: string
+          example: Fertilizante NPK 15-10-10
+
+        descricao:
+          type: string
+          example: Fertilizante concentrado para milho e soja
+
+        preco:
+          type: number
+          format: float
+          example: 135.75
+
+        quantidade:
+          type: integer
+          example: 450
+
+        unidade:
+          type: string
+          example: kg
+
+        categoria:
+          type: string
+          example: Fertilizantes
+
+    Estoque:
+      type: object
+
+      required:
+        - id_produto
+        - quantidade
+        - dataAtualizacao
+        - localizacao
+
+      properties:
+
+        id_produto:
+          type: integer
+          example: 1
+
+        quantidade:
+          type: integer
+          example: 500
+
+        dataAtualizacao:
+          type: string
+          format: date
+          example: 2026-05-26
+
+        localizacao:
+          type: string
+          example: Galpão A - Prateleira 3
+        
