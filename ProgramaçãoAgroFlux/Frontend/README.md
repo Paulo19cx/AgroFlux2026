@@ -32,7 +32,7 @@ Fornecer uma interface web moderna e intuitiva que permita:
 
 ### Pré-requisitos
 - Node.js (v18 ou superior)
-- npm ou yarn
+- npm
 - Backend rodando em http://localhost:3001
 
 ### Instalação
@@ -57,17 +57,8 @@ A aplicação estará disponível em: **http://localhost:5173**
 ## 📦 Comandos Disponíveis
 
 ```bash
-# Modo desenvolvimento com hot reload
+# Modo desenvolvimento
 npm run dev
-
-# Build para produção
-npm run build
-
-# Lint do código
-npm run lint
-
-# Preview da build
-npm run preview
 ```
 
 ## 🎨 Componentes Principais

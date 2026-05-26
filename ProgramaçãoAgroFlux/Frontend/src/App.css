@@ -16,10 +16,20 @@
      .ph-sidebar-estrutura {
          position: fixed;
          width: 100%;
+         max-width: 280px;
          z-index: 1050;
          /* Acima do conteúdo principal */
          background-color: #ffffff;
          height: calc(100vh - 72px);
+         left: 0;
+         top: 72px;
+         transform: translateX(-100%);
+         transition: transform 0.3s ease-in-out;
+         box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
+     }
+
+     .ph-sidebar-estrutura.show {
+         transform: translateX(0);
      }
  }
 
@@ -35,7 +45,16 @@
      transition: background-color 0.2s ease, color 0.2s ease;
  }
 
- 
+ @media (max-width: 767.98px) {
+     .ph-sidebar-estrutura .nav-link {
+         padding: 0.75rem 1rem !important;
+         font-size: 0.95rem;
+     }
+
+     .ph-sidebar-estrutura .nav-link i {
+         font-size: 1.2rem;
+     }
+ }
 
  .ph-sidebar-estrutura .nav-link:hover {
      background-color: #96ecb6;
@@ -57,6 +76,55 @@
          width: var(--ph-sidebar-width);
          flex: 0 0 var(--ph-sidebar-width);
          max-width: var(--ph-sidebar-width);
+         display: block !important;
+     }
+
+     /* Garante que sidebar aparece e não colapsa em md */
+     .sidebar.d-md-block {
+         display: block !important;
+     }
+
+     .sidebar.d-md-block.collapse:not(.show) {
+         display: block !important;
+     }
+ }
+
+ /* Overlay para mobile - criado via elemento separado na navbar se necessário */
+ @media (max-width: 767.98px) {
+     /* Garante que o menu colapsado permite clicks no conteúdo */
+     .sidebar.collapse:not(.show) {
+         pointer-events: none;
+     }
+
+     .sidebar.collapse.show {
+         pointer-events: auto;
+     }
+
+     /* Overlay quando menu está aberto */
+     .sidebar.collapse.show {
+         backdrop-filter: blur(0px);
+     }
+
+     /* Bloqueia scroll da página quando menu está aberto */
+     body.sidebar-open {
+         overflow: hidden;
+     }
+ }
+
+ /* Navbar responsivo */
+ @media (max-width: 576px) {
+     .navbar {
+         padding: 0.5rem 0.75rem;
+     }
+
+     .navbar a img {
+         width: 100px;
+         height: auto;
+     }
+
+     .navbar h6 {
+         font-size: 0.85rem;
+         margin-left: 0.5rem !important;
      }
  }
 
@@ -94,9 +162,180 @@
      display: none;
  }
 
+ /* Avatar de perfil */
+ .navbar img.rounded-circle {
+     max-width: 40px;
+     max-height: 40px;
+     width: 40px;
+     height: 40px;
+     object-fit: cover;
+ }
 
+ /* Responsividade do conteúdo principal */
+ @media (max-width: 767.98px) {
+     .ph-main-corpo {
+         margin-left: 0;
+         width: 100%;
+     }
 
- /*blocos*/
+     .container-fluid {
+         padding: 0.5rem;
+     }
+ }
+
+ /* Classe para fechar overlay */
+ .sidebar.collapse:not(.show)~.sidebar-overlay {
+     display: none;
+ }
+
+ @media (max-width: 767.98px) {
+     /* Padding reduzido para mobile */
+     .ph-padding-links-sidebar {
+         padding: 0.75rem 1rem !important;
+     }
+
+     /* Texto do menu mais visível */
+     .sidebar .nav-link span {
+         font-size: 0.95rem;
+         white-space: nowrap;
+     }
+
+     /* Ícones maiores em mobile */
+     .sidebar .nav-link i {
+         min-width: 1.5rem;
+         text-align: center;
+     }
+ }
+
+ /* Tabelas responsivas com scroll horizontal */
+ @media (max-width: 768px) {
+     .ph-tabela-responsiva {
+         overflow-x: auto;
+         -webkit-overflow-scrolling: touch;
+         display: block;
+         width: 100%;
+     }
+
+     .ph-tabela-responsiva table {
+         min-width: 600px;
+         margin-bottom: 0;
+     }
+
+     .ph-tabela-responsiva th,
+     .ph-tabela-responsiva td {
+         white-space: nowrap;
+         padding: 0.75rem 0.5rem;
+         font-size: 0.85rem;
+     }
+
+     .ph-tabela-responsiva th {
+         position: sticky;
+         top: 0;
+         z-index: 10;
+     }
+ }
+
+ /* Customização do scrollbar para tabelas */
+ .ph-tabela-responsiva::-webkit-scrollbar {
+     height: 6px;
+ }
+
+ .ph-tabela-responsiva::-webkit-scrollbar-track {
+     background: #f1f1f1;
+     border-radius: 10px;
+ }
+
+ .ph-tabela-responsiva::-webkit-scrollbar-thumb {
+     background: #96ecb6;
+     border-radius: 10px;
+ }
+
+ .ph-tabela-responsiva::-webkit-scrollbar-thumb:hover {
+     background: #7dd9a8;
+ }
+
+ /* Cards responsivos e alinhados */
+ .card {
+     border: none;
+     transition: transform 0.2s ease, box-shadow 0.2s ease;
+ }
+
+ .card:hover {
+     transform: translateY(-3px);
+     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1) !important;
+ }
+
+ .card-body {
+     position: relative;
+     min-height: 120px;
+ }
+
+ .card .h3 {
+     font-weight: 600;
+     margin-bottom: 0.5rem;
+ }
+
+ .card .h6 {
+     font-weight: 500;
+ }
+
+ /* Ícones dos cards */
+ .hh-verde-circulo,
+ .hh-vermelho-circulo,
+ .hh-azul-circulo,
+ .hh-laranja-circulo,
+ .hh-roxo-circulo {
+     width: 50px;
+     height: 50px;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     border-radius: 50%;
+     margin-top: 1rem;
+ }
+
+ .hh-verde-circulo {
+     background-color: rgba(150, 236, 182, 0.2);
+ }
+
+ .hh-vermelho-circulo {
+     background-color: rgba(220, 53, 69, 0.1);
+ }
+
+ .hh-azul-circulo {
+     background-color: rgba(13, 110, 253, 0.1);
+ }
+
+ .hh-laranja-circulo {
+     background-color: rgba(255, 159, 64, 0.1);
+ }
+
+ .hh-roxo-circulo {
+     background-color: rgba(111, 66, 193, 0.1);
+ }
+
+ .hh-icon {
+     font-size: 1.5rem;
+ }
+
+ /* Ajuste para telas pequenas */
+ @media (max-width: 768px) {
+     .card {
+         margin-bottom: 0.5rem;
+     }
+
+     .card-body {
+         min-height: 100px;
+     }
+
+     .card .h3 {
+         font-size: 1.5rem;
+     }
+
+     .card .h6 {
+         font-size: 0.85rem;
+     }
+ }
 
  body {
      background-color: hwb(210 97% 2%);

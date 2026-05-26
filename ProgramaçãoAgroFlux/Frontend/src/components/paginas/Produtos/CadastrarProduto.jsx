@@ -5,7 +5,7 @@ import MainCadastrarProduto from "./MainCadastrarProduto";
 function CadastrarProduto() {
     return (
         <>
-            <title>Cadastrar Cliente</title>
+            <title>Cadastrar Produto</title>
             <Navbar />
             <div className="container-fluid">
                 <div className="row">

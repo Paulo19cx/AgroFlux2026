@@ -2,10 +2,10 @@ import modelProduto from '../model/modelProduto.js';
 
 const controllerProduto = {
     cadastrar: async (req, res) => {
-        const { fornecedorId, nome, descricao, unidadeMedida, precoUnitario, precoCusto, situacao } = req.body;
-
+        const { fornecedorId, funcionarioId, nome, descricao, unidadeMedida, precoVenda, custoUnitario, categoria, situacao } = req.body;
+        
         try {
-            const cadastro = await modelProduto.cadastrar(fornecedorId, nome, descricao, unidadeMedida, precoUnitario, precoCusto, situacao);
+            const cadastro = await modelProduto.cadastrar(fornecedorId, funcionarioId, nome, descricao, unidadeMedida, precoVenda, custoUnitario, categoria, situacao);
 
             if (cadastro.affectedRows > 0) {
                 return res.status(201).json({ msg: "Produto cadastrado com sucesso"});
@@ -39,12 +39,28 @@ const controllerProduto = {
         }
     },
 
+    persquisar: async (req, res) => {
+        try {
+            const { nome } = req.query;
+
+            if (!nome) {
+                return res.status(400).json({ msg: "Informe um nome" });
+            }
+            
+            const consulta = await modelProduto.persquisar(nome);
+
+            return res.status(200).json(consulta);
+        } catch (erro) {
+            return res.status(500).json({ msg: "Erro no servidor" });
+        }
+    },
+
     atualizar: async (req, res) => {
         const { id } = req.params;
-        const { fornecedorId, nome, descricao, unidadeMedida, precoUnitario, precoCusto, situacao } = req.body;
+        const { nome, descricao, unidadeMedida, precoVenda, custoUnitario, categoria, situacao } = req.body;
 
         try {
-            const atualizar = await modelProduto.atualizar(fornecedorId, nome, descricao, unidadeMedida, precoUnitario, precoCusto, situacao, id);
+            const atualizar = await modelProduto.atualizar(nome, descricao, unidadeMedida, precoVenda, custoUnitario, categoria, situacao, id);
 
             if (atualizar.affectedRows > 0) {
                 return res.status(200).json({ msg: "Produto atualizado com sucesso" });

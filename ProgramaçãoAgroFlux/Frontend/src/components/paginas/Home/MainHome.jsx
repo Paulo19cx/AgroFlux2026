@@ -11,43 +11,51 @@ function MainHome() {
                     <h1 className="h5 mt-3">Dashboard</h1>
                 </div>
                 {/* Estatísticas Principais */}
-                <div className="row">
-                    <div className="col-sm-3 hh-mb">
-                        <div className="card shadow bg-body-tertiary rounded ms-3">
-                            <div className="card-body">
-                                <h6 className="card-title text-secondary">Lucro Total</h6>
-                                <p className="h3 card-text text-success">R$ 33.600</p>
-                                <p className="h6 card-text text-success">Margem: 47.9%</p>
+                <div className="row g-3">
+                    <div className="col-sm-6 col-lg-3">
+                        <div className="card shadow bg-body-tertiary rounded h-100">
+                            <div className="card-body d-flex flex-column justify-content-between">
+                                <div>
+                                    <h6 className="card-title text-secondary">Lucro Total</h6>
+                                    <p className="h3 card-text text-success mb-2">R$ 33.600</p>
+                                    <p className="h6 card-text text-success mb-0">Margem: 47.9%</p>
+                                </div>
                                 <div className="hh-verde-circulo float-end"><i className="fi fi-br-arrow-trend-up hh-icon text-success"></i></div>
                             </div>
                         </div>
                     </div>
-                    <div className="col-sm-3">
-                        <div className="card shadow bg-body-tertiary rounded ms-3">
-                            <div className="card-body">
-                                <h6 className="card-title text-secondary">Custos Totais</h6>
-                                <p className="h3 card-text text-danger">R$ 17.500</p>
-                                <p className="h6 card-text text-secondary">52.1% do faturamento</p>
+                    <div className="col-sm-6 col-lg-3">
+                        <div className="card shadow bg-body-tertiary rounded h-100">
+                            <div className="card-body d-flex flex-column justify-content-between">
+                                <div>
+                                    <h6 className="card-title text-secondary">Custos Totais</h6>
+                                    <p className="h3 card-text text-danger mb-2">R$ 17.500</p>
+                                    <p className="h6 card-text text-secondary mb-0">52.1% do faturamento</p>
+                                </div>
                                 <div className="hh-vermelho-circulo float-end"><i className="fi fi-br-arrow-trend-down hh-icon text-danger"></i></div>
                             </div>
                         </div>
                     </div>
-                    <div className="col-sm-3">
-                        <div className="card shadow bg-body-tertiary rounded ms-3">
-                            <div className="card-body">
-                                <h6 className="card-title text-secondary">Lucro Líquido</h6>
-                                <p className="h3 card-text text-success">R$ 16.100</p>
-                                <p className="h6 card-text text-success">Margem: 47.9%</p>
+                    <div className="col-sm-6 col-lg-3">
+                        <div className="card shadow bg-body-tertiary rounded h-100">
+                            <div className="card-body d-flex flex-column justify-content-between">
+                                <div>
+                                    <h6 className="card-title text-secondary">Lucro Líquido</h6>
+                                    <p className="h3 card-text text-success mb-2">R$ 16.100</p>
+                                    <p className="h6 card-text text-success mb-0">Margem: 47.9%</p>
+                                </div>
                                 <div className="hh-verde-circulo float-end"><i className="fi fi-rr-tags hh-icon text-success"></i></div>
                             </div>
                         </div>
                     </div>
-                    <div className="col-sm-3">
-                        <div className="card shadow bg-body-tertiary rounded ms-3">
-                            <div className="card-body">
-                                <h6 className="card-title text-secondary">Total de Vendas</h6>
-                                <p className="h3 card-text text-success">500</p>
-                                <p className="h6 card-text text-secondary">Transações</p>
+                    <div className="col-sm-6 col-lg-3">
+                        <div className="card shadow bg-body-tertiary rounded h-100">
+                            <div className="card-body d-flex flex-column justify-content-between">
+                                <div>
+                                    <h6 className="card-title text-secondary">Total de Vendas</h6>
+                                    <p className="h3 card-text text-success mb-2">500</p>
+                                    <p className="h6 card-text text-secondary mb-0">Transações</p>
+                                </div>
                                 <div className="hh-verde-circulo float-end"><i className="fi fi-br-cart-shopping-fast hh-icon text-success"></i></div>
                             </div>
                         </div>

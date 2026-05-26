@@ -61,6 +61,28 @@ const modelFornecedor = {
             throw erro;
         }
     },
+
+    deletar: async (id) => {
+        try {
+            const [resultadoE] = await conexao.query("DELETE e FROM endereco e JOIN fornecedor_endereco fe ON fe.endereco_id = e.id WHERE fe.fornecedor_id = ?", [id]);
+
+            if (resultadoE.affectedRows > 0) {
+                const [resultadoF] = await conexao.query("DELETE FROM fornecedor WHERE id = ?", [id]);
+                return resultadoF;
+            }
+        } catch (erro) {
+            throw erro;
+        }
+    },
+
+    pesquisar: async (nome) => {
+        try {
+            const [resultado] = await conexao.query("SELECT f.id, f.nome_razao_social, f.nome_fantasia, f.cnpj, f.email, f.situacao, t.numero_telefone, t.tipo, t.principal, e.logradouro, e.numero, e.bairro, e.cidade, e.estado, e.cep FROM fornecedor f JOIN telefone t ON f.id = t.fornecedor_id JOIN fornecedor_endereco fe ON f.id = fe.fornecedor_id JOIN endereco e ON e.id = fe.endereco_id WHERE f.nome_razao_social LIKE ? OR f.nome_fantasia LIKE ?", [`%${nome}%`, `%${nome}%`]);
+            return resultado;
+        } catch (erro) {
+            throw erro;
+        }
+    },
 }
 
 export default modelFornecedor;

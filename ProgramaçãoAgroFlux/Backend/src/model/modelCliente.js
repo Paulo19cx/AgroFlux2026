@@ -1,10 +1,10 @@
 import conexao from '../../config/db.js';
 
 const modelCliente = {
-    cadastrar: async (nomeRazaoSocial, nomeFantasia, tipoPessoa, cnpj, email, situacao, numeroTelefone, tipoTelefone, principal, logradouro, numero, bairro, cidade, estado, cep) => {
+    cadastrar: async (funcionarioId, nomeRazaoSocial, nomeFantasia, tipoPessoa, cnpj, email, situacao, numeroTelefone, tipoTelefone, principal, logradouro, numero, bairro, cidade, estado, cep) => {
         
         try {
-            const [resultadoC] = await conexao.query("INSERT INTO cliente (nome_razao_social, nome_fantasia, tipo_pessoa, cnpj, email, situacao) VALUES (?,?,?,?,?,?)", [nomeRazaoSocial, nomeFantasia, tipoPessoa, cnpj, email, situacao]);
+            const [resultadoC] = await conexao.query("INSERT INTO cliente (funcionario_id, nome_razao_social, nome_fantasia, tipo_pessoa, cnpj, email, situacao) VALUES (?,?,?,?,?,?,?)", [funcionarioId, nomeRazaoSocial, nomeFantasia, tipoPessoa, cnpj, email, situacao]);
 
             if (resultadoC) {
                 const idCliente = resultadoC.insertId;
@@ -74,6 +74,15 @@ const modelCliente = {
                 const [resultadoC] = await conexao.query("DELETE FROM cliente WHERE id = ?", [id]);
                 return resultadoC;
             }
+        } catch (erro) {
+            throw erro;
+        }
+    },
+
+    pesquisar: async (nome) => {
+        try {
+            const [resultado] = await conexao.query("SELECT c.id, c.empresa_id, c.nome_razao_social, c.nome_fantasia, tipo_pessoa, c.cnpj, c.email, DATE_FORMAT(data_cadastro, '%d/%m/%Y %H:%i:%s') AS data_cadastro, c.situacao, t.numero_telefone, t.tipo, t.principal, e.logradouro, e.numero, e.bairro, e.cidade, e.estado, e.cep FROM cliente c JOIN telefone t ON c.id = t.cliente_id JOIN cliente_endereco ce ON c.id = ce.cliente_id JOIN endereco e ON e.id = ce.endereco_id WHERE c.nome_razao_social LIKE ? OR c.nome_fantasia LIKE ?", [`%${nome}%`, `%${nome}%`]);
+            return resultado;
         } catch (erro) {
             throw erro;
         }

@@ -53,30 +53,36 @@ function MainEstoque() {
             </div>
 
             {/* Cards de Resumo */}
-            <div className="row pt-4    ">
-                <div className="col-sm-4 hh-mb ">
-                    <div className="card shadow bg-body-tertiary rounded ms-3">
-                        <div className="card-body">
-                            <h6 className="card-title text-secondary">Total de Entradas</h6>
-                            <p className="h3 card-text text-success"> 336.000</p>
+            <div className="row g-3 pt-4">
+                <div className="col-sm-6 col-lg-4">
+                    <div className="card shadow bg-body-tertiary rounded h-100">
+                        <div className="card-body d-flex flex-column justify-content-between">
+                            <div>
+                                <h6 className="card-title text-secondary">Total de Entradas</h6>
+                                <p className="h3 card-text text-success mb-0">336.000</p>
+                            </div>
                             <div className="hh-verde-circulo float-end"><i className="fi fi-br-cart-shopping-fast hh-icon text-success"></i></div>
                         </div>
                     </div>
                 </div>
-                <div className="col-sm-4">
-                    <div className="card shadow bg-body-tertiary rounded ms-3">
-                        <div className="card-body">
-                            <h6 className="card-title text-secondary">Total de Saída</h6>
-                            <p className="h3 card-text text-success"> 130.000</p>
+                <div className="col-sm-6 col-lg-4">
+                    <div className="card shadow bg-body-tertiary rounded h-100">
+                        <div className="card-body d-flex flex-column justify-content-between">
+                            <div>
+                                <h6 className="card-title text-secondary">Total de Saída</h6>
+                                <p className="h3 card-text text-success mb-0">130.000</p>
+                            </div>
                             <div className="hh-verde-circulo float-end"><i className="fi fi-br-arrow-trend-up hh-icon text-success"></i></div>
                         </div>
                     </div>
                 </div>
-                <div className="col-sm-3">
-                    <div className="card shadow bg-body-tertiary rounded ms-3">
-                        <div className="card-body">
-                            <h6 className="card-title text-secondary">Saldo em Estoque</h6>
-                            <p className="h3 card-text text-danger"> 206.000</p>
+                <div className="col-sm-6 col-lg-4">
+                    <div className="card shadow bg-body-tertiary rounded h-100">
+                        <div className="card-body d-flex flex-column justify-content-between">
+                            <div>
+                                <h6 className="card-title text-secondary">Saldo em Estoque</h6>
+                                <p className="h3 card-text text-danger mb-0">206.000</p>
+                            </div>
                             <div className="hh-vermelho-circulo float-end"><i className="fi fi-br-arrow-trend-down hh-icon text-danger"></i></div>
                         </div>
                     </div>
@@ -89,6 +95,7 @@ function MainEstoque() {
             </div>
             {/*começo da tabela*/}
             <div className="col-md-12 col-lg-12 border rounded-3 overflow-hidden bg-white">
+                <div className="ph-tabela-responsiva">
                 <table className="table table-striped mb-0">
                     <thead>
                         <tr className="ph-cabecalho-cor-table">
@@ -127,6 +134,7 @@ function MainEstoque() {
                         )}
                     </tbody>
                 </table>
+                </div>
             </div>
         </main>
     );

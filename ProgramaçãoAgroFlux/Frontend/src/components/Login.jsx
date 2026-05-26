@@ -12,12 +12,11 @@ function Login() {
 
         try {
             const response = await axios.post('http://localhost:3001/login', { email, senha });
-
-            console.log(response)
             
             if (response.status === 200) {
                 sessionStorage.setItem('id', response.data.id);
                 sessionStorage.setItem('token', response.data.accessToken);
+                sessionStorage.setItem('regra', response.data.regra);
 
                 navigate('/home');
             }

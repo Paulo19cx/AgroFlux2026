@@ -17,6 +17,7 @@ function MainVendas() {
                     {/* Código da tabela */}
 
                     <div className="col-md-12 col-lg-12 border rounded-3 mt-4 overflow-hidden">
+                    <div className="ph-tabela-responsiva">
                     <table className="table table-striped mb-0">
                         <thead className="">
                             <tr className="ph-cabecalho-cor-table">
@@ -29,6 +30,7 @@ function MainVendas() {
                             </tr>
                         </thead>
                     </table>
+                    </div>
                 </div>
 
                 </div>

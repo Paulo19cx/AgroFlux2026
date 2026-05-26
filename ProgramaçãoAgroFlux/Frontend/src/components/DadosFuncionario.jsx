@@ -39,7 +39,12 @@ function DadosFuncionario(props) {
                                 <div className="text-center mt-4 d-flex gap-3 justify-content-center">
                                     <Link to={`/editar-funcionario/${props.id}`} className="btn btn-outline-primary btn-custom bm-cor-botao"><i className="bi bi-pencil"></i>Editar</Link>
                                      
-                                    <Link to="" className="btn btn-outline-primary btn-custom bm-cor-botao-excluir"><i className="fi fi-rs-trash"></i></Link>
+                                    <button 
+                                        className="btn btn-outline-primary btn-custom bm-cor-botao-excluir"
+                                        onClick={() => props.onDelete(props.id)}
+                                    >
+                                        <i className="fi fi-rs-trash"></i>
+                                    </button>
                                 
                                 </div>
                                

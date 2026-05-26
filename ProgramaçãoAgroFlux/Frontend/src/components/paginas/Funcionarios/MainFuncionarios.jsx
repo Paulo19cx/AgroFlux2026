@@ -11,17 +11,18 @@ import Fotoye from "../../../assets/img/kanye.jfif";
 import FotoBillie from "../../../assets/img/billie.jfif";
 import FotoGP from "../../../assets/img/gpfoto.png";
 import { useEffect, useState } from "react";
-import axios from  'axios';''
+import axios from  'axios';
 
 const MainFuncionarios = () => {
     const [funcionarios, setFuncionarios] = useState([]);
     const [carregando, setCarregando] = useState(true);
-    //const navegar = useNavigate();
+    const [pesquisa, setPesquisa] = useState('');
 
     useEffect(() => {
         const carregarFuncionarios = async () => {
             try {
                 const resposta = await axios.get("http://localhost:3001/listar-funcionarios");
+                console.log(resposta);
 
                 const funcioanriosOrdenados = resposta.data.sort((a, b) =>
                     a.nome.localeCompare(b.nome)
@@ -35,6 +36,39 @@ const MainFuncionarios = () => {
         };
         carregarFuncionarios();
     }, []);
+
+    const pesquisarFuncionario = async (texto) => {
+        setPesquisa(texto);
+
+        try {
+            if (texto.trim() === '') {
+                const response = await axios.get('http://localhost:3001/listar-funcionarios');
+                const funcionariosOrdenados = response.data.sort((a, b) =>
+                    a.nome.localeCompare(b.nome)
+                );
+                setFuncionarios(funcionariosOrdenados);
+                return;
+            }
+
+            const response = await axios.get(`http://localhost:3001/pesquisar-funcionario?nome=${texto}`);
+            setFuncionarios(response.data);
+        } catch (erro) {
+            console.log(erro);
+        }
+    };
+
+    const deletarFuncionario = async (id) => {
+        if (window.confirm("Tem certeza que deseja deletar este funcionário?")) {
+            try {
+                await axios.delete(`http://localhost:3001/deletar-funcionario/${id}`);
+                setFuncionarios(funcionarios.filter(f => f.id !== id));
+                alert("Funcionário deletado com sucesso!");
+            } catch (erro) {
+                console.log(erro);
+                alert("Erro ao deletar funcionário!");
+            }
+        }
+    };
 
     // let dados = [
     //     { id: 1, nome: "Guilherme Sérgio", cargo: "Gerente agrônomico", email: "ig@4mguilherme.com", remuneracao: "R$8.000", foto: FotoIg },
@@ -55,10 +89,28 @@ const MainFuncionarios = () => {
                     <h1 className="h5 mt-3">Funcionários</h1>
                     <Link to={"/cadastrar-funcionario"} type="button" className="ph-btn fw-semibold bm-cor-botao ph-cor-branco mt-0 rounded-3"><i className="fi fi-br-plus me-3"></i>Novo Funcionário</Link>
                 </div>
+                <div className="col-md-12 col-lg-12 p-3 mb-3">
+                    <input 
+                        type="text" 
+                        placeholder="Pesquisar funcionário por nome..." 
+                        className="form-control ph-input" 
+                        value={pesquisa}
+                        onChange={(e) => pesquisarFuncionario(e.target.value)}
+                    />
+                </div>
                 <div className="d-flex justify-content-around flex-wrap">
                     {
                         funcionarios.map(Funcionario => (
-                            <DadosFuncionario key={Funcionario.id} id={Funcionario.id} nome={Funcionario.nome} cargo={Funcionario.cargo} email={Funcionario.email} remuneracao={Funcionario.remuneracao} foto={Funcionario.foto} />
+                            <DadosFuncionario 
+                                key={Funcionario.id} 
+                                id={Funcionario.id} 
+                                nome={Funcionario.nome} 
+                                cargo={Funcionario.cargo} 
+                                email={Funcionario.email} 
+                                remuneracao={Funcionario.remuneracao} 
+                                foto={Funcionario.foto}
+                                onDelete={deletarFuncionario}
+                            />
                         ))
                     }
                 </div>

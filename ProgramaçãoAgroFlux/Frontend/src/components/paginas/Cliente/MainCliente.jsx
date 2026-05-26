@@ -5,6 +5,9 @@ import { Link } from "react-router";
 const MainCliente = () => {
     const [clientes, setClientes] = useState([]);
     const [clienteSelecionado, setClienteSelecionado] = useState(null);
+    const [pesquisa, setPesquisa] = useState('');
+
+    const regra = sessionStorage.getItem("regra");
 
     useEffect(() => {
         const buscarDadosCliente = async () => {
@@ -22,6 +25,26 @@ const MainCliente = () => {
         }
         buscarDadosCliente();
     }, []);
+
+    const pesquisarCliente = async (texto) => {
+        setPesquisa(texto);
+
+        try {
+            if (texto.trim() === '') {
+                const response = await axios.get('http://localhost:3001/listar-clientes');
+                const clientesOrdenados = response.data.sort((a, b) =>
+                    a.nome_fantasia.localeCompare(b.nome_fantasia)
+                );
+                setClientes(clientesOrdenados);
+                return;
+            }
+
+            const response = await axios.get(`http://localhost:3001/pesquisar-cliente?nome=${texto}`);
+            setClientes(response.data);
+        } catch (erro) {
+            console.log(erro);
+        }
+    };
 
     const deletarCliente = async (id) => {
 
@@ -52,7 +75,17 @@ const MainCliente = () => {
                 </div>
 
                 <div className="col-md-12 col-lg-12 border rounded-3 overflow-hidden">
-                    <table className="table table-striped mb-0">
+                    <div className="p-3 ph-bg-search">
+                        <input 
+                            type="text" 
+                            placeholder="Pesquisar cliente por nome..." 
+                            className="form-control ph-input" 
+                            value={pesquisa}
+                            onChange={(e) => pesquisarCliente(e.target.value)}
+                        />
+                    </div>
+                    <div className="ph-tabela-responsiva">
+                        <table className="table table-striped mb-0">
                         <thead className="">
                             <tr className="ph-cabecalho-cor-table">
                                 <th scope="col">ID</th>
@@ -72,14 +105,19 @@ const MainCliente = () => {
                                         <td>{cliente.data_cadastro}</td>
                                         <td>
                                             <button onClick={() => setClienteSelecionado(cliente)} className="border border-0 bg-transparent me-2" title="Visualizar"><i className="fi fi-rr-eye" style={{color: '#0d6efd'}}></i></button>
-                                            <Link to={`/editar-cliente/${cliente.id}`} className="text-decoration-none"><i className="fi fi-rr-pencil ph-cor-lapis"></i></Link>
-                                            <button onClick={() => deletarCliente(cliente.id)} className="border border-0 bg-transparent"><i className="fi fi-rr-trash ph-cor-lixo"></i></button>
+                                            {regra === 'Administrador' && (
+                                                <Link to={`/editar-cliente/${cliente.id}`} className="text-decoration-none"><i className="fi fi-rr-pencil ph-cor-lapis"></i></Link>
+                                            )}
+                                            {regra === 'Administrador' && (
+                                                <button onClick={() => deletarCliente(cliente.id)} className="border border-0 bg-transparent"><i className="fi fi-rr-trash ph-cor-lixo"></i></button>
+                                            )}
                                         </td>
                                     </tr>
                                 ))
                             }
                         </tbody>
                     </table>
+                    </div>
                 </div>
 
                 {/* Modal Card com Detalhes do Cliente */}

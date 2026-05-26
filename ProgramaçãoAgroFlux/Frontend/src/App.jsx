@@ -1,64 +1,74 @@
-import 'bootstrap/dist/css/bootstrap.min.css'
-import 'bootstrap-icons/font/bootstrap-icons.css'
-import './assets/css/dashboard.css'
-import './App.css'
-import 'bootstrap/dist/js/bootstrap.bundle.min.js'
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap-icons/font/bootstrap-icons.css';
+import './assets/css/dashboard.css';
+import './App.css';                     
+import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import '../node_modules/@flaticon/flaticon-uicons/css/all/all.css';
-import { Route, Routes } from 'react-router'
-//import './assets/js/dashboard'
+import { BrowserRouter as Router, Routes, Route, Navigate   } from 'react-router-dom';
+
+import Login from './components/Login';
+import ValidaLogin from './components/ValidaLogin';
+import Protegida from './components/Protegida';
+
 import Home from './components/paginas/Home/Home';
 
-import Produtos from './components/paginas/Produtos/Produtos'
-import CadastrarProduto from './components/paginas/Produtos/CadastrarProduto'
-import EditarProduto from './components/paginas/Produtos/EditarProduto'
-import CadastrarFornecedor from './components/paginas/Fornecedores/CadastrarFornecedor'
-import EditarFornecedor from './components/paginas/Fornecedores/EditarFornecedor'
+import Cliente from './components/paginas/Cliente/Cliente';
+import CadastrarCliente from './components/paginas/Cliente/CadastrarCliente';
+import EditarCliente from './components/paginas/Cliente/EditarCliente';
 
-import Cliente from './components/paginas/Cliente/Cliente'
-import CadastrarCliente from './components/paginas/Cliente/CadastrarCliente'
-import EditarCliente from './components/paginas/Cliente/EditarCliente'
+import Produtos from './components/paginas/Produtos/Produtos';
+import CadastrarProduto from './components/paginas/Produtos/CadastrarProduto';
+import EditarProduto from './components/paginas/Produtos/EditarProduto';
 
-import Funcionario from './components/paginas/Funcionarios/Funcionarios'
-import CadastrarFuncionario from './components/paginas/Funcionarios/CadastrarFuncionario'
-import EditarFuncionario from './components/paginas/Funcionarios/EditarFuncionario'
+import Funcionarios from './components/paginas/Funcionarios/Funcionarios';
+import CadastrarFuncionario from './components/paginas/Funcionarios/CadastrarFuncionario';
+import EditarFuncionario from './components/paginas/Funcionarios/EditarFuncionario';
 
-import Estoque from './components/paginas/Estoque/Estoque'
-import CadastrarEstoque from  './components/paginas/Estoque/CadastrarEstoque'
+import Estoque from './components/paginas/Estoque/Estoque';
+import CadastrarEstoque from  './components/paginas/Estoque/CadastrarEstoque';
 
-import Vendas from './components/paginas/Vendas/Vendas'
+import Vendas from './components/paginas/Vendas/Vendas';
 
-import Relatorio from './components/paginas/Relatorios/Relatorios'
+import Relatorio from './components/paginas/Relatorios/Relatorios';
 
-import Fornecedores from './components/paginas/Fornecedores/Fornecedores'
+import Fornecedores from './components/paginas/Fornecedores/Fornecedores';
+import CadastrarFornecedor from './components/paginas/Fornecedores/CadastrarFornecedor';
+import EditarFornecedor from './components/paginas/Fornecedores/EditarFornecedor';
 
-import Login from './components/Login'
-import ValidaLogin from './components/ValidaLogin'
 
 function App() {
-
+  const token = sessionStorage.getItem("token");
   return (
-    <>
+    <Router>
       <Routes>
+
         <Route path='/' element={<Login />} />
         <Route path='/home' element={<Home />} />
-        <Route path='/clientes' element={<Cliente />} />
-        <Route path='/cadastrar-cliente' element={<CadastrarCliente />} />
-        <Route path='/cadastrar-funcionario' element={<CadastrarFuncionario />} />
-        <Route path='/editar-cliente/:id' element={<EditarCliente />} />
-        <Route path='/funcionarios' element={<Funcionario />} />
-        <Route path='/editar-funcionario/:id' element={<EditarFuncionario />} />
-        <Route path='/produtos' element={<Produtos />} />
-        <Route path='/cadastrar-produto' element={<CadastrarProduto/>} />
-        <Route path='/editar-produto/:id' element={<EditarProduto />} />
-        <Route path='/vendas' element={<Vendas />} />
-        <Route path='/fornecedores' element={<Fornecedores />} />
-        <Route path='/cadastrar-fornecedor' element={<CadastrarFornecedor />} />
-        <Route path='/editar-fornecedor/:id' element={<EditarFornecedor />} />
-        <Route path='/estoque' element={<Estoque />} />
-        <Route path='/relatorios' element={<Relatorio />} />
-        <Route path='/cadastrar-estoque' element={<CadastrarEstoque/>}/>
+
+        <Route path='/clientes' element={ <Protegida regrasPermitidas={['Administrador', 'Leitor']}> <Cliente /> </Protegida> } />
+        <Route path='/cadastrar-cliente' element={ <Protegida regrasPermitidas={['Administrador']}> <CadastrarCliente /> </Protegida> } />
+        <Route path='/editar-cliente/:id' element={ <Protegida regrasPermitidas={['Administrador']}> <EditarCliente /> </Protegida> } />
+        
+        <Route path='/produtos' element={ <Protegida regrasPermitidas={['Administrador', 'Leitor']}> <Produtos /> </Protegida> } />
+        <Route path='/cadastrar-produto' element={ <Protegida regrasPermitidas={['Administrador']}> <CadastrarProduto/> </Protegida> } />
+        <Route path='/editar-produto/:id' element={ <Protegida regrasPermitidas={['Administrador']}> <EditarProduto /> </Protegida> } />
+        
+        <Route path='/funcionarios' element={ <Protegida regrasPermitidas={['Administrador', 'Leitor']}> <Funcionarios /> </Protegida> } />
+        <Route path='/cadastrar-funcionario' element={ <Protegida regrasPermitidas={['Administrador']}> <CadastrarFuncionario /> </Protegida> } />
+        <Route path='/editar-funcionario/:id' element={ <Protegida regrasPermitidas={['Administrador']}> <EditarFuncionario /> </Protegida> } />
+        
+        <Route path='/estoque' element={ <Protegida regrasPermitidas={['Administrador']}> <Estoque /> </Protegida> } />
+        <Route path='/cadastrar-estoque' element={ <Protegida regrasPermitidas={['Administrador']}> <CadastrarEstoque/> </Protegida>}/>
+
+        <Route path='/vendas' element={ <Protegida regrasPermitidas={['Administrador']}> <Vendas /> </Protegida> } />
+        
+        <Route path='/relatorios' element={ <Protegida regrasPermitidas={['Administrador']}> <Relatorio /> </Protegida> } />
+
+        <Route path='/fornecedores' element={ <Protegida regrasPermitidas={['Administrador', 'Leitor']}> <Fornecedores /> </Protegida> } />
+        <Route path='/cadastrar-fornecedor' element={ <Protegida regrasPermitidas={['Administrador']}> <CadastrarFornecedor /> </Protegida> } />
+        <Route path='/editar-fornecedor/:id' element={ <Protegida regrasPermitidas={['Administrador']}> <EditarFornecedor /> </Protegida> } />
       </Routes>
-    </>
+    </Router>
   )
 }
 export default App

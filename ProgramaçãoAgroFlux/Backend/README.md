@@ -60,7 +60,7 @@ Fornecer uma API robusta e segura que suporte o dashboard AgroFlux, permitindo:
    
    Execute o arquivo SQL fornecido:
    ```bash
-   mysql -u seu_usuario -p < ../Database/AgroFlux.sql
+   AgroFlux2026\ProgramaçãoAgroFlux\Database
    ```
 
 5. **Inicie o servidor em modo de desenvolvimento**
@@ -114,3 +114,10 @@ Authorization: Bearer seu_token_aqui
 ### Porta 3001 já em uso
 - Altere a porta no arquivo `src/index.js`
 - Ou finalize o processo usando a porta
+
+## 👥 Autores
+
+- BEATRIZ MOREIRA DOS ANJOS 
+- HENRIQUE DA SILVA GUIMARÃES
+- JOÃO PEDRO RODRIGUES MARQUES
+- PAULO HENRIQUE CODONHO FLORIANO

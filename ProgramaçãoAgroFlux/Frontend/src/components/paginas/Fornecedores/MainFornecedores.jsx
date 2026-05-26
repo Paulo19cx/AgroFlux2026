@@ -8,6 +8,7 @@ import FotoAgriCorp from "../../../assets/img/agriiCorp.jpg";
 
 function MainFornecedores() {
     const [fornecedores, setFornecedores] = useState([]);
+    const [pesquisa, setPesquisa] = useState('');
 
     useEffect(() => {
         const carregarFornecedores = async () => {
@@ -20,6 +21,23 @@ function MainFornecedores() {
         };
         carregarFornecedores();
     }, []);
+
+    const pesquisarFornecedor = async (texto) => {
+        setPesquisa(texto);
+
+        try {
+            if (texto.trim() === '') {
+                const response = await axios.get('http://localhost:3001/listar-fornecedores');
+                setFornecedores(response.data);
+                return;
+            }
+
+            const response = await axios.get(`http://localhost:3001/pesquisar-fornecedor?nome=${texto}`);
+            setFornecedores(response.data);
+        } catch (erro) {
+            console.log(erro);
+        }
+    };
 
     const deletarFornecedor = async (id) => {
         if (window.confirm("Tem certeza que deseja deletar este fornecedor?")) {
@@ -41,13 +59,22 @@ function MainFornecedores() {
                     <h1 className="h5 mt-3">Fornecedores</h1>
                     <Link to={"/cadastrar-fornecedor"} type="button" className="ph-btn fw-semibold bm-cor-botao ph-cor-branco mt-0 rounded-3"><i className="fi fi-br-plus me-3"></i>Novo Fornecedor</Link>
                 </div>
+                <div className="col-md-12 col-lg-12 p-3 mb-3">
+                    <input 
+                        type="text" 
+                        placeholder="Pesquisar fornecedor por nome..." 
+                        className="form-control ph-input" 
+                        value={pesquisa}
+                        onChange={(e) => pesquisarFornecedor(e.target.value)}
+                    />
+                </div>
                 <div className="row gap-5 m-2">
                     {fornecedores.length > 0 ? (
                         fornecedores.map((fornecedor) => (
                             <div key={fornecedor.id} className="card row p-0">
                                 <img className="p-0" src={FotoFornecedor} alt="" />
                                 <div className="card-body">
-                                    <h5 className="card-title">{fornecedor.razao_social}</h5>
+                                    <h5 className="card-title">{fornecedor.nome_razao_social}</h5>
                                     <h6 className="card-title">{fornecedor.cnpj}</h6>
                                     <div className="d-flex p-2">
                                         <i className="fi fi-rr-clip-mail"></i><p className="card-text">{fornecedor.email}</p>

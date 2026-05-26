@@ -9,12 +9,12 @@ function MainCadastrarFuncionario() {
     const [email, setEmail] = useState('');
     const [senha, setSenha] = useState('');
     const [dataNascimento, setDataNascimento] = useState('');
-    const [dataAdmissao, setDataAdmissao] = useState('');
+    const [dataContratacao, setDataContratacao] = useState('');
     const [salarioInicial, setSalarioInicial] = useState('');
     const [salarioAtual, setSalarioAtual] = useState('');
-    const [foto, setFoto] = useState('');
+    const [regra, setRegra] = useState('');
     const [situacao, setSituacao] = useState('ATIVO');
-    const [telefone, setTelefone] = useState('');
+    const [numeroTelefone, setNumeroTelefone] = useState('');
     const [tipoTelefone, setTipoTelefone] = useState('');
     const [principal, setPrincipal] = useState('');
     const [logradouro, setLogradouro] = useState('');
@@ -49,10 +49,10 @@ function MainCadastrarFuncionario() {
             // const dadosFuncionario = JSON.stringify(Object.fromEntries(formData.entries()));
             // await new Promise((resolve) => setTimeout(resolve, 2000));
 
-            // if (!nome || !cpf || !dataNascimento || !email || !telefone || !cargo || !dataAdmissao || !salarioInicial || !salarioAtual || !situacao || !senha || !logradouro || !numero || !cep || !bairro || !cidade || !estado) {
-            //     alert('Todos os campos devem ser preenchidos');
-            //     return;
-            // }
+            if (!nome || !cpf || !dataNascimento || !email || !numeroTelefone || !cargo || !dataContratacao || !salarioInicial || !regra || !salarioAtual || !situacao || !senha || !logradouro || !numero || !cep || !bairro || !cidade || !estado) {
+                alert('Todos os campos devem ser preenchidos');
+                return;
+            }
 
             const funcionario = {
                 nome,
@@ -61,12 +61,12 @@ function MainCadastrarFuncionario() {
                 email,
                 senha,
                 dataNascimento,
-                dataAdmissao,
+                dataContratacao,
                 salarioInicial,
                 salarioAtual,
-                foto,
+                regra,
                 situacao,
-                telefone,
+                numeroTelefone,
                 tipoTelefone,
                 principal,
                 logradouro,
@@ -78,7 +78,7 @@ function MainCadastrarFuncionario() {
             };
             
             try {
-                const response = await axios.post('https://localhost:3001/cadastro-foto', funcionario)
+                const response = await axios.post('http://localhost:3001/cadastrar-funcionario', funcionario)
                     
 
                 if (response.status === 201) {
@@ -147,8 +147,8 @@ function MainCadastrarFuncionario() {
                         <input value={dataNascimento} onChange={(e) => setDataNascimento(e.target.value)} type="date" className="form-control ph-input" id="dataNascimento" name="dataNascimento" />
                     </div>
                     <div className="col-md-3">
-                        <label htmlFor="dataAdmissao" className="form-label small mb-1">Data de Admissão</label>
-                        <input value={dataAdmissao} onChange={(e) => setDataAdmissao(e.target.value)} type="date" className="form-control ph-input" id="dataAdmissao" name="dataAdmissao" />
+                        <label htmlFor="dataContratacao" className="form-label small mb-1">Data de Contratação</label>
+                        <input value={dataContratacao} onChange={(e) => setDataContratacao(e.target.value)} type="date" className="form-control ph-input" id="dataContratacao" name="dataContratacao" />
                     </div>
                     <div className="col-md-3">
                         <label htmlFor="salario" className="form-label small mb-1">Salário Inicial</label>
@@ -159,6 +159,15 @@ function MainCadastrarFuncionario() {
                         <input value={salarioAtual} onChange={(e) => setSalarioAtual(e.target.value)} type="text" className="form-control ph-input" id="salario" name="salario" />
                     </div>
                     <div className="col-md-3">
+                        <label htmlFor="regra" className="form-label small mb-1">Regra</label>
+                        <select value={regra} onChange={(e) => setRegra(e.target.value)} className="form-select ph-input" id="regra" name="regra">
+                            <option value="">Selecione</option>
+                            <option value="ADMINISTRADOR">Administrador</option>
+                            <option value="USUARIO">Usuário</option>
+                            <option value="LEITOR">Leitor</option>
+                        </select>
+                    </div>
+                    <div className="col-md-3">
                         <label htmlFor="situacao" className="form-label small mb-1">Situação</label>
                         <select value={situacao} onChange={(e) => setSituacao(e.target.value)} className="form-select ph-input" id="situacao" name="situacao">
                             <option value="ATIVO">Ativo</option>
@@ -166,24 +175,24 @@ function MainCadastrarFuncionario() {
                         </select>
                     </div>
                     
-                    <h6 className="fw-bold mb-0">Telefone</h6>
+                    <h6 className="fw-bold mb-0 mt-5">Telefone</h6>
                         <div className="col-4">
-                            <label htmlFor="telefone" className="form-label small mb-1">Número de telefone</label>
-                            <input value={telefone} onChange={(e) => setTelefone(e.target.value)} type="text" className="form-control ph-input" id="telefone" name="telefone"  />
+                            <label htmlFor="numeroTelefone" className="form-label small mb-1">Número de telefone</label>
+                            <input value={numeroTelefone} onChange={(e) => setNumeroTelefone(e.target.value)} type="text" className="form-control ph-input" id="numeroTelefone" name="numeroTelefone"  />
                         </div>
                         <div className="col-md-4">
-                            <label htmlFor="cep" className="form-label small mb-1">Tipo</label>
-                            <input value={tipoTelefone} onChange={(e) => setTipoTelefone(e.target.value)} type="text" className="form-control ph-input" id="cep" name="cep"  />
+                            <label htmlFor="tipoTelefone" className="form-label small mb-1">Tipo</label>
+                            <input value={tipoTelefone} onChange={(e) => setTipoTelefone(e.target.value)} type="text" className="form-control ph-input" id="tipoTelefone" name="tipoTelefone"  />
                         </div>
                         <div className="col-md-4">
-                            <label htmlFor="cep" className="form-label small mb-1">Princípal</label>
-                            <select value={principal} onChange={(e) => setPrincipal(e.target.value)} type="text" className="form-select ph-input" id="cep" name="cep"  >
+                            <label htmlFor="principal" className="form-label small mb-1">Principal</label>
+                            <select value={principal} onChange={(e) => setPrincipal(e.target.value)} className="form-select ph-input" id="principal" name="principal">
                                 <option value="SIM">Sim</option>
                                 <option value="NAO">Não</option>
                             </select>
                         </div>
 
-                    <h6 className="fw-bold mb-0 mt-4">Endereço</h6>
+                    <h6 className="fw-bold mb-0 mt-5">Endereço</h6>
                     <div className="col-md-6">
                         <label htmlFor="endereco" className="form-label small mb-1">Rua</label>
                         <input value={logradouro} onChange={(e) => setLogradouro(e.target.value)} type="text" className="form-control ph-input" id="endereco" name="endereco" />
@@ -211,10 +220,7 @@ function MainCadastrarFuncionario() {
                     </div>
 
                     <h6 className="fw-bold mb-0 mt-4">Outros</h6>
-                    <div className="col-md-6">
-                        <label htmlFor="endereco" className="form-label small mb-1">Foto para perfil</label>
-                        <input value={foto} onChange={(e) => setFoto(e.target.value)} type="file" className="form-control ph-input" id="endereco" name="endereco" />
-                    </div>
+                    
 
                     <div className="col-12 mt-4">
                         <button disabled={pendente} type="submit" className="ph-btn-forms ph-btn-forms-cor-cadastrar me-2">

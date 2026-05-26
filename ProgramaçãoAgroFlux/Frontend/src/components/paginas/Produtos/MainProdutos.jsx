@@ -5,6 +5,7 @@ import axios from 'axios';
 const MainProdutos = () => {
 
     const [produto, setProduto] = useState([]);
+    const [pesquisa, setPesquisa] = useState('');
 
     useEffect(() => {
         const buscarDadosProdutos = async () => {
@@ -22,6 +23,27 @@ const MainProdutos = () => {
         }
         buscarDadosProdutos();
     }, []);
+
+    const pesquisarProduto = async (texto) => {
+
+        setPesquisa(texto);
+
+        try {
+            if (texto.trim() === '') {
+                const response = await axios.get('http://localhost:3001/listar-produtos');
+                const produtosOrdenados = response.data.sort((a, b) =>
+                    a.nome.localeCompare(b.nome)
+                );
+                setProduto(produtosOrdenados);
+                return;
+            }
+
+            const response = await axios.get(`http://localhost:3001/pesquisar-produto?nome=${texto}`);
+            setProduto(response.data);
+        } catch (erro) {
+            console.log(erro);
+        }
+    };
 
     const deletarProduto = async (id) => {
 
@@ -52,11 +74,15 @@ const MainProdutos = () => {
                 </div>
 
                 <div className="col-md-12 col-lg-12 border rounded-3 overflow-hidden">
+                    <div className="p-3 ph-bg-search">
+                        <input type="text" placeholder="Pesquisar produto por nome..." className="form-control ph-input" value={pesquisa}onChange={(e) => pesquisarProduto(e.target.value)} />
+                    </div>
+                    <div className="ph-tabela-responsiva">
                     <table className="table table-striped mb-0">
                         <thead>
                             <tr className="ph-cabecalho-cor-table">
                                 <th scope="col">ID</th>
-                                <th scope="col">Descrição</th>
+                                <th scope="col">Nome</th>
                                 <th scope="col">Categoria</th>
                                 <th scope="col">Unidade</th>
                                 <th scope="col">Preço</th>
@@ -69,10 +95,10 @@ const MainProdutos = () => {
                                 produto.map((produto) => (
                                     <tr key={produto.id} className="ph-corpo-cor-table">
                                         <td>{produto.id}</td>
-                                        <td>{produto.descricao}</td>
+                                        <td>{produto.nome}</td>
                                         <td>{produto.categoria}</td>
-                                        <td>{produto.unidade}</td>
-                                        <td>{produto.precoVenda}</td>
+                                        <td>{produto.unidade_medida}</td>
+                                        <td>{produto.preco_venda}</td>
                                         <td>{produto.estoqueAtual}</td>
                                         <td>
                                             <Link to={`/editar-produto/${produto.id}`} className="text-decoration-none"><i className="fi fi-rr-pencil ph-cor-lapis"></i></Link>
@@ -83,6 +109,7 @@ const MainProdutos = () => {
                             }
                         </tbody>
                     </table>
+                    </div>
                 </div>
             </main>
         </>

@@ -2,8 +2,8 @@ import modelFuncionario from '../model/modelFuncionario.js'
 
 const controllerFuncionario = {
     cadastrar: async (req, res) => {
-        const { nome, cpf, cargo, email, senha, dataNascimento, dataContratacao, salarioInicial, salarioAtual, situacao, numeroTelefone, tipoTelefone, principal, logradouro, numero, bairro, cidade, estado, cep } = req.body;
-
+        const { nome, cpf, cargo, email, senha, dataNascimento, dataContratacao, salarioInicial, salarioAtual, regra, situacao, numeroTelefone, tipoTelefone, principal, logradouro, numero, bairro, cidade, estado, cep } = req.body;
+        
         try {
             const [validarEmail] = await modelFuncionario.buscarEmail(email);
 
@@ -11,7 +11,7 @@ const controllerFuncionario = {
                 return res.status(409).json({ msg: "Email já cadastrado" });
             }
             else {
-                const [cadastro] = await modelFuncionario.cadastrar(nome, cpf, cargo, email, senha, dataNascimento, dataContratacao, salarioInicial, salarioAtual, situacao, numeroTelefone, tipoTelefone, principal, logradouro, numero, bairro, cidade, estado, cep);
+                const [cadastro] = await modelFuncionario.cadastrar(nome, cpf, cargo, email, senha, dataNascimento, dataContratacao, salarioInicial, salarioAtual, regra, situacao, numeroTelefone, tipoTelefone, principal, logradouro, numero, bairro, cidade, estado, cep);
 
                 if (cadastro.affectedRows > 0) {
                     return res.status(201).json({ msg: "Cadastro com sucesso" });
@@ -22,24 +22,7 @@ const controllerFuncionario = {
             }
         }
         catch (erro) {
-            console.log(erro)
-            return res.status(500).json({ msg: "Erro no servidor" });
-        }
-    },
-
-    testeFoto: async (req, res, next) => {
-        const foto = req.file.filename;
-
-        try {
-            const cadastrarFoto = await modelFuncionario.testeFoto(foto);
-
-            if (cadastrarFoto.affectedRows > 0) {
-                    return res.status(201).json({ msg: "Foto cadastrada com sucesso" });
-                }
-                else {
-                    return res.status(400).json({ msg: "Falha ao cadastrar" });
-                }
-        } catch (erro) {
+            console.log(erro);
             return res.status(500).json({ msg: "Erro no servidor" });
         }
     },
@@ -59,7 +42,6 @@ const controllerFuncionario = {
             }
         }
         catch (erro) {
-            console.log(erro)
             return res.status(500).json({ msg: "Erro no servidor" });
         }
     },
@@ -89,24 +71,45 @@ const controllerFuncionario = {
 
     atualizar: async (req, res) => {
         const { id } = req.params;
-        const { nome, cpf, cargo, email, senha, dataNascimento, dataContratacao, salarioInicial, salarioAtual, situacao, numeroTelefone, tipoTelefone, principal, logradouro, numero, bairro, cidade, estado, cep } = req.body;
-        const novaFoto = req.file ? req.file.filename : null;
-        
-        console.log('req.body:', req.body);
+        const { nome, cpf, cargo, email, senha, dataNascimento, dataContratacao, salarioInicial, salarioAtual, regra, situacao, numeroTelefone, tipoTelefone, principal, logradouro, numero, bairro, cidade, estado, cep } = req.body;
         
         try {
-            const [funcionarioAtual] = await modelFuncionario.listarPorId(id);
-            const foto = novaFoto || (funcionarioAtual && funcionarioAtual.foto);
-            
-            const atualizar = await modelFuncionario.atualizar(nome, cpf, cargo, email, senha, dataNascimento, dataContratacao, salarioInicial, salarioAtual, foto, situacao, numeroTelefone, tipoTelefone, principal, logradouro, numero, bairro, cidade, estado, cep, id);
-            
-            console.log('atualizar:', atualizar);
+            const atualizar = await modelFuncionario.atualizar(nome, cpf, cargo, email, senha, dataNascimento, dataContratacao, salarioInicial, salarioAtual, regra, situacao, numeroTelefone, tipoTelefone, principal, logradouro, numero, bairro, cidade, estado, cep, id);
             
             return res.status(200).json({ msg: "Atualizado com sucesso" });
         } catch (erro) {
             return res.status(500).json({ msg: "Erro no servidor" });
         }
     },
+
+    deletar: async (req, res) => {
+        const { id } = req.params;
+
+        try {
+            const deletar = await modelFuncionario.deletar(id);
+
+            if (deletar.affectedRows > 0) {
+                return res.status(200).json({ msg: "Deletado com sucesso" });
+            }
+            else {
+                return res.status(404).json({ msg: "Falha ao deletar" });
+            }
+        } catch (erro) {
+            return res.status(500).json({ msg: "Erro no servidor" });
+        }
+    },
+
+    pesquisar: async (req, res) => {
+        const { nome } = req.query;
+
+        try {
+            const consulta = await modelFuncionario.pesquisar(nome);
+
+            return res.status(200).json(consulta);
+        } catch (erro) {
+            return res.status(500).json({ msg: "Erro no servidor" });
+        }
+    }
 }
 
 export default controllerFuncionario;

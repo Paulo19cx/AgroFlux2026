@@ -3,12 +3,12 @@ import { Link, useNavigate } from "react-router";
 import axios from 'axios';
 
 function MainCadastrarFornecedor() {
-    const [razaoSocial, setRazaoSocial] = useState('');
+    const [nomeRazaoSocial, setNomeRazaoSocial] = useState('');
     const [nomeFantasia, setNomeFantasia] = useState('');
     const [cnpj, setCnpj] = useState('');
     const [email, setEmail] = useState('');
     const [situacao, setSituacao] = useState('ATIVO');
-    const [telefone, setTelefone] = useState('');
+    const [numeroTelefone, setNumeroTelefone] = useState('');
     const [tipoTelefone, setTipoTelefone] = useState('');
     const [principal, setPrincipal] = useState('');
     const [logradouro, setLogradouro] = useState('');
@@ -17,6 +17,8 @@ function MainCadastrarFornecedor() {
     const [cidade, setCidade] = useState('');
     const [estado, setEstado] = useState('');
     const [cep, setCep] = useState('');
+
+    const funcionarioId = sessionStorage.getItem('id');
 
     const navigate = useNavigate();
 
@@ -41,12 +43,13 @@ function MainCadastrarFornecedor() {
     const [estadoCadastro, acaoCadastro, pendente] = useActionState(
         async (estadoAnterior, formData) => {
             const fornecedor = {
-                razaoSocial,
+                funcionarioId,
+                nomeRazaoSocial,
                 nomeFantasia,
                 cnpj, 
                 email,
                 situacao,
-                telefone,
+                numeroTelefone,
                 tipoTelefone,
                 principal,
                 logradouro,
@@ -58,7 +61,7 @@ function MainCadastrarFornecedor() {
             };
             
             try {
-                const response = await axios.post('http://localhost:3001/cadastro-fornecedor', fornecedor)
+                const response = await axios.post('http://localhost:3001/cadastrar-fornecedor', fornecedor)
                     
 
                 if (response.status === 201) {
@@ -83,8 +86,8 @@ function MainCadastrarFornecedor() {
                 <form action={acaoCadastro} className="row g-3 text-black">
                     <h6 className="fw-bold mb-0">Principal</h6>
                     <div className="col-md-5">
-                        <label htmlFor="razaoSocial" className="form-label small mb-1">Razão Social</label>
-                        <input value={razaoSocial} onChange={(e) => setRazaoSocial(e.target.value)} type="text" className="form-control ph-input" id="razaoSocial" name="razaoSocial"  />
+                        <label htmlFor="nomeRazaoSocial" className="form-label small mb-1">Razão Social</label>
+                        <input value={nomeRazaoSocial} onChange={(e) => setNomeRazaoSocial(e.target.value)} type="text" className="form-control ph-input" id="nomeRazaoSocial" name="nomeRazaoSocial"  />
                     </div>
                     <div className="col-md-4">
                         <label htmlFor="nomeFantasia" className="form-label small mb-1">Nome Fantasia</label>
@@ -108,8 +111,8 @@ function MainCadastrarFornecedor() {
                     
                     <h6 className="fw-bold mb-0">Telefone</h6>
                         <div className="col-4">
-                            <label htmlFor="telefone" className="form-label small mb-1">Número de telefone</label>
-                            <input value={telefone} onChange={(e) => setTelefone(e.target.value)} type="text" className="form-control ph-input" id="telefone" name="telefone"  />
+                            <label htmlFor="numeroTelefone" className="form-label small mb-1">Número de telefone</label>
+                            <input value={numeroTelefone} onChange={(e) => setNumeroTelefone(e.target.value)} type="text" className="form-control ph-input" id="numeroTelefone" name="numeroTelefone"  />
                         </div>
                         <div className="col-md-4">
                             <label htmlFor="tipoTelefone" className="form-label small mb-1">Tipo</label>

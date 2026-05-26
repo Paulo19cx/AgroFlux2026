@@ -3,7 +3,6 @@ import modelFornecedor from '../model/modelFornecedor.js'
 const controllerFornecedor = {
     cadastrar: async (req, res) => {
         const { funcionarioId, nomeRazaoSocial, nomeFantasia, cnpj, email, situacao, numeroTelefone, tipoTelefone, principal, logradouro, numero, bairro, cidade, estado, cep } = req.body;
-
         try {
             const [cadastro] = await modelFornecedor.cadastrar(funcionarioId, nomeRazaoSocial, nomeFantasia, cnpj, email, situacao, numeroTelefone, tipoTelefone, principal, logradouro, numero, bairro, cidade, estado, cep);
 
@@ -14,7 +13,6 @@ const controllerFornecedor = {
                 return res.status(400).json({ msg: "Falha ao cadastrar" });
             }
         } catch (erro) {
-            console.log(erro)
             return res.status(500).json({ msg: "Erro no servidor" });
         }
     },
@@ -25,7 +23,6 @@ const controllerFornecedor = {
 
             return res.status(200).json(consulta);
         } catch (erro) {
-            console.log(erro)
             return res.status(500).json({ msg: "Erro no servidor" });
         }
     },
@@ -55,6 +52,35 @@ const controllerFornecedor = {
             else {
                 return res.status(404).json({ msg: "Falha ao atualizar" });
             }
+        } catch (erro) {
+            return res.status(500).json({ msg: "Erro no servidor" });
+        }
+    },
+
+    deletar: async (req, res) => {
+        const { id } = req.params;
+
+        try {
+            const deletar = await modelFornecedor.deletar(id);
+
+            if (deletar.affectedRows > 0) {
+                return res.status(200).json({ msg: "Deletado com sucesso" });
+            }
+            else {
+                return res.status(404).json({ msg: "Falha ao deletar" });
+            }
+        } catch (erro) {
+            return res.status(500).json({ msg: "Erro no servidor" });
+        }
+    },
+
+    pesquisar: async (req, res) => {
+        const { nome } = req.query;
+
+        try {
+            const consulta = await modelFornecedor.pesquisar(nome);
+
+            return res.status(200).json(consulta);
         } catch (erro) {
             return res.status(500).json({ msg: "Erro no servidor" });
         }

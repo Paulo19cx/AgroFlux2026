@@ -21,6 +21,8 @@ function MainCadastrarCliente() {
     const [estado, setEstado] = useState('');
     const [cep, setCep] = useState('');
 
+    const funcionarioId = sessionStorage.getItem('id');
+
     const urlViaCep = `https://viacep.com.br/ws/${cep}/json/`;
 
     const buscarDadosCep = async() => {
@@ -46,6 +48,7 @@ function MainCadastrarCliente() {
 
         async (estadoAnterior, formData) => {
             const cliente = {
+                funcionarioId,
                 nomeRazaoSocial,
                 nomeFantasia,
                 tipoPessoa,

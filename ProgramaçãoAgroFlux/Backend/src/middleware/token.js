@@ -6,10 +6,6 @@ const verificarToken = (req, res, next) => {
     if (!authHeader)
         return res.status(401).json({ msg: 'Acesso negado. Token não fornecido.' });
 
-    const partes = authHeader.split(' ');
-
-    console.log(partes);
-
     const token = authHeader.split(' ')[1];
 
     if (!token)
@@ -19,9 +15,6 @@ const verificarToken = (req, res, next) => {
         const verified = jwt.verify(token, process.env.JWT_SECRET);
 
         req.user = verified;
-
-        console.log(req.user.nome);
-
         next();
 
     } catch (err) {
