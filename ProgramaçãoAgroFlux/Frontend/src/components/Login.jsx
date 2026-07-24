@@ -17,6 +17,7 @@ function Login() {
                 sessionStorage.setItem('id', response.data.id);
                 sessionStorage.setItem('token', response.data.accessToken);
                 sessionStorage.setItem('regra', response.data.regra);
+                sessionStorage.setItem('nome', response.data.nome);
 
                 navigate('/home');
             }

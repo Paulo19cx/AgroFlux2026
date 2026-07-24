@@ -40,6 +40,46 @@
      overflow-y: auto;
  }
 
+ /* Dropdown de Pesquisa de Fornecedor */
+.ph-fornecedor-container {
+    position: relative;
+}
+
+.ph-dropdown-fornecedor {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    max-height: 150px;
+    overflow-y: auto;
+    margin-top: 2px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: #ffffff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.ph-dropdown-fornecedor button {
+    width: 100%;
+    padding: 8px 10px;
+    border: none;
+    border-bottom: 1px solid #f0f0f0;
+    background: none;
+    text-align: left;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background-color 0.2s ease;
+}
+
+.ph-dropdown-fornecedor button:last-child {
+    border-bottom: none;
+}
+
+.ph-dropdown-fornecedor button:hover {
+    background-color: #f9f9f9;
+}
+
  .ph-sidebar-estrutura .nav-link {
      border-radius: 8px;
      transition: background-color 0.2s ease, color 0.2s ease;
@@ -58,6 +98,11 @@
 
  .ph-sidebar-estrutura .nav-link:hover {
      background-color: #96ecb6;
+ }
+
+ .nav-link.active {
+     background-color: #96ecb6;
+     color: #000000;
  }
 
  @media (min-width: 768px) {

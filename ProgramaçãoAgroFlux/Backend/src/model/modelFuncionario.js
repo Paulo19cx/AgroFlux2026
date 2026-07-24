@@ -48,7 +48,7 @@ const modelFuncionario = {
                          { expiresIn: '25m' }
                     );
 
-                    return {accessToken, id: consulta[0].id, regra: consulta[0].regra};
+                    return {accessToken, id: consulta[0].id, regra: consulta[0].regra, nome: consulta[0].nome};
                 } 
                 else {
                     return null;

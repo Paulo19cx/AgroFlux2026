@@ -77,8 +77,6 @@ function MainEditarCliente() {
             try {
                 const response = await axios.put(`http://localhost:3001/editar-cliente/${id}`, cliente);
 
-                console.log(response)
-
                 if (response.status === 200) {
                     alert('Atualizado com sucesso');
 
@@ -97,8 +95,6 @@ function MainEditarCliente() {
         const buscarDadosCliente = async () => {
             try {
                 const response = await axios.get(`http://localhost:3001/listar-cliente/${id}`);
-
-                console.log(response)
 
                 setNomeRazaoSocial(response.data.nome_razao_social);
                 setNomeFantasia(response.data.nome_fantasia);

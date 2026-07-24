@@ -22,7 +22,6 @@ const MainFuncionarios = () => {
         const carregarFuncionarios = async () => {
             try {
                 const resposta = await axios.get("http://localhost:3001/listar-funcionarios");
-                console.log(resposta);
 
                 const funcioanriosOrdenados = resposta.data.sort((a, b) =>
                     a.nome.localeCompare(b.nome)
@@ -107,7 +106,7 @@ const MainFuncionarios = () => {
                                 nome={Funcionario.nome} 
                                 cargo={Funcionario.cargo} 
                                 email={Funcionario.email} 
-                                remuneracao={Funcionario.remuneracao} 
+                                salarioAtual={Funcionario.salario_atual} 
                                 foto={Funcionario.foto}
                                 onDelete={deletarFuncionario}
                             />

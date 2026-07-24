@@ -1,11 +1,13 @@
 import { Link, useNavigate } from "react-router";
+import { useEffect } from "react";
+
 import LogoAgroFlux from "../../assets/img/Logo-AgroFlux.png";
 import iconIg from "../../assets/img/iconMcIg.jfif"
-import { useEffect } from "react";
 
 function Navbar() {
 
     const navigate = useNavigate();
+    const userName = sessionStorage.getItem('nome');
 
     useEffect(() => {
         // Adicionar evento para fechar o menu ao clicar no overlay
@@ -29,6 +31,7 @@ function Navbar() {
         sessionStorage.removeItem("id");
         sessionStorage.removeItem("token");
         sessionStorage.removeItem("regra");
+        sessionStorage.removeItem("nome");
         navigate("/");
     }
 
@@ -44,7 +47,7 @@ function Navbar() {
                     </a>
                 </div>
 
-                <h6 className="ms-2 ms-md-5 mt-3 mb-3 d-none d-sm-block">Bem-vindo(a),Guilherme Sérgio!</h6>
+                <h6 className="ms-2 ms-md-5 mt-3 mb-3 d-none d-sm-block">Bem-vindo(a), {userName}!</h6>
 
                 <div className="ms-auto d-flex align-items-center gap-1 pe-2 pe-md-4">
                     <div className="dropdown text-end me-2 me-md-4">

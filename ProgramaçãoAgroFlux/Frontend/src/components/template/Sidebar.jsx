@@ -1,11 +1,12 @@
-import { use, useEffect } from "react";
-import { Link, useLocation } from "react-router";
+import { useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
 
 function Sidebar() {
-
-    let pagina = useLocation();
-    const paginaAtiva = pagina.pathname === '/home'
+    const location = useLocation();
     const regra = sessionStorage.getItem("regra");
+
+    const isActive = (paths) =>
+        paths.some((path) => location.pathname === path || location.pathname.startsWith(`${path}/`));
 
     useEffect(() => {
         // Fechar o menu ao navegar para outra página
@@ -16,7 +17,7 @@ function Sidebar() {
             });
             bsCollapse.hide();
         }
-    }, [pagina.pathname]);
+    }, [location.pathname]);
 
     useEffect(() => {
         // Controlar o overflow da página quando menu está aberto/fechado
@@ -46,7 +47,11 @@ function Sidebar() {
                     <ul className="nav flex-column gap-3">
                         {regra === 'ADMINISTRADOR' && (
                             <li className="nav-item">
-                                <Link to="/home" className="nav-link d-flex align-items-center fw-normal ph-padding-links-sidebar gap-3 text-black" aria-current="page">
+                                <Link
+                                    to="/home"
+                                    className={`nav-link d-flex align-items-center fw-normal ph-padding-links-sidebar gap-3 text-black ${isActive(['/home']) ? 'active' : ''}`}
+                                    aria-current={isActive(['/home']) ? 'page' : undefined}
+                                >
                                     <i className="fi fi-rr-home" aria-hidden="true"></i>
                                     <span>Dashboard</span>
                                 </Link>
@@ -55,7 +60,11 @@ function Sidebar() {
 
                         <li className="nav-item">
                             {regra === 'ADMINISTRADOR' && (
-                                <Link to="/clientes" className="nav-link d-flex align-items-center fw-normal ph-padding-links-sidebar gap-3 text-black">
+                                <Link
+                                    to="/clientes"
+                                    className={`nav-link d-flex align-items-center fw-normal ph-padding-links-sidebar gap-3 text-black ${isActive(['/clientes', '/cadastrar-cliente', '/editar-cliente']) ? 'active' : ''}`}
+                                    aria-current={isActive(['/clientes']) ? 'page' : undefined}
+                                >
                                     <i className="fi fi-rs-users" aria-hidden="true"></i>
                                     <span>Clientes</span>
                                 </Link>
@@ -64,7 +73,11 @@ function Sidebar() {
 
                         <li className="nav-item">
                             {regra === 'ADMINISTRADOR' && (
-                                <Link to="/funcionarios" className="nav-link d-flex align-items-center fw-normal ph-padding-links-sidebar gap-3 text-black">
+                                <Link
+                                    to="/funcionarios"
+                                    className={`nav-link d-flex align-items-center fw-normal ph-padding-links-sidebar gap-3 text-black ${isActive(['/funcionarios', '/cadastrar-funcionario', '/editar-funcionario']) ? 'active' : ''}`}
+                                    aria-current={isActive(['/funcionarios']) ? 'page' : undefined}
+                                >
                                     <i className="fi fi-rs-user-gear" aria-hidden="true"></i>
                                     <span>Funcionários</span>
                                 </Link>
@@ -73,7 +86,11 @@ function Sidebar() {
 
                         <li className="nav-item">
                             {regra === 'ADMINISTRADOR' && (
-                                <Link to="/produtos" className="nav-link d-flex align-items-center fw-normal ph-padding-links-sidebar gap-3 text-black">
+                                <Link
+                                    to="/produtos"
+                                    className={`nav-link d-flex align-items-center fw-normal ph-padding-links-sidebar gap-3 text-black ${isActive(['/produtos', '/cadastrar-produto', '/editar-produto']) ? 'active' : ''}`}
+                                    aria-current={isActive(['/produtos']) ? 'page' : undefined}
+                                >
                                     <i className="fi fi-rr-box-open-full" aria-hidden="true"></i>
                                     <span>Produtos</span>
                                 </Link>
@@ -82,7 +99,11 @@ function Sidebar() {
 
                         <li className="nav-item">
                             {regra === 'ADMINISTRADOR' && (
-                                <Link to="/vendas" className="nav-link d-flex align-items-center fw-normal ph-padding-links-sidebar gap-3 text-black">
+                                <Link
+                                    to="/vendas"
+                                    className={`nav-link d-flex align-items-center fw-normal ph-padding-links-sidebar gap-3 text-black ${isActive(['/vendas']) ? 'active' : ''}`}
+                                    aria-current={isActive(['/vendas']) ? 'page' : undefined}
+                                >
                                     <i className="fi fi-rr-shopping-cart" aria-hidden="true"></i>
                                     <span>Vendas</span>
                                 </Link>
@@ -91,7 +112,11 @@ function Sidebar() {
 
                         <li className="nav-item">
                             {regra === 'ADMINISTRADOR' && (
-                                <Link to="/fornecedores" className="nav-link d-flex align-items-center fw-normal ph-padding-links-sidebar gap-3 text-black">
+                                <Link
+                                    to="/fornecedores"
+                                    className={`nav-link d-flex align-items-center fw-normal ph-padding-links-sidebar gap-3 text-black ${isActive(['/fornecedores']) ? 'active' : ''}`}
+                                    aria-current={isActive(['/fornecedores']) ? 'page' : undefined}
+                                >
                                     <i className="fi fi-rr-truck-side" aria-hidden="true"></i>
                                     <span>Fornecedores</span>
                                 </Link>
@@ -100,7 +125,11 @@ function Sidebar() {
 
                         <li className="nav-item">
                             {regra === 'ADMINISTRADOR' && (
-                                <Link to="/estoque" className="nav-link d-flex align-items-center fw-normal ph-padding-links-sidebar gap-3 text-black">
+                                <Link
+                                    to="/estoque"
+                                    className={`nav-link d-flex align-items-center fw-normal ph-padding-links-sidebar gap-3 text-black ${isActive(['/estoque']) ? 'active' : ''}`}
+                                    aria-current={isActive(['/estoque']) ? 'page' : undefined}
+                                >
                                     <i className="fi fi-rr-warehouse-alt" aria-hidden="true"></i>
                                     <span>Estoque</span>
                                 </Link>
@@ -109,7 +138,11 @@ function Sidebar() {
 
                         <li className="nav-item">
                             {regra === 'ADMINISTRADOR' && (
-                                <Link to="/relatorios" className="nav-link d-flex align-items-center fw-normal ph-padding-links-sidebar gap-3 text-black">
+                                <Link
+                                    to="/relatorios"
+                                    className={`nav-link d-flex align-items-center fw-normal ph-padding-links-sidebar gap-3 text-black ${isActive(['/relatorios']) ? 'active' : ''}`}
+                                    aria-current={isActive(['/relatorios']) ? 'page' : undefined}
+                                >
                                     <i className="fi fi-rr-ballot" aria-hidden="true"></i>
                                     <span>Relatórios</span>
                                 </Link>

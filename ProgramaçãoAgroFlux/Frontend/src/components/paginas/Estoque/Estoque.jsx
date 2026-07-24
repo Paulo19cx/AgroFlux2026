@@ -7,13 +7,12 @@ function Estoque() {
     return (
         <>
             <title>Estoque</title>
-            
+
             <Navbar />
             <div className="container-fluid">
-                <div className="row">                  
-                    <Sidebar />                   
-                    <MainEstoque /> 
-                    
+                <div className="row">
+                    <Sidebar />
+                    <MainEstoque />
                 </div>
             </div>
         </>

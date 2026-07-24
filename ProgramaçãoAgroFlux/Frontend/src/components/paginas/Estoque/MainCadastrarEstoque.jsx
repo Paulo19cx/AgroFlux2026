@@ -15,7 +15,6 @@ function MainCadastrarEstoque() {
             const dadosCliente = JSON.stringify(Object.fromEntries(formData.entries()));
 
             await new Promise((resolve) => setTimeout(resolve, 2000));
-            console.log(dadosCliente);
 
             try {
                 const resposta = await fetch('https://jsonplaceholder.typicode.com/posts', {
@@ -30,7 +29,6 @@ function MainCadastrarEstoque() {
                 console.log(resposta.ok);
 
                 if (resposta.status === 201) {
-                    console.log('Resposta do servidor ok!');
                     if (resposta.ok) {
                         alert('Cadastrado com sucesso');
                         setDescricao('');
@@ -55,7 +53,7 @@ function MainCadastrarEstoque() {
         <>
             <main className="ph-main-corpo px-md-4 ph-bg-color">
                 <div className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 text-black">
-                    <h1 className="h2">Cadastrar Estoque</h1>
+                    <h1 className="h2">Cadastrar Nota</h1>
                 </div>
 
                 <div className="col-md-12 col-lg-12 ph-cor-fundo-branco p-4 rounded-3 shadow-lg">
