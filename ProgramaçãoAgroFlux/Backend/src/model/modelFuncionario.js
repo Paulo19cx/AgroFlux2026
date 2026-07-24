@@ -37,10 +37,11 @@ const modelFuncionario = {
     validarLogin: async (email, senha) => {
         try {
             const [consulta] = await modelFuncionario.buscarEmail(email);
+            console.log(consulta)
         
             if (consulta.length > 0) {
                 const combinacao = await bcrypt.compare(senha, consulta[0].senha);
-                
+                console.log(combinacao)
                 if (combinacao) {
                     const accessToken = jwt.sign(
                          { id_usuario: consulta[0].id, nome: consulta[0].nome, email: consulta[0].email },
@@ -49,6 +50,7 @@ const modelFuncionario = {
                     );
 
                     return {accessToken, id: consulta[0].id, regra: consulta[0].regra, nome: consulta[0].nome};
+                    
                 } 
                 else {
                     return null;
@@ -72,7 +74,7 @@ const modelFuncionario = {
 
     listar: async () => {
         try {
-            const [resultado] = await conexao.query("SELECT f.id, f.empresa_id, f.nome, f.cpf, f.cargo, f.email, DATE_FORMAT(f.data_nascimento, '%d/%m/%Y') AS data_nascimento, DATE_FORMAT(f.data_contratacao, '%d/%m/%Y %H:%i:%s') AS data_contratacao, f.salario_inicial, f.salario_atual, f.regra, f.situacao, t.numero_telefone, t.tipo, t.principal, e.logradouro, e.numero, e.bairro, e.cidade, e.estado, e.cep FROM funcionario f JOIN telefone t ON f.id = t.funcionario_id JOIN funcionario_endereco fe ON f.id = fe.funcionario_id JOIN endereco e ON e.id = fe.endereco_id");
+            const resultado = await conexao.query("SELECT f.id, f.empresa_id, f.nome, f.cpf, f.cargo, f.email, DATE_FORMAT(f.data_nascimento, '%d/%m/%Y') AS data_nascimento, DATE_FORMAT(f.data_contratacao, '%d/%m/%Y %H:%i:%s') AS data_contratacao, f.salario_inicial, f.salario_atual, f.regra, f.situacao, t.numero_telefone, t.tipo, t.principal, e.logradouro, e.numero, e.bairro, e.cidade, e.estado, e.cep FROM funcionario f JOIN telefone t ON f.id = t.funcionario_id JOIN funcionario_endereco fe ON f.id = fe.funcionario_id JOIN endereco e ON e.id = fe.endereco_id");
             return resultado;
         } 
         catch (erro) {

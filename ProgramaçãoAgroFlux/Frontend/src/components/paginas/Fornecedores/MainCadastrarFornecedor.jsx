@@ -87,19 +87,19 @@ function MainCadastrarFornecedor() {
                     <h6 className="fw-bold mb-0">Principal</h6>
                     <div className="col-md-5">
                         <label htmlFor="nomeRazaoSocial" className="form-label small mb-1">Razão Social</label>
-                        <input value={nomeRazaoSocial} onChange={(e) => setNomeRazaoSocial(e.target.value)} type="text" className="form-control ph-input" id="nomeRazaoSocial" name="nomeRazaoSocial"  />
+                        <input value={nomeRazaoSocial} onChange={(e) => setNomeRazaoSocial(e.target.value)} type="text" className="form-control ph-input" id="nomeRazaoSocial" name="nomeRazaoSocial" required/>
                     </div>
                     <div className="col-md-4">
                         <label htmlFor="nomeFantasia" className="form-label small mb-1">Nome Fantasia</label>
-                        <input value={nomeFantasia} onChange={(e) => setNomeFantasia(e.target.value)} type="text" className="form-control ph-input" id="nomeFantasia" name="nomeFantasia" />
+                        <input value={nomeFantasia} onChange={(e) => setNomeFantasia(e.target.value)} type="text" className="form-control ph-input" id="nomeFantasia" name="nomeFantasia" required/>
                     </div>
                     <div className="col-md-3">
                         <label htmlFor="cnpj" className="form-label small mb-1">CNPJ</label>
-                        <input value={cnpj} onChange={(e) => setCnpj(e.target.value)} type="text" className="form-control ph-input" id="cnpj" name="cnpj"  />
+                        <input value={cnpj} onChange={(e) => setCnpj(e.target.value)} type="text" className="form-control ph-input" id="cnpj" name="cnpj" required/>
                     </div>
                     <div className="col-md-6">
                         <label htmlFor="email" className="form-label small mb-1">Email</label>
-                        <input value={email} onChange={(e) => setEmail(e.target.value)} type="email" className="form-control ph-input" id="email" name="email"  />
+                        <input value={email} onChange={(e) => setEmail(e.target.value)} type="email" className="form-control ph-input" id="email" name="email" required />
                     </div>
                     <div className="col-md-3">
                         <label htmlFor="situacao" className="form-label small mb-1">Situação</label>
@@ -112,11 +112,11 @@ function MainCadastrarFornecedor() {
                     <h6 className="fw-bold mb-0">Telefone</h6>
                         <div className="col-4">
                             <label htmlFor="numeroTelefone" className="form-label small mb-1">Número de telefone</label>
-                            <input value={numeroTelefone} onChange={(e) => setNumeroTelefone(e.target.value)} type="text" className="form-control ph-input" id="numeroTelefone" name="numeroTelefone"  />
+                            <input value={numeroTelefone} onChange={(e) => setNumeroTelefone(e.target.value)} type="text" className="form-control ph-input" id="numeroTelefone" name="numeroTelefone" required />
                         </div>
                         <div className="col-md-4">
                             <label htmlFor="tipoTelefone" className="form-label small mb-1">Tipo</label>
-                            <input value={tipoTelefone} onChange={(e) => setTipoTelefone(e.target.value)} type="text" className="form-control ph-input" id="tipoTelefone" name="tipoTelefone"  />
+                            <input value={tipoTelefone} onChange={(e) => setTipoTelefone(e.target.value)} type="text" className="form-control ph-input" id="tipoTelefone" name="tipoTelefone" required />
                         </div>
                         <div className="col-md-4">
                             <label htmlFor="principal" className="form-label small mb-1">Principal</label>
@@ -130,28 +130,28 @@ function MainCadastrarFornecedor() {
                     <h6 className="fw-bold mb-0 mt-4">Endereço</h6>
                     <div className="col-md-6">
                         <label htmlFor="logradouro" className="form-label small mb-1">Rua</label>
-                        <input value={logradouro} onChange={(e) => setLogradouro(e.target.value)} type="text" className="form-control ph-input" id="logradouro" name="logradouro" />
+                        <input value={logradouro} onChange={(e) => setLogradouro(e.target.value)} type="text" className="form-control ph-input" id="logradouro" name="logradouro" required/>
                     </div>
                     <div className="col-md-2">
                         <label htmlFor="numero" className="form-label small mb-1">Número</label>
-                        <input value={numero} onChange={(e) => setNumero(e.target.value)} type="text" className="form-control ph-input" id="numero" name="numero" />
+                        <input value={numero} onChange={(e) => setNumero(e.target.value)} type="text" className="form-control ph-input" id="numero" name="numero" required/>
                     </div>
                     <div className="col-md-4">
                         <label htmlFor="cep" className="form-label small mb-1">CEP</label>
-                        <input value={cep} onBlur={buscarDadosCep} onChange={(e) => setCep(e.target.value)} type="text" className="form-control ph-input" id="cep" name="cep" />
+                        <input value={cep} onBlur={buscarDadosCep} onChange={(e) => setCep(e.target.value)} type="text" className="form-control ph-input" id="cep" name="cep" required/>
                     </div>
 
                     <div className="col-md-4">
                         <label htmlFor="bairro" className="form-label small mb-1">Bairro</label>
-                        <input value={bairro} onChange={(e) => setBairro(e.target.value)} type="text" className="form-control ph-input" id="bairro" name="bairro" />
+                        <input value={bairro} onChange={(e) => setBairro(e.target.value)} type="text" className="form-control ph-input" id="bairro" name="bairro" required/>
                     </div>
                     <div className="col-md-4">
                         <label htmlFor="cidade" className="form-label small mb-1">Cidade</label>
-                        <input value={cidade} onChange={(e) => setCidade(e.target.value)} type="text" className="form-control ph-input" id="cidade" name="cidade" />
+                        <input value={cidade} onChange={(e) => setCidade(e.target.value)} type="text" className="form-control ph-input" id="cidade" name="cidade" required/>
                     </div>
                     <div className="col-md-4">
                         <label htmlFor="estado" className="form-label small mb-1">Estado</label>
-                        <input value={estado} onChange={(e) => setEstado(e.target.value)} type="text" className="form-control ph-input" id="estado" name="estado" />
+                        <input value={estado} onChange={(e) => setEstado(e.target.value)} type="text" className="form-control ph-input" id="estado" name="estado" required/>
                     </div>
 
                     <div className="col-12 mt-4">

@@ -22,7 +22,7 @@ const MainFuncionarios = () => {
         const carregarFuncionarios = async () => {
             try {
                 const resposta = await axios.get("http://localhost:3001/listar-funcionarios");
-
+                console.log(resposta)
                 const funcioanriosOrdenados = resposta.data.sort((a, b) =>
                     a.nome.localeCompare(b.nome)
                 );
