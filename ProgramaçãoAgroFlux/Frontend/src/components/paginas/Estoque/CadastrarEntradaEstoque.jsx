@@ -1,11 +1,11 @@
 import Sidebar from "../../Template/Sidebar";
 import Navbar from "../../Template/Navbar";
-import MainCadastrarEstoque from "./MainCadastrarEstoque";
+import MainCadastrarEstoque from "./MainCadastrarEntradaEstoque";
 
-function CadastrarEstoque() {
+function CadastrarEntradaEstoque() {
     return (
         <>
-            <title>Cadastrar Estoque</title>
+            <title>Cadastrar Entrada de Estoque</title>
             <Navbar />
             <div className="container-fluid">
                 <div className="row">
@@ -17,4 +17,4 @@ function CadastrarEstoque() {
     );
 }
 
-export default CadastrarEstoque;
+export default CadastrarEntradaEstoque;

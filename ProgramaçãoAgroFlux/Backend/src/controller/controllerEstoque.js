@@ -10,6 +10,11 @@ const controllerEstoque = {
             return res.status(500).json({ msg: "Erro no servidor" });
         }
     },
+
+    cadastrar: async (req, res) => {
+        const { numeroNota, fornecedor, dataEmissao, observacoes, produto, quantidade, valorUnitario, subtotal } = req.body;
+
+    }
 }
 
 export default controllerEstoque;

@@ -25,7 +25,7 @@ import CadastrarFuncionario from './components/paginas/Funcionarios/CadastrarFun
 import EditarFuncionario from './components/paginas/Funcionarios/EditarFuncionario';
 
 import Estoque from './components/paginas/Estoque/Estoque';
-import CadastrarEstoque from  './components/paginas/Estoque/CadastrarEstoque';
+import CadastrarEstoque from  './components/paginas/Estoque/CadastrarEntradaEstoque';
 
 import Vendas from './components/paginas/Vendas/Vendas';
 

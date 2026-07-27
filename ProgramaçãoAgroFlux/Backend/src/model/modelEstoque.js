@@ -1,6 +1,14 @@
 import conexao from "../../config/db.js";
 
 const modelEstoque = {
+    cadastrar: async (numeroNota, fornecedor, dataEmissao, observacoes, produto, quantidade, valorUnitario, subtotal) => {
+        try {
+            
+        } catch (erro) {
+            throw erro;
+        }
+    },
+
     listar: async () => {
         try {
             const [resultado] = await conexao.query("SELECT e.id, e.empresa_id, e.produto_id, e.quantidade, e.minimo, DATE_FORMAT(e.atualizado_em, '%d/%m/%Y %H:%i:%s') as atualizado_em, p.nome FROM estoque e JOIN produto p ON e.produto_id = p.id");

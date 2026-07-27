@@ -3,7 +3,7 @@ import modelProduto from '../model/modelProduto.js';
 const controllerProduto = {
     cadastrar: async (req, res) => {
         const { fornecedorId, funcionarioId, nome, descricao, unidadeMedida, precoVenda, custoUnitario, categoria, situacao, estoqueMinimo } = req.body;
-        console.log(req.body);
+
         try {
             const cadastro = await modelProduto.cadastrar(fornecedorId, funcionarioId, nome, descricao, unidadeMedida, precoVenda, custoUnitario, categoria, situacao, estoqueMinimo);
 
