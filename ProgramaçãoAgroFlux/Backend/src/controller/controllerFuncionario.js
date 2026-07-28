@@ -27,6 +27,16 @@ const controllerFuncionario = {
         }
     },
 
+    listar: async (req, res) => {
+        try {
+            const consulta = await modelFuncionario.listar();
+            return res.status(200).json(consulta);
+        } 
+        catch (erro) {
+            return res.status(500).json({ msg: "Erro no servidor" });
+        }
+    },
+
     login: async (req, res) => {
         const { email, senha } = req.body;
         console.log(req.body)
@@ -43,17 +53,6 @@ const controllerFuncionario = {
         }
         catch (erro) {
             console.log(erro)
-            return res.status(500).json({ msg: "Erro no servidor" });
-        }
-    },
-
-    listar: async (req, res) => {
-        try {
-            const consulta = await modelFuncionario.listar();
-
-            return res.status(200).json(consulta);
-        } 
-        catch (erro) {
             return res.status(500).json({ msg: "Erro no servidor" });
         }
     },
