@@ -5,16 +5,19 @@ import axios from 'axios';
 function MainCadastrarProduto() {
 
     const [fornecedorId, setFornecedorId] = useState('');
+    const [fornecedorNome, setFornecedorNome] = useState('');
+    const [fornecedorFiltrados, setFornecedorFiltrados] = useState([]);
+    const [mostrarSugestoes, setMostrarSugestoes] = useState(false);
     const [nome, setNome] = useState('');
     const [descricao, setDescricao] = useState('');
     const [categoria, setCategoria] = useState('');
+    const [estoqueMinimo, setEstoqueMinimo] = useState('');
     const [unidadeMedida, setUnidadeMedida] = useState('');
     const [precoVenda, setPrecoVenda] = useState('');
     const [custoUnitario, setCustoUnitario] = useState('');
     const [situacao, setSituacao] = useState('ATIVO');
 
     const funcionarioId = sessionStorage.getItem('id');
-
     const navigate = useNavigate();
 
     const [estadoCadastro, acaoCadastro, pendente] = useActionState(
@@ -26,6 +29,7 @@ function MainCadastrarProduto() {
                 nome,
                 descricao,
                 categoria,
+                estoqueMinimo,
                 unidadeMedida,
                 precoVenda,
                 custoUnitario,
@@ -42,6 +46,7 @@ function MainCadastrarProduto() {
                     setNome('');
                     setDescricao('');
                     setCategoria('');
+                    setEstoqueMinimo('');
                     setUnidadeMedida('');
                     setPrecoVenda('');
                     setCustoUnitario('');
@@ -58,6 +63,30 @@ function MainCadastrarProduto() {
         }
     )
 
+    const pesquisarFornecedor = async (texto) => {
+        setFornecedorNome(texto);
+
+        try{
+            if (texto.trim() === '') {
+                setFornecedorFiltrados([]);
+                setMostrarSugestoes(false);
+                return;
+            }
+
+            const response = await axios.get(`http://localhost:3001/pesquisar-fornecedor?nome=${texto}`);
+            setFornecedorFiltrados(response.data);
+            setMostrarSugestoes(true);
+        } catch (erro) {
+            console.log(erro);
+        }
+    };
+
+    const selecionarFornecedor = (id, nome) => {
+        setFornecedorId(id);
+        setFornecedorNome(nome);
+        setMostrarSugestoes(false);
+    };
+
     return (
         <>
             <main className="ph-main-corpo px-md-4 ph-bg-color">
@@ -68,12 +97,26 @@ function MainCadastrarProduto() {
                 <div className="col-md-12 col-lg-12 ph-cor-fundo-branco p-4 rounded-3 shadow-lg">
                     <form action={acaoCadastro} className="row g-3 text-black">
                         <h6 className="fw-bold mb-0">Produto</h6>
-                        <div className="col-md-4">
-                            <label htmlFor="fornecedorId" className="form-label small mb-1">Fornecedor</label>
-                            <input onChange={(e) => setFornecedorId(e.target.value)} value={fornecedorId} type="text" className="form-control ph-input" id="fornecedorId" name="fornecedorId" required />
+                        <div className="col-md-4 ph-fornecedor-container">
+                            <label htmlFor="fornecedorNome" className="form-label small mb-1">Fornecedor</label>
+                            <input onChange={(e) => pesquisarFornecedor(e.target.value)} value={fornecedorNome} type="text" className="form-control ph-input" id="fornecedorNome" name="fornecedorNome" placeholder="Digite o nome do fornecedor" required />
+
+                            {mostrarSugestoes && fornecedorFiltrados.length > 0 && (
+                                <div className="ph-dropdown-fornecedor">
+                                    {fornecedorFiltrados.map((fornecedor) => (
+                                        <button
+                                            key={fornecedor.id}
+                                            type="button"
+                                            onClick={() => selecionarFornecedor(fornecedor.id, fornecedor.nome_fantasia)}
+                                        >
+                                            {fornecedor.nome_razao_social} - {fornecedor.nome_fantasia}
+                                        </button>
+                                    ))}
+                                </div>
+                            )}
                         </div>
                         <div className="col-md-4">
-                            <label htmlFor="nome" className="form-label small mb-1">Nome</label>    
+                            <label htmlFor="nome" className="form-label small mb-1">Nome</label>
                             <input value={nome} onChange={(e) => setNome(e.target.value)} type="text" className="form-control ph-input" id="nome" name="nome" required />
                         </div>
                         <div className="col-md-4">
@@ -92,9 +135,13 @@ function MainCadastrarProduto() {
                                 <option value="BIOLOGICOS">Biológicos</option>
                             </select>
                         </div>
-                        <div className="col-md-8">
+                        <div className="col-md-3">
+                            <label htmlFor="estoqueMinimo" className="form-label small mb-1">Estoque Mínimo</label>
+                            <input value={estoqueMinimo} onChange={(e) => setEstoqueMinimo(e.target.value)} type="number" className="form-control ph-input" id="estoqueMinimo" name="estoqueMinimo" required />
+                        </div>
+                        <div className="col-md-5">
                             <label htmlFor="descricao" className="form-label small mb-1">Descrição</label>
-                            <textarea value={descricao} onChange={(e) => setDescricao(e.target.value)} className="form-control ph-input" id="descricao" name="descricao" rows="3" required />
+                            <textarea value={descricao} onChange={(e) => setDescricao(e.target.value)} className="form-control ph-input" id="descricao" name="descricao" rows="3" />
                         </div>
 
                         <h6 className="fw-bold mb-0">Preços</h6>

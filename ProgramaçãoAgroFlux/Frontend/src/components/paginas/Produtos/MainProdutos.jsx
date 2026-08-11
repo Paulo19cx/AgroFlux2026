@@ -99,7 +99,7 @@ const MainProdutos = () => {
                                         <td>{produto.categoria}</td>
                                         <td>{produto.unidade_medida}</td>
                                         <td>{produto.preco_venda}</td>
-                                        <td>{produto.estoqueAtual}</td>
+                                        <td>{produto.quantidade}</td>
                                         <td>
                                             <Link to={`/editar-produto/${produto.id}`} className="text-decoration-none"><i className="fi fi-rr-pencil ph-cor-lapis"></i></Link>
                                             <button onClick={() => deletarProduto(produto.id)} className="border border-0 bg-transparent"><i className="fi fi-rr-trash ph-cor-lixo"></i></button>

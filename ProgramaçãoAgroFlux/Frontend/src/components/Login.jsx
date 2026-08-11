@@ -5,6 +5,7 @@ import axios from 'axios';
 function Login() {
     const [email, setEmail] = useState('');
     const [senha, setSenha] = useState('');
+    const [ mostrarSenha, setMostrarSenha] = useState(false);
     const navigate = useNavigate();
 
     const handleLogin = async (e) => {
@@ -17,6 +18,7 @@ function Login() {
                 sessionStorage.setItem('id', response.data.id);
                 sessionStorage.setItem('token', response.data.accessToken);
                 sessionStorage.setItem('regra', response.data.regra);
+                sessionStorage.setItem('nome', response.data.nome);
 
                 navigate('/home');
             }
@@ -25,7 +27,6 @@ function Login() {
             }
         }
         catch (erro) {
-            console.log(erro)
             console.error('Erro no login', erro)
             alert('Email ou senha incorretos!');
         }
@@ -45,27 +46,14 @@ function Login() {
                             </div>
                             <div className="col-md-12 col-lg-12 mb-4">
                                 <label htmlFor="email" className="form-label">Email</label>
-                                <input
-                                    value={email}
-                                    onChange={(e) => setEmail(e.target.value)}
-                                    type="email"
-                                    className="form-control"
-                                    id="email"
-                                    name="email"
-                                    required
-                                />
+                                <input value={email} onChange={(e) => setEmail(e.target.value)} type="email" className="form-control" id="email" name="email" required />
                             </div>
-                            <div className="col-md-12 col-lg-12 mb-5">
+                            <div className="col-md-12 col-lg-12 mb-5 position-relative">
                                 <label htmlFor="senha" className="form-label">Senha</label>
-                                <input
-                                    value={senha}
-                                    onChange={(e) => setSenha(e.target.value)}
-                                    type="password"
-                                    className="form-control"
-                                    id="senha"
-                                    name="senha"
-                                    required
-                                />
+                                <input value={senha} onChange={(e) => setSenha(e.target.value)} type={mostrarSenha ? "text" : "password"} className="form-control pe-5" id="senha" name="senha" required />
+                                <button className="border border-0 bg-transparent position-absolute top-50 translate-middle-y end-0 me-4 mt-3" type="button" onClick={() => setMostrarSenha(!mostrarSenha)}>
+                                    <i className={mostrarSenha ? "fi fi-rs-crossed-eye" : "fi fi-rr-eye"}></i>
+                                </button>
                             </div>
                             <div>
                                 <div className="col-md-12 col-lg-12">

@@ -4,7 +4,7 @@ const modelFornecedor = {
     cadastrar: async (funcionarioId, nomeRazaoSocial, nomeFantasia, cnpj, email, situacao, numeroTelefone, tipoTelefone, principal, logradouro, numero, bairro, cidade, estado, cep) => {
         try {
             const [resultadoF] = await conexao.query("INSERT INTO fornecedor (funcionario_id, nome_razao_social, nome_fantasia, cnpj, email, situacao) VALUES (?,?,?,?,?,?)", [funcionarioId, nomeRazaoSocial, nomeFantasia, cnpj, email, situacao]);
-
+            console.log(resultadoF);
             if (resultadoF) {
                 const idFornecedor = resultadoF.insertId;
 
@@ -76,8 +76,9 @@ const modelFornecedor = {
     },
 
     pesquisar: async (nome) => {
+        nome = nome.toLowerCase().trim();
         try {
-            const [resultado] = await conexao.query("SELECT f.id, f.nome_razao_social, f.nome_fantasia, f.cnpj, f.email, f.situacao, t.numero_telefone, t.tipo, t.principal, e.logradouro, e.numero, e.bairro, e.cidade, e.estado, e.cep FROM fornecedor f JOIN telefone t ON f.id = t.fornecedor_id JOIN fornecedor_endereco fe ON f.id = fe.fornecedor_id JOIN endereco e ON e.id = fe.endereco_id WHERE f.nome_razao_social LIKE ? OR f.nome_fantasia LIKE ?", [`%${nome}%`, `%${nome}%`]);
+            const [resultado] = await conexao.query("SELECT f.id, f.nome_razao_social, f.nome_fantasia, f.cnpj, f.email, f.situacao, t.numero_telefone, t.tipo, t.principal, e.logradouro, e.numero, e.bairro, e.cidade, e.estado, e.cep FROM fornecedor f JOIN telefone t ON f.id = t.fornecedor_id JOIN fornecedor_endereco fe ON f.id = fe.fornecedor_id JOIN endereco e ON e.id = fe.endereco_id WHERE f.nome_razao_social LIKE ? OR f.nome_fantasia LIKE ? ", [`%${nome}%`, `%${nome}%`]);
             return resultado;
         } catch (erro) {
             throw erro;

@@ -2,10 +2,10 @@ import modelProduto from '../model/modelProduto.js';
 
 const controllerProduto = {
     cadastrar: async (req, res) => {
-        const { fornecedorId, funcionarioId, nome, descricao, unidadeMedida, precoVenda, custoUnitario, categoria, situacao } = req.body;
-        
+        const { fornecedorId, funcionarioId, nome, descricao, unidadeMedida, precoVenda, custoUnitario, categoria, situacao, estoqueMinimo } = req.body;
+
         try {
-            const cadastro = await modelProduto.cadastrar(fornecedorId, funcionarioId, nome, descricao, unidadeMedida, precoVenda, custoUnitario, categoria, situacao);
+            const cadastro = await modelProduto.cadastrar(fornecedorId, funcionarioId, nome, descricao, unidadeMedida, precoVenda, custoUnitario, categoria, situacao, estoqueMinimo);
 
             if (cadastro.affectedRows > 0) {
                 return res.status(201).json({ msg: "Produto cadastrado com sucesso"});
@@ -24,6 +24,7 @@ const controllerProduto = {
 
             return res.status(200).json(consulta);
         } catch (erro) {
+            console.log(erro);
             return res.status(500).json({ msg: "Erro no servidor" });
         }
     },

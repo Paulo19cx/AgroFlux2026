@@ -112,6 +112,16 @@ function MainCadastrarFuncionario() {
         }
     );
 
+    const formatarCpf = (valor) => {
+         valor = valor.replace(/\D/g, '');
+
+         valor = valor.replace(/(\d{3})(\d)/, '$1.$2');
+         valor = valor.replace(/(\d{3})(\d)/, '$1.$2');
+         valor = valor.replace(/(\d{3})(\d{1,2})$/, '$1-$2');
+
+        return valor;
+    }
+
     return (
         <main className="ph-main-corpo px-md-4 ph-bg-color">
             <div className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 text-black">
@@ -127,7 +137,7 @@ function MainCadastrarFuncionario() {
                     </div>
                     <div className="col-md-3">
                         <label htmlFor="cpf" className="form-label small mb-1">CPF</label>
-                        <input value={cpf} onChange={(e) => setCpf(e.target.value)} type="text" className="form-control ph-input" id="cpf" name="cpf"  />
+                        <input value={cpf} onChange={(e) => setCpf(formatarCpf(e.target.value))} type="text" className="form-control ph-input" id="cpf" name="cpf"  />
                     </div>
                     <div className="col-md-4">
                         <label htmlFor="cargo" className="form-label small mb-1">Cargo</label>
@@ -161,7 +171,7 @@ function MainCadastrarFuncionario() {
                         <label htmlFor="regra" className="form-label small mb-1">Regra</label>
                         <select value={regra} onChange={(e) => setRegra(e.target.value)} className="form-select ph-input" id="regra" name="regra">
                             <option value="">Selecione</option>
-                            <option value="ADMINISTRADOR">Administrador</option>
+                            <option value="Administrador">Administrador</option>
                             <option value="USUARIO">Usuário</option>
                             <option value="LEITOR">Leitor</option>
                         </select>

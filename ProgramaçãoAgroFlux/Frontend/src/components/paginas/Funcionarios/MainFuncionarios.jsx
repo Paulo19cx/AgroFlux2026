@@ -21,10 +21,9 @@ const MainFuncionarios = () => {
     useEffect(() => {
         const carregarFuncionarios = async () => {
             try {
-                const resposta = await axios.get("http://localhost:3001/listar-funcionarios");
-                console.log(resposta);
-
-                const funcioanriosOrdenados = resposta.data.sort((a, b) =>
+                const response = await axios.get("http://localhost:3001/listar-funcionarios");
+                
+                const funcioanriosOrdenados = response.data.sort((a, b) =>
                     a.nome.localeCompare(b.nome)
                 );
 
@@ -90,13 +89,7 @@ const MainFuncionarios = () => {
                     <Link to={"/cadastrar-funcionario"} type="button" className="ph-btn fw-semibold bm-cor-botao ph-cor-branco mt-0 rounded-3"><i className="fi fi-br-plus me-3"></i>Novo Funcionário</Link>
                 </div>
                 <div className="col-md-12 col-lg-12 p-3 mb-3">
-                    <input 
-                        type="text" 
-                        placeholder="Pesquisar funcionário por nome..." 
-                        className="form-control ph-input" 
-                        value={pesquisa}
-                        onChange={(e) => pesquisarFuncionario(e.target.value)}
-                    />
+                    <input type="text" placeholder="Pesquisar funcionário por nome..." className="form-control ph-input" value={pesquisa}onChange={(e) => pesquisarFuncionario(e.target.value)}/>
                 </div>
                 <div className="d-flex justify-content-around flex-wrap">
                     {
@@ -107,7 +100,7 @@ const MainFuncionarios = () => {
                                 nome={Funcionario.nome} 
                                 cargo={Funcionario.cargo} 
                                 email={Funcionario.email} 
-                                remuneracao={Funcionario.remuneracao} 
+                                salarioAtual={Funcionario.salario_atual} 
                                 foto={Funcionario.foto}
                                 onDelete={deletarFuncionario}
                             />

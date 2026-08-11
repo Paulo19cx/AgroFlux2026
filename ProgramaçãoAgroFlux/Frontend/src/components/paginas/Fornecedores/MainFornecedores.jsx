@@ -24,7 +24,6 @@ function MainFornecedores() {
 
     const pesquisarFornecedor = async (texto) => {
         setPesquisa(texto);
-
         try {
             if (texto.trim() === '') {
                 const response = await axios.get('http://localhost:3001/listar-fornecedores');
@@ -68,7 +67,7 @@ function MainFornecedores() {
                         onChange={(e) => pesquisarFornecedor(e.target.value)}
                     />
                 </div>
-                <div className="row gap-5 m-2">
+                <div className="row gap-5 ms-4">
                     {fornecedores.length > 0 ? (
                         fornecedores.map((fornecedor) => (
                             <div key={fornecedor.id} className="card row p-0">

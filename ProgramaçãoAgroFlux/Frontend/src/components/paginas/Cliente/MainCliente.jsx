@@ -66,6 +66,8 @@ const MainCliente = () => {
         }
     }
 
+    const tipoPessoaTexto = clienteSelecionado?.tipo_pessoa === 'JURIDICA' ? 'Pessoa Jurídica' : 'Pessoa Física';
+
     return (
         <>
             <main className="ph-main-corpo px-md-4 ph-bg-color">
@@ -105,10 +107,10 @@ const MainCliente = () => {
                                         <td>{cliente.data_cadastro}</td>
                                         <td>
                                             <button onClick={() => setClienteSelecionado(cliente)} className="border border-0 bg-transparent me-2" title="Visualizar"><i className="fi fi-rr-eye" style={{color: '#0d6efd'}}></i></button>
-                                            {regra === 'ADMINISTRADOR' &&(
+                                            {regra === 'Administrador' &&(
                                                 <Link to={`/editar-cliente/${cliente.id}`} className="text-decoration-none"><i className="fi fi-rr-pencil ph-cor-lapis"></i></Link>
                                             )}
-                                            {regra === 'ADMINISTRADOR' &&(
+                                            {regra === 'Administrador' &&(
                                                 <button onClick={() => deletarCliente(cliente.id)} className="border border-0 bg-transparent"><i className="fi fi-rr-trash ph-cor-lixo"></i></button>
                                             )}
                                         </td>
@@ -123,15 +125,55 @@ const MainCliente = () => {
                 {/* Modal Card com Detalhes do Cliente */}
                 {clienteSelecionado && (
                     <div className="position-fixed top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center" style={{backgroundColor: 'rgba(0,0,0,0.5)', zIndex: 1050}}>
-                        <div className="card shadow" style={{width: '90%', maxWidth: '600px', maxHeight: '90vh', overflowY: 'auto'}}>
-                            <div className="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+                        <div className="card shadow" style={{width: '90%', maxWidth: '650px', maxHeight: '90vh', overflowY: 'auto'}}>
+                            <div className="card-header bg-success text-white d-flex justify-content-between align-items-center">
                                 <h5 className="mb-0">Detalhes do Cliente</h5>
                                 <button onClick={() => setClienteSelecionado(null)} className="btn-close btn-close-white" style={{cursor: 'pointer'}}></button>
                             </div>
-                            
-                            <div className="card-footer d-flex justify-content-end">
-                                <button onClick={() => setClienteSelecionado(null)} className="btn btn-secondary">Fechar</button>
+
+                            <div className="card-body">
+                                <div className="row mb-3">
+                                    <div className="col-md-6">
+                                        <p><strong>ID:</strong> {clienteSelecionado.id}</p>
+                                        <p><strong>Nome/Razão Social:</strong> {clienteSelecionado.nome_razao_social}</p>
+                                        <p><strong>Nome Fantasia:</strong> {clienteSelecionado.nome_fantasia}</p>
+                                        <p><strong>Tipo Pessoa:</strong> {tipoPessoaTexto}</p>
+                                    </div>
+                                    <div className="col-md-6">
+                                        <p><strong>CNPJ:</strong> {clienteSelecionado.cnpj || 'N/A'}</p>
+                                        <p><strong>CPF:</strong> {clienteSelecionado.cpf || 'N/A'}</p>
+                                        <p><strong>Email:</strong> {clienteSelecionado.email}</p>
+                                        <p><strong>Situação:</strong> {clienteSelecionado.situacao}</p>
+                                    </div>
+                                </div>
+
+                                <h6 className="fw-bold mt-4 mb-3">Telefone</h6>
+                                <div className="row mb-3">
+                                    <div className="col-md-6">
+                                        <p><strong>Número:</strong> {clienteSelecionado.numero_telefone}</p>
+                                    </div>
+                                    <div className="col-md-6">
+                                        <p><strong>Tipo:</strong> {clienteSelecionado.tipo_telefone}</p>
+                                    </div>
+                                </div>
+
+                                <h6 className="fw-bold mt-4 mb-3">Endereço</h6>
+                                <div className="row mb-3">
+                                    <div className="col-md-6">
+                                        <p><strong>Rua:</strong> {clienteSelecionado.logradouro}</p>
+                                        <p><strong>Número:</strong> {clienteSelecionado.numero}</p>
+                                        <p><strong>Bairro:</strong> {clienteSelecionado.bairro}</p>
+                                    </div>
+                                    <div className="col-md-6">
+                                        <p><strong>Cidade:</strong> {clienteSelecionado.cidade}</p>
+                                        <p><strong>Estado:</strong> {clienteSelecionado.estado}</p>
+                                        <p><strong>CEP:</strong> {clienteSelecionado.cep}</p>
+                                    </div>
+                                </div>
+
+                                <p className="text-secondary small mt-4"><strong>Data de Cadastro:</strong> {clienteSelecionado.data_cadastro}</p>
                             </div>
+
                         </div>
                     </div>
                 )}

@@ -136,8 +136,6 @@ CREATE TABLE item_venda (
     CONSTRAINT fk_item_venda_venda FOREIGN KEY (venda_id) REFERENCES venda(id),
     CONSTRAINT fk_item_venda_produto FOREIGN KEY (produto_id) REFERENCES produto(id)
 );
- 
-
 
 CREATE TABLE estoque (
     id INT(11) NOT NULL AUTO_INCREMENT,
@@ -149,7 +147,37 @@ CREATE TABLE estoque (
     PRIMARY KEY (id),
     UNIQUE KEY uk_estoque_empresa_produto (empresa_id, produto_id),
     CONSTRAINT fk_estoque_empresa FOREIGN KEY (empresa_id) REFERENCES empresa(id),
-    CONSTRAINT fk_estoque_produto FOREIGN KEY (produto_id) REFERENCES produto(id)
+    CONSTRAINT fk_estoque_produto FOREIGN KEY (produto_id) REFERENCES produto(id) ON DELETE CASCADE
+);
+
+CREATE TABLE nota_entrada (
+    id INT(11) NOT NULL AUTO_INCREMENT,
+    numero_nota VARCHAR(20) NOT NULL,
+    empresa_id INT(11) NOT NULL DEFAULT 1,
+    fornecedor_id INT(11) NOT NULL,
+    funcionario_id INT(11) NOT NULL,
+    data_emissao DATETIME NOT NULL,
+    data_entrada DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    observacao TEXT,
+    data_criacao DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    data_atualizacao DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    PRIMARY KEY (id),
+    CONSTRAINT fk_nota_entrada_empresa FOREIGN KEY (empresa_id) REFERENCES empresa(id),
+    CONSTRAINT fk_nota_entrada_fornecedor FOREIGN KEY (fornecedor_id) REFERENCES fornecedor(id),
+    CONSTRAINT fk_nota_entrada_funcionario FOREIGN KEY (funcionario_id) REFERENCES funcionario(id)
+);
+
+CREATE TABLE item_nota_entrada (
+    id INT(11) NOT NULL AUTO_INCREMENT,
+    nota_entrada_id INT(11) NOT NULL,
+    produto_id INT(11) NOT NULL,
+    quantidade INT(5) NOT NULL DEFAULT 0,
+    preco_unitario DECIMAL(10,2) NOT NULL DEFAULT 0.00,
+    desconto DECIMAL(10,2) NOT NULL DEFAULT 0.00,
+    total DECIMAL(10,2) NOT NULL,
+    PRIMARY KEY (id),
+    CONSTRAINT fk_item_nota_entrada_nota_entrada FOREIGN KEY (nota_entrada_id) REFERENCES nota_entrada(id),
+    CONSTRAINT fk_item_nota_entrada_produto FOREIGN KEY (produto_id) REFERENCES produto(id)
 );
 
 CREATE TABLE funcionario_endereco(

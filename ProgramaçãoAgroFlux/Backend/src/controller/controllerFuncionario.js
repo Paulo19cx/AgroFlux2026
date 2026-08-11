@@ -27,12 +27,22 @@ const controllerFuncionario = {
         }
     },
 
+    listar: async (req, res) => {
+        try {
+            const consulta = await modelFuncionario.listar();
+            return res.status(200).json(consulta);
+        } 
+        catch (erro) {
+            return res.status(500).json({ msg: "Erro no servidor" });
+        }
+    },
+
     login: async (req, res) => {
         const { email, senha } = req.body;
-        
+        console.log(req.body)
         try {
             const validar = await modelFuncionario.validarLogin(email, senha);
-            
+            console.log(validar)
 
             if (!validar) {
                 return res.status(401).json({ msg: "Falha ao realizar o login" });
@@ -42,17 +52,7 @@ const controllerFuncionario = {
             }
         }
         catch (erro) {
-            return res.status(500).json({ msg: "Erro no servidor" });
-        }
-    },
-
-    listar: async (req, res) => {
-        try {
-            const consulta = await modelFuncionario.listar();
-
-            return res.status(200).json(consulta);
-        } 
-        catch (erro) {
+            console.log(erro)
             return res.status(500).json({ msg: "Erro no servidor" });
         }
     },

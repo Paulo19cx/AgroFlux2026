@@ -33,14 +33,24 @@ const modelFuncionario = {
         }
     },
 
+    listar: async () => {
+        try {
+            const [resultado] = await conexao.query("SELECT f.id, f.empresa_id, f.nome, f.cpf, f.cargo, f.email, DATE_FORMAT(f.data_nascimento, '%d/%m/%Y') AS data_nascimento, DATE_FORMAT(f.data_contratacao, '%d/%m/%Y %H:%i:%s') AS data_contratacao, f.salario_inicial, f.salario_atual, f.regra, f.situacao, t.numero_telefone, t.tipo, t.principal, e.logradouro, e.numero, e.bairro, e.cidade, e.estado, e.cep FROM funcionario f JOIN telefone t ON f.id = t.funcionario_id JOIN funcionario_endereco fe ON f.id = fe.funcionario_id JOIN endereco e ON e.id = fe.endereco_id");
+            return resultado;
+        } 
+        catch (erro) {
+            throw erro;
+        }
+    },
 
     validarLogin: async (email, senha) => {
         try {
             const [consulta] = await modelFuncionario.buscarEmail(email);
+            console.log(consulta)
         
             if (consulta.length > 0) {
                 const combinacao = await bcrypt.compare(senha, consulta[0].senha);
-                
+                console.log(combinacao)
                 if (combinacao) {
                     const accessToken = jwt.sign(
                          { id_usuario: consulta[0].id, nome: consulta[0].nome, email: consulta[0].email },
@@ -48,7 +58,8 @@ const modelFuncionario = {
                          { expiresIn: '25m' }
                     );
 
-                    return {accessToken, id: consulta[0].id, regra: consulta[0].regra};
+                    return {accessToken, id: consulta[0].id, regra: consulta[0].regra, nome: consulta[0].nome};
+                    
                 } 
                 else {
                     return null;
@@ -59,22 +70,12 @@ const modelFuncionario = {
             throw erro;
         }
     },
-
+    
     buscarEmail: async (email) => {
         try {
             const resultado = await conexao.query("SELECT empresa_id, id, nome, cpf, cargo, email, senha, regra, DATE_FORMAT(data_nascimento, '%d/%m/%Y') AS data_nascimento, DATE_FORMAT(data_contratacao, '%d/%m/%Y') AS data_contratacao, salario_inicial, salario_atual, situacao FROM funcionario WHERE email = ?", [email]);
             return resultado;
         }
-        catch (erro) {
-            throw erro;
-        }
-    },
-
-    listar: async () => {
-        try {
-            const [resultado] = await conexao.query("SELECT f.id, f.empresa_id, f.nome, f.cpf, f.cargo, f.email, DATE_FORMAT(f.data_nascimento, '%d/%m/%Y') AS data_nascimento, DATE_FORMAT(f.data_contratacao, '%d/%m/%Y %H:%i:%s') AS data_contratacao, f.salario_inicial, f.salario_atual, f.regra, f.situacao, t.numero_telefone, t.tipo, t.principal, e.logradouro, e.numero, e.bairro, e.cidade, e.estado, e.cep FROM funcionario f JOIN telefone t ON f.id = t.funcionario_id JOIN funcionario_endereco fe ON f.id = fe.funcionario_id JOIN endereco e ON e.id = fe.endereco_id");
-            return resultado;
-        } 
         catch (erro) {
             throw erro;
         }
