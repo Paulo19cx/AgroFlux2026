@@ -4,7 +4,7 @@ import './assets/css/dashboard.css';
 import './App.css';                     
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import '../node_modules/@flaticon/flaticon-uicons/css/all/all.css';
-import { BrowserRouter as Router, Routes, Route, Navigate   } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 
 import Login from './components/Login';
 import ValidaLogin from './components/ValidaLogin';
@@ -37,38 +37,37 @@ import EditarFornecedor from './components/paginas/Fornecedores/EditarFornecedor
 
 
 function App() {
-  const token = sessionStorage.getItem("token");
   return (
-    <Router>
+    <BrowserRouter>
       <Routes>
 
         <Route path='/' element={<Login />} />
         <Route path='/home' element={<Home />} />
 
-        <Route path='/clientes' element={ <Protegida regrasPermitidas={['ADMINISTRADOR', 'LEITOR']}> <Cliente /> </Protegida> } />
-        <Route path='/cadastrar-cliente' element={ <Protegida regrasPermitidas={['ADMINISTRADOR']}> <CadastrarCliente /> </Protegida> } />
-        <Route path='/editar-cliente/:id' element={ <Protegida regrasPermitidas={['ADMINISTRADOR']}> <EditarCliente /> </Protegida> } />
+        <Route path='/clientes' element={ <Protegida regrasPermitidas={['Administrador', 'LEITOR']}> <Cliente /> </Protegida> } />
+        <Route path='/cadastrar-cliente' element={ <Protegida regrasPermitidas={['Administrador']}> <CadastrarCliente /> </Protegida> } />
+        <Route path='/editar-cliente/:id' element={ <Protegida regrasPermitidas={['Administrador']}> <EditarCliente /> </Protegida> } />
         
-        <Route path='/produtos' element={ <Protegida regrasPermitidas={['ADMINISTRADOR', 'LEITOR']}> <Produtos /> </Protegida> } />
-        <Route path='/cadastrar-produto' element={ <Protegida regrasPermitidas={['ADMINISTRADOR']}> <CadastrarProduto/> </Protegida> } />
-        <Route path='/editar-produto/:id' element={ <Protegida regrasPermitidas={['ADMINISTRADOR']}> <EditarProduto /> </Protegida> } />
+        <Route path='/produtos' element={ <Protegida regrasPermitidas={['Administrador', 'LEITOR']}> <Produtos /> </Protegida> } />
+        <Route path='/cadastrar-produto' element={ <Protegida regrasPermitidas={['Administrador']}> <CadastrarProduto/> </Protegida> } />
+        <Route path='/editar-produto/:id' element={ <Protegida regrasPermitidas={['Administrador']}> <EditarProduto /> </Protegida> } />
         
-        <Route path='/funcionarios' element={ <Protegida regrasPermitidas={['ADMINISTRADOR', 'LEITOR']}> <Funcionarios /> </Protegida> } />
-        <Route path='/cadastrar-funcionario' element={ <Protegida regrasPermitidas={['ADMINISTRADOR']}> <CadastrarFuncionario /> </Protegida> } />
-        <Route path='/editar-funcionario/:id' element={ <Protegida regrasPermitidas={['ADMINISTRADOR']}> <EditarFuncionario /> </Protegida> } />
+        <Route path='/funcionarios' element={ <Protegida regrasPermitidas={['Administrador', 'LEITOR']}> <Funcionarios /> </Protegida> } />
+        <Route path='/cadastrar-funcionario' element={ <Protegida regrasPermitidas={['Administrador']}> <CadastrarFuncionario /> </Protegida> } />
+        <Route path='/editar-funcionario/:id' element={ <Protegida regrasPermitidas={['Administrador']}> <EditarFuncionario /> </Protegida> } />
         
-        <Route path='/estoque' element={ <Protegida regrasPermitidas={['ADMINISTRADOR']}> <Estoque /> </Protegida> } />
-        <Route path='/cadastrar-estoque' element={ <Protegida regrasPermitidas={['ADMINISTRADOR']}> <CadastrarEstoque/> </Protegida>}/>
+        <Route path='/estoque' element={ <Protegida regrasPermitidas={['Administrador']}> <Estoque /> </Protegida> } />
+        <Route path='/cadastrar-estoque' element={ <Protegida regrasPermitidas={['Administrador']}> <CadastrarEstoque/> </Protegida>}/>
 
-        <Route path='/vendas' element={ <Protegida regrasPermitidas={['ADMINISTRADOR']}> <Vendas /> </Protegida> } />
+        <Route path='/vendas' element={ <Protegida regrasPermitidas={['Administrador']}> <Vendas /> </Protegida> } />
         
-        <Route path='/relatorios' element={ <Protegida regrasPermitidas={['ADMINISTRADOR']}> <Relatorio /> </Protegida> } />
+        <Route path='/relatorios' element={ <Protegida regrasPermitidas={['Administrador']}> <Relatorio /> </Protegida> } />
 
-        <Route path='/fornecedores' element={ <Protegida regrasPermitidas={['ADMINISTRADOR', 'LEITOR']}> <Fornecedores /> </Protegida> } />
-        <Route path='/cadastrar-fornecedor' element={ <Protegida regrasPermitidas={['ADMINISTRADOR']}> <CadastrarFornecedor /> </Protegida> } />
-        <Route path='/editar-fornecedor/:id' element={ <Protegida regrasPermitidas={['ADMINISTRADOR']}> <EditarFornecedor /> </Protegida> } />
+        <Route path='/fornecedores' element={ <Protegida regrasPermitidas={['Administrador', 'LEITOR']}> <Fornecedores /> </Protegida> } />
+        <Route path='/cadastrar-fornecedor' element={ <Protegida regrasPermitidas={['Administrador']}> <CadastrarFornecedor /> </Protegida> } />
+        <Route path='/editar-fornecedor/:id' element={ <Protegida regrasPermitidas={['Administrador']}> <EditarFornecedor /> </Protegida> } />
       </Routes>
-    </Router>
+    </BrowserRouter>
   )
 }
 export default App

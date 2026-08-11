@@ -45,7 +45,7 @@ function Sidebar() {
             <aside id="sidebarMenu" className="d-md-block sidebar collapse ph-bg-sidebar-navbar ph-sidebar-estrutura">
                 <div className="position-sticky pt-3">
                     <ul className="nav flex-column gap-3">
-                        {regra === 'ADMINISTRADOR' && (
+                        {regra === 'Administrador' && (
                             <li className="nav-item">
                                 <Link
                                     to="/home"
@@ -59,7 +59,7 @@ function Sidebar() {
                         )}
 
                         <li className="nav-item">
-                            {regra === 'ADMINISTRADOR' && (
+                            {regra === 'Administrador' && (
                                 <Link
                                     to="/clientes"
                                     className={`nav-link d-flex align-items-center fw-normal ph-padding-links-sidebar gap-3 text-black ${isActive(['/clientes', '/cadastrar-cliente', '/editar-cliente']) ? 'active' : ''}`}
@@ -72,7 +72,7 @@ function Sidebar() {
                         </li>
 
                         <li className="nav-item">
-                            {regra === 'ADMINISTRADOR' && (
+                            {regra === 'Administrador' && (
                                 <Link
                                     to="/funcionarios"
                                     className={`nav-link d-flex align-items-center fw-normal ph-padding-links-sidebar gap-3 text-black ${isActive(['/funcionarios', '/cadastrar-funcionario', '/editar-funcionario']) ? 'active' : ''}`}
@@ -85,7 +85,7 @@ function Sidebar() {
                         </li>
 
                         <li className="nav-item">
-                            {regra === 'ADMINISTRADOR' && (
+                            {regra === 'Administrador' && (
                                 <Link
                                     to="/produtos"
                                     className={`nav-link d-flex align-items-center fw-normal ph-padding-links-sidebar gap-3 text-black ${isActive(['/produtos', '/cadastrar-produto', '/editar-produto']) ? 'active' : ''}`}
@@ -98,7 +98,7 @@ function Sidebar() {
                         </li>
 
                         <li className="nav-item">
-                            {regra === 'ADMINISTRADOR' && (
+                            {regra === 'Administrador' && (
                                 <Link
                                     to="/vendas"
                                     className={`nav-link d-flex align-items-center fw-normal ph-padding-links-sidebar gap-3 text-black ${isActive(['/vendas']) ? 'active' : ''}`}
@@ -111,7 +111,7 @@ function Sidebar() {
                         </li>
 
                         <li className="nav-item">
-                            {regra === 'ADMINISTRADOR' && (
+                            {regra === 'Administrador' && (
                                 <Link
                                     to="/fornecedores"
                                     className={`nav-link d-flex align-items-center fw-normal ph-padding-links-sidebar gap-3 text-black ${isActive(['/fornecedores']) ? 'active' : ''}`}
@@ -124,7 +124,7 @@ function Sidebar() {
                         </li>
 
                         <li className="nav-item">
-                            {regra === 'ADMINISTRADOR' && (
+                            {regra === 'Administrador' && (
                                 <Link
                                     to="/estoque"
                                     className={`nav-link d-flex align-items-center fw-normal ph-padding-links-sidebar gap-3 text-black ${isActive(['/estoque']) ? 'active' : ''}`}
@@ -137,7 +137,7 @@ function Sidebar() {
                         </li>
 
                         <li className="nav-item">
-                            {regra === 'ADMINISTRADOR' && (
+                            {regra === 'Administrador' && (
                                 <Link
                                     to="/relatorios"
                                     className={`nav-link d-flex align-items-center fw-normal ph-padding-links-sidebar gap-3 text-black ${isActive(['/relatorios']) ? 'active' : ''}`}

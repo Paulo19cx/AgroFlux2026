@@ -141,7 +141,7 @@ function MainCadastrarProduto() {
                         </div>
                         <div className="col-md-5">
                             <label htmlFor="descricao" className="form-label small mb-1">Descrição</label>
-                            <textarea value={descricao} onChange={(e) => setDescricao(e.target.value)} className="form-control ph-input" id="descricao" name="descricao" rows="3" required />
+                            <textarea value={descricao} onChange={(e) => setDescricao(e.target.value)} className="form-control ph-input" id="descricao" name="descricao" rows="3" />
                         </div>
 
                         <h6 className="fw-bold mb-0">Preços</h6>
